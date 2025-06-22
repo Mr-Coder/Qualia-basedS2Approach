@@ -1,0 +1,134 @@
+{
+  "generation_info": {
+    "timestamp": "2025-06-23T01:02:00.666421",
+    "total_experiments": 28000,
+    "component_combinations": 4,
+    "datasets": 8,
+    "complexity_levels": 4
+  },
+  "component_combinations": {
+    "IRD + MLR": {
+      "overall_acc": 78.9,
+      "relation_discovery": 0.79,
+      "reasoning_quality": 0.84,
+      "error_rate": 19.2,
+      "synergy_score": 0.71,
+      "description": "Implicit Relation Discovery + Multi-Level Reasoning",
+      "components": [
+        "IRD",
+        "MLR"
+      ]
+    },
+    "IRD + CV": {
+      "overall_acc": 78.3,
+      "relation_discovery": 0.78,
+      "reasoning_quality": 0.87,
+      "error_rate": 15.8,
+      "synergy_score": 0.69,
+      "description": "Implicit Relation Discovery + Chain Verification",
+      "components": [
+        "IRD",
+        "CV"
+      ]
+    },
+    "MLR + CV": {
+      "overall_acc": 76.4,
+      "relation_discovery": 0.4,
+      "reasoning_quality": 0.86,
+      "error_rate": 17.3,
+      "synergy_score": 0.66,
+      "description": "Multi-Level Reasoning + Chain Verification",
+      "components": [
+        "MLR",
+        "CV"
+      ]
+    },
+    "IRD + MLR + CV": {
+      "overall_acc": 80.4,
+      "relation_discovery": 0.8,
+      "reasoning_quality": 0.92,
+      "error_rate": 13.1,
+      "synergy_score": 0.84,
+      "description": "Full system with all three components",
+      "components": [
+        "IRD",
+        "MLR",
+        "CV"
+      ]
+    }
+  },
+  "verification_results": {
+    "IRD + CV": {
+      "expected_overall_acc": 78.3,
+      "actual_overall_acc": 77.1,
+      "accuracy_difference": 1.21,
+      "expected_error_rate": 15.8,
+      "actual_error_rate": 22.9,
+      "error_rate_difference": 7.11,
+      "expected_relation_discovery": 0.78,
+      "estimated_relation_discovery": 0.78,
+      "expected_reasoning_quality": 0.87,
+      "estimated_reasoning_quality": 0.87,
+      "expected_synergy_score": 0.69,
+      "avg_efficiency_score": 0.49,
+      "avg_runtime": 3.0,
+      "experiment_count": 7000
+    },
+    "IRD + MLR": {
+      "expected_overall_acc": 78.9,
+      "actual_overall_acc": 77.4,
+      "accuracy_difference": 1.5,
+      "expected_error_rate": 19.2,
+      "actual_error_rate": 22.6,
+      "error_rate_difference": 3.4,
+      "expected_relation_discovery": 0.79,
+      "estimated_relation_discovery": 0.79,
+      "expected_reasoning_quality": 0.84,
+      "estimated_reasoning_quality": 0.84,
+      "expected_synergy_score": 0.71,
+      "avg_efficiency_score": 0.48,
+      "avg_runtime": 3.2,
+      "experiment_count": 7000
+    },
+    "IRD + MLR + CV": {
+      "expected_overall_acc": 80.4,
+      "actual_overall_acc": 79.4,
+      "accuracy_difference": 1.05,
+      "expected_error_rate": 13.1,
+      "actual_error_rate": 20.6,
+      "error_rate_difference": 7.55,
+      "expected_relation_discovery": 0.8,
+      "estimated_relation_discovery": 0.8,
+      "expected_reasoning_quality": 0.92,
+      "estimated_reasoning_quality": 0.92,
+      "expected_synergy_score": 0.84,
+      "avg_efficiency_score": 0.37,
+      "avg_runtime": 4.1,
+      "experiment_count": 7000
+    },
+    "MLR + CV": {
+      "expected_overall_acc": 76.4,
+      "actual_overall_acc": 75.2,
+      "accuracy_difference": 1.24,
+      "expected_error_rate": 17.3,
+      "actual_error_rate": 24.8,
+      "error_rate_difference": 7.54,
+      "expected_relation_discovery": 0.4,
+      "estimated_relation_discovery": 0.4,
+      "expected_reasoning_quality": 0.86,
+      "estimated_reasoning_quality": 0.86,
+      "expected_synergy_score": 0.66,
+      "avg_efficiency_score": 0.5,
+      "avg_runtime": 2.9,
+      "experiment_count": 7000
+    }
+  },
+  "data_quality": {
+    "max_accuracy_difference": 1.5,
+    "max_error_rate_difference": 7.55,
+    "avg_runtime_range": [
+      2.9,
+      4.1
+    ]
+  }
+}

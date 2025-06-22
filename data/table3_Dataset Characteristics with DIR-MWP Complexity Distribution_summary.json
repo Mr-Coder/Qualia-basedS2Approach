@@ -1,0 +1,178 @@
+{
+  "Math23K": {
+    "total_problems": 23162,
+    "target_size": 23162,
+    "language": "Chinese",
+    "domain": "Elementary",
+    "complexity_distribution": {
+      "l0_percent": 38.2,
+      "l1_percent": 31.4,
+      "l2_percent": 19.7,
+      "l3_percent": 10.7
+    },
+    "target_distribution": {
+      "l0_percent": 38.2,
+      "l1_percent": 31.4,
+      "l2_percent": 19.7,
+      "l3_percent": 10.7
+    },
+    "dir_score": {
+      "calculated": 1.34,
+      "target": 2.03
+    }
+  },
+  "GSM8K": {
+    "total_problems": 8500,
+    "target_size": 8500,
+    "language": "English",
+    "domain": "Grade School",
+    "complexity_distribution": {
+      "l0_percent": 42.1,
+      "l1_percent": 28.9,
+      "l2_percent": 18.3,
+      "l3_percent": 10.7
+    },
+    "target_distribution": {
+      "l0_percent": 42.1,
+      "l1_percent": 28.9,
+      "l2_percent": 18.3,
+      "l3_percent": 10.7
+    },
+    "dir_score": {
+      "calculated": 1.23,
+      "target": 1.98
+    }
+  },
+  "MAWPS": {
+    "total_problems": 2373,
+    "target_size": 2373,
+    "language": "English",
+    "domain": "Multi-domain",
+    "complexity_distribution": {
+      "l0_percent": 47.4,
+      "l1_percent": 26.8,
+      "l2_percent": 16.2,
+      "l3_percent": 9.7
+    },
+    "target_distribution": {
+      "l0_percent": 47.3,
+      "l1_percent": 26.8,
+      "l2_percent": 16.2,
+      "l3_percent": 9.7
+    },
+    "dir_score": {
+      "calculated": 1.06,
+      "target": 1.88
+    }
+  },
+  "MathQA": {
+    "total_problems": 37297,
+    "target_size": 37297,
+    "language": "English",
+    "domain": "Competition",
+    "complexity_distribution": {
+      "l0_percent": 35.7,
+      "l1_percent": 32.1,
+      "l2_percent": 21.4,
+      "l3_percent": 10.8
+    },
+    "target_distribution": {
+      "l0_percent": 35.7,
+      "l1_percent": 32.1,
+      "l2_percent": 21.4,
+      "l3_percent": 10.8
+    },
+    "dir_score": {
+      "calculated": 1.42,
+      "target": 2.07
+    }
+  },
+  "MATH": {
+    "total_problems": 12500,
+    "target_size": 12500,
+    "language": "English",
+    "domain": "Competition",
+    "complexity_distribution": {
+      "l0_percent": 28.4,
+      "l1_percent": 31.7,
+      "l2_percent": 25.1,
+      "l3_percent": 14.8
+    },
+    "target_distribution": {
+      "l0_percent": 28.4,
+      "l1_percent": 31.7,
+      "l2_percent": 25.1,
+      "l3_percent": 14.8
+    },
+    "dir_score": {
+      "calculated": 1.79,
+      "target": 2.26
+    }
+  },
+  "SVAMP": {
+    "total_problems": 1000,
+    "target_size": 1000,
+    "language": "English",
+    "domain": "Grade School",
+    "complexity_distribution": {
+      "l0_percent": 35.2,
+      "l1_percent": 29.1,
+      "l2_percent": 22.4,
+      "l3_percent": 13.3
+    },
+    "target_distribution": {
+      "l0_percent": 35.2,
+      "l1_percent": 29.1,
+      "l2_percent": 22.4,
+      "l3_percent": 13.3
+    },
+    "dir_score": {
+      "calculated": 1.52,
+      "target": 2.14
+    }
+  },
+  "ASDiv": {
+    "total_problems": 2305,
+    "target_size": 2305,
+    "language": "English",
+    "domain": "Elementary",
+    "complexity_distribution": {
+      "l0_percent": 41.7,
+      "l1_percent": 28.6,
+      "l2_percent": 19.8,
+      "l3_percent": 9.9
+    },
+    "target_distribution": {
+      "l0_percent": 41.7,
+      "l1_percent": 28.6,
+      "l2_percent": 19.8,
+      "l3_percent": 9.9
+    },
+    "dir_score": {
+      "calculated": 1.24,
+      "target": 1.98
+    }
+  },
+  "DIR-MWP-Test": {
+    "total_problems": 1200,
+    "target_size": 1200,
+    "language": "Mixed",
+    "domain": "Specialized",
+    "complexity_distribution": {
+      "l0_percent": 15.0,
+      "l1_percent": 25.0,
+      "l2_percent": 35.0,
+      "l3_percent": 25.0
+    },
+    "target_distribution": {
+      "l0_percent": 15.0,
+      "l1_percent": 25.0,
+      "l2_percent": 35.0,
+      "l3_percent": 25.0
+    },
+    "dir_score": {
+      "calculated": 2.76,
+      "target": 2.7
+    }
+  }
+}

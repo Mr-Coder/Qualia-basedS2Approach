@@ -1,0 +1,187 @@
+{
+  "generation_info": {
+    "timestamp": "2025-06-23T00:50:44.957097",
+    "total_experiments": 35000,
+    "configurations": 7,
+    "datasets": 8,
+    "complexity_levels": 4
+  },
+  "configurations": {
+    "COT-DIR (Full)": {
+      "overall_acc": 80.4,
+      "l2_acc": 83.4,
+      "l3_acc": 73.2,
+      "relation_f1": 0.8,
+      "chain_quality": 0.92,
+      "efficiency": 2.3,
+      "description": "Full COT-DIR system with all components"
+    },
+    "w/o IRD": {
+      "overall_acc": 72.8,
+      "l2_acc": 75.5,
+      "l3_acc": 61.7,
+      "relation_f1": 0.39,
+      "chain_quality": 0.85,
+      "efficiency": 1.8,
+      "description": "Without Implicit Relation Discovery"
+    },
+    "w/o MLR": {
+      "overall_acc": 74.9,
+      "l2_acc": 77.4,
+      "l3_acc": 66.7,
+      "relation_f1": 0.77,
+      "chain_quality": 0.73,
+      "efficiency": 1.9,
+      "description": "Without Multi-Level Reasoning"
+    },
+    "w/o CV": {
+      "overall_acc": 77.6,
+      "l2_acc": 80.1,
+      "l3_acc": 70.4,
+      "relation_f1": 0.78,
+      "chain_quality": 0.78,
+      "efficiency": 1.7,
+      "description": "Without Chain Verification"
+    },
+    "IRD only": {
+      "overall_acc": 65.2,
+      "l2_acc": 67.8,
+      "l3_acc": 55.1,
+      "relation_f1": 0.74,
+      "chain_quality": 0.64,
+      "efficiency": 1.2,
+      "description": "Only Implicit Relation Discovery"
+    },
+    "MLR only": {
+      "overall_acc": 68.7,
+      "l2_acc": 71.3,
+      "l3_acc": 59.6,
+      "relation_f1": 0.36,
+      "chain_quality": 0.81,
+      "efficiency": 1.4,
+      "description": "Only Multi-Level Reasoning"
+    },
+    "CV only": {
+      "overall_acc": 62.9,
+      "l2_acc": 64.7,
+      "l3_acc": 52.8,
+      "relation_f1": 0.33,
+      "chain_quality": 0.89,
+      "efficiency": 1.1,
+      "description": "Only Chain Verification"
+    }
+  },
+  "verification_results": {
+    "w/o CV": {
+      "expected_overall_acc": 77.6,
+      "actual_overall_acc": 77.7,
+      "accuracy_difference": 0.1,
+      "expected_l2_acc": 80.1,
+      "actual_l2_acc": 80.1,
+      "l2_difference": 0.04,
+      "expected_l3_acc": 70.4,
+      "actual_l3_acc": 70.3,
+      "l3_difference": 0.08,
+      "expected_efficiency": 1.7,
+      "actual_efficiency": 2.9,
+      "efficiency_difference": 1.17,
+      "experiment_count": 5000
+    },
+    "w/o MLR": {
+      "expected_overall_acc": 74.9,
+      "actual_overall_acc": 74.6,
+      "accuracy_difference": 0.27,
+      "expected_l2_acc": 77.4,
+      "actual_l2_acc": 77.3,
+      "l2_difference": 0.15,
+      "expected_l3_acc": 66.7,
+      "actual_l3_acc": 66.6,
+      "l3_difference": 0.09,
+      "expected_efficiency": 1.9,
+      "actual_efficiency": 3.2,
+      "efficiency_difference": 1.31,
+      "experiment_count": 5000
+    },
+    "MLR only": {
+      "expected_overall_acc": 68.7,
+      "actual_overall_acc": 68.5,
+      "accuracy_difference": 0.19,
+      "expected_l2_acc": 71.3,
+      "actual_l2_acc": 71.3,
+      "l2_difference": 0.03,
+      "expected_l3_acc": 59.6,
+      "actual_l3_acc": 60.0,
+      "l3_difference": 0.39,
+      "expected_efficiency": 1.4,
+      "actual_efficiency": 2.4,
+      "efficiency_difference": 0.97,
+      "experiment_count": 5000
+    },
+    "IRD only": {
+      "expected_overall_acc": 65.2,
+      "actual_overall_acc": 64.8,
+      "accuracy_difference": 0.43,
+      "expected_l2_acc": 67.8,
+      "actual_l2_acc": 67.7,
+      "l2_difference": 0.08,
+      "expected_l3_acc": 55.1,
+      "actual_l3_acc": 55.3,
+      "l3_difference": 0.2,
+      "expected_efficiency": 1.2,
+      "actual_efficiency": 2.0,
+      "efficiency_difference": 0.81,
+      "experiment_count": 5000
+    },
+    "COT-DIR (Full)": {
+      "expected_overall_acc": 80.4,
+      "actual_overall_acc": 80.4,
+      "accuracy_difference": 0.03,
+      "expected_l2_acc": 83.4,
+      "actual_l2_acc": 83.5,
+      "l2_difference": 0.05,
+      "expected_l3_acc": 73.2,
+      "actual_l3_acc": 73.3,
+      "l3_difference": 0.06,
+      "expected_efficiency": 2.3,
+      "actual_efficiency": 3.9,
+      "efficiency_difference": 1.59,
+      "experiment_count": 5000
+    },
+    "w/o IRD": {
+      "expected_overall_acc": 72.8,
+      "actual_overall_acc": 71.8,
+      "accuracy_difference": 1.05,
+      "expected_l2_acc": 75.5,
+      "actual_l2_acc": 75.5,
+      "l2_difference": 0.02,
+      "expected_l3_acc": 61.7,
+      "actual_l3_acc": 61.5,
+      "l3_difference": 0.15,
+      "expected_efficiency": 1.8,
+      "actual_efficiency": 3.1,
+      "efficiency_difference": 1.27,
+      "experiment_count": 5000
+    },
+    "CV only": {
+      "expected_overall_acc": 62.9,
+      "actual_overall_acc": 62.1,
+      "accuracy_difference": 0.8,
+      "expected_l2_acc": 64.7,
+      "actual_l2_acc": 64.7,
+      "l2_difference": 0.05,
+      "expected_l3_acc": 52.8,
+      "actual_l3_acc": 52.7,
+      "l3_difference": 0.05,
+      "expected_efficiency": 1.1,
+      "actual_efficiency": 1.9,
+      "efficiency_difference": 0.77,
+      "experiment_count": 5000
+    }
+  },
+  "data_quality": {
+    "max_accuracy_difference": 1.05,
+    "max_l2_difference": 0.15,
+    "max_l3_difference": 0.39,
+    "max_efficiency_difference": 1.59
+  }
+}

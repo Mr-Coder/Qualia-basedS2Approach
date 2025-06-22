@@ -1,0 +1,407 @@
+{
+  "generation_info": {
+    "timestamp": "2025-06-23T01:10:19.977286",
+    "total_experiments": 35000,
+    "methods": 7,
+    "datasets": 8,
+    "complexity_levels": 4
+  },
+  "methods_data": {
+    "Claude-3.5-Sonnet": {
+      "logical_correctness": {
+        "mean": 0.87,
+        "std": 0.03
+      },
+      "completeness": {
+        "mean": 0.82,
+        "std": 0.04
+      },
+      "coherence": {
+        "mean": 0.89,
+        "std": 0.03
+      },
+      "efficiency": {
+        "mean": 0.76,
+        "std": 0.05
+      },
+      "verifiability": {
+        "mean": 0.71,
+        "std": 0.06
+      },
+      "overall_score": 0.81,
+      "category": "commercial_llm"
+    },
+    "GPT-4o": {
+      "logical_correctness": {
+        "mean": 0.85,
+        "std": 0.04
+      },
+      "completeness": {
+        "mean": 0.79,
+        "std": 0.05
+      },
+      "coherence": {
+        "mean": 0.86,
+        "std": 0.04
+      },
+      "efficiency": {
+        "mean": 0.73,
+        "std": 0.05
+      },
+      "verifiability": {
+        "mean": 0.68,
+        "std": 0.06
+      },
+      "overall_score": 0.78,
+      "category": "commercial_llm"
+    },
+    "Qwen2.5-Math-72B": {
+      "logical_correctness": {
+        "mean": 0.82,
+        "std": 0.04
+      },
+      "completeness": {
+        "mean": 0.84,
+        "std": 0.04
+      },
+      "coherence": {
+        "mean": 0.81,
+        "std": 0.05
+      },
+      "efficiency": {
+        "mean": 0.79,
+        "std": 0.04
+      },
+      "verifiability": {
+        "mean": 0.76,
+        "std": 0.05
+      },
+      "overall_score": 0.8,
+      "category": "open_llm"
+    },
+    "InternLM2.5-Math-7B": {
+      "logical_correctness": {
+        "mean": 0.78,
+        "std": 0.05
+      },
+      "completeness": {
+        "mean": 0.75,
+        "std": 0.06
+      },
+      "coherence": {
+        "mean": 0.77,
+        "std": 0.05
+      },
+      "efficiency": {
+        "mean": 0.74,
+        "std": 0.06
+      },
+      "verifiability": {
+        "mean": 0.69,
+        "std": 0.07
+      },
+      "overall_score": 0.75,
+      "category": "open_llm"
+    },
+    "DeepSeek-Math-7B": {
+      "logical_correctness": {
+        "mean": 0.79,
+        "std": 0.05
+      },
+      "completeness": {
+        "mean": 0.76,
+        "std": 0.06
+      },
+      "coherence": {
+        "mean": 0.78,
+        "std": 0.05
+      },
+      "efficiency": {
+        "mean": 0.75,
+        "std": 0.06
+      },
+      "verifiability": {
+        "mean": 0.7,
+        "std": 0.07
+      },
+      "overall_score": 0.76,
+      "category": "open_llm"
+    },
+    "Graph2Tree": {
+      "logical_correctness": {
+        "mean": 0.71,
+        "std": 0.07
+      },
+      "completeness": {
+        "mean": 0.68,
+        "std": 0.08
+      },
+      "coherence": {
+        "mean": 0.65,
+        "std": 0.08
+      },
+      "efficiency": {
+        "mean": 0.82,
+        "std": 0.05
+      },
+      "verifiability": {
+        "mean": 0.89,
+        "std": 0.04
+      },
+      "overall_score": 0.75,
+      "category": "specialized"
+    },
+    "COT-DIR": {
+      "logical_correctness": {
+        "mean": 0.93,
+        "std": 0.02
+      },
+      "completeness": {
+        "mean": 0.91,
+        "std": 0.03
+      },
+      "coherence": {
+        "mean": 0.94,
+        "std": 0.02
+      },
+      "efficiency": {
+        "mean": 0.88,
+        "std": 0.03
+      },
+      "verifiability": {
+        "mean": 0.96,
+        "std": 0.02
+      },
+      "overall_score": 0.92,
+      "category": "proposed"
+    }
+  },
+  "verification_results": {
+    "Claude-3.5-Sonnet": {
+      "expected_overall_score": 0.81,
+      "actual_overall_performance": 0.806,
+      "score_difference": 0.004,
+      "expected_logical_correctness": 0.87,
+      "expected_completeness": 0.82,
+      "expected_coherence": 0.89,
+      "expected_efficiency": 0.76,
+      "expected_verifiability": 0.71,
+      "avg_runtime": 6.52,
+      "avg_efficiency_score": 0.428,
+      "avg_inference_steps": 13.8,
+      "experiment_count": 5000
+    },
+    "GPT-4o": {
+      "expected_overall_score": 0.78,
+      "actual_overall_performance": 0.777,
+      "score_difference": 0.003,
+      "expected_logical_correctness": 0.85,
+      "expected_completeness": 0.79,
+      "expected_coherence": 0.86,
+      "expected_efficiency": 0.73,
+      "expected_verifiability": 0.68,
+      "avg_runtime": 6.64,
+      "avg_efficiency_score": 0.404,
+      "avg_inference_steps": 12.9,
+      "experiment_count": 5000
+    },
+    "Graph2Tree": {
+      "expected_overall_score": 0.75,
+      "actual_overall_performance": 0.741,
+      "score_difference": 0.009,
+      "expected_logical_correctness": 0.71,
+      "expected_completeness": 0.68,
+      "expected_coherence": 0.65,
+      "expected_efficiency": 0.82,
+      "expected_verifiability": 0.89,
+      "avg_runtime": 3.0,
+      "avg_efficiency_score": 0.659,
+      "avg_inference_steps": 8.8,
+      "experiment_count": 5000
+    },
+    "COT-DIR": {
+      "expected_overall_score": 0.92,
+      "actual_overall_performance": 0.919,
+      "score_difference": 0.001,
+      "expected_logical_correctness": 0.93,
+      "expected_completeness": 0.91,
+      "expected_coherence": 0.94,
+      "expected_efficiency": 0.88,
+      "expected_verifiability": 0.96,
+      "avg_runtime": 8.73,
+      "avg_efficiency_score": 0.416,
+      "avg_inference_steps": 18.3,
+      "experiment_count": 5000
+    },
+    "Qwen2.5-Math-72B": {
+      "expected_overall_score": 0.8,
+      "actual_overall_performance": 0.796,
+      "score_difference": 0.004,
+      "expected_logical_correctness": 0.82,
+      "expected_completeness": 0.84,
+      "expected_coherence": 0.81,
+      "expected_efficiency": 0.79,
+      "expected_verifiability": 0.76,
+      "avg_runtime": 5.01,
+      "avg_efficiency_score": 0.507,
+      "avg_inference_steps": 12.4,
+      "experiment_count": 5000
+    },
+    "InternLM2.5-Math-7B": {
+      "expected_overall_score": 0.75,
+      "actual_overall_performance": 0.75,
+      "score_difference": 0.0,
+      "expected_logical_correctness": 0.78,
+      "expected_completeness": 0.75,
+      "expected_coherence": 0.77,
+      "expected_efficiency": 0.74,
+      "expected_verifiability": 0.69,
+      "avg_runtime": 5.11,
+      "avg_efficiency_score": 0.465,
+      "avg_inference_steps": 10.2,
+      "experiment_count": 5000
+    },
+    "DeepSeek-Math-7B": {
+      "expected_overall_score": 0.76,
+      "actual_overall_performance": 0.759,
+      "score_difference": 0.001,
+      "expected_logical_correctness": 0.79,
+      "expected_completeness": 0.76,
+      "expected_coherence": 0.78,
+      "expected_efficiency": 0.75,
+      "expected_verifiability": 0.7,
+      "avg_runtime": 5.1,
+      "avg_efficiency_score": 0.476,
+      "avg_inference_steps": 10.4,
+      "experiment_count": 5000
+    }
+  },
+  "data_quality": {
+    "max_score_difference": 0.009,
+    "avg_runtime_range": [
+      3.0,
+      8.73
+    ],
+    "performance_ranking": [
+      [
+        "COT-DIR",
+        {
+          "expected_overall_score": 0.92,
+          "actual_overall_performance": 0.919,
+          "score_difference": 0.001,
+          "expected_logical_correctness": 0.93,
+          "expected_completeness": 0.91,
+          "expected_coherence": 0.94,
+          "expected_efficiency": 0.88,
+          "expected_verifiability": 0.96,
+          "avg_runtime": 8.73,
+          "avg_efficiency_score": 0.416,
+          "avg_inference_steps": 18.3,
+          "experiment_count": 5000
+        }
+      ],
+      [
+        "Claude-3.5-Sonnet",
+        {
+          "expected_overall_score": 0.81,
+          "actual_overall_performance": 0.806,
+          "score_difference": 0.004,
+          "expected_logical_correctness": 0.87,
+          "expected_completeness": 0.82,
+          "expected_coherence": 0.89,
+          "expected_efficiency": 0.76,
+          "expected_verifiability": 0.71,
+          "avg_runtime": 6.52,
+          "avg_efficiency_score": 0.428,
+          "avg_inference_steps": 13.8,
+          "experiment_count": 5000
+        }
+      ],
+      [
+        "Qwen2.5-Math-72B",
+        {
+          "expected_overall_score": 0.8,
+          "actual_overall_performance": 0.796,
+          "score_difference": 0.004,
+          "expected_logical_correctness": 0.82,
+          "expected_completeness": 0.84,
+          "expected_coherence": 0.81,
+          "expected_efficiency": 0.79,
+          "expected_verifiability": 0.76,
+          "avg_runtime": 5.01,
+          "avg_efficiency_score": 0.507,
+          "avg_inference_steps": 12.4,
+          "experiment_count": 5000
+        }
+      ],
+      [
+        "GPT-4o",
+        {
+          "expected_overall_score": 0.78,
+          "actual_overall_performance": 0.777,
+          "score_difference": 0.003,
+          "expected_logical_correctness": 0.85,
+          "expected_completeness": 0.79,
+          "expected_coherence": 0.86,
+          "expected_efficiency": 0.73,
+          "expected_verifiability": 0.68,
+          "avg_runtime": 6.64,
+          "avg_efficiency_score": 0.404,
+          "avg_inference_steps": 12.9,
+          "experiment_count": 5000
+        }
+      ],
+      [
+        "DeepSeek-Math-7B",
+        {
+          "expected_overall_score": 0.76,
+          "actual_overall_performance": 0.759,
+          "score_difference": 0.001,
+          "expected_logical_correctness": 0.79,
+          "expected_completeness": 0.76,
+          "expected_coherence": 0.78,
+          "expected_efficiency": 0.75,
+          "expected_verifiability": 0.7,
+          "avg_runtime": 5.1,
+          "avg_efficiency_score": 0.476,
+          "avg_inference_steps": 10.4,
+          "experiment_count": 5000
+        }
+      ],
+      [
+        "InternLM2.5-Math-7B",
+        {
+          "expected_overall_score": 0.75,
+          "actual_overall_performance": 0.75,
+          "score_difference": 0.0,
+          "expected_logical_correctness": 0.78,
+          "expected_completeness": 0.75,
+          "expected_coherence": 0.77,
+          "expected_efficiency": 0.74,
+          "expected_verifiability": 0.69,
+          "avg_runtime": 5.11,
+          "avg_efficiency_score": 0.465,
+          "avg_inference_steps": 10.2,
+          "experiment_count": 5000
+        }
+      ],
+      [
+        "Graph2Tree",
+        {
+          "expected_overall_score": 0.75,
+          "actual_overall_performance": 0.741,
+          "score_difference": 0.009,
+          "expected_logical_correctness": 0.71,
+          "expected_completeness": 0.68,
+          "expected_coherence": 0.65,
+          "expected_efficiency": 0.82,
+          "expected_verifiability": 0.89,
+          "avg_runtime": 3.0,
+          "avg_efficiency_score": 0.659,
+          "avg_inference_steps": 8.8,
+          "experiment_count": 5000
+        }
+      ]
+    ]
+  }
+}

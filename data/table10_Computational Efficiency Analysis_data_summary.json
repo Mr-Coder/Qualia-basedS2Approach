@@ -1,0 +1,117 @@
+{
+  "Claude-3.5-Sonnet": {
+    "sample_count": 1000,
+    "avg_runtime": {
+      "mean": 2.0328670000000004,
+      "std_error": 0.017946728763510077,
+      "target_mean": 1.8
+    },
+    "memory_mb": {
+      "mean": 255.0941999999998,
+      "std_error": 0.4821325817241561,
+      "target_mean": 245
+    },
+    "l2_runtime": {
+      "mean": 2.1108317535545025,
+      "std_error": 0.019446789130924725,
+      "target_mean": 2.1
+    },
+    "l3_runtime": {
+      "mean": 2.6847512690355337,
+      "std_error": 0.0424107142153877,
+      "target_mean": 2.7
+    }
+  },
+  "GPT-4o": {
+    "sample_count": 1000,
+    "avg_runtime": {
+      "mean": 2.3154159999999986,
+      "std_error": 0.02090845357610171,
+      "target_mean": 2.1
+    },
+    "memory_mb": {
+      "mean": 278.34199999999976,
+      "std_error": 0.5883212863733556,
+      "target_mean": 268
+    },
+    "l2_runtime": {
+      "mean": 2.3363772609819122,
+      "std_error": 0.02513121690281542,
+      "target_mean": 2.4
+    },
+    "l3_runtime": {
+      "mean": 3.103874999999999,
+      "std_error": 0.052314289750596585,
+      "target_mean": 3.1
+    }
+  },
+  "Qwen2.5-Math-72B": {
+    "sample_count": 1000,
+    "avg_runtime": {
+      "mean": 3.685826000000001,
+      "std_error": 0.033560584168396135,
+      "target_mean": 3.2
+    },
+    "memory_mb": {
+      "mean": 428.26659999999976,
+      "std_error": 0.9065363117051627,
+      "target_mean": 412
+    },
+    "l2_runtime": {
+      "mean": 3.818496183206108,
+      "std_error": 0.03211187563695839,
+      "target_mean": 3.8
+    },
+    "l3_runtime": {
+      "mean": 5.038402061855669,
+      "std_error": 0.07747993556060076,
+      "target_mean": 4.9
+    }
+  },
+  "InternLM2.5-Math-7B": {
+    "sample_count": 1000,
+    "avg_runtime": {
+      "mean": 1.808664,
+      "std_error": 0.01617597493519324,
+      "target_mean": 1.6
+    },
+    "memory_mb": {
+      "mean": 206.8399999999999,
+      "std_error": 0.4139878017526603,
+      "target_mean": 198
+    },
+    "l2_runtime": {
+      "mean": 1.8753735224586272,
+      "std_error": 0.018799358052414752,
+      "target_mean": 1.9
+    },
+    "l3_runtime": {
+      "mean": 2.399913265306123,
+      "std_error": 0.03279414098878282,
+      "target_mean": 2.4
+    }
+  },
+  "COT-DIR": {
+    "sample_count": 1000,
+    "avg_runtime": {
+      "mean": 2.6486599999999982,
+      "std_error": 0.023894653468924797,
+      "target_mean": 2.3
+    },
+    "memory_mb": {
+      "mean": 298.62740000000036,
+      "std_error": 0.7084485085311418,
+      "target_mean": 287
+    },
+    "l2_runtime": {
+      "mean": 2.7773552311435523,
+      "std_error": 0.025358663426235807,
+      "target_mean": 2.8
+    },
+    "l3_runtime": {
+      "mean": 3.5565502645502622,
+      "std_error": 0.05702525542455251,
+      "target_mean": 3.6
+    }
+  }
+}

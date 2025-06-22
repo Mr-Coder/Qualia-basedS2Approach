@@ -1,0 +1,450 @@
+{
+  "Claude-3.5-Sonnet_Math23K": {
+    "method": "Claude-3.5-Sonnet",
+    "dataset": "Math23K",
+    "calculated_accuracy": 82.5,
+    "target_accuracy": 82.4,
+    "difference": 0.1,
+    "sample_count": 1000
+  },
+  "Claude-3.5-Sonnet_GSM8K": {
+    "method": "Claude-3.5-Sonnet",
+    "dataset": "GSM8K",
+    "calculated_accuracy": 85.7,
+    "target_accuracy": 85.7,
+    "difference": 0.0,
+    "sample_count": 1000
+  },
+  "Claude-3.5-Sonnet_MAWPS": {
+    "method": "Claude-3.5-Sonnet",
+    "dataset": "MAWPS",
+    "calculated_accuracy": 89.4,
+    "target_accuracy": 89.3,
+    "difference": 0.1,
+    "sample_count": 600
+  },
+  "Claude-3.5-Sonnet_MathQA": {
+    "method": "Claude-3.5-Sonnet",
+    "dataset": "MathQA",
+    "calculated_accuracy": 74.2,
+    "target_accuracy": 74.2,
+    "difference": 0.0,
+    "sample_count": 1200
+  },
+  "Claude-3.5-Sonnet_MATH": {
+    "method": "Claude-3.5-Sonnet",
+    "dataset": "MATH",
+    "calculated_accuracy": 61.8,
+    "target_accuracy": 61.8,
+    "difference": 0.0,
+    "sample_count": 800
+  },
+  "Claude-3.5-Sonnet_SVAMP": {
+    "method": "Claude-3.5-Sonnet",
+    "dataset": "SVAMP",
+    "calculated_accuracy": 83.6,
+    "target_accuracy": 83.6,
+    "difference": 0.0,
+    "sample_count": 500
+  },
+  "Claude-3.5-Sonnet_ASDiv": {
+    "method": "Claude-3.5-Sonnet",
+    "dataset": "ASDiv",
+    "calculated_accuracy": 87.1,
+    "target_accuracy": 87.1,
+    "difference": 0.0,
+    "sample_count": 400
+  },
+  "Claude-3.5-Sonnet_DIR-Test": {
+    "method": "Claude-3.5-Sonnet",
+    "dataset": "DIR-Test",
+    "calculated_accuracy": 69.3,
+    "target_accuracy": 69.4,
+    "difference": 0.1,
+    "sample_count": 300
+  },
+  "GPT-4o_Math23K": {
+    "method": "GPT-4o",
+    "dataset": "Math23K",
+    "calculated_accuracy": 81.7,
+    "target_accuracy": 81.7,
+    "difference": 0.0,
+    "sample_count": 1000
+  },
+  "GPT-4o_GSM8K": {
+    "method": "GPT-4o",
+    "dataset": "GSM8K",
+    "calculated_accuracy": 84.1,
+    "target_accuracy": 84.2,
+    "difference": 0.1,
+    "sample_count": 1000
+  },
+  "GPT-4o_MAWPS": {
+    "method": "GPT-4o",
+    "dataset": "MAWPS",
+    "calculated_accuracy": 88.7,
+    "target_accuracy": 88.6,
+    "difference": 0.1,
+    "sample_count": 600
+  },
+  "GPT-4o_MathQA": {
+    "method": "GPT-4o",
+    "dataset": "MathQA",
+    "calculated_accuracy": 73.0,
+    "target_accuracy": 73.1,
+    "difference": 0.1,
+    "sample_count": 1200
+  },
+  "GPT-4o_MATH": {
+    "method": "GPT-4o",
+    "dataset": "MATH",
+    "calculated_accuracy": 59.7,
+    "target_accuracy": 59.7,
+    "difference": 0.0,
+    "sample_count": 800
+  },
+  "GPT-4o_SVAMP": {
+    "method": "GPT-4o",
+    "dataset": "SVAMP",
+    "calculated_accuracy": 82.3,
+    "target_accuracy": 82.3,
+    "difference": 0.0,
+    "sample_count": 500
+  },
+  "GPT-4o_ASDiv": {
+    "method": "GPT-4o",
+    "dataset": "ASDiv",
+    "calculated_accuracy": 86.3,
+    "target_accuracy": 86.4,
+    "difference": 0.1,
+    "sample_count": 400
+  },
+  "GPT-4o_DIR-Test": {
+    "method": "GPT-4o",
+    "dataset": "DIR-Test",
+    "calculated_accuracy": 68.4,
+    "target_accuracy": 68.2,
+    "difference": 0.2,
+    "sample_count": 300
+  },
+  "Qwen2.5-Math-72B_Math23K": {
+    "method": "Qwen2.5-Math-72B",
+    "dataset": "Math23K",
+    "calculated_accuracy": 84.2,
+    "target_accuracy": 84.1,
+    "difference": 0.1,
+    "sample_count": 1000
+  },
+  "Qwen2.5-Math-72B_GSM8K": {
+    "method": "Qwen2.5-Math-72B",
+    "dataset": "GSM8K",
+    "calculated_accuracy": 87.9,
+    "target_accuracy": 87.9,
+    "difference": 0.0,
+    "sample_count": 1000
+  },
+  "Qwen2.5-Math-72B_MAWPS": {
+    "method": "Qwen2.5-Math-72B",
+    "dataset": "MAWPS",
+    "calculated_accuracy": 91.2,
+    "target_accuracy": 91.2,
+    "difference": 0.0,
+    "sample_count": 600
+  },
+  "Qwen2.5-Math-72B_MathQA": {
+    "method": "Qwen2.5-Math-72B",
+    "dataset": "MathQA",
+    "calculated_accuracy": 76.7,
+    "target_accuracy": 76.8,
+    "difference": 0.1,
+    "sample_count": 1200
+  },
+  "Qwen2.5-Math-72B_MATH": {
+    "method": "Qwen2.5-Math-72B",
+    "dataset": "MATH",
+    "calculated_accuracy": 64.3,
+    "target_accuracy": 64.3,
+    "difference": 0.0,
+    "sample_count": 800
+  },
+  "Qwen2.5-Math-72B_SVAMP": {
+    "method": "Qwen2.5-Math-72B",
+    "dataset": "SVAMP",
+    "calculated_accuracy": 85.8,
+    "target_accuracy": 85.9,
+    "difference": 0.1,
+    "sample_count": 500
+  },
+  "Qwen2.5-Math-72B_ASDiv": {
+    "method": "Qwen2.5-Math-72B",
+    "dataset": "ASDiv",
+    "calculated_accuracy": 89.7,
+    "target_accuracy": 89.7,
+    "difference": 0.0,
+    "sample_count": 400
+  },
+  "Qwen2.5-Math-72B_DIR-Test": {
+    "method": "Qwen2.5-Math-72B",
+    "dataset": "DIR-Test",
+    "calculated_accuracy": 71.9,
+    "target_accuracy": 72.1,
+    "difference": 0.2,
+    "sample_count": 300
+  },
+  "InternLM2.5-Math-7B_Math23K": {
+    "method": "InternLM2.5-Math-7B",
+    "dataset": "Math23K",
+    "calculated_accuracy": 79.3,
+    "target_accuracy": 79.3,
+    "difference": 0.0,
+    "sample_count": 1000
+  },
+  "InternLM2.5-Math-7B_GSM8K": {
+    "method": "InternLM2.5-Math-7B",
+    "dataset": "GSM8K",
+    "calculated_accuracy": 82.1,
+    "target_accuracy": 82.1,
+    "difference": 0.0,
+    "sample_count": 1000
+  },
+  "InternLM2.5-Math-7B_MAWPS": {
+    "method": "InternLM2.5-Math-7B",
+    "dataset": "MAWPS",
+    "calculated_accuracy": 85.4,
+    "target_accuracy": 85.4,
+    "difference": 0.0,
+    "sample_count": 600
+  },
+  "InternLM2.5-Math-7B_MathQA": {
+    "method": "InternLM2.5-Math-7B",
+    "dataset": "MathQA",
+    "calculated_accuracy": 70.5,
+    "target_accuracy": 70.6,
+    "difference": 0.1,
+    "sample_count": 1200
+  },
+  "InternLM2.5-Math-7B_MATH": {
+    "method": "InternLM2.5-Math-7B",
+    "dataset": "MATH",
+    "calculated_accuracy": 56.2,
+    "target_accuracy": 56.2,
+    "difference": 0.0,
+    "sample_count": 800
+  },
+  "InternLM2.5-Math-7B_SVAMP": {
+    "method": "InternLM2.5-Math-7B",
+    "dataset": "SVAMP",
+    "calculated_accuracy": 80.8,
+    "target_accuracy": 80.7,
+    "difference": 0.1,
+    "sample_count": 500
+  },
+  "InternLM2.5-Math-7B_ASDiv": {
+    "method": "InternLM2.5-Math-7B",
+    "dataset": "ASDiv",
+    "calculated_accuracy": 83.7,
+    "target_accuracy": 83.8,
+    "difference": 0.1,
+    "sample_count": 400
+  },
+  "InternLM2.5-Math-7B_DIR-Test": {
+    "method": "InternLM2.5-Math-7B",
+    "dataset": "DIR-Test",
+    "calculated_accuracy": 65.4,
+    "target_accuracy": 65.3,
+    "difference": 0.1,
+    "sample_count": 300
+  },
+  "DeepSeek-Math-7B_Math23K": {
+    "method": "DeepSeek-Math-7B",
+    "dataset": "Math23K",
+    "calculated_accuracy": 80.7,
+    "target_accuracy": 80.8,
+    "difference": 0.1,
+    "sample_count": 1000
+  },
+  "DeepSeek-Math-7B_GSM8K": {
+    "method": "DeepSeek-Math-7B",
+    "dataset": "GSM8K",
+    "calculated_accuracy": 83.6,
+    "target_accuracy": 83.6,
+    "difference": 0.0,
+    "sample_count": 1000
+  },
+  "DeepSeek-Math-7B_MAWPS": {
+    "method": "DeepSeek-Math-7B",
+    "dataset": "MAWPS",
+    "calculated_accuracy": 87.1,
+    "target_accuracy": 87.1,
+    "difference": 0.0,
+    "sample_count": 600
+  },
+  "DeepSeek-Math-7B_MathQA": {
+    "method": "DeepSeek-Math-7B",
+    "dataset": "MathQA",
+    "calculated_accuracy": 72.4,
+    "target_accuracy": 72.4,
+    "difference": 0.0,
+    "sample_count": 1200
+  },
+  "DeepSeek-Math-7B_MATH": {
+    "method": "DeepSeek-Math-7B",
+    "dataset": "MATH",
+    "calculated_accuracy": 59.0,
+    "target_accuracy": 58.9,
+    "difference": 0.1,
+    "sample_count": 800
+  },
+  "DeepSeek-Math-7B_SVAMP": {
+    "method": "DeepSeek-Math-7B",
+    "dataset": "SVAMP",
+    "calculated_accuracy": 82.1,
+    "target_accuracy": 82.1,
+    "difference": 0.0,
+    "sample_count": 500
+  },
+  "DeepSeek-Math-7B_ASDiv": {
+    "method": "DeepSeek-Math-7B",
+    "dataset": "ASDiv",
+    "calculated_accuracy": 85.2,
+    "target_accuracy": 85.2,
+    "difference": 0.0,
+    "sample_count": 400
+  },
+  "DeepSeek-Math-7B_DIR-Test": {
+    "method": "DeepSeek-Math-7B",
+    "dataset": "DIR-Test",
+    "calculated_accuracy": 67.6,
+    "target_accuracy": 67.6,
+    "difference": 0.0,
+    "sample_count": 300
+  },
+  "ToRA-13B_Math23K": {
+    "method": "ToRA-13B",
+    "dataset": "Math23K",
+    "calculated_accuracy": 78.2,
+    "target_accuracy": 78.2,
+    "difference": 0.0,
+    "sample_count": 1000
+  },
+  "ToRA-13B_GSM8K": {
+    "method": "ToRA-13B",
+    "dataset": "GSM8K",
+    "calculated_accuracy": 81.2,
+    "target_accuracy": 81.3,
+    "difference": 0.1,
+    "sample_count": 1000
+  },
+  "ToRA-13B_MAWPS": {
+    "method": "ToRA-13B",
+    "dataset": "MAWPS",
+    "calculated_accuracy": 84.8,
+    "target_accuracy": 84.7,
+    "difference": 0.1,
+    "sample_count": 600
+  },
+  "ToRA-13B_MathQA": {
+    "method": "ToRA-13B",
+    "dataset": "MathQA",
+    "calculated_accuracy": 69.9,
+    "target_accuracy": 69.8,
+    "difference": 0.1,
+    "sample_count": 1200
+  },
+  "ToRA-13B_MATH": {
+    "method": "ToRA-13B",
+    "dataset": "MATH",
+    "calculated_accuracy": 54.7,
+    "target_accuracy": 54.6,
+    "difference": 0.1,
+    "sample_count": 800
+  },
+  "ToRA-13B_SVAMP": {
+    "method": "ToRA-13B",
+    "dataset": "SVAMP",
+    "calculated_accuracy": 79.4,
+    "target_accuracy": 79.4,
+    "difference": 0.0,
+    "sample_count": 500
+  },
+  "ToRA-13B_ASDiv": {
+    "method": "ToRA-13B",
+    "dataset": "ASDiv",
+    "calculated_accuracy": 82.5,
+    "target_accuracy": 82.5,
+    "difference": 0.0,
+    "sample_count": 400
+  },
+  "ToRA-13B_DIR-Test": {
+    "method": "ToRA-13B",
+    "dataset": "DIR-Test",
+    "calculated_accuracy": 63.9,
+    "target_accuracy": 63.9,
+    "difference": 0.0,
+    "sample_count": 300
+  },
+  "COT-DIR_Math23K": {
+    "method": "COT-DIR",
+    "dataset": "Math23K",
+    "calculated_accuracy": 87.3,
+    "target_accuracy": 87.3,
+    "difference": 0.0,
+    "sample_count": 1000
+  },
+  "COT-DIR_GSM8K": {
+    "method": "COT-DIR",
+    "dataset": "GSM8K",
+    "calculated_accuracy": 91.2,
+    "target_accuracy": 91.2,
+    "difference": 0.0,
+    "sample_count": 1000
+  },
+  "COT-DIR_MAWPS": {
+    "method": "COT-DIR",
+    "dataset": "MAWPS",
+    "calculated_accuracy": 94.2,
+    "target_accuracy": 94.1,
+    "difference": 0.1,
+    "sample_count": 600
+  },
+  "COT-DIR_MathQA": {
+    "method": "COT-DIR",
+    "dataset": "MathQA",
+    "calculated_accuracy": 80.4,
+    "target_accuracy": 80.4,
+    "difference": 0.0,
+    "sample_count": 1200
+  },
+  "COT-DIR_MATH": {
+    "method": "COT-DIR",
+    "dataset": "MATH",
+    "calculated_accuracy": 68.8,
+    "target_accuracy": 68.7,
+    "difference": 0.1,
+    "sample_count": 800
+  },
+  "COT-DIR_SVAMP": {
+    "method": "COT-DIR",
+    "dataset": "SVAMP",
+    "calculated_accuracy": 89.3,
+    "target_accuracy": 89.3,
+    "difference": 0.0,
+    "sample_count": 500
+  },
+  "COT-DIR_ASDiv": {
+    "method": "COT-DIR",
+    "dataset": "ASDiv",
+    "calculated_accuracy": 92.7,
+    "target_accuracy": 92.8,
+    "difference": 0.1,
+    "sample_count": 400
+  },
+  "COT-DIR_DIR-Test": {
+    "method": "COT-DIR",
+    "dataset": "DIR-Test",
+    "calculated_accuracy": 78.6,
+    "target_accuracy": 78.5,
+    "difference": 0.1,
+    "sample_count": 300
+  }
+}

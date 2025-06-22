@@ -1,0 +1,58 @@
+{
+    "version": "1.0.0",
+    "description": "数学问题求解器的默认配置",
+    "paths": {
+        "patterns": "src/models/patterns/default_patterns.json",
+        "examples": "src/models/examples/example_problems.json"
+    },
+    "problem_types": {
+        "motion": {
+            "name": "运动问题",
+            "description": "处理与运动相关的问题，如相遇问题、追及问题等",
+            "keywords": ["运动", "相遇", "追及", "相向", "同向", "速度", "距离", "motion", "meet", "chase", "speed", "distance"],
+            "units": ["km", "m", "km/h", "m/s"],
+            "priority": 1,
+            "exclusion_keywords": ["工作", "效率"]
+        },
+        "work_efficiency": {
+            "name": "工作效率问题",
+            "description": "处理与工作效率相关的问题，如合作完成工作、效率比较等",
+            "keywords": ["工作", "效率", "完成", "合作", "一起", "work", "efficiency", "complete", "together"],
+            "units": ["h", "min", "day"],
+            "priority": 2,
+            "exclusion_keywords": []
+        },
+        "rate_and_volume": {
+            "name": "速率和体积问题",
+            "description": "处理与速率和体积相关的问题，如水箱问题、冰块问题等",
+            "keywords": ["水箱", "冰块", "体积", "容量", "水位", "漏水", "rate", "volume", "tank", "ice", "cube", "leak"],
+            "units": ["L", "ml", "m³", "cm³", "ml/s", "L/min"],
+            "priority": 3,
+            "exclusion_keywords": []
+        },
+        "investment_growth": {
+            "name": "投资增长问题",
+            "description": "处理与投资增长相关的问题，如复利、单利等",
+            "keywords": ["投资", "增长", "利率", "复利", "单利", "本金", "investment", "growth", "interest", "compound", "simple", "principal"],
+            "units": ["%", "年", "月", "元", "year", "month", "dollar", "yuan"],
+            "priority": 4,
+            "exclusion_keywords": []
+        },
+        "mixture": {
+            "name": "混合问题",
+            "description": "处理与混合相关的问题，如溶液浓度、混合物等",
+            "keywords": ["混合", "浓度", "溶液", "配制", "mixture", "concentration", "solution"],
+            "units": ["%", "g", "kg", "L", "ml"],
+            "priority": 5,
+            "exclusion_keywords": []
+        },
+        "sequence": {
+            "name": "数列问题",
+            "description": "处理与数列相关的问题，如等差数列、等比数列等",
+            "keywords": ["数列", "等差", "等比", "首项", "公差", "公比", "sequence", "arithmetic", "geometric", "common difference", "common ratio"],
+            "units": [],
+            "priority": 6,
+            "exclusion_keywords": []
+        }
+    }
+} 

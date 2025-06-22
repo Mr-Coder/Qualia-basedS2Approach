@@ -1,0 +1,15 @@
+一个水池的初始水量为 100 升，每分钟漏水 2 升，同时每分钟往里面放入 5 个体积为 500 立方厘米的冰块。问多长时间后水池的水量会达到 200 升？ 
+
+# 速率和体积问题
+Ice cubes, each with a volume of 200 cm³, are dropped into a tank containing 5L of water at a rate of one cube per minute. Simultaneously, water is leaking from the tank through a tube at a rate of 2 mL per second. How long will it take for the water level in the tank to rise to 9L?
+
+# 工作效率问题
+Worker A can complete a task in 6 hours, while worker B can complete the same task in 8 hours. If they work together, how long will it take them to complete the task?
+
+# 投资增长问题
+An initial investment of $10,000 grows at an annual rate of 8%. What will be the value of the investment after 5 years?
+
+# 运动问题
+Two trains start from different stations that are 300 kilometers apart. One train travels at 60 km/h and the other at 80 km/h. If they travel towards each other, how long will it take for them to meet? 
+
+

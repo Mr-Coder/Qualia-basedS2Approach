@@ -1,0 +1,51 @@
+{
+  "performance_metrics": {
+    "overall_accuracy": 0.6,
+    "total_samples": 5,
+    "correct_predictions": 3,
+    "complexity_level_accuracy": {
+      "L0": 0.5,
+      "L1": 1.0,
+      "L2": 1.0,
+      "L3": 0.0
+    },
+    "robustness_score": 0.5,
+    "complexity_distribution": {
+      "L1": 1,
+      "L0": 2,
+      "L2": 1,
+      "L3": 1
+    },
+    "error_analysis": {
+      "total_errors": 2,
+      "error_types": {
+        "major_numerical_error": 2
+      },
+      "error_by_complexity": {
+        "L0": 1,
+        "L3": 1
+      }
+    }
+  },
+  "relation_discovery_metrics": {
+    "precision": 0.5,
+    "recall": 0.5,
+    "f1": 0.5,
+    "semantic_accuracy": 0.5,
+    "weighted_f1": 0.35714285714285715,
+    "avg_relations": 2,
+    "true_relations_count": 2,
+    "correct_relations": 1,
+    "false_positives": 1,
+    "false_negatives": 1
+  },
+  "reasoning_chain_metrics": {
+    "logical_correctness": 1.0,
+    "completeness": 0.36666666666666664,
+    "coherence": 1.0,
+    "efficiency": 0.8333333333333333,
+    "verifiability": 1.0,
+    "overall": 0.8400000000000001
+  },
+  "overall_system_score": 0.642
+}

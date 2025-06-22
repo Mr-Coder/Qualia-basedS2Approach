@@ -1,0 +1,127 @@
+[
+    {
+        "id": "1",
+        "pattern": ["n", "m", "q"],
+        "relation_template": "a=b*c",
+        "var_slot_val": "n,m,q",
+        "var_slot_index": {"a": "0", "b": "1", "c": "2"},
+        "description": "提取冰块体积，识别形如'volume of 200 cm³'的表达"
+    },
+
+    {
+        "id": "2",
+        "pattern": ["v", "m", "q"],
+        "relation_template": "a=b*c",
+        "var_slot_val": "v,m,q",
+        "var_slot_index": {"a": "0", "b": "1", "c": "2"},
+        "description": "提取初始水量，识别形如'containing 5L'的表达"
+    },
+
+    {
+        "id": "3",
+        "pattern": ["n", "m", "q", "n"],
+        "relation_template": "a=b*c/d",
+        "var_slot_val": "n,m,q,n",
+        "var_slot_index": {"a": "0", "b": "1", "c": "2", "d": "3"},
+        "description": "提取漏水速率，识别形如'rate of 2 mL per second'的表达"
+    },
+
+    {
+        "id": "4",
+        "pattern": "v,m,q",
+        "relation_template": "a=b*c",
+        "var_slot_val": "v,m,q",
+        "var_slot_index": {"a": "0", "b": "1", "c": "2"},
+        "description": "模式4：动词-数字-单位模式 （用于提取目标值）提取目标水量，与模式2相同，识别形如'rise to 9L'的表达，其中动词(v)表示变化，数字(m)表示数值，单位(q)表示度量单位。生成关系'target_water=9*L'"
+    },
+
+    {
+        "id": "5",
+        "pattern": "n->ATT->m,n->ATT->n",
+        "relation_template": "a=b/c",
+        "var_slot_val": "n,m,n",
+        "var_slot_index": {"a": "0", "b": "1", "c": "2"},
+        "description": "提取冰块加入速率，识别形如'rate of one cube per minute'的复杂表达，其中包含名词(n)与数字(m)的属性关系和名词(n)与另一个名词(n)的属性关系。生成关系'cube_rate=1/minute'"
+    },
+
+    {
+        "id": "6",
+        "pattern": "n->ATT->n,v->SBV->q",
+        "relation_template": "a=b-c",
+        "var_slot_val": "n,q,q",
+        "var_slot_index": {"a": "0", "b": "1", "c": "2"},
+        "description": "模式6：动词-动词-主谓关系（用于提取变化关系）提取水量变化关系，识别形如'water level...rise to 9L'的复杂表达，其中包含名词(n)与名词(n)的属性关系以及动词(v)与量词(q)的主谓关系。生成关系'water_change=target_water-initial_water'"
+    },
+
+    {
+        "id": "7",
+        "pattern": "adv->ADV->adj,v->SBV->v",
+        "relation_template": "a=(b-c)/(d*e-f*60)",
+        "var_slot_val": "adv,v,v",
+        "var_slot_index": {"a": "0", "b": "1", "c": "2", "d": "3", "e": "4", "f": "5"},
+        "description": "模式7：形容词-动词-主谓关系（用于提取时间计算关系）提取时间计算关系，识别形如'How long will it take for...to rise'的复杂问句，其中包含副词(adv)与形容词(adj)的修饰关系以及动词(v)与动词(v)的主谓关系。生成关系'time=(target_water-initial_water)/(cube_volume*cube_rate-leak_rate*60)'"
+    },
+
+    {
+        "id": "8",
+        "pattern": "n,v,m,n",
+        "relation_template": "a=1/b",
+        "var_slot_val": "n,v,m,n",
+        "var_slot_index": {"a": "0", "b": "2"},
+        "description": "模式8：工作效率模式识别形如'Worker A can complete a task in 6 hours'的表达，其中名词(n)表示工作者，动词(v)表示完成动作，数字(m)表示时间数值，名词(n)表示时间单位。生成关系'rate_A=1/6'"
+    },
+
+    {
+        "id": "9",
+        "pattern": "n,v,adv,v",
+        "relation_template": "a=b+c",
+        "var_slot_val": "n,v,adv,v",
+        "var_slot_index": {"a": "0", "b": "1", "c": "3"},
+        "description": "模式9：合作效率模式识别形如'If they work together'的表达，其中名词(n)表示工作者集合，动词(v)表示工作，副词(adv)表示方式，动词(v)表示合作。生成关系'combined_rate=rate_A+rate_B'"
+    },
+
+    {
+        "id": "10",
+        "pattern": "n,v,prep,m,n",
+        "relation_template": "a=b*(1+c)^d",
+        "var_slot_val": "n,v,m,n",
+        "var_slot_index": {"a": "0", "b": "1", "c": "2", "d": "3"},
+        "description": "模式10：增长率模式识别形如'investment grows at an annual rate of 8%'的表达，其中名词(n)表示投资，动词(v)表示增长，介词(prep)引导增长率，数字(m)表示百分比，名词(n)表示时间周期。生成关系'final_value=initial_investment*(1+rate)^years'"
+    },
+
+    {
+        "id": "11",
+        "pattern": "n,v,prep,m,q",
+        "relation_template": "a=b/(c+d)",
+        "var_slot_val": "n,v,m,q",
+        "var_slot_index": {"a": "0", "b": "2", "c": "3", "d": "4"},
+        "description": "模式11：运动相遇模式识别形如'trains start from stations that are 300 kilometers apart'的表达，其中名词(n)表示物体，动词(v)表示运动，介词(prep)引导距离，数字(m)表示距离值，量词(q)表示距离单位。生成关系'meeting_time=distance/(speed_A+speed_B)'"
+    },
+
+    {
+        "id": "12",
+        "pattern": "v,m,n,prep,m,q",
+        "relation_template": "a=b*c-d",
+        "var_slot_val": "v,m,n,m,q",
+        "var_slot_index": {"a": "0", "b": "1", "c": "2", "d": "3"},
+        "description": "模式12：液体增减速率模式识别形如'water flows through a pipe at a rate of 10 liters per second'的表达，其中动词(v)表示流动，数字(m)表示速率，名词(n)表示物体，介词(prep)引导距离，数字(m)表示距离值，量词(q)表示距离单位。生成关系'rate=initial_rate*(1+rate_change)'"
+    },
+
+    {
+        "id": "13",
+        "pattern": "adv,v,n,v,prep,m,q",
+        "relation_template": "a=(b-c)/d",
+        "var_slot_val": "adv,n,m,q",
+        "var_slot_index": {"a": "0", "b": "2", "c": "1", "d": "3"},
+        "description": "模式13：时间计算模式识别形如'多长时间后水池的水量会达到200升'的问句，其中副词(adv)表示疑问，动词(v)表示时间经过，名词(n)表示对象，动词(v)表示状态变化，介词(prep)引导目标状态，数字(m)和量词(q)表示目标值。生成关系'time=(target_volume-initial_volume)/net_rate'"
+    },
+
+    {
+        "id": "14",
+        "pattern": "m,q1,prep,q2",
+        "relation_template": "a=b*c",
+        "var_slot_val": "m,q1,q2",
+        "var_slot_index": {"a": "0", "b": "1", "c": "2"},
+        "description": "模式14：单位转换模式识别 形如'1000米等于多少公里'的问句，其中数字(m)表示数值，量词(q1)和量词(q2)分别表示原始单位和目标单位。生成关系'converted_value=original_value*conversion_factor'"
+    }
+]

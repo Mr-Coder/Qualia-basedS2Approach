@@ -1,0 +1,5694 @@
+[
+  {
+    "raw_text": "An investment of $10,000 grows at an annual compound interest rate of 5%. What will be the value of the investment after 3 years?",
+    "processed_text": {
+      "raw_text": "An investment of $10,000 grows at an annual compound interest rate of 5%. What will be the value of the investment after 3 years?",
+      "segmentation": [
+        "An",
+        "investment",
+        "of",
+        "$",
+        "10,000",
+        "grows",
+        "at",
+        "an",
+        "annual",
+        "compound",
+        "interest",
+        "rate",
+        "of",
+        "5",
+        "%",
+        ".",
+        "What",
+        "will",
+        "be",
+        "the",
+        "value",
+        "of",
+        "the",
+        "investment",
+        "after",
+        "3",
+        "years",
+        "?"
+      ],
+      "pos_tags": [
+        "det",
+        "n",
+        "p",
+        "q",
+        "m",
+        "v",
+        "p",
+        "det",
+        "adj",
+        "n",
+        "n",
+        "n",
+        "p",
+        "m",
+        "n",
+        "w",
+        "pron",
+        "n",
+        "n",
+        "det",
+        "n",
+        "p",
+        "det",
+        "n",
+        "p",
+        "m",
+        "n",
+        "w"
+      ],
+      "dependencies": [
+        [
+          "investment",
+          "det",
+          "An"
+        ],
+        [
+          "grows",
+          "nsubj",
+          "investment"
+        ],
+        [
+          "investment",
+          "prep",
+          "of"
+        ],
+        [
+          "10,000",
+          "quantmod",
+          "$"
+        ],
+        [
+          "of",
+          "pobj",
+          "10,000"
+        ],
+        [
+          "grows",
+          "prep",
+          "at"
+        ],
+        [
+          "rate",
+          "det",
+          "an"
+        ],
+        [
+          "rate",
+          "amod",
+          "annual"
+        ],
+        [
+          "rate",
+          "compound",
+          "compound"
+        ],
+        [
+          "rate",
+          "compound",
+          "interest"
+        ],
+        [
+          "at",
+          "pobj",
+          "rate"
+        ],
+        [
+          "rate",
+          "prep",
+          "of"
+        ],
+        [
+          "%",
+          "nummod",
+          "5"
+        ],
+        [
+          "of",
+          "pobj",
+          "%"
+        ],
+        [
+          "grows",
+          "punct",
+          "."
+        ],
+        [
+          "be",
+          "nsubj",
+          "What"
+        ],
+        [
+          "be",
+          "aux",
+          "will"
+        ],
+        [
+          "value",
+          "det",
+          "the"
+        ],
+        [
+          "be",
+          "attr",
+          "value"
+        ],
+        [
+          "value",
+          "prep",
+          "of"
+        ],
+        [
+          "investment",
+          "det",
+          "the"
+        ],
+        [
+          "of",
+          "pobj",
+          "investment"
+        ],
+        [
+          "be",
+          "prep",
+          "after"
+        ],
+        [
+          "years",
+          "nummod",
+          "3"
+        ],
+        [
+          "after",
+          "pobj",
+          "years"
+        ],
+        [
+          "be",
+          "punct",
+          "?"
+        ]
+      ],
+      "semantic_roles": {},
+      "cleaned_text": "An investment of $10,000 grows at an annual compound interest rate of 5%. What will be the value of the investment after 3 years?",
+      "tokens": [],
+      "ner_tags": [],
+      "features": {},
+      "values_and_units": {}
+    },
+    "classification_result": {
+      "features": {
+        "math_complexity": {
+          "variable_count": 2,
+          "operators": [],
+          "advanced_functions": [],
+          "potential_variables": [
+            "3 years",
+            "000 grows"
+          ]
+        },
+        "linguistic_structure": {
+          "pos_distribution": {
+            "det": 4,
+            "n": 10,
+            "p": 5,
+            "q": 1,
+            "m": 3,
+            "v": 1,
+            "adj": 1,
+            "w": 2,
+            "pron": 1
+          },
+          "sentence_complexity": "复杂",
+          "main_dependencies": [
+            [
+              "investment",
+              "det",
+              "An"
+            ],
+            [
+              "grows",
+              "nsubj",
+              "investment"
+            ],
+            [
+              "investment",
+              "prep",
+              "of"
+            ],
+            [
+              "10,000",
+              "quantmod",
+              "$"
+            ],
+            [
+              "of",
+              "pobj",
+              "10,000"
+            ]
+          ],
+          "token_count": 28
+        },
+        "relation_types": {
+          "explicit_relations": [],
+          "implicit_relations": []
+        },
+        "problem_target": {
+          "target_variable": "unknown",
+          "problem_type": "unknown"
+        },
+        "processed_text": {
+          "raw_text": "An investment of $10,000 grows at an annual compound interest rate of 5%. What will be the value of the investment after 3 years?",
+          "segmentation": [
+            "An",
+            "investment",
+            "of",
+            "$",
+            "10,000",
+            "grows",
+            "at",
+            "an",
+            "annual",
+            "compound",
+            "interest",
+            "rate",
+            "of",
+            "5",
+            "%",
+            ".",
+            "What",
+            "will",
+            "be",
+            "the",
+            "value",
+            "of",
+            "the",
+            "investment",
+            "after",
+            "3",
+            "years",
+            "?"
+          ],
+          "pos_tags": [
+            "det",
+            "n",
+            "p",
+            "q",
+            "m",
+            "v",
+            "p",
+            "det",
+            "adj",
+            "n",
+            "n",
+            "n",
+            "p",
+            "m",
+            "n",
+            "w",
+            "pron",
+            "n",
+            "n",
+            "det",
+            "n",
+            "p",
+            "det",
+            "n",
+            "p",
+            "m",
+            "n",
+            "w"
+          ],
+          "dependencies": [
+            [
+              "investment",
+              "det",
+              "An"
+            ],
+            [
+              "grows",
+              "nsubj",
+              "investment"
+            ],
+            [
+              "investment",
+              "prep",
+              "of"
+            ],
+            [
+              "10,000",
+              "quantmod",
+              "$"
+            ],
+            [
+              "of",
+              "pobj",
+              "10,000"
+            ],
+            [
+              "grows",
+              "prep",
+              "at"
+            ],
+            [
+              "rate",
+              "det",
+              "an"
+            ],
+            [
+              "rate",
+              "amod",
+              "annual"
+            ],
+            [
+              "rate",
+              "compound",
+              "compound"
+            ],
+            [
+              "rate",
+              "compound",
+              "interest"
+            ],
+            [
+              "at",
+              "pobj",
+              "rate"
+            ],
+            [
+              "rate",
+              "prep",
+              "of"
+            ],
+            [
+              "%",
+              "nummod",
+              "5"
+            ],
+            [
+              "of",
+              "pobj",
+              "%"
+            ],
+            [
+              "grows",
+              "punct",
+              "."
+            ],
+            [
+              "be",
+              "nsubj",
+              "What"
+            ],
+            [
+              "be",
+              "aux",
+              "will"
+            ],
+            [
+              "value",
+              "det",
+              "the"
+            ],
+            [
+              "be",
+              "attr",
+              "value"
+            ],
+            [
+              "value",
+              "prep",
+              "of"
+            ],
+            [
+              "investment",
+              "det",
+              "the"
+            ],
+            [
+              "of",
+              "pobj",
+              "investment"
+            ],
+            [
+              "be",
+              "prep",
+              "after"
+            ],
+            [
+              "years",
+              "nummod",
+              "3"
+            ],
+            [
+              "after",
+              "pobj",
+              "years"
+            ],
+            [
+              "be",
+              "punct",
+              "?"
+            ]
+          ],
+          "semantic_roles": {},
+          "cleaned_text": "An investment of $10,000 grows at an annual compound interest rate of 5%. What will be the value of the investment after 3 years?",
+          "tokens": [],
+          "ner_tags": [],
+          "features": {},
+          "values_and_units": {}
+        },
+        "complexity": "低",
+        "language_patterns": [],
+        "pattern_categories": [
+          "数量关系_基础计量"
+        ]
+      },
+      "complexity": "低",
+      "language_patterns": [],
+      "relation_types": {
+        "explicit_relations": [],
+        "implicit_relations": []
+      },
+      "pattern_categories": [
+        "数量关系_基础计量"
+      ]
+    }
+  },
+  {
+    "raw_text": "A water tank needs to be filled with 100 cubic meters of water. If the flow rate is 20 cubic meters per hour, how long will it take to fill the tank?",
+    "processed_text": {
+      "raw_text": "A water tank needs to be filled with 100 cubic meters of water. If the flow rate is 20 cubic meters per hour, how long will it take to fill the tank?",
+      "segmentation": [
+        "A",
+        "water",
+        "tank",
+        "needs",
+        "to",
+        "be",
+        "filled",
+        "with",
+        "100",
+        "cubic",
+        "meters",
+        "of",
+        "water",
+        ".",
+        "If",
+        "the",
+        "flow",
+        "rate",
+        "is",
+        "20",
+        "cubic",
+        "meters",
+        "per",
+        "hour",
+        ",",
+        "how",
+        "long",
+        "will",
+        "it",
+        "take",
+        "to",
+        "fill",
+        "the",
+        "tank",
+        "?"
+      ],
+      "pos_tags": [
+        "det",
+        "n",
+        "n",
+        "v",
+        "n",
+        "n",
+        "v",
+        "p",
+        "m",
+        "adj",
+        "n",
+        "p",
+        "n",
+        "w",
+        "n",
+        "det",
+        "n",
+        "n",
+        "n",
+        "m",
+        "adj",
+        "n",
+        "p",
+        "q",
+        "w",
+        "n",
+        "adv",
+        "n",
+        "pron",
+        "v",
+        "n",
+        "v",
+        "det",
+        "n",
+        "w"
+      ],
+      "dependencies": [
+        [
+          "tank",
+          "det",
+          "A"
+        ],
+        [
+          "tank",
+          "compound",
+          "water"
+        ],
+        [
+          "needs",
+          "nsubj",
+          "tank"
+        ],
+        [
+          "filled",
+          "aux",
+          "to"
+        ],
+        [
+          "filled",
+          "auxpass",
+          "be"
+        ],
+        [
+          "needs",
+          "xcomp",
+          "filled"
+        ],
+        [
+          "filled",
+          "prep",
+          "with"
+        ],
+        [
+          "meters",
+          "nummod",
+          "100"
+        ],
+        [
+          "meters",
+          "amod",
+          "cubic"
+        ],
+        [
+          "with",
+          "pobj",
+          "meters"
+        ],
+        [
+          "meters",
+          "prep",
+          "of"
+        ],
+        [
+          "of",
+          "pobj",
+          "water"
+        ],
+        [
+          "needs",
+          "punct",
+          "."
+        ],
+        [
+          "is",
+          "mark",
+          "If"
+        ],
+        [
+          "rate",
+          "det",
+          "the"
+        ],
+        [
+          "rate",
+          "compound",
+          "flow"
+        ],
+        [
+          "is",
+          "nsubj",
+          "rate"
+        ],
+        [
+          "take",
+          "advcl",
+          "is"
+        ],
+        [
+          "meters",
+          "nummod",
+          "20"
+        ],
+        [
+          "meters",
+          "amod",
+          "cubic"
+        ],
+        [
+          "is",
+          "attr",
+          "meters"
+        ],
+        [
+          "meters",
+          "prep",
+          "per"
+        ],
+        [
+          "per",
+          "pobj",
+          "hour"
+        ],
+        [
+          "is",
+          "punct",
+          ","
+        ],
+        [
+          "long",
+          "advmod",
+          "how"
+        ],
+        [
+          "take",
+          "advmod",
+          "long"
+        ],
+        [
+          "take",
+          "aux",
+          "will"
+        ],
+        [
+          "take",
+          "nsubj",
+          "it"
+        ],
+        [
+          "fill",
+          "aux",
+          "to"
+        ],
+        [
+          "take",
+          "xcomp",
+          "fill"
+        ],
+        [
+          "tank",
+          "det",
+          "the"
+        ],
+        [
+          "fill",
+          "dobj",
+          "tank"
+        ],
+        [
+          "take",
+          "punct",
+          "?"
+        ]
+      ],
+      "semantic_roles": {},
+      "cleaned_text": "A water tank needs to be filled with 100 cubic meters of water. If the flow rate is 20 cubic meters per hour, how long will it take to fill the tank?",
+      "tokens": [],
+      "ner_tags": [],
+      "features": {},
+      "values_and_units": {}
+    },
+    "classification_result": {
+      "features": {
+        "math_complexity": {
+          "variable_count": 2,
+          "operators": [],
+          "advanced_functions": [],
+          "potential_variables": [
+            "20 cubic",
+            "100 cubic"
+          ]
+        },
+        "linguistic_structure": {
+          "pos_distribution": {
+            "det": 3,
+            "n": 15,
+            "v": 4,
+            "p": 3,
+            "m": 2,
+            "adj": 2,
+            "w": 3,
+            "q": 1,
+            "adv": 1,
+            "pron": 1
+          },
+          "sentence_complexity": "复杂",
+          "main_dependencies": [
+            [
+              "tank",
+              "det",
+              "A"
+            ],
+            [
+              "tank",
+              "compound",
+              "water"
+            ],
+            [
+              "needs",
+              "nsubj",
+              "tank"
+            ],
+            [
+              "filled",
+              "aux",
+              "to"
+            ],
+            [
+              "filled",
+              "auxpass",
+              "be"
+            ]
+          ],
+          "token_count": 35
+        },
+        "relation_types": {
+          "explicit_relations": [],
+          "implicit_relations": []
+        },
+        "problem_target": {
+          "target_variable": "unknown",
+          "problem_type": "unknown"
+        },
+        "processed_text": {
+          "raw_text": "A water tank needs to be filled with 100 cubic meters of water. If the flow rate is 20 cubic meters per hour, how long will it take to fill the tank?",
+          "segmentation": [
+            "A",
+            "water",
+            "tank",
+            "needs",
+            "to",
+            "be",
+            "filled",
+            "with",
+            "100",
+            "cubic",
+            "meters",
+            "of",
+            "water",
+            ".",
+            "If",
+            "the",
+            "flow",
+            "rate",
+            "is",
+            "20",
+            "cubic",
+            "meters",
+            "per",
+            "hour",
+            ",",
+            "how",
+            "long",
+            "will",
+            "it",
+            "take",
+            "to",
+            "fill",
+            "the",
+            "tank",
+            "?"
+          ],
+          "pos_tags": [
+            "det",
+            "n",
+            "n",
+            "v",
+            "n",
+            "n",
+            "v",
+            "p",
+            "m",
+            "adj",
+            "n",
+            "p",
+            "n",
+            "w",
+            "n",
+            "det",
+            "n",
+            "n",
+            "n",
+            "m",
+            "adj",
+            "n",
+            "p",
+            "q",
+            "w",
+            "n",
+            "adv",
+            "n",
+            "pron",
+            "v",
+            "n",
+            "v",
+            "det",
+            "n",
+            "w"
+          ],
+          "dependencies": [
+            [
+              "tank",
+              "det",
+              "A"
+            ],
+            [
+              "tank",
+              "compound",
+              "water"
+            ],
+            [
+              "needs",
+              "nsubj",
+              "tank"
+            ],
+            [
+              "filled",
+              "aux",
+              "to"
+            ],
+            [
+              "filled",
+              "auxpass",
+              "be"
+            ],
+            [
+              "needs",
+              "xcomp",
+              "filled"
+            ],
+            [
+              "filled",
+              "prep",
+              "with"
+            ],
+            [
+              "meters",
+              "nummod",
+              "100"
+            ],
+            [
+              "meters",
+              "amod",
+              "cubic"
+            ],
+            [
+              "with",
+              "pobj",
+              "meters"
+            ],
+            [
+              "meters",
+              "prep",
+              "of"
+            ],
+            [
+              "of",
+              "pobj",
+              "water"
+            ],
+            [
+              "needs",
+              "punct",
+              "."
+            ],
+            [
+              "is",
+              "mark",
+              "If"
+            ],
+            [
+              "rate",
+              "det",
+              "the"
+            ],
+            [
+              "rate",
+              "compound",
+              "flow"
+            ],
+            [
+              "is",
+              "nsubj",
+              "rate"
+            ],
+            [
+              "take",
+              "advcl",
+              "is"
+            ],
+            [
+              "meters",
+              "nummod",
+              "20"
+            ],
+            [
+              "meters",
+              "amod",
+              "cubic"
+            ],
+            [
+              "is",
+              "attr",
+              "meters"
+            ],
+            [
+              "meters",
+              "prep",
+              "per"
+            ],
+            [
+              "per",
+              "pobj",
+              "hour"
+            ],
+            [
+              "is",
+              "punct",
+              ","
+            ],
+            [
+              "long",
+              "advmod",
+              "how"
+            ],
+            [
+              "take",
+              "advmod",
+              "long"
+            ],
+            [
+              "take",
+              "aux",
+              "will"
+            ],
+            [
+              "take",
+              "nsubj",
+              "it"
+            ],
+            [
+              "fill",
+              "aux",
+              "to"
+            ],
+            [
+              "take",
+              "xcomp",
+              "fill"
+            ],
+            [
+              "tank",
+              "det",
+              "the"
+            ],
+            [
+              "fill",
+              "dobj",
+              "tank"
+            ],
+            [
+              "take",
+              "punct",
+              "?"
+            ]
+          ],
+          "semantic_roles": {},
+          "cleaned_text": "A water tank needs to be filled with 100 cubic meters of water. If the flow rate is 20 cubic meters per hour, how long will it take to fill the tank?",
+          "tokens": [],
+          "ner_tags": [],
+          "features": {},
+          "values_and_units": {}
+        },
+        "complexity": "低",
+        "language_patterns": [],
+        "pattern_categories": [
+          "数量关系_基础计量"
+        ]
+      },
+      "complexity": "低",
+      "language_patterns": [],
+      "relation_types": {
+        "explicit_relations": [],
+        "implicit_relations": []
+      },
+      "pattern_categories": [
+        "数量关系_基础计量"
+      ]
+    }
+  },
+  {
+    "raw_text": "A car travels at a constant speed of 60 km/h. How long will it take to cover a distance of 180 kilometers?",
+    "processed_text": {
+      "raw_text": "A car travels at a constant speed of 60 km/h. How long will it take to cover a distance of 180 kilometers?",
+      "segmentation": [
+        "A",
+        "car",
+        "travels",
+        "at",
+        "a",
+        "constant",
+        "speed",
+        "of",
+        "60",
+        "km",
+        "/",
+        "h.",
+        "How",
+        "long",
+        "will",
+        "it",
+        "take",
+        "to",
+        "cover",
+        "a",
+        "distance",
+        "of",
+        "180",
+        "kilometers",
+        "?"
+      ],
+      "pos_tags": [
+        "det",
+        "n",
+        "v",
+        "p",
+        "det",
+        "adj",
+        "n",
+        "p",
+        "m",
+        "n",
+        "q",
+        "n",
+        "n",
+        "adv",
+        "n",
+        "pron",
+        "v",
+        "n",
+        "v",
+        "det",
+        "n",
+        "p",
+        "m",
+        "n",
+        "w"
+      ],
+      "dependencies": [
+        [
+          "car",
+          "det",
+          "A"
+        ],
+        [
+          "travels",
+          "nsubj",
+          "car"
+        ],
+        [
+          "travels",
+          "prep",
+          "at"
+        ],
+        [
+          "speed",
+          "det",
+          "a"
+        ],
+        [
+          "speed",
+          "amod",
+          "constant"
+        ],
+        [
+          "at",
+          "pobj",
+          "speed"
+        ],
+        [
+          "speed",
+          "prep",
+          "of"
+        ],
+        [
+          "km",
+          "nummod",
+          "60"
+        ],
+        [
+          "of",
+          "pobj",
+          "km"
+        ],
+        [
+          "travels",
+          "punct",
+          "/"
+        ],
+        [
+          "travels",
+          "punct",
+          "h."
+        ],
+        [
+          "long",
+          "advmod",
+          "How"
+        ],
+        [
+          "take",
+          "advmod",
+          "long"
+        ],
+        [
+          "take",
+          "aux",
+          "will"
+        ],
+        [
+          "take",
+          "nsubj",
+          "it"
+        ],
+        [
+          "cover",
+          "aux",
+          "to"
+        ],
+        [
+          "take",
+          "xcomp",
+          "cover"
+        ],
+        [
+          "distance",
+          "det",
+          "a"
+        ],
+        [
+          "cover",
+          "dobj",
+          "distance"
+        ],
+        [
+          "distance",
+          "prep",
+          "of"
+        ],
+        [
+          "kilometers",
+          "nummod",
+          "180"
+        ],
+        [
+          "of",
+          "pobj",
+          "kilometers"
+        ],
+        [
+          "take",
+          "punct",
+          "?"
+        ]
+      ],
+      "semantic_roles": {},
+      "cleaned_text": "A car travels at a constant speed of 60 km/h. How long will it take to cover a distance of 180 kilometers?",
+      "tokens": [],
+      "ner_tags": [],
+      "features": {},
+      "values_and_units": {}
+    },
+    "classification_result": {
+      "features": {
+        "math_complexity": {
+          "variable_count": 2,
+          "operators": [
+            "/"
+          ],
+          "advanced_functions": [],
+          "potential_variables": [
+            "180 kilometers",
+            "60 km"
+          ]
+        },
+        "linguistic_structure": {
+          "pos_distribution": {
+            "det": 3,
+            "n": 9,
+            "v": 3,
+            "p": 3,
+            "adj": 1,
+            "m": 2,
+            "q": 1,
+            "adv": 1,
+            "pron": 1,
+            "w": 1
+          },
+          "sentence_complexity": "复杂",
+          "main_dependencies": [
+            [
+              "car",
+              "det",
+              "A"
+            ],
+            [
+              "travels",
+              "nsubj",
+              "car"
+            ],
+            [
+              "travels",
+              "prep",
+              "at"
+            ],
+            [
+              "speed",
+              "det",
+              "a"
+            ],
+            [
+              "speed",
+              "amod",
+              "constant"
+            ]
+          ],
+          "token_count": 25
+        },
+        "relation_types": {
+          "explicit_relations": [],
+          "implicit_relations": []
+        },
+        "problem_target": {
+          "target_variable": "unknown",
+          "problem_type": "unknown"
+        },
+        "processed_text": {
+          "raw_text": "A car travels at a constant speed of 60 km/h. How long will it take to cover a distance of 180 kilometers?",
+          "segmentation": [
+            "A",
+            "car",
+            "travels",
+            "at",
+            "a",
+            "constant",
+            "speed",
+            "of",
+            "60",
+            "km",
+            "/",
+            "h.",
+            "How",
+            "long",
+            "will",
+            "it",
+            "take",
+            "to",
+            "cover",
+            "a",
+            "distance",
+            "of",
+            "180",
+            "kilometers",
+            "?"
+          ],
+          "pos_tags": [
+            "det",
+            "n",
+            "v",
+            "p",
+            "det",
+            "adj",
+            "n",
+            "p",
+            "m",
+            "n",
+            "q",
+            "n",
+            "n",
+            "adv",
+            "n",
+            "pron",
+            "v",
+            "n",
+            "v",
+            "det",
+            "n",
+            "p",
+            "m",
+            "n",
+            "w"
+          ],
+          "dependencies": [
+            [
+              "car",
+              "det",
+              "A"
+            ],
+            [
+              "travels",
+              "nsubj",
+              "car"
+            ],
+            [
+              "travels",
+              "prep",
+              "at"
+            ],
+            [
+              "speed",
+              "det",
+              "a"
+            ],
+            [
+              "speed",
+              "amod",
+              "constant"
+            ],
+            [
+              "at",
+              "pobj",
+              "speed"
+            ],
+            [
+              "speed",
+              "prep",
+              "of"
+            ],
+            [
+              "km",
+              "nummod",
+              "60"
+            ],
+            [
+              "of",
+              "pobj",
+              "km"
+            ],
+            [
+              "travels",
+              "punct",
+              "/"
+            ],
+            [
+              "travels",
+              "punct",
+              "h."
+            ],
+            [
+              "long",
+              "advmod",
+              "How"
+            ],
+            [
+              "take",
+              "advmod",
+              "long"
+            ],
+            [
+              "take",
+              "aux",
+              "will"
+            ],
+            [
+              "take",
+              "nsubj",
+              "it"
+            ],
+            [
+              "cover",
+              "aux",
+              "to"
+            ],
+            [
+              "take",
+              "xcomp",
+              "cover"
+            ],
+            [
+              "distance",
+              "det",
+              "a"
+            ],
+            [
+              "cover",
+              "dobj",
+              "distance"
+            ],
+            [
+              "distance",
+              "prep",
+              "of"
+            ],
+            [
+              "kilometers",
+              "nummod",
+              "180"
+            ],
+            [
+              "of",
+              "pobj",
+              "kilometers"
+            ],
+            [
+              "take",
+              "punct",
+              "?"
+            ]
+          ],
+          "semantic_roles": {},
+          "cleaned_text": "A car travels at a constant speed of 60 km/h. How long will it take to cover a distance of 180 kilometers?",
+          "tokens": [],
+          "ner_tags": [],
+          "features": {},
+          "values_and_units": {}
+        },
+        "complexity": "中",
+        "language_patterns": [],
+        "pattern_categories": [
+          "数量关系_基础计量"
+        ]
+      },
+      "complexity": "中",
+      "language_patterns": [],
+      "relation_types": {
+        "explicit_relations": [],
+        "implicit_relations": []
+      },
+      "pattern_categories": [
+        "数量关系_基础计量"
+      ]
+    }
+  },
+  {
+    "raw_text": "A solution contains 30% acid. How many milliliters of pure water should be added to 100 ml of this solution to make a 20% acid solution?",
+    "processed_text": {
+      "raw_text": "A solution contains 30% acid. How many milliliters of pure water should be added to 100 ml of this solution to make a 20% acid solution?",
+      "segmentation": [
+        "A",
+        "solution",
+        "contains",
+        "30",
+        "%",
+        "acid",
+        ".",
+        "How",
+        "many",
+        "milliliters",
+        "of",
+        "pure",
+        "water",
+        "should",
+        "be",
+        "added",
+        "to",
+        "100",
+        "ml",
+        "of",
+        "this",
+        "solution",
+        "to",
+        "make",
+        "a",
+        "20",
+        "%",
+        "acid",
+        "solution",
+        "?"
+      ],
+      "pos_tags": [
+        "det",
+        "n",
+        "v",
+        "m",
+        "n",
+        "n",
+        "w",
+        "n",
+        "adj",
+        "n",
+        "p",
+        "adj",
+        "n",
+        "n",
+        "n",
+        "v",
+        "p",
+        "m",
+        "q",
+        "p",
+        "det",
+        "n",
+        "n",
+        "v",
+        "det",
+        "m",
+        "n",
+        "n",
+        "n",
+        "w"
+      ],
+      "dependencies": [
+        [
+          "solution",
+          "det",
+          "A"
+        ],
+        [
+          "contains",
+          "nsubj",
+          "solution"
+        ],
+        [
+          "%",
+          "nummod",
+          "30"
+        ],
+        [
+          "acid",
+          "compound",
+          "%"
+        ],
+        [
+          "contains",
+          "dobj",
+          "acid"
+        ],
+        [
+          "contains",
+          "punct",
+          "."
+        ],
+        [
+          "many",
+          "advmod",
+          "How"
+        ],
+        [
+          "milliliters",
+          "amod",
+          "many"
+        ],
+        [
+          "added",
+          "nsubjpass",
+          "milliliters"
+        ],
+        [
+          "milliliters",
+          "prep",
+          "of"
+        ],
+        [
+          "water",
+          "amod",
+          "pure"
+        ],
+        [
+          "of",
+          "pobj",
+          "water"
+        ],
+        [
+          "added",
+          "aux",
+          "should"
+        ],
+        [
+          "added",
+          "auxpass",
+          "be"
+        ],
+        [
+          "added",
+          "prep",
+          "to"
+        ],
+        [
+          "ml",
+          "nummod",
+          "100"
+        ],
+        [
+          "to",
+          "pobj",
+          "ml"
+        ],
+        [
+          "ml",
+          "prep",
+          "of"
+        ],
+        [
+          "solution",
+          "det",
+          "this"
+        ],
+        [
+          "of",
+          "pobj",
+          "solution"
+        ],
+        [
+          "make",
+          "aux",
+          "to"
+        ],
+        [
+          "added",
+          "advcl",
+          "make"
+        ],
+        [
+          "solution",
+          "det",
+          "a"
+        ],
+        [
+          "%",
+          "nummod",
+          "20"
+        ],
+        [
+          "solution",
+          "compound",
+          "%"
+        ],
+        [
+          "solution",
+          "compound",
+          "acid"
+        ],
+        [
+          "make",
+          "dobj",
+          "solution"
+        ],
+        [
+          "added",
+          "punct",
+          "?"
+        ]
+      ],
+      "semantic_roles": {},
+      "cleaned_text": "A solution contains 30% acid. How many milliliters of pure water should be added to 100 ml of this solution to make a 20% acid solution?",
+      "tokens": [],
+      "ner_tags": [],
+      "features": {},
+      "values_and_units": {}
+    },
+    "classification_result": {
+      "features": {
+        "math_complexity": {
+          "variable_count": 1,
+          "operators": [],
+          "advanced_functions": [],
+          "potential_variables": [
+            "100 ml"
+          ]
+        },
+        "linguistic_structure": {
+          "pos_distribution": {
+            "det": 3,
+            "n": 13,
+            "v": 3,
+            "m": 3,
+            "w": 2,
+            "adj": 2,
+            "p": 3,
+            "q": 1
+          },
+          "sentence_complexity": "复杂",
+          "main_dependencies": [
+            [
+              "solution",
+              "det",
+              "A"
+            ],
+            [
+              "contains",
+              "nsubj",
+              "solution"
+            ],
+            [
+              "%",
+              "nummod",
+              "30"
+            ],
+            [
+              "acid",
+              "compound",
+              "%"
+            ],
+            [
+              "contains",
+              "dobj",
+              "acid"
+            ]
+          ],
+          "token_count": 30
+        },
+        "relation_types": {
+          "explicit_relations": [],
+          "implicit_relations": []
+        },
+        "problem_target": {
+          "target_variable": "unknown",
+          "problem_type": "unknown"
+        },
+        "processed_text": {
+          "raw_text": "A solution contains 30% acid. How many milliliters of pure water should be added to 100 ml of this solution to make a 20% acid solution?",
+          "segmentation": [
+            "A",
+            "solution",
+            "contains",
+            "30",
+            "%",
+            "acid",
+            ".",
+            "How",
+            "many",
+            "milliliters",
+            "of",
+            "pure",
+            "water",
+            "should",
+            "be",
+            "added",
+            "to",
+            "100",
+            "ml",
+            "of",
+            "this",
+            "solution",
+            "to",
+            "make",
+            "a",
+            "20",
+            "%",
+            "acid",
+            "solution",
+            "?"
+          ],
+          "pos_tags": [
+            "det",
+            "n",
+            "v",
+            "m",
+            "n",
+            "n",
+            "w",
+            "n",
+            "adj",
+            "n",
+            "p",
+            "adj",
+            "n",
+            "n",
+            "n",
+            "v",
+            "p",
+            "m",
+            "q",
+            "p",
+            "det",
+            "n",
+            "n",
+            "v",
+            "det",
+            "m",
+            "n",
+            "n",
+            "n",
+            "w"
+          ],
+          "dependencies": [
+            [
+              "solution",
+              "det",
+              "A"
+            ],
+            [
+              "contains",
+              "nsubj",
+              "solution"
+            ],
+            [
+              "%",
+              "nummod",
+              "30"
+            ],
+            [
+              "acid",
+              "compound",
+              "%"
+            ],
+            [
+              "contains",
+              "dobj",
+              "acid"
+            ],
+            [
+              "contains",
+              "punct",
+              "."
+            ],
+            [
+              "many",
+              "advmod",
+              "How"
+            ],
+            [
+              "milliliters",
+              "amod",
+              "many"
+            ],
+            [
+              "added",
+              "nsubjpass",
+              "milliliters"
+            ],
+            [
+              "milliliters",
+              "prep",
+              "of"
+            ],
+            [
+              "water",
+              "amod",
+              "pure"
+            ],
+            [
+              "of",
+              "pobj",
+              "water"
+            ],
+            [
+              "added",
+              "aux",
+              "should"
+            ],
+            [
+              "added",
+              "auxpass",
+              "be"
+            ],
+            [
+              "added",
+              "prep",
+              "to"
+            ],
+            [
+              "ml",
+              "nummod",
+              "100"
+            ],
+            [
+              "to",
+              "pobj",
+              "ml"
+            ],
+            [
+              "ml",
+              "prep",
+              "of"
+            ],
+            [
+              "solution",
+              "det",
+              "this"
+            ],
+            [
+              "of",
+              "pobj",
+              "solution"
+            ],
+            [
+              "make",
+              "aux",
+              "to"
+            ],
+            [
+              "added",
+              "advcl",
+              "make"
+            ],
+            [
+              "solution",
+              "det",
+              "a"
+            ],
+            [
+              "%",
+              "nummod",
+              "20"
+            ],
+            [
+              "solution",
+              "compound",
+              "%"
+            ],
+            [
+              "solution",
+              "compound",
+              "acid"
+            ],
+            [
+              "make",
+              "dobj",
+              "solution"
+            ],
+            [
+              "added",
+              "punct",
+              "?"
+            ]
+          ],
+          "semantic_roles": {},
+          "cleaned_text": "A solution contains 30% acid. How many milliliters of pure water should be added to 100 ml of this solution to make a 20% acid solution?",
+          "tokens": [],
+          "ner_tags": [],
+          "features": {},
+          "values_and_units": {}
+        },
+        "complexity": "低",
+        "language_patterns": [],
+        "pattern_categories": [
+          "数量关系_基础计量"
+        ]
+      },
+      "complexity": "低",
+      "language_patterns": [],
+      "relation_types": {
+        "explicit_relations": [],
+        "implicit_relations": []
+      },
+      "pattern_categories": [
+        "数量关系_基础计量"
+      ]
+    }
+  },
+  {
+    "raw_text": "In a geometric sequence, the first term is 2 and the common ratio is 3. Find the sum of the first 5 terms.",
+    "processed_text": {
+      "raw_text": "In a geometric sequence, the first term is 2 and the common ratio is 3. Find the sum of the first 5 terms.",
+      "segmentation": [
+        "In",
+        "a",
+        "geometric",
+        "sequence",
+        ",",
+        "the",
+        "first",
+        "term",
+        "is",
+        "2",
+        "and",
+        "the",
+        "common",
+        "ratio",
+        "is",
+        "3",
+        ".",
+        "Find",
+        "the",
+        "sum",
+        "of",
+        "the",
+        "first",
+        "5",
+        "terms",
+        "."
+      ],
+      "pos_tags": [
+        "p",
+        "det",
+        "adj",
+        "n",
+        "w",
+        "det",
+        "adj",
+        "n",
+        "n",
+        "m",
+        "n",
+        "det",
+        "adj",
+        "n",
+        "n",
+        "m",
+        "w",
+        "v",
+        "det",
+        "n",
+        "p",
+        "det",
+        "adj",
+        "m",
+        "n",
+        "w"
+      ],
+      "dependencies": [
+        [
+          "is",
+          "prep",
+          "In"
+        ],
+        [
+          "sequence",
+          "det",
+          "a"
+        ],
+        [
+          "sequence",
+          "amod",
+          "geometric"
+        ],
+        [
+          "In",
+          "pobj",
+          "sequence"
+        ],
+        [
+          "is",
+          "punct",
+          ","
+        ],
+        [
+          "term",
+          "det",
+          "the"
+        ],
+        [
+          "term",
+          "amod",
+          "first"
+        ],
+        [
+          "is",
+          "nsubj",
+          "term"
+        ],
+        [
+          "is",
+          "attr",
+          "2"
+        ],
+        [
+          "is",
+          "cc",
+          "and"
+        ],
+        [
+          "ratio",
+          "det",
+          "the"
+        ],
+        [
+          "ratio",
+          "amod",
+          "common"
+        ],
+        [
+          "is",
+          "nsubj",
+          "ratio"
+        ],
+        [
+          "is",
+          "conj",
+          "is"
+        ],
+        [
+          "is",
+          "attr",
+          "3"
+        ],
+        [
+          "is",
+          "punct",
+          "."
+        ],
+        [
+          "sum",
+          "det",
+          "the"
+        ],
+        [
+          "Find",
+          "dobj",
+          "sum"
+        ],
+        [
+          "sum",
+          "prep",
+          "of"
+        ],
+        [
+          "terms",
+          "det",
+          "the"
+        ],
+        [
+          "terms",
+          "amod",
+          "first"
+        ],
+        [
+          "terms",
+          "nummod",
+          "5"
+        ],
+        [
+          "of",
+          "pobj",
+          "terms"
+        ],
+        [
+          "Find",
+          "punct",
+          "."
+        ]
+      ],
+      "semantic_roles": {},
+      "cleaned_text": "In a geometric sequence, the first term is 2 and the common ratio is 3. Find the sum of the first 5 terms.",
+      "tokens": [],
+      "ner_tags": [],
+      "features": {},
+      "values_and_units": {}
+    },
+    "classification_result": {
+      "features": {
+        "math_complexity": {
+          "variable_count": 2,
+          "operators": [],
+          "advanced_functions": [],
+          "potential_variables": [
+            "2 and",
+            "5 terms"
+          ]
+        },
+        "linguistic_structure": {
+          "pos_distribution": {
+            "p": 2,
+            "det": 5,
+            "adj": 4,
+            "n": 8,
+            "w": 3,
+            "m": 3,
+            "v": 1
+          },
+          "sentence_complexity": "复杂",
+          "main_dependencies": [
+            [
+              "is",
+              "prep",
+              "In"
+            ],
+            [
+              "sequence",
+              "det",
+              "a"
+            ],
+            [
+              "sequence",
+              "amod",
+              "geometric"
+            ],
+            [
+              "In",
+              "pobj",
+              "sequence"
+            ],
+            [
+              "is",
+              "punct",
+              ","
+            ]
+          ],
+          "token_count": 26
+        },
+        "relation_types": {
+          "explicit_relations": [],
+          "implicit_relations": []
+        },
+        "problem_target": {
+          "target_variable": "unknown",
+          "problem_type": "unknown"
+        },
+        "processed_text": {
+          "raw_text": "In a geometric sequence, the first term is 2 and the common ratio is 3. Find the sum of the first 5 terms.",
+          "segmentation": [
+            "In",
+            "a",
+            "geometric",
+            "sequence",
+            ",",
+            "the",
+            "first",
+            "term",
+            "is",
+            "2",
+            "and",
+            "the",
+            "common",
+            "ratio",
+            "is",
+            "3",
+            ".",
+            "Find",
+            "the",
+            "sum",
+            "of",
+            "the",
+            "first",
+            "5",
+            "terms",
+            "."
+          ],
+          "pos_tags": [
+            "p",
+            "det",
+            "adj",
+            "n",
+            "w",
+            "det",
+            "adj",
+            "n",
+            "n",
+            "m",
+            "n",
+            "det",
+            "adj",
+            "n",
+            "n",
+            "m",
+            "w",
+            "v",
+            "det",
+            "n",
+            "p",
+            "det",
+            "adj",
+            "m",
+            "n",
+            "w"
+          ],
+          "dependencies": [
+            [
+              "is",
+              "prep",
+              "In"
+            ],
+            [
+              "sequence",
+              "det",
+              "a"
+            ],
+            [
+              "sequence",
+              "amod",
+              "geometric"
+            ],
+            [
+              "In",
+              "pobj",
+              "sequence"
+            ],
+            [
+              "is",
+              "punct",
+              ","
+            ],
+            [
+              "term",
+              "det",
+              "the"
+            ],
+            [
+              "term",
+              "amod",
+              "first"
+            ],
+            [
+              "is",
+              "nsubj",
+              "term"
+            ],
+            [
+              "is",
+              "attr",
+              "2"
+            ],
+            [
+              "is",
+              "cc",
+              "and"
+            ],
+            [
+              "ratio",
+              "det",
+              "the"
+            ],
+            [
+              "ratio",
+              "amod",
+              "common"
+            ],
+            [
+              "is",
+              "nsubj",
+              "ratio"
+            ],
+            [
+              "is",
+              "conj",
+              "is"
+            ],
+            [
+              "is",
+              "attr",
+              "3"
+            ],
+            [
+              "is",
+              "punct",
+              "."
+            ],
+            [
+              "sum",
+              "det",
+              "the"
+            ],
+            [
+              "Find",
+              "dobj",
+              "sum"
+            ],
+            [
+              "sum",
+              "prep",
+              "of"
+            ],
+            [
+              "terms",
+              "det",
+              "the"
+            ],
+            [
+              "terms",
+              "amod",
+              "first"
+            ],
+            [
+              "terms",
+              "nummod",
+              "5"
+            ],
+            [
+              "of",
+              "pobj",
+              "terms"
+            ],
+            [
+              "Find",
+              "punct",
+              "."
+            ]
+          ],
+          "semantic_roles": {},
+          "cleaned_text": "In a geometric sequence, the first term is 2 and the common ratio is 3. Find the sum of the first 5 terms.",
+          "tokens": [],
+          "ner_tags": [],
+          "features": {},
+          "values_and_units": {}
+        },
+        "complexity": "低",
+        "language_patterns": [],
+        "pattern_categories": [
+          "数量关系_基础计量"
+        ]
+      },
+      "complexity": "低",
+      "language_patterns": [],
+      "relation_types": {
+        "explicit_relations": [],
+        "implicit_relations": []
+      },
+      "pattern_categories": [
+        "数量关系_基础计量"
+      ]
+    }
+  },
+  {
+    "raw_text": "一个容器中装有80升水，温度为20℃。如果每分钟放入2个0℃的冰块（每个体积为1升），需要多长时间水温会降到10℃？假设水的比热容为4200J/(kg·℃)，冰的比热容为2100J/(kg·℃)。",
+    "processed_text": {
+      "raw_text": "一个容器中装有80升水，温度为20℃。如果每分钟放入2个0℃的冰块（每个体积为1升），需要多长时间水温会降到10℃？假设水的比热容为4200J/(kg·℃)，冰的比热容为2100J/(kg·℃)。",
+      "segmentation": [
+        "一个容器中装有80升水，温度为20",
+        "℃",
+        "。如果每分钟放入2个0",
+        "℃",
+        "的冰块（每个体积为1升），需要多长时间水温会降到10",
+        "℃",
+        "？假设水的比热容为4200J/(kg·",
+        "℃",
+        ")，冰的比热容为2100J/(kg",
+        "·",
+        "℃",
+        ")",
+        "。"
+      ],
+      "pos_tags": [
+        "n",
+        "n",
+        "p",
+        "n",
+        "n",
+        "n",
+        "q",
+        "n",
+        "n",
+        "n",
+        "n",
+        "w",
+        "n",
+        "n",
+        "w",
+        "n",
+        "w",
+        "p"
+      ],
+      "dependencies": [
+        [
+          "。",
+          "punct",
+          "一个容器中装有80升水，温度为20"
+        ],
+        [
+          "。",
+          "punct",
+          "℃"
+        ],
+        [
+          "。",
+          "punct",
+          "。"
+        ],
+        [
+          "的冰块（每个体积为1升），需要多长时间水温会降到10",
+          "nmod",
+          "如果每分钟放入2个0"
+        ],
+        [
+          "的冰块（每个体积为1升），需要多长时间水温会降到10",
+          "punct",
+          "℃"
+        ],
+        [
+          "。",
+          "nsubj",
+          "的冰块（每个体积为1升），需要多长时间水温会降到10"
+        ],
+        [
+          "的冰块（每个体积为1升），需要多长时间水温会降到10",
+          "punct",
+          "℃"
+        ],
+        [
+          "假设水的比热容为4200J/(kg",
+          "nmod",
+          "？"
+        ],
+        [
+          "℃",
+          "prep",
+          "假设水的比热容为4200J/(kg"
+        ],
+        [
+          "的冰块（每个体积为1升），需要多长时间水温会降到10",
+          "punct",
+          "·"
+        ],
+        [
+          "的冰块（每个体积为1升），需要多长时间水温会降到10",
+          "appos",
+          "℃"
+        ],
+        [
+          "℃",
+          "punct",
+          ")"
+        ],
+        [
+          "℃",
+          "compound",
+          "，"
+        ],
+        [
+          "℃",
+          "nmod",
+          "冰的比热容为2100J/(kg"
+        ],
+        [
+          "℃",
+          "punct",
+          "·"
+        ],
+        [
+          "的冰块（每个体积为1升），需要多长时间水温会降到10",
+          "appos",
+          "℃"
+        ],
+        [
+          "℃",
+          "punct",
+          ")"
+        ]
+      ],
+      "semantic_roles": {},
+      "cleaned_text": "一个容器中装有80升水，温度为20℃。如果每分钟放入2个0℃的冰块（每个体积为1升），需要多长时间水温会降到10℃？假设水的比热容为4200J/(kg·℃)，冰的比热容为2100J/(kg·℃)。",
+      "tokens": [],
+      "ner_tags": [],
+      "features": {},
+      "values_and_units": {}
+    },
+    "classification_result": {
+      "features": {
+        "math_complexity": {
+          "variable_count": 5,
+          "operators": [
+            "/"
+          ],
+          "advanced_functions": [],
+          "potential_variables": [
+            "1升",
+            "2100J",
+            "4200J",
+            "80升水",
+            "2个"
+          ]
+        },
+        "linguistic_structure": {
+          "pos_distribution": {
+            "n": 12,
+            "p": 2,
+            "q": 1,
+            "w": 3
+          },
+          "sentence_complexity": "复杂",
+          "main_dependencies": [
+            [
+              "。",
+              "punct",
+              "一个容器中装有80升水，温度为20"
+            ],
+            [
+              "。",
+              "punct",
+              "℃"
+            ],
+            [
+              "。",
+              "punct",
+              "。"
+            ],
+            [
+              "的冰块（每个体积为1升），需要多长时间水温会降到10",
+              "nmod",
+              "如果每分钟放入2个0"
+            ],
+            [
+              "的冰块（每个体积为1升），需要多长时间水温会降到10",
+              "punct",
+              "℃"
+            ]
+          ],
+          "token_count": 13
+        },
+        "relation_types": {
+          "explicit_relations": [],
+          "implicit_relations": [
+            "时间关系: 需要计算所需时间"
+          ]
+        },
+        "problem_target": {
+          "target_variable": "unknown",
+          "problem_type": "unknown"
+        },
+        "processed_text": {
+          "raw_text": "一个容器中装有80升水，温度为20℃。如果每分钟放入2个0℃的冰块（每个体积为1升），需要多长时间水温会降到10℃？假设水的比热容为4200J/(kg·℃)，冰的比热容为2100J/(kg·℃)。",
+          "segmentation": [
+            "一个容器中装有80升水，温度为20",
+            "℃",
+            "。如果每分钟放入2个0",
+            "℃",
+            "的冰块（每个体积为1升），需要多长时间水温会降到10",
+            "℃",
+            "？假设水的比热容为4200J/(kg·",
+            "℃",
+            ")，冰的比热容为2100J/(kg",
+            "·",
+            "℃",
+            ")",
+            "。"
+          ],
+          "pos_tags": [
+            "n",
+            "n",
+            "p",
+            "n",
+            "n",
+            "n",
+            "q",
+            "n",
+            "n",
+            "n",
+            "n",
+            "w",
+            "n",
+            "n",
+            "w",
+            "n",
+            "w",
+            "p"
+          ],
+          "dependencies": [
+            [
+              "。",
+              "punct",
+              "一个容器中装有80升水，温度为20"
+            ],
+            [
+              "。",
+              "punct",
+              "℃"
+            ],
+            [
+              "。",
+              "punct",
+              "。"
+            ],
+            [
+              "的冰块（每个体积为1升），需要多长时间水温会降到10",
+              "nmod",
+              "如果每分钟放入2个0"
+            ],
+            [
+              "的冰块（每个体积为1升），需要多长时间水温会降到10",
+              "punct",
+              "℃"
+            ],
+            [
+              "。",
+              "nsubj",
+              "的冰块（每个体积为1升），需要多长时间水温会降到10"
+            ],
+            [
+              "的冰块（每个体积为1升），需要多长时间水温会降到10",
+              "punct",
+              "℃"
+            ],
+            [
+              "假设水的比热容为4200J/(kg",
+              "nmod",
+              "？"
+            ],
+            [
+              "℃",
+              "prep",
+              "假设水的比热容为4200J/(kg"
+            ],
+            [
+              "的冰块（每个体积为1升），需要多长时间水温会降到10",
+              "punct",
+              "·"
+            ],
+            [
+              "的冰块（每个体积为1升），需要多长时间水温会降到10",
+              "appos",
+              "℃"
+            ],
+            [
+              "℃",
+              "punct",
+              ")"
+            ],
+            [
+              "℃",
+              "compound",
+              "，"
+            ],
+            [
+              "℃",
+              "nmod",
+              "冰的比热容为2100J/(kg"
+            ],
+            [
+              "℃",
+              "punct",
+              "·"
+            ],
+            [
+              "的冰块（每个体积为1升），需要多长时间水温会降到10",
+              "appos",
+              "℃"
+            ],
+            [
+              "℃",
+              "punct",
+              ")"
+            ]
+          ],
+          "semantic_roles": {},
+          "cleaned_text": "一个容器中装有80升水，温度为20℃。如果每分钟放入2个0℃的冰块（每个体积为1升），需要多长时间水温会降到10℃？假设水的比热容为4200J/(kg·℃)，冰的比热容为2100J/(kg·℃)。",
+          "tokens": [],
+          "ner_tags": [],
+          "features": {},
+          "values_and_units": {}
+        },
+        "complexity": "高",
+        "language_patterns": [],
+        "pattern_categories": [
+          "属性关系_时间属性"
+        ]
+      },
+      "complexity": "高",
+      "language_patterns": [],
+      "relation_types": {
+        "explicit_relations": [],
+        "implicit_relations": [
+          "时间关系: 需要计算所需时间"
+        ]
+      },
+      "pattern_categories": [
+        "属性关系_时间属性"
+      ]
+    }
+  },
+  {
+    "raw_text": "一列火车从A站出发，速度为60km/h。2小时后，另一列火车从B站出发，速度为90km/h，朝着相同的方向行驶。如果两站相距240km，第二列火车需要多长时间才能追上第一列火车？",
+    "processed_text": {
+      "raw_text": "一列火车从A站出发，速度为60km/h。2小时后，另一列火车从B站出发，速度为90km/h，朝着相同的方向行驶。如果两站相距240km，第二列火车需要多长时间才能追上第一列火车？",
+      "segmentation": [
+        "一列火车从A站出发，速度为60km",
+        "/",
+        "h。2小时后，另一列火车从B站出发，速度为90km",
+        "/",
+        "h，朝着相同的方向行驶。如果两站相距240km，第二列火车需要多长时间才能追上第一列火车",
+        "？"
+      ],
+      "pos_tags": [
+        "m",
+        "n",
+        "q",
+        "adj",
+        "n",
+        "q",
+        "n",
+        "w"
+      ],
+      "dependencies": [
+        [
+          "h。2小时后，另一列火车从B站出发，速度为90",
+          "punct",
+          "一列火车从A站出发，速度为60"
+        ],
+        [
+          "h。2小时后，另一列火车从B站出发，速度为90",
+          "npadvmod",
+          "km"
+        ],
+        [
+          "h。2小时后，另一列火车从B站出发，速度为90",
+          "punct",
+          "/"
+        ],
+        [
+          "h，朝着相同的方向行驶。如果两站相距240km，第二列火车需要多长时间才能追上第一列火车",
+          "amod",
+          "h。2小时后，另一列火车从B站出发，速度为90"
+        ],
+        [
+          "h，朝着相同的方向行驶。如果两站相距240km，第二列火车需要多长时间才能追上第一列火车",
+          "nmod",
+          "km"
+        ],
+        [
+          "h，朝着相同的方向行驶。如果两站相距240km，第二列火车需要多长时间才能追上第一列火车",
+          "punct",
+          "/"
+        ],
+        [
+          "h，朝着相同的方向行驶。如果两站相距240km，第二列火车需要多长时间才能追上第一列火车",
+          "punct",
+          "？"
+        ]
+      ],
+      "semantic_roles": {},
+      "cleaned_text": "一列火车从A站出发，速度为60km/h。2小时后，另一列火车从B站出发，速度为90km/h，朝着相同的方向行驶。如果两站相距240km，第二列火车需要多长时间才能追上第一列火车？",
+      "tokens": [],
+      "ner_tags": [],
+      "features": {},
+      "values_and_units": {}
+    },
+    "classification_result": {
+      "features": {
+        "math_complexity": {
+          "variable_count": 4,
+          "operators": [
+            "/"
+          ],
+          "advanced_functions": [],
+          "potential_variables": [
+            "90km",
+            "2小时后",
+            "60km",
+            "240km"
+          ]
+        },
+        "linguistic_structure": {
+          "pos_distribution": {
+            "m": 1,
+            "n": 3,
+            "q": 2,
+            "adj": 1,
+            "w": 1
+          },
+          "sentence_complexity": "复杂",
+          "main_dependencies": [
+            [
+              "h。2小时后，另一列火车从B站出发，速度为90",
+              "punct",
+              "一列火车从A站出发，速度为60"
+            ],
+            [
+              "h。2小时后，另一列火车从B站出发，速度为90",
+              "npadvmod",
+              "km"
+            ],
+            [
+              "h。2小时后，另一列火车从B站出发，速度为90",
+              "punct",
+              "/"
+            ],
+            [
+              "h，朝着相同的方向行驶。如果两站相距240km，第二列火车需要多长时间才能追上第一列火车",
+              "amod",
+              "h。2小时后，另一列火车从B站出发，速度为90"
+            ],
+            [
+              "h，朝着相同的方向行驶。如果两站相距240km，第二列火车需要多长时间才能追上第一列火车",
+              "nmod",
+              "km"
+            ]
+          ],
+          "token_count": 6
+        },
+        "relation_types": {
+          "explicit_relations": [],
+          "implicit_relations": [
+            "时间关系: 需要计算所需时间"
+          ]
+        },
+        "problem_target": {
+          "target_variable": "unknown",
+          "problem_type": "unknown"
+        },
+        "processed_text": {
+          "raw_text": "一列火车从A站出发，速度为60km/h。2小时后，另一列火车从B站出发，速度为90km/h，朝着相同的方向行驶。如果两站相距240km，第二列火车需要多长时间才能追上第一列火车？",
+          "segmentation": [
+            "一列火车从A站出发，速度为60km",
+            "/",
+            "h。2小时后，另一列火车从B站出发，速度为90km",
+            "/",
+            "h，朝着相同的方向行驶。如果两站相距240km，第二列火车需要多长时间才能追上第一列火车",
+            "？"
+          ],
+          "pos_tags": [
+            "m",
+            "n",
+            "q",
+            "adj",
+            "n",
+            "q",
+            "n",
+            "w"
+          ],
+          "dependencies": [
+            [
+              "h。2小时后，另一列火车从B站出发，速度为90",
+              "punct",
+              "一列火车从A站出发，速度为60"
+            ],
+            [
+              "h。2小时后，另一列火车从B站出发，速度为90",
+              "npadvmod",
+              "km"
+            ],
+            [
+              "h。2小时后，另一列火车从B站出发，速度为90",
+              "punct",
+              "/"
+            ],
+            [
+              "h，朝着相同的方向行驶。如果两站相距240km，第二列火车需要多长时间才能追上第一列火车",
+              "amod",
+              "h。2小时后，另一列火车从B站出发，速度为90"
+            ],
+            [
+              "h，朝着相同的方向行驶。如果两站相距240km，第二列火车需要多长时间才能追上第一列火车",
+              "nmod",
+              "km"
+            ],
+            [
+              "h，朝着相同的方向行驶。如果两站相距240km，第二列火车需要多长时间才能追上第一列火车",
+              "punct",
+              "/"
+            ],
+            [
+              "h，朝着相同的方向行驶。如果两站相距240km，第二列火车需要多长时间才能追上第一列火车",
+              "punct",
+              "？"
+            ]
+          ],
+          "semantic_roles": {},
+          "cleaned_text": "一列火车从A站出发，速度为60km/h。2小时后，另一列火车从B站出发，速度为90km/h，朝着相同的方向行驶。如果两站相距240km，第二列火车需要多长时间才能追上第一列火车？",
+          "tokens": [],
+          "ner_tags": [],
+          "features": {},
+          "values_and_units": {}
+        },
+        "complexity": "中",
+        "language_patterns": [],
+        "pattern_categories": [
+          "属性关系_时间属性"
+        ]
+      },
+      "complexity": "中",
+      "language_patterns": [],
+      "relation_types": {
+        "explicit_relations": [],
+        "implicit_relations": [
+          "时间关系: 需要计算所需时间"
+        ]
+      },
+      "pattern_categories": [
+        "属性关系_时间属性"
+      ]
+    }
+  },
+  {
+    "raw_text": "一个等差数列，首项为3，公差为2，求第20项的值和前20项的和。",
+    "processed_text": {
+      "raw_text": "一个等差数列，首项为3，公差为2，求第20项的值和前20项的和。",
+      "segmentation": [
+        "一个等差数列，首项为3，公差为2，求第20项的值和前20项的和",
+        "。"
+      ],
+      "pos_tags": [
+        "w",
+        "n"
+      ],
+      "dependencies": [
+        [
+          "。",
+          "punct",
+          "一个等差数列，首项为3，公差为2，求第20项的值和前20项的和"
+        ]
+      ],
+      "semantic_roles": {},
+      "cleaned_text": "一个等差数列，首项为3，公差为2，求第20项的值和前20项的和。",
+      "tokens": [],
+      "ner_tags": [],
+      "features": {},
+      "values_and_units": {}
+    },
+    "classification_result": {
+      "features": {
+        "math_complexity": {
+          "variable_count": 2,
+          "operators": [],
+          "advanced_functions": [],
+          "potential_variables": [
+            "20项的和",
+            "20项的值和前"
+          ]
+        },
+        "linguistic_structure": {
+          "pos_distribution": {
+            "w": 1,
+            "n": 1
+          },
+          "sentence_complexity": "简单",
+          "main_dependencies": [
+            [
+              "。",
+              "punct",
+              "一个等差数列，首项为3，公差为2，求第20项的值和前20项的和"
+            ]
+          ],
+          "token_count": 2
+        },
+        "relation_types": {
+          "explicit_relations": [],
+          "implicit_relations": []
+        },
+        "problem_target": {
+          "target_variable": "unknown",
+          "problem_type": "unknown"
+        },
+        "processed_text": {
+          "raw_text": "一个等差数列，首项为3，公差为2，求第20项的值和前20项的和。",
+          "segmentation": [
+            "一个等差数列，首项为3，公差为2，求第20项的值和前20项的和",
+            "。"
+          ],
+          "pos_tags": [
+            "w",
+            "n"
+          ],
+          "dependencies": [
+            [
+              "。",
+              "punct",
+              "一个等差数列，首项为3，公差为2，求第20项的值和前20项的和"
+            ]
+          ],
+          "semantic_roles": {},
+          "cleaned_text": "一个等差数列，首项为3，公差为2，求第20项的值和前20项的和。",
+          "tokens": [],
+          "ner_tags": [],
+          "features": {},
+          "values_and_units": {}
+        },
+        "complexity": "低",
+        "language_patterns": [],
+        "pattern_categories": [
+          "数量关系_基础计量"
+        ]
+      },
+      "complexity": "低",
+      "language_patterns": [],
+      "relation_types": {
+        "explicit_relations": [],
+        "implicit_relations": []
+      },
+      "pattern_categories": [
+        "数量关系_基础计量"
+      ]
+    }
+  },
+  {
+    "raw_text": "甲独自完成一项工作需要12天，乙独自完成同样的工作需要15天。如果他们一起工作，需要多少天才能完成这项工作？",
+    "processed_text": {
+      "raw_text": "甲独自完成一项工作需要12天，乙独自完成同样的工作需要15天。如果他们一起工作，需要多少天才能完成这项工作？",
+      "segmentation": [
+        "甲独自完成一项工作需要12天，乙独自完成同样的工作需要15天。如果他们一起工作，需要多少天才能完成这项工作",
+        "？"
+      ],
+      "pos_tags": [
+        "adv",
+        "n"
+      ],
+      "dependencies": [
+        [
+          "甲独自完成一项工作需要12天，乙独自完成同样的工作需要15天。如果他们一起工作，需要多少天才能完成这项工作",
+          "punct",
+          "？"
+        ]
+      ],
+      "semantic_roles": {},
+      "cleaned_text": "甲独自完成一项工作需要12天，乙独自完成同样的工作需要15天。如果他们一起工作，需要多少天才能完成这项工作？",
+      "tokens": [],
+      "ner_tags": [],
+      "features": {},
+      "values_and_units": {}
+    },
+    "classification_result": {
+      "features": {
+        "math_complexity": {
+          "variable_count": 2,
+          "operators": [],
+          "advanced_functions": [],
+          "potential_variables": [
+            "12天",
+            "15天"
+          ]
+        },
+        "linguistic_structure": {
+          "pos_distribution": {
+            "adv": 1,
+            "n": 1
+          },
+          "sentence_complexity": "复杂",
+          "main_dependencies": [
+            [
+              "甲独自完成一项工作需要12天，乙独自完成同样的工作需要15天。如果他们一起工作，需要多少天才能完成这项工作",
+              "punct",
+              "？"
+            ]
+          ],
+          "token_count": 2
+        },
+        "relation_types": {
+          "explicit_relations": [],
+          "implicit_relations": []
+        },
+        "problem_target": {
+          "target_variable": "unknown",
+          "problem_type": "unknown"
+        },
+        "processed_text": {
+          "raw_text": "甲独自完成一项工作需要12天，乙独自完成同样的工作需要15天。如果他们一起工作，需要多少天才能完成这项工作？",
+          "segmentation": [
+            "甲独自完成一项工作需要12天，乙独自完成同样的工作需要15天。如果他们一起工作，需要多少天才能完成这项工作",
+            "？"
+          ],
+          "pos_tags": [
+            "adv",
+            "n"
+          ],
+          "dependencies": [
+            [
+              "甲独自完成一项工作需要12天，乙独自完成同样的工作需要15天。如果他们一起工作，需要多少天才能完成这项工作",
+              "punct",
+              "？"
+            ]
+          ],
+          "semantic_roles": {},
+          "cleaned_text": "甲独自完成一项工作需要12天，乙独自完成同样的工作需要15天。如果他们一起工作，需要多少天才能完成这项工作？",
+          "tokens": [],
+          "ner_tags": [],
+          "features": {},
+          "values_and_units": {}
+        },
+        "complexity": "低",
+        "language_patterns": [],
+        "pattern_categories": [
+          "数量关系_基础计量"
+        ]
+      },
+      "complexity": "低",
+      "language_patterns": [],
+      "relation_types": {
+        "explicit_relations": [],
+        "implicit_relations": []
+      },
+      "pattern_categories": [
+        "数量关系_基础计量"
+      ]
+    }
+  },
+  {
+    "raw_text": "一个水池有两个进水管和一个出水管。第一个进水管每小时能注入8吨水，第二个进水管每小时能注入6吨水，出水管每小时能排出5吨水。如果水池原有20吨水，需要多长时间才能装满这个容量为50吨的水池？",
+    "processed_text": {
+      "raw_text": "一个水池有两个进水管和一个出水管。第一个进水管每小时能注入8吨水，第二个进水管每小时能注入6吨水，出水管每小时能排出5吨水。如果水池原有20吨水，需要多长时间才能装满这个容量为50吨的水池？",
+      "segmentation": [
+        "一个水池有两个进水管和一个出水管。第一个进水管每小时能注入8吨水，第二个进水管每小时能注入6吨水，出水管每小时能排出5吨水。如果水池原有20吨水，需要多长时间才能装满这个容量为50吨的水池",
+        "？"
+      ],
+      "pos_tags": [
+        "w",
+        "w"
+      ],
+      "dependencies": [
+        [
+          "一个水池有两个进水管和一个出水管。第一个进水管每小时能注入8吨水，第二个进水管每小时能注入6吨水，出水管每小时能排出5吨水。如果水池原有20吨水，需要多长时间才能装满这个容量为50吨的水池",
+          "punct",
+          "？"
+        ]
+      ],
+      "semantic_roles": {},
+      "cleaned_text": "一个水池有两个进水管和一个出水管。第一个进水管每小时能注入8吨水，第二个进水管每小时能注入6吨水，出水管每小时能排出5吨水。如果水池原有20吨水，需要多长时间才能装满这个容量为50吨的水池？",
+      "tokens": [],
+      "ner_tags": [],
+      "features": {},
+      "values_and_units": {}
+    },
+    "classification_result": {
+      "features": {
+        "math_complexity": {
+          "variable_count": 5,
+          "operators": [],
+          "advanced_functions": [],
+          "potential_variables": [
+            "8吨水",
+            "50吨的水池",
+            "20吨水",
+            "6吨水",
+            "5吨水"
+          ]
+        },
+        "linguistic_structure": {
+          "pos_distribution": {
+            "w": 2
+          },
+          "sentence_complexity": "复杂",
+          "main_dependencies": [
+            [
+              "一个水池有两个进水管和一个出水管。第一个进水管每小时能注入8吨水，第二个进水管每小时能注入6吨水，出水管每小时能排出5吨水。如果水池原有20吨水，需要多长时间才能装满这个容量为50吨的水池",
+              "punct",
+              "？"
+            ]
+          ],
+          "token_count": 2
+        },
+        "relation_types": {
+          "explicit_relations": [],
+          "implicit_relations": [
+            "时间关系: 需要计算所需时间"
+          ]
+        },
+        "problem_target": {
+          "target_variable": "unknown",
+          "problem_type": "unknown"
+        },
+        "processed_text": {
+          "raw_text": "一个水池有两个进水管和一个出水管。第一个进水管每小时能注入8吨水，第二个进水管每小时能注入6吨水，出水管每小时能排出5吨水。如果水池原有20吨水，需要多长时间才能装满这个容量为50吨的水池？",
+          "segmentation": [
+            "一个水池有两个进水管和一个出水管。第一个进水管每小时能注入8吨水，第二个进水管每小时能注入6吨水，出水管每小时能排出5吨水。如果水池原有20吨水，需要多长时间才能装满这个容量为50吨的水池",
+            "？"
+          ],
+          "pos_tags": [
+            "w",
+            "w"
+          ],
+          "dependencies": [
+            [
+              "一个水池有两个进水管和一个出水管。第一个进水管每小时能注入8吨水，第二个进水管每小时能注入6吨水，出水管每小时能排出5吨水。如果水池原有20吨水，需要多长时间才能装满这个容量为50吨的水池",
+              "punct",
+              "？"
+            ]
+          ],
+          "semantic_roles": {},
+          "cleaned_text": "一个水池有两个进水管和一个出水管。第一个进水管每小时能注入8吨水，第二个进水管每小时能注入6吨水，出水管每小时能排出5吨水。如果水池原有20吨水，需要多长时间才能装满这个容量为50吨的水池？",
+          "tokens": [],
+          "ner_tags": [],
+          "features": {},
+          "values_and_units": {}
+        },
+        "complexity": "高",
+        "language_patterns": [],
+        "pattern_categories": [
+          "属性关系_时间属性"
+        ]
+      },
+      "complexity": "高",
+      "language_patterns": [],
+      "relation_types": {
+        "explicit_relations": [],
+        "implicit_relations": [
+          "时间关系: 需要计算所需时间"
+        ]
+      },
+      "pattern_categories": [
+        "属性关系_时间属性"
+      ]
+    }
+  },
+  {
+    "raw_text": "小明投资10000元，年利率5%，3年后能得到多少钱？",
+    "processed_text": {
+      "raw_text": "小明投资10000元，年利率5%，3年后能得到多少钱？",
+      "segmentation": [
+        "小明投资10000元，年利率5%，3年后能得到多少钱",
+        "？"
+      ],
+      "pos_tags": [
+        "n",
+        "w"
+      ],
+      "dependencies": [
+        [
+          "小明投资10000元，年利率5%，3年后能得到多少钱",
+          "punct",
+          "？"
+        ]
+      ],
+      "semantic_roles": {},
+      "cleaned_text": "小明投资10000元，年利率5%，3年后能得到多少钱？",
+      "tokens": [],
+      "ner_tags": [],
+      "features": {},
+      "values_and_units": {}
+    },
+    "classification_result": {
+      "features": {
+        "math_complexity": {
+          "variable_count": 2,
+          "operators": [],
+          "advanced_functions": [],
+          "potential_variables": [
+            "3年后能得到多少钱",
+            "10000元"
+          ]
+        },
+        "linguistic_structure": {
+          "pos_distribution": {
+            "n": 1,
+            "w": 1
+          },
+          "sentence_complexity": "简单",
+          "main_dependencies": [
+            [
+              "小明投资10000元，年利率5%，3年后能得到多少钱",
+              "punct",
+              "？"
+            ]
+          ],
+          "token_count": 2
+        },
+        "relation_types": {
+          "explicit_relations": [],
+          "implicit_relations": []
+        },
+        "problem_target": {
+          "target_variable": "unknown",
+          "problem_type": "unknown"
+        },
+        "processed_text": {
+          "raw_text": "小明投资10000元，年利率5%，3年后能得到多少钱？",
+          "segmentation": [
+            "小明投资10000元，年利率5%，3年后能得到多少钱",
+            "？"
+          ],
+          "pos_tags": [
+            "n",
+            "w"
+          ],
+          "dependencies": [
+            [
+              "小明投资10000元，年利率5%，3年后能得到多少钱",
+              "punct",
+              "？"
+            ]
+          ],
+          "semantic_roles": {},
+          "cleaned_text": "小明投资10000元，年利率5%，3年后能得到多少钱？",
+          "tokens": [],
+          "ner_tags": [],
+          "features": {},
+          "values_and_units": {}
+        },
+        "complexity": "低",
+        "language_patterns": [],
+        "pattern_categories": [
+          "数量关系_基础计量"
+        ]
+      },
+      "complexity": "低",
+      "language_patterns": [],
+      "relation_types": {
+        "explicit_relations": [],
+        "implicit_relations": []
+      },
+      "pattern_categories": [
+        "数量关系_基础计量"
+      ]
+    }
+  },
+  {
+    "raw_text": "一个水池容积为1000升，水流速度为50升/小时，需要多长时间才能注满？",
+    "processed_text": {
+      "raw_text": "一个水池容积为1000升，水流速度为50升/小时，需要多长时间才能注满？",
+      "segmentation": [
+        "一个水池容积为1000升，水流速度为50升",
+        "/",
+        "小时，需要多长时间才能注满",
+        "？"
+      ],
+      "pos_tags": [
+        "w",
+        "w",
+        "w",
+        "w"
+      ],
+      "dependencies": [
+        [
+          "一个水池容积为1000升，水流速度为50升",
+          "punct",
+          "/"
+        ],
+        [
+          "一个水池容积为1000升，水流速度为50升",
+          "punct",
+          "小时，需要多长时间才能注满"
+        ],
+        [
+          "一个水池容积为1000升，水流速度为50升",
+          "punct",
+          "？"
+        ]
+      ],
+      "semantic_roles": {},
+      "cleaned_text": "一个水池容积为1000升，水流速度为50升/小时，需要多长时间才能注满？",
+      "tokens": [],
+      "ner_tags": [],
+      "features": {},
+      "values_and_units": {}
+    },
+    "classification_result": {
+      "features": {
+        "math_complexity": {
+          "variable_count": 2,
+          "operators": [
+            "/"
+          ],
+          "advanced_functions": [],
+          "potential_variables": [
+            "50升",
+            "1000升"
+          ]
+        },
+        "linguistic_structure": {
+          "pos_distribution": {
+            "w": 4
+          },
+          "sentence_complexity": "简单",
+          "main_dependencies": [
+            [
+              "一个水池容积为1000升，水流速度为50升",
+              "punct",
+              "/"
+            ],
+            [
+              "一个水池容积为1000升，水流速度为50升",
+              "punct",
+              "小时，需要多长时间才能注满"
+            ],
+            [
+              "一个水池容积为1000升，水流速度为50升",
+              "punct",
+              "？"
+            ]
+          ],
+          "token_count": 4
+        },
+        "relation_types": {
+          "explicit_relations": [],
+          "implicit_relations": [
+            "时间关系: 需要计算所需时间"
+          ]
+        },
+        "problem_target": {
+          "target_variable": "unknown",
+          "problem_type": "unknown"
+        },
+        "processed_text": {
+          "raw_text": "一个水池容积为1000升，水流速度为50升/小时，需要多长时间才能注满？",
+          "segmentation": [
+            "一个水池容积为1000升，水流速度为50升",
+            "/",
+            "小时，需要多长时间才能注满",
+            "？"
+          ],
+          "pos_tags": [
+            "w",
+            "w",
+            "w",
+            "w"
+          ],
+          "dependencies": [
+            [
+              "一个水池容积为1000升，水流速度为50升",
+              "punct",
+              "/"
+            ],
+            [
+              "一个水池容积为1000升，水流速度为50升",
+              "punct",
+              "小时，需要多长时间才能注满"
+            ],
+            [
+              "一个水池容积为1000升，水流速度为50升",
+              "punct",
+              "？"
+            ]
+          ],
+          "semantic_roles": {},
+          "cleaned_text": "一个水池容积为1000升，水流速度为50升/小时，需要多长时间才能注满？",
+          "tokens": [],
+          "ner_tags": [],
+          "features": {},
+          "values_and_units": {}
+        },
+        "complexity": "中",
+        "language_patterns": [],
+        "pattern_categories": [
+          "属性关系_时间属性"
+        ]
+      },
+      "complexity": "中",
+      "language_patterns": [],
+      "relation_types": {
+        "explicit_relations": [],
+        "implicit_relations": [
+          "时间关系: 需要计算所需时间"
+        ]
+      },
+      "pattern_categories": [
+        "属性关系_时间属性"
+      ]
+    }
+  },
+  {
+    "raw_text": "Ice cubes, each with a volume of 200 cm³, are dropped into a tank containing 5L of water at a rate of one cube per minute. Simultaneously, water is leaking from the tank through a tube at a rate of 2 mL per second. How long will it take for the water level in the tank to rise to 9L?",
+    "processed_text": {
+      "raw_text": "Ice cubes, each with a volume of 200 cm³, are dropped into a tank containing 5L of water at a rate of one cube per minute. Simultaneously, water is leaking from the tank through a tube at a rate of 2 mL per second. How long will it take for the water level in the tank to rise to 9L?",
+      "segmentation": [
+        "Ice",
+        "cubes",
+        ",",
+        "each",
+        "with",
+        "a",
+        "volume",
+        "of",
+        "200",
+        "cm³",
+        ",",
+        "are",
+        "dropped",
+        "into",
+        "a",
+        "tank",
+        "containing",
+        "5L",
+        "of",
+        "water",
+        "at",
+        "a",
+        "rate",
+        "of",
+        "one",
+        "cube",
+        "per",
+        "minute",
+        ".",
+        "Simultaneously",
+        ",",
+        "water",
+        "is",
+        "leaking",
+        "from",
+        "the",
+        "tank",
+        "through",
+        "a",
+        "tube",
+        "at",
+        "a",
+        "rate",
+        "of",
+        "2",
+        "mL",
+        "per",
+        "second",
+        ".",
+        "How",
+        "long",
+        "will",
+        "it",
+        "take",
+        "for",
+        "the",
+        "water",
+        "level",
+        "in",
+        "the",
+        "tank",
+        "to",
+        "rise",
+        "to",
+        "9L",
+        "?"
+      ],
+      "pos_tags": [
+        "n",
+        "n",
+        "w",
+        "pron",
+        "p",
+        "det",
+        "n",
+        "p",
+        "m",
+        "q",
+        "w",
+        "n",
+        "v",
+        "p",
+        "det",
+        "n",
+        "v",
+        "n",
+        "p",
+        "n",
+        "p",
+        "det",
+        "n",
+        "p",
+        "m",
+        "n",
+        "p",
+        "q",
+        "w",
+        "adv",
+        "w",
+        "n",
+        "n",
+        "v",
+        "p",
+        "det",
+        "n",
+        "p",
+        "det",
+        "n",
+        "p",
+        "det",
+        "n",
+        "p",
+        "m",
+        "q",
+        "p",
+        "q",
+        "w",
+        "n",
+        "adv",
+        "n",
+        "pron",
+        "v",
+        "n",
+        "det",
+        "n",
+        "n",
+        "p",
+        "det",
+        "n",
+        "n",
+        "v",
+        "p",
+        "n",
+        "w"
+      ],
+      "dependencies": [
+        [
+          "cubes",
+          "compound",
+          "Ice"
+        ],
+        [
+          "dropped",
+          "nsubjpass",
+          "cubes"
+        ],
+        [
+          "dropped",
+          "punct",
+          ","
+        ],
+        [
+          "dropped",
+          "dep",
+          "each"
+        ],
+        [
+          "each",
+          "prep",
+          "with"
+        ],
+        [
+          "volume",
+          "det",
+          "a"
+        ],
+        [
+          "with",
+          "pobj",
+          "volume"
+        ],
+        [
+          "volume",
+          "prep",
+          "of"
+        ],
+        [
+          "cm³",
+          "nummod",
+          "200"
+        ],
+        [
+          "of",
+          "pobj",
+          "cm³"
+        ],
+        [
+          "dropped",
+          "punct",
+          ","
+        ],
+        [
+          "dropped",
+          "auxpass",
+          "are"
+        ],
+        [
+          "dropped",
+          "prep",
+          "into"
+        ],
+        [
+          "tank",
+          "det",
+          "a"
+        ],
+        [
+          "into",
+          "pobj",
+          "tank"
+        ],
+        [
+          "tank",
+          "acl",
+          "containing"
+        ],
+        [
+          "containing",
+          "dobj",
+          "5L"
+        ],
+        [
+          "5L",
+          "prep",
+          "of"
+        ],
+        [
+          "of",
+          "pobj",
+          "water"
+        ],
+        [
+          "containing",
+          "prep",
+          "at"
+        ],
+        [
+          "rate",
+          "det",
+          "a"
+        ],
+        [
+          "at",
+          "pobj",
+          "rate"
+        ],
+        [
+          "rate",
+          "prep",
+          "of"
+        ],
+        [
+          "cube",
+          "nummod",
+          "one"
+        ],
+        [
+          "of",
+          "pobj",
+          "cube"
+        ],
+        [
+          "cube",
+          "prep",
+          "per"
+        ],
+        [
+          "per",
+          "pobj",
+          "minute"
+        ],
+        [
+          "dropped",
+          "punct",
+          "."
+        ],
+        [
+          "leaking",
+          "advmod",
+          "Simultaneously"
+        ],
+        [
+          "leaking",
+          "punct",
+          ","
+        ],
+        [
+          "leaking",
+          "nsubj",
+          "water"
+        ],
+        [
+          "leaking",
+          "aux",
+          "is"
+        ],
+        [
+          "leaking",
+          "prep",
+          "from"
+        ],
+        [
+          "tank",
+          "det",
+          "the"
+        ],
+        [
+          "from",
+          "pobj",
+          "tank"
+        ],
+        [
+          "leaking",
+          "prep",
+          "through"
+        ],
+        [
+          "tube",
+          "det",
+          "a"
+        ],
+        [
+          "through",
+          "pobj",
+          "tube"
+        ],
+        [
+          "leaking",
+          "prep",
+          "at"
+        ],
+        [
+          "rate",
+          "det",
+          "a"
+        ],
+        [
+          "at",
+          "pobj",
+          "rate"
+        ],
+        [
+          "rate",
+          "prep",
+          "of"
+        ],
+        [
+          "mL",
+          "nummod",
+          "2"
+        ],
+        [
+          "of",
+          "pobj",
+          "mL"
+        ],
+        [
+          "mL",
+          "prep",
+          "per"
+        ],
+        [
+          "per",
+          "pobj",
+          "second"
+        ],
+        [
+          "leaking",
+          "punct",
+          "."
+        ],
+        [
+          "long",
+          "advmod",
+          "How"
+        ],
+        [
+          "take",
+          "advmod",
+          "long"
+        ],
+        [
+          "take",
+          "aux",
+          "will"
+        ],
+        [
+          "take",
+          "nsubj",
+          "it"
+        ],
+        [
+          "rise",
+          "mark",
+          "for"
+        ],
+        [
+          "level",
+          "det",
+          "the"
+        ],
+        [
+          "level",
+          "compound",
+          "water"
+        ],
+        [
+          "rise",
+          "nsubj",
+          "level"
+        ],
+        [
+          "level",
+          "prep",
+          "in"
+        ],
+        [
+          "tank",
+          "det",
+          "the"
+        ],
+        [
+          "in",
+          "pobj",
+          "tank"
+        ],
+        [
+          "rise",
+          "aux",
+          "to"
+        ],
+        [
+          "take",
+          "advcl",
+          "rise"
+        ],
+        [
+          "rise",
+          "prep",
+          "to"
+        ],
+        [
+          "to",
+          "pobj",
+          "9L"
+        ],
+        [
+          "take",
+          "punct",
+          "?"
+        ]
+      ],
+      "semantic_roles": {},
+      "cleaned_text": "Ice cubes, each with a volume of 200 cm³, are dropped into a tank containing 5L of water at a rate of one cube per minute. Simultaneously, water is leaking from the tank through a tube at a rate of 2 mL per second. How long will it take for the water level in the tank to rise to 9L?",
+      "tokens": [],
+      "ner_tags": [],
+      "features": {},
+      "values_and_units": {}
+    },
+    "classification_result": {
+      "features": {
+        "math_complexity": {
+          "variable_count": 4,
+          "operators": [],
+          "advanced_functions": [],
+          "potential_variables": [
+            "200 cm",
+            "5L",
+            "2 mL",
+            "9L"
+          ]
+        },
+        "linguistic_structure": {
+          "pos_distribution": {
+            "n": 22,
+            "w": 6,
+            "pron": 2,
+            "p": 14,
+            "det": 8,
+            "m": 3,
+            "q": 4,
+            "v": 5,
+            "adv": 2
+          },
+          "sentence_complexity": "复杂",
+          "main_dependencies": [
+            [
+              "cubes",
+              "compound",
+              "Ice"
+            ],
+            [
+              "dropped",
+              "nsubjpass",
+              "cubes"
+            ],
+            [
+              "dropped",
+              "punct",
+              ","
+            ],
+            [
+              "dropped",
+              "dep",
+              "each"
+            ],
+            [
+              "each",
+              "prep",
+              "with"
+            ]
+          ],
+          "token_count": 66
+        },
+        "relation_types": {
+          "explicit_relations": [],
+          "implicit_relations": []
+        },
+        "problem_target": {
+          "target_variable": "unknown",
+          "problem_type": "unknown"
+        },
+        "processed_text": {
+          "raw_text": "Ice cubes, each with a volume of 200 cm³, are dropped into a tank containing 5L of water at a rate of one cube per minute. Simultaneously, water is leaking from the tank through a tube at a rate of 2 mL per second. How long will it take for the water level in the tank to rise to 9L?",
+          "segmentation": [
+            "Ice",
+            "cubes",
+            ",",
+            "each",
+            "with",
+            "a",
+            "volume",
+            "of",
+            "200",
+            "cm³",
+            ",",
+            "are",
+            "dropped",
+            "into",
+            "a",
+            "tank",
+            "containing",
+            "5L",
+            "of",
+            "water",
+            "at",
+            "a",
+            "rate",
+            "of",
+            "one",
+            "cube",
+            "per",
+            "minute",
+            ".",
+            "Simultaneously",
+            ",",
+            "water",
+            "is",
+            "leaking",
+            "from",
+            "the",
+            "tank",
+            "through",
+            "a",
+            "tube",
+            "at",
+            "a",
+            "rate",
+            "of",
+            "2",
+            "mL",
+            "per",
+            "second",
+            ".",
+            "How",
+            "long",
+            "will",
+            "it",
+            "take",
+            "for",
+            "the",
+            "water",
+            "level",
+            "in",
+            "the",
+            "tank",
+            "to",
+            "rise",
+            "to",
+            "9L",
+            "?"
+          ],
+          "pos_tags": [
+            "n",
+            "n",
+            "w",
+            "pron",
+            "p",
+            "det",
+            "n",
+            "p",
+            "m",
+            "q",
+            "w",
+            "n",
+            "v",
+            "p",
+            "det",
+            "n",
+            "v",
+            "n",
+            "p",
+            "n",
+            "p",
+            "det",
+            "n",
+            "p",
+            "m",
+            "n",
+            "p",
+            "q",
+            "w",
+            "adv",
+            "w",
+            "n",
+            "n",
+            "v",
+            "p",
+            "det",
+            "n",
+            "p",
+            "det",
+            "n",
+            "p",
+            "det",
+            "n",
+            "p",
+            "m",
+            "q",
+            "p",
+            "q",
+            "w",
+            "n",
+            "adv",
+            "n",
+            "pron",
+            "v",
+            "n",
+            "det",
+            "n",
+            "n",
+            "p",
+            "det",
+            "n",
+            "n",
+            "v",
+            "p",
+            "n",
+            "w"
+          ],
+          "dependencies": [
+            [
+              "cubes",
+              "compound",
+              "Ice"
+            ],
+            [
+              "dropped",
+              "nsubjpass",
+              "cubes"
+            ],
+            [
+              "dropped",
+              "punct",
+              ","
+            ],
+            [
+              "dropped",
+              "dep",
+              "each"
+            ],
+            [
+              "each",
+              "prep",
+              "with"
+            ],
+            [
+              "volume",
+              "det",
+              "a"
+            ],
+            [
+              "with",
+              "pobj",
+              "volume"
+            ],
+            [
+              "volume",
+              "prep",
+              "of"
+            ],
+            [
+              "cm³",
+              "nummod",
+              "200"
+            ],
+            [
+              "of",
+              "pobj",
+              "cm³"
+            ],
+            [
+              "dropped",
+              "punct",
+              ","
+            ],
+            [
+              "dropped",
+              "auxpass",
+              "are"
+            ],
+            [
+              "dropped",
+              "prep",
+              "into"
+            ],
+            [
+              "tank",
+              "det",
+              "a"
+            ],
+            [
+              "into",
+              "pobj",
+              "tank"
+            ],
+            [
+              "tank",
+              "acl",
+              "containing"
+            ],
+            [
+              "containing",
+              "dobj",
+              "5L"
+            ],
+            [
+              "5L",
+              "prep",
+              "of"
+            ],
+            [
+              "of",
+              "pobj",
+              "water"
+            ],
+            [
+              "containing",
+              "prep",
+              "at"
+            ],
+            [
+              "rate",
+              "det",
+              "a"
+            ],
+            [
+              "at",
+              "pobj",
+              "rate"
+            ],
+            [
+              "rate",
+              "prep",
+              "of"
+            ],
+            [
+              "cube",
+              "nummod",
+              "one"
+            ],
+            [
+              "of",
+              "pobj",
+              "cube"
+            ],
+            [
+              "cube",
+              "prep",
+              "per"
+            ],
+            [
+              "per",
+              "pobj",
+              "minute"
+            ],
+            [
+              "dropped",
+              "punct",
+              "."
+            ],
+            [
+              "leaking",
+              "advmod",
+              "Simultaneously"
+            ],
+            [
+              "leaking",
+              "punct",
+              ","
+            ],
+            [
+              "leaking",
+              "nsubj",
+              "water"
+            ],
+            [
+              "leaking",
+              "aux",
+              "is"
+            ],
+            [
+              "leaking",
+              "prep",
+              "from"
+            ],
+            [
+              "tank",
+              "det",
+              "the"
+            ],
+            [
+              "from",
+              "pobj",
+              "tank"
+            ],
+            [
+              "leaking",
+              "prep",
+              "through"
+            ],
+            [
+              "tube",
+              "det",
+              "a"
+            ],
+            [
+              "through",
+              "pobj",
+              "tube"
+            ],
+            [
+              "leaking",
+              "prep",
+              "at"
+            ],
+            [
+              "rate",
+              "det",
+              "a"
+            ],
+            [
+              "at",
+              "pobj",
+              "rate"
+            ],
+            [
+              "rate",
+              "prep",
+              "of"
+            ],
+            [
+              "mL",
+              "nummod",
+              "2"
+            ],
+            [
+              "of",
+              "pobj",
+              "mL"
+            ],
+            [
+              "mL",
+              "prep",
+              "per"
+            ],
+            [
+              "per",
+              "pobj",
+              "second"
+            ],
+            [
+              "leaking",
+              "punct",
+              "."
+            ],
+            [
+              "long",
+              "advmod",
+              "How"
+            ],
+            [
+              "take",
+              "advmod",
+              "long"
+            ],
+            [
+              "take",
+              "aux",
+              "will"
+            ],
+            [
+              "take",
+              "nsubj",
+              "it"
+            ],
+            [
+              "rise",
+              "mark",
+              "for"
+            ],
+            [
+              "level",
+              "det",
+              "the"
+            ],
+            [
+              "level",
+              "compound",
+              "water"
+            ],
+            [
+              "rise",
+              "nsubj",
+              "level"
+            ],
+            [
+              "level",
+              "prep",
+              "in"
+            ],
+            [
+              "tank",
+              "det",
+              "the"
+            ],
+            [
+              "in",
+              "pobj",
+              "tank"
+            ],
+            [
+              "rise",
+              "aux",
+              "to"
+            ],
+            [
+              "take",
+              "advcl",
+              "rise"
+            ],
+            [
+              "rise",
+              "prep",
+              "to"
+            ],
+            [
+              "to",
+              "pobj",
+              "9L"
+            ],
+            [
+              "take",
+              "punct",
+              "?"
+            ]
+          ],
+          "semantic_roles": {},
+          "cleaned_text": "Ice cubes, each with a volume of 200 cm³, are dropped into a tank containing 5L of water at a rate of one cube per minute. Simultaneously, water is leaking from the tank through a tube at a rate of 2 mL per second. How long will it take for the water level in the tank to rise to 9L?",
+          "tokens": [],
+          "ner_tags": [],
+          "features": {},
+          "values_and_units": {}
+        },
+        "complexity": "中",
+        "language_patterns": [],
+        "pattern_categories": [
+          "数量关系_基础计量"
+        ]
+      },
+      "complexity": "中",
+      "language_patterns": [],
+      "relation_types": {
+        "explicit_relations": [],
+        "implicit_relations": []
+      },
+      "pattern_categories": [
+        "数量关系_基础计量"
+      ]
+    }
+  },
+  {
+    "raw_text": "A and B can complete a task in 12 hours when working together. If A works alone, he can complete the task in 20 hours. How long will it take B to complete the task alone?",
+    "processed_text": {
+      "raw_text": "A and B can complete a task in 12 hours when working together. If A works alone, he can complete the task in 20 hours. How long will it take B to complete the task alone?",
+      "segmentation": [
+        "A",
+        "and",
+        "B",
+        "can",
+        "complete",
+        "a",
+        "task",
+        "in",
+        "12",
+        "hours",
+        "when",
+        "working",
+        "together",
+        ".",
+        "If",
+        "A",
+        "works",
+        "alone",
+        ",",
+        "he",
+        "can",
+        "complete",
+        "the",
+        "task",
+        "in",
+        "20",
+        "hours",
+        ".",
+        "How",
+        "long",
+        "will",
+        "it",
+        "take",
+        "B",
+        "to",
+        "complete",
+        "the",
+        "task",
+        "alone",
+        "?"
+      ],
+      "pos_tags": [
+        "pron",
+        "n",
+        "n",
+        "n",
+        "v",
+        "det",
+        "n",
+        "p",
+        "m",
+        "q",
+        "n",
+        "v",
+        "adv",
+        "w",
+        "n",
+        "det",
+        "v",
+        "adv",
+        "w",
+        "pron",
+        "n",
+        "v",
+        "det",
+        "n",
+        "p",
+        "m",
+        "q",
+        "w",
+        "n",
+        "adv",
+        "n",
+        "pron",
+        "v",
+        "n",
+        "n",
+        "v",
+        "det",
+        "n",
+        "adj",
+        "w"
+      ],
+      "dependencies": [
+        [
+          "complete",
+          "nsubj",
+          "A"
+        ],
+        [
+          "A",
+          "cc",
+          "and"
+        ],
+        [
+          "A",
+          "conj",
+          "B"
+        ],
+        [
+          "complete",
+          "aux",
+          "can"
+        ],
+        [
+          "task",
+          "det",
+          "a"
+        ],
+        [
+          "complete",
+          "dobj",
+          "task"
+        ],
+        [
+          "complete",
+          "prep",
+          "in"
+        ],
+        [
+          "hours",
+          "nummod",
+          "12"
+        ],
+        [
+          "in",
+          "pobj",
+          "hours"
+        ],
+        [
+          "working",
+          "advmod",
+          "when"
+        ],
+        [
+          "complete",
+          "advcl",
+          "working"
+        ],
+        [
+          "working",
+          "advmod",
+          "together"
+        ],
+        [
+          "complete",
+          "punct",
+          "."
+        ],
+        [
+          "works",
+          "mark",
+          "If"
+        ],
+        [
+          "works",
+          "det",
+          "A"
+        ],
+        [
+          "complete",
+          "advcl",
+          "works"
+        ],
+        [
+          "works",
+          "advmod",
+          "alone"
+        ],
+        [
+          "complete",
+          "punct",
+          ","
+        ],
+        [
+          "complete",
+          "nsubj",
+          "he"
+        ],
+        [
+          "complete",
+          "aux",
+          "can"
+        ],
+        [
+          "task",
+          "det",
+          "the"
+        ],
+        [
+          "complete",
+          "dobj",
+          "task"
+        ],
+        [
+          "complete",
+          "prep",
+          "in"
+        ],
+        [
+          "hours",
+          "nummod",
+          "20"
+        ],
+        [
+          "in",
+          "pobj",
+          "hours"
+        ],
+        [
+          "complete",
+          "punct",
+          "."
+        ],
+        [
+          "long",
+          "advmod",
+          "How"
+        ],
+        [
+          "take",
+          "advmod",
+          "long"
+        ],
+        [
+          "take",
+          "aux",
+          "will"
+        ],
+        [
+          "take",
+          "nsubj",
+          "it"
+        ],
+        [
+          "take",
+          "dobj",
+          "B"
+        ],
+        [
+          "complete",
+          "aux",
+          "to"
+        ],
+        [
+          "take",
+          "xcomp",
+          "complete"
+        ],
+        [
+          "task",
+          "det",
+          "the"
+        ],
+        [
+          "complete",
+          "dobj",
+          "task"
+        ],
+        [
+          "take",
+          "advmod",
+          "alone"
+        ],
+        [
+          "take",
+          "punct",
+          "?"
+        ]
+      ],
+      "semantic_roles": {},
+      "cleaned_text": "A and B can complete a task in 12 hours when working together. If A works alone, he can complete the task in 20 hours. How long will it take B to complete the task alone?",
+      "tokens": [],
+      "ner_tags": [],
+      "features": {},
+      "values_and_units": {}
+    },
+    "classification_result": {
+      "features": {
+        "math_complexity": {
+          "variable_count": 2,
+          "operators": [],
+          "advanced_functions": [],
+          "potential_variables": [
+            "12 hours",
+            "20 hours"
+          ]
+        },
+        "linguistic_structure": {
+          "pos_distribution": {
+            "pron": 3,
+            "n": 13,
+            "v": 6,
+            "det": 4,
+            "p": 2,
+            "m": 2,
+            "q": 2,
+            "adv": 3,
+            "w": 4,
+            "adj": 1
+          },
+          "sentence_complexity": "复杂",
+          "main_dependencies": [
+            [
+              "complete",
+              "nsubj",
+              "A"
+            ],
+            [
+              "A",
+              "cc",
+              "and"
+            ],
+            [
+              "A",
+              "conj",
+              "B"
+            ],
+            [
+              "complete",
+              "aux",
+              "can"
+            ],
+            [
+              "task",
+              "det",
+              "a"
+            ]
+          ],
+          "token_count": 40
+        },
+        "relation_types": {
+          "explicit_relations": [],
+          "implicit_relations": []
+        },
+        "problem_target": {
+          "target_variable": "unknown",
+          "problem_type": "unknown"
+        },
+        "processed_text": {
+          "raw_text": "A and B can complete a task in 12 hours when working together. If A works alone, he can complete the task in 20 hours. How long will it take B to complete the task alone?",
+          "segmentation": [
+            "A",
+            "and",
+            "B",
+            "can",
+            "complete",
+            "a",
+            "task",
+            "in",
+            "12",
+            "hours",
+            "when",
+            "working",
+            "together",
+            ".",
+            "If",
+            "A",
+            "works",
+            "alone",
+            ",",
+            "he",
+            "can",
+            "complete",
+            "the",
+            "task",
+            "in",
+            "20",
+            "hours",
+            ".",
+            "How",
+            "long",
+            "will",
+            "it",
+            "take",
+            "B",
+            "to",
+            "complete",
+            "the",
+            "task",
+            "alone",
+            "?"
+          ],
+          "pos_tags": [
+            "pron",
+            "n",
+            "n",
+            "n",
+            "v",
+            "det",
+            "n",
+            "p",
+            "m",
+            "q",
+            "n",
+            "v",
+            "adv",
+            "w",
+            "n",
+            "det",
+            "v",
+            "adv",
+            "w",
+            "pron",
+            "n",
+            "v",
+            "det",
+            "n",
+            "p",
+            "m",
+            "q",
+            "w",
+            "n",
+            "adv",
+            "n",
+            "pron",
+            "v",
+            "n",
+            "n",
+            "v",
+            "det",
+            "n",
+            "adj",
+            "w"
+          ],
+          "dependencies": [
+            [
+              "complete",
+              "nsubj",
+              "A"
+            ],
+            [
+              "A",
+              "cc",
+              "and"
+            ],
+            [
+              "A",
+              "conj",
+              "B"
+            ],
+            [
+              "complete",
+              "aux",
+              "can"
+            ],
+            [
+              "task",
+              "det",
+              "a"
+            ],
+            [
+              "complete",
+              "dobj",
+              "task"
+            ],
+            [
+              "complete",
+              "prep",
+              "in"
+            ],
+            [
+              "hours",
+              "nummod",
+              "12"
+            ],
+            [
+              "in",
+              "pobj",
+              "hours"
+            ],
+            [
+              "working",
+              "advmod",
+              "when"
+            ],
+            [
+              "complete",
+              "advcl",
+              "working"
+            ],
+            [
+              "working",
+              "advmod",
+              "together"
+            ],
+            [
+              "complete",
+              "punct",
+              "."
+            ],
+            [
+              "works",
+              "mark",
+              "If"
+            ],
+            [
+              "works",
+              "det",
+              "A"
+            ],
+            [
+              "complete",
+              "advcl",
+              "works"
+            ],
+            [
+              "works",
+              "advmod",
+              "alone"
+            ],
+            [
+              "complete",
+              "punct",
+              ","
+            ],
+            [
+              "complete",
+              "nsubj",
+              "he"
+            ],
+            [
+              "complete",
+              "aux",
+              "can"
+            ],
+            [
+              "task",
+              "det",
+              "the"
+            ],
+            [
+              "complete",
+              "dobj",
+              "task"
+            ],
+            [
+              "complete",
+              "prep",
+              "in"
+            ],
+            [
+              "hours",
+              "nummod",
+              "20"
+            ],
+            [
+              "in",
+              "pobj",
+              "hours"
+            ],
+            [
+              "complete",
+              "punct",
+              "."
+            ],
+            [
+              "long",
+              "advmod",
+              "How"
+            ],
+            [
+              "take",
+              "advmod",
+              "long"
+            ],
+            [
+              "take",
+              "aux",
+              "will"
+            ],
+            [
+              "take",
+              "nsubj",
+              "it"
+            ],
+            [
+              "take",
+              "dobj",
+              "B"
+            ],
+            [
+              "complete",
+              "aux",
+              "to"
+            ],
+            [
+              "take",
+              "xcomp",
+              "complete"
+            ],
+            [
+              "task",
+              "det",
+              "the"
+            ],
+            [
+              "complete",
+              "dobj",
+              "task"
+            ],
+            [
+              "take",
+              "advmod",
+              "alone"
+            ],
+            [
+              "take",
+              "punct",
+              "?"
+            ]
+          ],
+          "semantic_roles": {},
+          "cleaned_text": "A and B can complete a task in 12 hours when working together. If A works alone, he can complete the task in 20 hours. How long will it take B to complete the task alone?",
+          "tokens": [],
+          "ner_tags": [],
+          "features": {},
+          "values_and_units": {}
+        },
+        "complexity": "低",
+        "language_patterns": [],
+        "pattern_categories": [
+          "数量关系_基础计量"
+        ]
+      },
+      "complexity": "低",
+      "language_patterns": [],
+      "relation_types": {
+        "explicit_relations": [],
+        "implicit_relations": []
+      },
+      "pattern_categories": [
+        "数量关系_基础计量"
+      ]
+    }
+  },
+  {
+    "raw_text": "An initial investment of 1000 dollars grows at an annual rate of 5%. What will be the value of the investment after 3 years?",
+    "processed_text": {
+      "raw_text": "An initial investment of 1000 dollars grows at an annual rate of 5%. What will be the value of the investment after 3 years?",
+      "segmentation": [
+        "An",
+        "initial",
+        "investment",
+        "of",
+        "1000",
+        "dollars",
+        "grows",
+        "at",
+        "an",
+        "annual",
+        "rate",
+        "of",
+        "5",
+        "%",
+        ".",
+        "What",
+        "will",
+        "be",
+        "the",
+        "value",
+        "of",
+        "the",
+        "investment",
+        "after",
+        "3",
+        "years",
+        "?"
+      ],
+      "pos_tags": [
+        "det",
+        "adj",
+        "n",
+        "p",
+        "m",
+        "n",
+        "v",
+        "p",
+        "det",
+        "adj",
+        "n",
+        "p",
+        "m",
+        "n",
+        "w",
+        "pron",
+        "n",
+        "n",
+        "det",
+        "n",
+        "p",
+        "det",
+        "n",
+        "p",
+        "m",
+        "n",
+        "w"
+      ],
+      "dependencies": [
+        [
+          "investment",
+          "det",
+          "An"
+        ],
+        [
+          "investment",
+          "amod",
+          "initial"
+        ],
+        [
+          "grows",
+          "nsubj",
+          "investment"
+        ],
+        [
+          "investment",
+          "prep",
+          "of"
+        ],
+        [
+          "dollars",
+          "nummod",
+          "1000"
+        ],
+        [
+          "of",
+          "pobj",
+          "dollars"
+        ],
+        [
+          "grows",
+          "prep",
+          "at"
+        ],
+        [
+          "rate",
+          "det",
+          "an"
+        ],
+        [
+          "rate",
+          "amod",
+          "annual"
+        ],
+        [
+          "at",
+          "pobj",
+          "rate"
+        ],
+        [
+          "rate",
+          "prep",
+          "of"
+        ],
+        [
+          "%",
+          "nummod",
+          "5"
+        ],
+        [
+          "of",
+          "pobj",
+          "%"
+        ],
+        [
+          "grows",
+          "punct",
+          "."
+        ],
+        [
+          "be",
+          "nsubj",
+          "What"
+        ],
+        [
+          "be",
+          "aux",
+          "will"
+        ],
+        [
+          "value",
+          "det",
+          "the"
+        ],
+        [
+          "be",
+          "attr",
+          "value"
+        ],
+        [
+          "value",
+          "prep",
+          "of"
+        ],
+        [
+          "investment",
+          "det",
+          "the"
+        ],
+        [
+          "of",
+          "pobj",
+          "investment"
+        ],
+        [
+          "be",
+          "prep",
+          "after"
+        ],
+        [
+          "years",
+          "nummod",
+          "3"
+        ],
+        [
+          "after",
+          "pobj",
+          "years"
+        ],
+        [
+          "be",
+          "punct",
+          "?"
+        ]
+      ],
+      "semantic_roles": {},
+      "cleaned_text": "An initial investment of 1000 dollars grows at an annual rate of 5%. What will be the value of the investment after 3 years?",
+      "tokens": [],
+      "ner_tags": [],
+      "features": {},
+      "values_and_units": {}
+    },
+    "classification_result": {
+      "features": {
+        "math_complexity": {
+          "variable_count": 2,
+          "operators": [],
+          "advanced_functions": [],
+          "potential_variables": [
+            "1000 dollars",
+            "3 years"
+          ]
+        },
+        "linguistic_structure": {
+          "pos_distribution": {
+            "det": 4,
+            "adj": 2,
+            "n": 9,
+            "p": 5,
+            "m": 3,
+            "v": 1,
+            "w": 2,
+            "pron": 1
+          },
+          "sentence_complexity": "复杂",
+          "main_dependencies": [
+            [
+              "investment",
+              "det",
+              "An"
+            ],
+            [
+              "investment",
+              "amod",
+              "initial"
+            ],
+            [
+              "grows",
+              "nsubj",
+              "investment"
+            ],
+            [
+              "investment",
+              "prep",
+              "of"
+            ],
+            [
+              "dollars",
+              "nummod",
+              "1000"
+            ]
+          ],
+          "token_count": 27
+        },
+        "relation_types": {
+          "explicit_relations": [],
+          "implicit_relations": []
+        },
+        "problem_target": {
+          "target_variable": "unknown",
+          "problem_type": "unknown"
+        },
+        "processed_text": {
+          "raw_text": "An initial investment of 1000 dollars grows at an annual rate of 5%. What will be the value of the investment after 3 years?",
+          "segmentation": [
+            "An",
+            "initial",
+            "investment",
+            "of",
+            "1000",
+            "dollars",
+            "grows",
+            "at",
+            "an",
+            "annual",
+            "rate",
+            "of",
+            "5",
+            "%",
+            ".",
+            "What",
+            "will",
+            "be",
+            "the",
+            "value",
+            "of",
+            "the",
+            "investment",
+            "after",
+            "3",
+            "years",
+            "?"
+          ],
+          "pos_tags": [
+            "det",
+            "adj",
+            "n",
+            "p",
+            "m",
+            "n",
+            "v",
+            "p",
+            "det",
+            "adj",
+            "n",
+            "p",
+            "m",
+            "n",
+            "w",
+            "pron",
+            "n",
+            "n",
+            "det",
+            "n",
+            "p",
+            "det",
+            "n",
+            "p",
+            "m",
+            "n",
+            "w"
+          ],
+          "dependencies": [
+            [
+              "investment",
+              "det",
+              "An"
+            ],
+            [
+              "investment",
+              "amod",
+              "initial"
+            ],
+            [
+              "grows",
+              "nsubj",
+              "investment"
+            ],
+            [
+              "investment",
+              "prep",
+              "of"
+            ],
+            [
+              "dollars",
+              "nummod",
+              "1000"
+            ],
+            [
+              "of",
+              "pobj",
+              "dollars"
+            ],
+            [
+              "grows",
+              "prep",
+              "at"
+            ],
+            [
+              "rate",
+              "det",
+              "an"
+            ],
+            [
+              "rate",
+              "amod",
+              "annual"
+            ],
+            [
+              "at",
+              "pobj",
+              "rate"
+            ],
+            [
+              "rate",
+              "prep",
+              "of"
+            ],
+            [
+              "%",
+              "nummod",
+              "5"
+            ],
+            [
+              "of",
+              "pobj",
+              "%"
+            ],
+            [
+              "grows",
+              "punct",
+              "."
+            ],
+            [
+              "be",
+              "nsubj",
+              "What"
+            ],
+            [
+              "be",
+              "aux",
+              "will"
+            ],
+            [
+              "value",
+              "det",
+              "the"
+            ],
+            [
+              "be",
+              "attr",
+              "value"
+            ],
+            [
+              "value",
+              "prep",
+              "of"
+            ],
+            [
+              "investment",
+              "det",
+              "the"
+            ],
+            [
+              "of",
+              "pobj",
+              "investment"
+            ],
+            [
+              "be",
+              "prep",
+              "after"
+            ],
+            [
+              "years",
+              "nummod",
+              "3"
+            ],
+            [
+              "after",
+              "pobj",
+              "years"
+            ],
+            [
+              "be",
+              "punct",
+              "?"
+            ]
+          ],
+          "semantic_roles": {},
+          "cleaned_text": "An initial investment of 1000 dollars grows at an annual rate of 5%. What will be the value of the investment after 3 years?",
+          "tokens": [],
+          "ner_tags": [],
+          "features": {},
+          "values_and_units": {}
+        },
+        "complexity": "低",
+        "language_patterns": [],
+        "pattern_categories": [
+          "数量关系_基础计量"
+        ]
+      },
+      "complexity": "低",
+      "language_patterns": [],
+      "relation_types": {
+        "explicit_relations": [],
+        "implicit_relations": []
+      },
+      "pattern_categories": [
+        "数量关系_基础计量"
+      ]
+    }
+  }
+]

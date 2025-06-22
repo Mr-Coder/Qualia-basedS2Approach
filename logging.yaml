@@ -1,54 +1,59 @@
-2025-02-07 07:32:54,740 - processors.nlp_processor - INFO - NLP处理器初始化成功，使用设备: mps
-2025-02-07 07:32:54,740 - root - INFO - 所有处理模块初始化成功
-2025-02-07 07:32:54,740 - root - INFO - 开始处理问题: Ice cubes, each with a volume of 200 cm³, are dropped into a tank containing 5L of water at a rate of one cube per minute. Simultaneously, water is leaking from the tank through a tube at a rate of 2 mL per second. How long will it take for the water level in the tank to rise to 9L?
-2025-02-07 07:32:55,249 - processors.solution_generator - INFO - 开始求解方程组系统
-2025-02-07 07:32:55,249 - processors.solution_generator - INFO - 方程组系统验证通过
-2025-02-07 07:32:55,249 - processors.solution_generator - INFO - 从equations字段获取了7个方程
-2025-02-07 07:32:55,249 - processors.solution_generator - INFO - 总共获取了7个方程
-2025-02-07 07:32:55,249 - processors.solution_generator - INFO - 方程: cube_volume=200*cm³
-2025-02-07 07:32:55,249 - processors.solution_generator - INFO - 方程: initial_water=5*L
-2025-02-07 07:32:55,249 - processors.solution_generator - INFO - 方程: leak_rate=2*mL/second
-2025-02-07 07:32:55,249 - processors.solution_generator - INFO - 方程: target_water=9*L
-2025-02-07 07:32:55,249 - processors.solution_generator - INFO - 方程: cube_rate=1/minute
-2025-02-07 07:32:55,249 - processors.solution_generator - INFO - 方程: water_change=target_water-initial_water
-2025-02-07 07:32:55,249 - processors.solution_generator - INFO - 方程: time_change=(target_water-initial_water)/(cube_volume*cube_rate-leak_rate*60)
-2025-02-07 07:32:55,249 - processors.solution_generator - INFO - 添加已有方程: cube_volume=200*cm³
-2025-02-07 07:32:55,249 - processors.solution_generator - INFO - 添加已有方程: initial_water=5*L
-2025-02-07 07:32:55,249 - processors.solution_generator - INFO - 添加已有方程: leak_rate=2*mL/second
-2025-02-07 07:32:55,249 - processors.solution_generator - INFO - 添加已有方程: target_water=9*L
-2025-02-07 07:32:55,249 - processors.solution_generator - INFO - 添加已有方程: cube_rate=1/minute
-2025-02-07 07:32:55,249 - processors.solution_generator - INFO - 添加已有方程: water_change=target_water-initial_water
-2025-02-07 07:32:55,249 - processors.solution_generator - INFO - 添加已有方程: time_change=(target_water-initial_water)/(cube_volume*cube_rate-leak_rate*60)
-2025-02-07 07:32:55,249 - processors.solution_generator - INFO - 开始求解方程组
-2025-02-07 07:32:55,249 - processors.solution_generator - INFO - 开始求解方程组
-2025-02-07 07:32:55,249 - processors.solution_generator - INFO - 变量顺序: ['1', '2', '200', '5', '9', 'L', 'cm³', 'cube_rate', 'cube_volume', 'initial_water', 'leak_rate', 'mL', 'minute', 'second', 'target_water', 'time', 'water_change']
-2025-02-07 07:32:55,249 - processors.solution_generator - INFO - 求解结果: {'cube_volume': 0.2, 'initial_water': 5.0, 'target_water': 9.0, 'leak_rate': 0.12, 'cube_rate': 1.0, 'time': 50.0, 'water_change': 4.0, 'time_change': 50.0}
-2025-02-07 07:32:55,249 - processors.solution_generator - ERROR - 求解失败: 解的误差 (0.5251288449729928) 超过容差 (1e-06)
-2025-02-07 07:32:55,249 - root - INFO - 问题处理完成
-2025-02-07 07:33:16,779 - processors.nlp_processor - INFO - NLP处理器初始化成功，使用设备: mps
-2025-02-07 07:33:16,779 - root - INFO - 所有处理模块初始化成功
-2025-02-07 07:33:16,779 - root - INFO - 开始处理问题: Ice cubes, each with a volume of 200 cm³, are dropped into a tank containing 5L of water at a rate of one cube per minute. Simultaneously, water is leaking from the tank through a tube at a rate of 2 mL per second. How long will it take for the water level in the tank to rise to 9L?
-2025-02-07 07:33:17,234 - processors.solution_generator - INFO - 开始求解方程组系统
-2025-02-07 07:33:17,234 - processors.solution_generator - INFO - 方程组系统验证通过
-2025-02-07 07:33:17,234 - processors.solution_generator - INFO - 从equations字段获取了7个方程
-2025-02-07 07:33:17,234 - processors.solution_generator - INFO - 总共获取了7个方程
-2025-02-07 07:33:17,234 - processors.solution_generator - INFO - 方程: cube_volume=200*cm³
-2025-02-07 07:33:17,234 - processors.solution_generator - INFO - 方程: initial_water=5*L
-2025-02-07 07:33:17,234 - processors.solution_generator - INFO - 方程: leak_rate=2*mL/second
-2025-02-07 07:33:17,235 - processors.solution_generator - INFO - 方程: target_water=9*L
-2025-02-07 07:33:17,235 - processors.solution_generator - INFO - 方程: cube_rate=1/minute
-2025-02-07 07:33:17,235 - processors.solution_generator - INFO - 方程: water_change=target_water-initial_water
-2025-02-07 07:33:17,235 - processors.solution_generator - INFO - 方程: time_change=(target_water-initial_water)/(cube_volume*cube_rate-leak_rate*60)
-2025-02-07 07:33:17,235 - processors.solution_generator - INFO - 添加已有方程: cube_volume=200*cm³
-2025-02-07 07:33:17,235 - processors.solution_generator - INFO - 添加已有方程: initial_water=5*L
-2025-02-07 07:33:17,235 - processors.solution_generator - INFO - 添加已有方程: leak_rate=2*mL/second
-2025-02-07 07:33:17,235 - processors.solution_generator - INFO - 添加已有方程: target_water=9*L
-2025-02-07 07:33:17,235 - processors.solution_generator - INFO - 添加已有方程: cube_rate=1/minute
-2025-02-07 07:33:17,235 - processors.solution_generator - INFO - 添加已有方程: water_change=target_water-initial_water
-2025-02-07 07:33:17,235 - processors.solution_generator - INFO - 添加已有方程: time_change=(target_water-initial_water)/(cube_volume*cube_rate-leak_rate*60)
-2025-02-07 07:33:17,235 - processors.solution_generator - INFO - 开始求解方程组
-2025-02-07 07:33:17,235 - processors.solution_generator - INFO - 开始求解方程组
-2025-02-07 07:33:17,235 - processors.solution_generator - INFO - 变量顺序: ['1', '2', '200', '5', '9', 'L', 'cm³', 'cube_rate', 'cube_volume', 'initial_water', 'leak_rate', 'mL', 'minute', 'second', 'target_water', 'time', 'water_change']
-2025-02-07 07:33:17,235 - processors.solution_generator - INFO - 求解结果: {'cube_volume': 0.2, 'initial_water': 5.0, 'target_water': 9.0, 'leak_rate': 0.12, 'cube_rate': 1.0, 'time': 50.0, 'water_change': 4.0, 'time_change': 50.0}
-2025-02-07 07:33:17,235 - processors.solution_generator - ERROR - 求解失败: 解的误差 (0.5251288449729928) 超过容差 (1e-06)
-2025-02-07 07:33:17,235 - root - INFO - 问题处理完成
+version: 1
+disable_existing_loggers: false
+
+formatters:
+  standard:
+    format: '%(asctime)s [%(levelname)s] %(name)s: %(message)s'
+    datefmt: '%Y-%m-%d %H:%M:%S'
+  detailed:
+    format: '%(asctime)s [%(levelname)s] %(name)s (%(filename)s:%(lineno)d): %(message)s'
+    datefmt: '%Y-%m-%d %H:%M:%S'
+
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: standard
+    stream: ext://sys.stdout
+
+  file_handler:
+    class: logging.FileHandler
+    level: DEBUG
+    formatter: detailed
+    filename: logs/app.log
+    encoding: utf8
+
+  error_file_handler:
+    class: logging.FileHandler
+    level: ERROR
+    formatter: detailed
+    filename: logs/error.log
+    encoding: utf8
+
+loggers:
+  '':  # root logger
+    level: INFO
+    handlers: [console, file_handler, error_file_handler]
+    propagate: false
+  
+  models:
+    level: DEBUG
+    handlers: [console, file_handler]
+    propagate: false
+
+  processors:
+    level: DEBUG
+    handlers: [console, file_handler]
+    propagate: false
+
+root:  # root logger
+  level: INFO
+  handlers: [console, file_handler, error_file_handler]
+2025-03-20 15:26:02,197 - processors.nlp_processor - INFO - NLP处理器初始化成功，使用设备: cpu
+2025-03-20 15:26:02,197 - __main__ - ERROR - 程序执行出错: Can't instantiate abstract class RateAndVolumeSolver with abstract method _solve_equations
+2025-03-20 15:26:54,285 - processors.nlp_processor - INFO - NLP处理器初始化成功，使用设备: cpu
+2025-03-20 15:26:54,285 - __main__ - ERROR - 程序执行出错: Can't instantiate abstract class RateAndVolumeSolver with abstract method _solve_equations
+2025-03-20 15:28:10,082 - processors.nlp_processor - INFO - NLP处理器初始化成功，使用设备: cpu
+2025-03-20 15:28:10,082 - __main__ - ERROR - 程序执行出错: Can't instantiate abstract class RateAndVolumeSolver with abstract method _solve_equations
+2025-03-20 15:28:39,954 - processors.nlp_processor - INFO - NLP处理器初始化成功，使用设备: cpu
+2025-03-20 15:28:39,954 - __main__ - ERROR - 程序执行出错: Can't instantiate abstract class RateAndVolumeSolver with abstract method _solve_equations

@@ -1,0 +1,1055 @@
+[
+  {
+    "raw_text": "An investment of $10,000 grows at an annual compound interest rate of 5%. What will be the value of the investment after 3 years?",
+    "extraction_result": {
+      "explicit_relations": [
+        {
+          "relation": "a=b*c",
+          "source_pattern": "1",
+          "var_entity": {
+            "n": "n",
+            "m": "m",
+            "q": "q"
+          }
+        },
+        {
+          "relation": "a=b*c/d",
+          "source_pattern": "3",
+          "var_entity": {
+            "n": "n",
+            "m": "m",
+            "q": "q"
+          }
+        },
+        {
+          "relation": "a=b*c",
+          "source_pattern": "2",
+          "var_entity": {
+            "v": "v",
+            "m": "m",
+            "q": "q"
+          }
+        },
+        {
+          "relation": "a=b*c",
+          "source_pattern": "4",
+          "var_entity": {
+            "v": "v",
+            "m": "m",
+            "q": "q"
+          }
+        }
+      ],
+      "implicit_relations": [],
+      "semantic_dependencies": [],
+      "target_variables": [
+        "unknown"
+      ],
+      "best_pattern_id": "1",
+      "composed_of": [
+        "n",
+        "m",
+        "q"
+      ]
+    },
+    "equation_system": {
+      "equations": [
+        "a=b*c",
+        "a=b*c/d",
+        "a=b*c",
+        "a=b*c"
+      ],
+      "variables": {}
+    }
+  },
+  {
+    "raw_text": "A water tank needs to be filled with 100 cubic meters of water. If the flow rate is 20 cubic meters per hour, how long will it take to fill the tank?",
+    "extraction_result": {
+      "explicit_relations": [
+        {
+          "relation": "a=b*c",
+          "source_pattern": "1",
+          "var_entity": {
+            "n": "n",
+            "m": "m",
+            "q": "q"
+          }
+        },
+        {
+          "relation": "a=b*c/d",
+          "source_pattern": "3",
+          "var_entity": {
+            "n": "n",
+            "m": "m",
+            "q": "q"
+          }
+        },
+        {
+          "relation": "a=b*c",
+          "source_pattern": "2",
+          "var_entity": {
+            "v": "v",
+            "m": "m",
+            "q": "q"
+          }
+        },
+        {
+          "relation": "a=b*c",
+          "source_pattern": "4",
+          "var_entity": {
+            "v": "v",
+            "m": "m",
+            "q": "q"
+          }
+        }
+      ],
+      "implicit_relations": [],
+      "semantic_dependencies": [],
+      "target_variables": [
+        "unknown"
+      ],
+      "best_pattern_id": "1",
+      "composed_of": [
+        "n",
+        "m",
+        "q"
+      ]
+    },
+    "equation_system": {
+      "equations": [
+        "a=b*c",
+        "a=b*c/d",
+        "a=b*c",
+        "a=b*c"
+      ],
+      "variables": {}
+    }
+  },
+  {
+    "raw_text": "A car travels at a constant speed of 60 km/h. How long will it take to cover a distance of 180 kilometers?",
+    "extraction_result": {
+      "explicit_relations": [
+        {
+          "relation": "a=b*c",
+          "source_pattern": "1",
+          "var_entity": {
+            "n": "n",
+            "m": "m",
+            "q": "q"
+          }
+        },
+        {
+          "relation": "a=b*c/d",
+          "source_pattern": "3",
+          "var_entity": {
+            "n": "n",
+            "m": "m",
+            "q": "q"
+          }
+        },
+        {
+          "relation": "a=b*c",
+          "source_pattern": "2",
+          "var_entity": {
+            "v": "v",
+            "m": "m",
+            "q": "q"
+          }
+        },
+        {
+          "relation": "a=b*c",
+          "source_pattern": "4",
+          "var_entity": {
+            "v": "v",
+            "m": "m",
+            "q": "q"
+          }
+        }
+      ],
+      "implicit_relations": [],
+      "semantic_dependencies": [],
+      "target_variables": [
+        "unknown"
+      ],
+      "best_pattern_id": "1",
+      "composed_of": [
+        "n",
+        "m",
+        "q"
+      ]
+    },
+    "equation_system": {
+      "equations": [
+        "a=b*c",
+        "a=b*c/d",
+        "a=b*c",
+        "a=b*c"
+      ],
+      "variables": {}
+    }
+  },
+  {
+    "raw_text": "A solution contains 30% acid. How many milliliters of pure water should be added to 100 ml of this solution to make a 20% acid solution?",
+    "extraction_result": {
+      "explicit_relations": [
+        {
+          "relation": "a=b*c",
+          "source_pattern": "1",
+          "var_entity": {
+            "n": "n",
+            "m": "m",
+            "q": "q"
+          }
+        },
+        {
+          "relation": "a=b*c/d",
+          "source_pattern": "3",
+          "var_entity": {
+            "n": "n",
+            "m": "m",
+            "q": "q"
+          }
+        },
+        {
+          "relation": "a=b*c",
+          "source_pattern": "2",
+          "var_entity": {
+            "v": "v",
+            "m": "m",
+            "q": "q"
+          }
+        },
+        {
+          "relation": "a=b*c",
+          "source_pattern": "4",
+          "var_entity": {
+            "v": "v",
+            "m": "m",
+            "q": "q"
+          }
+        }
+      ],
+      "implicit_relations": [],
+      "semantic_dependencies": [],
+      "target_variables": [
+        "unknown"
+      ],
+      "best_pattern_id": "1",
+      "composed_of": [
+        "n",
+        "m",
+        "q"
+      ]
+    },
+    "equation_system": {
+      "equations": [
+        "a=b*c",
+        "a=b*c/d",
+        "a=b*c",
+        "a=b*c"
+      ],
+      "variables": {}
+    }
+  },
+  {
+    "raw_text": "In a geometric sequence, the first term is 2 and the common ratio is 3. Find the sum of the first 5 terms.",
+    "extraction_result": {
+      "explicit_relations": [
+        {
+          "relation": "a=b*c/d",
+          "source_pattern": "3",
+          "var_entity": {
+            "n": "n",
+            "m": "m",
+            "q": "q"
+          }
+        },
+        {
+          "relation": "a=b*c",
+          "source_pattern": "1",
+          "var_entity": {
+            "n": "n",
+            "m": "m",
+            "q": "q"
+          }
+        },
+        {
+          "relation": "a=b*c",
+          "source_pattern": "2",
+          "var_entity": {
+            "v": "v",
+            "m": "m",
+            "q": "q"
+          }
+        },
+        {
+          "relation": "a=b*c",
+          "source_pattern": "4",
+          "var_entity": {
+            "v": "v",
+            "m": "m",
+            "q": "q"
+          }
+        }
+      ],
+      "implicit_relations": [],
+      "semantic_dependencies": [],
+      "target_variables": [
+        "unknown"
+      ],
+      "best_pattern_id": "3",
+      "composed_of": [
+        "n",
+        "m",
+        "q"
+      ]
+    },
+    "equation_system": {
+      "equations": [
+        "a=b*c/d",
+        "a=b*c",
+        "a=b*c",
+        "a=b*c"
+      ],
+      "variables": {}
+    }
+  },
+  {
+    "raw_text": "一个容器中装有80升水，温度为20℃。如果每分钟放入2个0℃的冰块（每个体积为1升），需要多长时间水温会降到10℃？假设水的比热容为4200J/(kg·℃)，冰的比热容为2100J/(kg·℃)。",
+    "extraction_result": {
+      "explicit_relations": [
+        {
+          "relation": "a=(b-c)/d",
+          "source_pattern": "13",
+          "var_entity": {
+            "adv": "adv",
+            "n": "n",
+            "m": "m",
+            "q": "q"
+          }
+        },
+        {
+          "relation": "time(a)=b",
+          "source_pattern": "22",
+          "var_entity": {
+            "n": "n",
+            "num": "num"
+          }
+        },
+        {
+          "relation": "time=(b-c)/(d*e-f*60)",
+          "source_pattern": "23",
+          "var_entity": {
+            "target_water": "target_water",
+            "initial_water": "initial_water",
+            "cube_volume": "cube_volume",
+            "cube_rate": "cube_rate",
+            "leak_rate": "leak_rate"
+          }
+        }
+      ],
+      "implicit_relations": [
+        {
+          "relation": "delta = target - initial",
+          "source_pattern": "delta_abstract",
+          "var_entity": {
+            "delta": "m",
+            "target": "n",
+            "initial": "initial_water"
+          },
+          "semantic_dependencies": [
+            "delta depends_on target",
+            "delta depends_on initial"
+          ]
+        },
+        {
+          "relation": "sum = part1 + part2",
+          "source_pattern": "sum_abstract",
+          "var_entity": {
+            "sum": "m",
+            "part1": "cube_rate",
+            "part2": "cube_volume"
+          },
+          "semantic_dependencies": [
+            "sum depends_on part1",
+            "sum depends_on part2"
+          ]
+        }
+      ],
+      "semantic_dependencies": [
+        "delta depends_on target",
+        "delta depends_on initial",
+        "sum depends_on part1",
+        "sum depends_on part2"
+      ],
+      "target_variables": [
+        "unknown"
+      ],
+      "best_pattern_id": "13",
+      "composed_of": [
+        "adv",
+        "n",
+        "m",
+        "q"
+      ]
+    },
+    "equation_system": {
+      "equations": [
+        "a=(b-c)/d",
+        "time(a)=b",
+        "time=(b-c)/(d*e-f*60)",
+        "m = n - initial_water",
+        "m = cube_rate + cube_volume"
+      ],
+      "variables": {}
+    }
+  },
+  {
+    "raw_text": "一列火车从A站出发，速度为60km/h。2小时后，另一列火车从B站出发，速度为90km/h，朝着相同的方向行驶。如果两站相距240km，第二列火车需要多长时间才能追上第一列火车？",
+    "extraction_result": {
+      "explicit_relations": [
+        {
+          "relation": "a=(b-c)/d",
+          "source_pattern": "13",
+          "var_entity": {
+            "adv": "adv",
+            "n": "n",
+            "m": "m",
+            "q": "q"
+          }
+        },
+        {
+          "relation": "time(a)=b",
+          "source_pattern": "22",
+          "var_entity": {
+            "n": "n",
+            "num": "num"
+          }
+        },
+        {
+          "relation": "time=(b-c)/(d*e-f*60)",
+          "source_pattern": "23",
+          "var_entity": {
+            "target_water": "target_water",
+            "initial_water": "initial_water",
+            "cube_volume": "cube_volume",
+            "cube_rate": "cube_rate",
+            "leak_rate": "leak_rate"
+          }
+        }
+      ],
+      "implicit_relations": [
+        {
+          "relation": "delta = target - initial",
+          "source_pattern": "delta_abstract",
+          "var_entity": {
+            "delta": "m",
+            "target": "n",
+            "initial": "initial_water"
+          },
+          "semantic_dependencies": [
+            "delta depends_on target",
+            "delta depends_on initial"
+          ]
+        },
+        {
+          "relation": "sum = part1 + part2",
+          "source_pattern": "sum_abstract",
+          "var_entity": {
+            "sum": "m",
+            "part1": "cube_rate",
+            "part2": "cube_volume"
+          },
+          "semantic_dependencies": [
+            "sum depends_on part1",
+            "sum depends_on part2"
+          ]
+        }
+      ],
+      "semantic_dependencies": [
+        "delta depends_on target",
+        "delta depends_on initial",
+        "sum depends_on part1",
+        "sum depends_on part2"
+      ],
+      "target_variables": [
+        "unknown"
+      ],
+      "best_pattern_id": "13",
+      "composed_of": [
+        "adv",
+        "n",
+        "m",
+        "q"
+      ]
+    },
+    "equation_system": {
+      "equations": [
+        "a=(b-c)/d",
+        "time(a)=b",
+        "time=(b-c)/(d*e-f*60)",
+        "m = n - initial_water",
+        "m = cube_rate + cube_volume"
+      ],
+      "variables": {}
+    }
+  },
+  {
+    "raw_text": "一个等差数列，首项为3，公差为2，求第20项的值和前20项的和。",
+    "extraction_result": {
+      "explicit_relations": [
+        {
+          "relation": "a=b*c/d",
+          "source_pattern": "3",
+          "var_entity": {
+            "n": "n",
+            "m": "m",
+            "q": "q"
+          }
+        },
+        {
+          "relation": "a=b*c",
+          "source_pattern": "1",
+          "var_entity": {
+            "n": "n",
+            "m": "m",
+            "q": "q"
+          }
+        },
+        {
+          "relation": "a=b*c",
+          "source_pattern": "2",
+          "var_entity": {
+            "v": "v",
+            "m": "m",
+            "q": "q"
+          }
+        },
+        {
+          "relation": "a=b*c",
+          "source_pattern": "4",
+          "var_entity": {
+            "v": "v",
+            "m": "m",
+            "q": "q"
+          }
+        }
+      ],
+      "implicit_relations": [],
+      "semantic_dependencies": [],
+      "target_variables": [
+        "unknown"
+      ],
+      "best_pattern_id": "3",
+      "composed_of": [
+        "n",
+        "m",
+        "q"
+      ]
+    },
+    "equation_system": {
+      "equations": [
+        "a=b*c/d",
+        "a=b*c",
+        "a=b*c",
+        "a=b*c"
+      ],
+      "variables": {}
+    }
+  },
+  {
+    "raw_text": "甲独自完成一项工作需要12天，乙独自完成同样的工作需要15天。如果他们一起工作，需要多少天才能完成这项工作？",
+    "extraction_result": {
+      "explicit_relations": [
+        {
+          "relation": "a=b*c/d",
+          "source_pattern": "3",
+          "var_entity": {
+            "n": "n",
+            "m": "m",
+            "q": "q"
+          }
+        },
+        {
+          "relation": "a=b*c",
+          "source_pattern": "1",
+          "var_entity": {
+            "n": "n",
+            "m": "m",
+            "q": "q"
+          }
+        },
+        {
+          "relation": "a=b*c",
+          "source_pattern": "2",
+          "var_entity": {
+            "v": "v",
+            "m": "m",
+            "q": "q"
+          }
+        },
+        {
+          "relation": "a=b*c",
+          "source_pattern": "4",
+          "var_entity": {
+            "v": "v",
+            "m": "m",
+            "q": "q"
+          }
+        }
+      ],
+      "implicit_relations": [],
+      "semantic_dependencies": [],
+      "target_variables": [
+        "unknown"
+      ],
+      "best_pattern_id": "3",
+      "composed_of": [
+        "n",
+        "m",
+        "q"
+      ]
+    },
+    "equation_system": {
+      "equations": [
+        "a=b*c/d",
+        "a=b*c",
+        "a=b*c",
+        "a=b*c"
+      ],
+      "variables": {}
+    }
+  },
+  {
+    "raw_text": "一个水池有两个进水管和一个出水管。第一个进水管每小时能注入8吨水，第二个进水管每小时能注入6吨水，出水管每小时能排出5吨水。如果水池原有20吨水，需要多长时间才能装满这个容量为50吨的水池？",
+    "extraction_result": {
+      "explicit_relations": [
+        {
+          "relation": "time=(b-c)/(d*e-f*60)",
+          "source_pattern": "23",
+          "var_entity": {
+            "target_water": "target_water",
+            "initial_water": "initial_water",
+            "cube_volume": "cube_volume",
+            "cube_rate": "cube_rate",
+            "leak_rate": "leak_rate"
+          }
+        },
+        {
+          "relation": "a=(b-c)/d",
+          "source_pattern": "13",
+          "var_entity": {
+            "adv": "adv",
+            "n": "n",
+            "m": "m",
+            "q": "q"
+          }
+        },
+        {
+          "relation": "time(a)=b",
+          "source_pattern": "22",
+          "var_entity": {
+            "n": "n",
+            "num": "num"
+          }
+        }
+      ],
+      "implicit_relations": [
+        {
+          "relation": "delta = target - initial",
+          "source_pattern": "delta_abstract",
+          "var_entity": {
+            "delta": "m",
+            "target": "n",
+            "initial": "initial_water"
+          },
+          "semantic_dependencies": [
+            "delta depends_on target",
+            "delta depends_on initial"
+          ]
+        },
+        {
+          "relation": "sum = part1 + part2",
+          "source_pattern": "sum_abstract",
+          "var_entity": {
+            "sum": "m",
+            "part1": "cube_rate",
+            "part2": "cube_volume"
+          },
+          "semantic_dependencies": [
+            "sum depends_on part1",
+            "sum depends_on part2"
+          ]
+        }
+      ],
+      "semantic_dependencies": [
+        "delta depends_on target",
+        "delta depends_on initial",
+        "sum depends_on part1",
+        "sum depends_on part2"
+      ],
+      "target_variables": [
+        "unknown"
+      ],
+      "best_pattern_id": "23",
+      "composed_of": [
+        "adv",
+        "n",
+        "m",
+        "q"
+      ]
+    },
+    "equation_system": {
+      "equations": [
+        "time=(b-c)/(d*e-f*60)",
+        "a=(b-c)/d",
+        "time(a)=b",
+        "m = n - initial_water",
+        "m = cube_rate + cube_volume"
+      ],
+      "variables": {}
+    }
+  },
+  {
+    "raw_text": "小明投资10000元，年利率5%，3年后能得到多少钱？",
+    "extraction_result": {
+      "explicit_relations": [
+        {
+          "relation": "a=b*c/d",
+          "source_pattern": "3",
+          "var_entity": {
+            "n": "n",
+            "m": "m",
+            "q": "q"
+          }
+        },
+        {
+          "relation": "a=b*c",
+          "source_pattern": "1",
+          "var_entity": {
+            "n": "n",
+            "m": "m",
+            "q": "q"
+          }
+        },
+        {
+          "relation": "a=b*c",
+          "source_pattern": "2",
+          "var_entity": {
+            "v": "v",
+            "m": "m",
+            "q": "q"
+          }
+        },
+        {
+          "relation": "a=b*c",
+          "source_pattern": "4",
+          "var_entity": {
+            "v": "v",
+            "m": "m",
+            "q": "q"
+          }
+        }
+      ],
+      "implicit_relations": [],
+      "semantic_dependencies": [],
+      "target_variables": [
+        "unknown"
+      ],
+      "best_pattern_id": "3",
+      "composed_of": [
+        "n",
+        "m",
+        "q"
+      ]
+    },
+    "equation_system": {
+      "equations": [
+        "a=b*c/d",
+        "a=b*c",
+        "a=b*c",
+        "a=b*c"
+      ],
+      "variables": {}
+    }
+  },
+  {
+    "raw_text": "一个水池容积为1000升，水流速度为50升/小时，需要多长时间才能注满？",
+    "extraction_result": {
+      "explicit_relations": [
+        {
+          "relation": "time=(b-c)/(d*e-f*60)",
+          "source_pattern": "23",
+          "var_entity": {
+            "target_water": "target_water",
+            "initial_water": "initial_water",
+            "cube_volume": "cube_volume",
+            "cube_rate": "cube_rate",
+            "leak_rate": "leak_rate"
+          }
+        },
+        {
+          "relation": "a=(b-c)/d",
+          "source_pattern": "13",
+          "var_entity": {
+            "adv": "adv",
+            "n": "n",
+            "m": "m",
+            "q": "q"
+          }
+        },
+        {
+          "relation": "time(a)=b",
+          "source_pattern": "22",
+          "var_entity": {
+            "n": "n",
+            "num": "num"
+          }
+        }
+      ],
+      "implicit_relations": [
+        {
+          "relation": "delta = target - initial",
+          "source_pattern": "delta_abstract",
+          "var_entity": {
+            "delta": "m",
+            "target": "n",
+            "initial": "initial_water"
+          },
+          "semantic_dependencies": [
+            "delta depends_on target",
+            "delta depends_on initial"
+          ]
+        },
+        {
+          "relation": "sum = part1 + part2",
+          "source_pattern": "sum_abstract",
+          "var_entity": {
+            "sum": "m",
+            "part1": "cube_rate",
+            "part2": "cube_volume"
+          },
+          "semantic_dependencies": [
+            "sum depends_on part1",
+            "sum depends_on part2"
+          ]
+        }
+      ],
+      "semantic_dependencies": [
+        "delta depends_on target",
+        "delta depends_on initial",
+        "sum depends_on part1",
+        "sum depends_on part2"
+      ],
+      "target_variables": [
+        "unknown"
+      ],
+      "best_pattern_id": "23",
+      "composed_of": [
+        "adv",
+        "n",
+        "m",
+        "q"
+      ]
+    },
+    "equation_system": {
+      "equations": [
+        "time=(b-c)/(d*e-f*60)",
+        "a=(b-c)/d",
+        "time(a)=b",
+        "m = n - initial_water",
+        "m = cube_rate + cube_volume"
+      ],
+      "variables": {}
+    }
+  },
+  {
+    "raw_text": "Ice cubes, each with a volume of 200 cm³, are dropped into a tank containing 5L of water at a rate of one cube per minute. Simultaneously, water is leaking from the tank through a tube at a rate of 2 mL per second. How long will it take for the water level in the tank to rise to 9L?",
+    "extraction_result": {
+      "explicit_relations": [
+        {
+          "relation": "a=b*c",
+          "source_pattern": "1",
+          "var_entity": {
+            "n": "n",
+            "m": "m",
+            "q": "q"
+          }
+        },
+        {
+          "relation": "a=b*c/d",
+          "source_pattern": "3",
+          "var_entity": {
+            "n": "n",
+            "m": "m",
+            "q": "q"
+          }
+        },
+        {
+          "relation": "a=b*c",
+          "source_pattern": "2",
+          "var_entity": {
+            "v": "v",
+            "m": "m",
+            "q": "q"
+          }
+        },
+        {
+          "relation": "a=b*c",
+          "source_pattern": "4",
+          "var_entity": {
+            "v": "v",
+            "m": "m",
+            "q": "q"
+          }
+        }
+      ],
+      "implicit_relations": [],
+      "semantic_dependencies": [],
+      "target_variables": [
+        "unknown"
+      ],
+      "best_pattern_id": "1",
+      "composed_of": [
+        "n",
+        "m",
+        "q"
+      ]
+    },
+    "equation_system": {
+      "equations": [
+        "a=b*c",
+        "a=b*c/d",
+        "a=b*c",
+        "a=b*c"
+      ],
+      "variables": {}
+    }
+  },
+  {
+    "raw_text": "A and B can complete a task in 12 hours when working together. If A works alone, he can complete the task in 20 hours. How long will it take B to complete the task alone?",
+    "extraction_result": {
+      "explicit_relations": [
+        {
+          "relation": "a=b*c",
+          "source_pattern": "1",
+          "var_entity": {
+            "n": "n",
+            "m": "m",
+            "q": "q"
+          }
+        },
+        {
+          "relation": "a=b*c/d",
+          "source_pattern": "3",
+          "var_entity": {
+            "n": "n",
+            "m": "m",
+            "q": "q"
+          }
+        },
+        {
+          "relation": "a=b*c",
+          "source_pattern": "2",
+          "var_entity": {
+            "v": "v",
+            "m": "m",
+            "q": "q"
+          }
+        },
+        {
+          "relation": "a=b*c",
+          "source_pattern": "4",
+          "var_entity": {
+            "v": "v",
+            "m": "m",
+            "q": "q"
+          }
+        }
+      ],
+      "implicit_relations": [],
+      "semantic_dependencies": [],
+      "target_variables": [
+        "unknown"
+      ],
+      "best_pattern_id": "1",
+      "composed_of": [
+        "n",
+        "m",
+        "q"
+      ]
+    },
+    "equation_system": {
+      "equations": [
+        "a=b*c",
+        "a=b*c/d",
+        "a=b*c",
+        "a=b*c"
+      ],
+      "variables": {}
+    }
+  },
+  {
+    "raw_text": "An initial investment of 1000 dollars grows at an annual rate of 5%. What will be the value of the investment after 3 years?",
+    "extraction_result": {
+      "explicit_relations": [
+        {
+          "relation": "a=b*c/d",
+          "source_pattern": "3",
+          "var_entity": {
+            "n": "n",
+            "m": "m",
+            "q": "q"
+          }
+        },
+        {
+          "relation": "a=b*c",
+          "source_pattern": "1",
+          "var_entity": {
+            "n": "n",
+            "m": "m",
+            "q": "q"
+          }
+        },
+        {
+          "relation": "a=b*c",
+          "source_pattern": "2",
+          "var_entity": {
+            "v": "v",
+            "m": "m",
+            "q": "q"
+          }
+        },
+        {
+          "relation": "a=b*c",
+          "source_pattern": "4",
+          "var_entity": {
+            "v": "v",
+            "m": "m",
+            "q": "q"
+          }
+        }
+      ],
+      "implicit_relations": [],
+      "semantic_dependencies": [],
+      "target_variables": [
+        "unknown"
+      ],
+      "best_pattern_id": "3",
+      "composed_of": [
+        "n",
+        "m",
+        "q"
+      ]
+    },
+    "equation_system": {
+      "equations": [
+        "a=b*c/d",
+        "a=b*c",
+        "a=b*c",
+        "a=b*c"
+      ],
+      "variables": {}
+    }
+  }
+]

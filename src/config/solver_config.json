@@ -1,0 +1,36 @@
+{
+  "logging": {
+    "level": "INFO",
+    "format": "%(asctime)s - %(name)s - %(levelname)s - %(funcName)s:%(lineno)d - %(message)s",
+    "file_enabled": true,
+    "console_enabled": true
+  },
+  "performance": {
+    "enable_caching": true,
+    "max_cache_size": 128,
+    "enable_performance_tracking": true,
+    "timeout_seconds": 30
+  },
+  "visualization": {
+    "enabled": true,
+    "chinese_font_support": true,
+    "output_directory": "visualization/reasoning_chains",
+    "export_formats": ["png", "svg", "dot"]
+  },
+  "nlp": {
+    "language": "zh",
+    "enable_pos_tagging": true,
+    "enable_named_entity_recognition": true
+  },
+  "solver": {
+    "enable_error_recovery": true,
+    "intelligent_problem_detection": true,
+    "max_equation_count": 10,
+    "max_variable_count": 20
+  },
+  "paths": {
+    "log_directory": "logs",
+    "cache_directory": "cache",
+    "output_directory": "output"
+  }
+}

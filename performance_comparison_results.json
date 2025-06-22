@@ -1,0 +1,119 @@
+{
+  "original": [
+    {
+      "problem_id": 1,
+      "answer": null,
+      "expected": 40.0,
+      "correct": false,
+      "time": 0.1599729061126709,
+      "status": "success"
+    },
+    {
+      "problem_id": 2,
+      "answer": null,
+      "expected": 60.0,
+      "correct": false,
+      "time": 0.03557085990905762,
+      "status": "success"
+    },
+    {
+      "problem_id": 3,
+      "answer": null,
+      "expected": 42.0,
+      "correct": false,
+      "time": 0.016544818878173828,
+      "status": "success"
+    },
+    {
+      "problem_id": 4,
+      "answer": null,
+      "expected": 28.27,
+      "correct": false,
+      "time": 0.03220987319946289,
+      "status": "success"
+    },
+    {
+      "problem_id": 5,
+      "answer": 49.99999999999999,
+      "expected": 50.0,
+      "correct": true,
+      "time": 0.04593396186828613,
+      "status": "success"
+    },
+    {
+      "problem_id": 6,
+      "answer": null,
+      "expected": 25.0,
+      "correct": false,
+      "time": 0.016733884811401367,
+      "status": "success"
+    },
+    {
+      "problem_id": 7,
+      "answer": null,
+      "expected": 24.0,
+      "correct": false,
+      "time": 0.032691240310668945,
+      "status": "success"
+    }
+  ],
+  "optimized": [
+    {
+      "problem_id": 1,
+      "answer": 40.0,
+      "expected": 40.0,
+      "correct": true,
+      "time": 0.0004909038543701172,
+      "status": "success"
+    },
+    {
+      "problem_id": 2,
+      "answer": 60.0,
+      "expected": 60.0,
+      "correct": true,
+      "time": 8.988380432128906e-05,
+      "status": "success"
+    },
+    {
+      "problem_id": 3,
+      "answer": 30.0,
+      "expected": 42.0,
+      "correct": false,
+      "time": 8.392333984375e-05,
+      "status": "success"
+    },
+    {
+      "problem_id": 4,
+      "answer": 28.274309999999996,
+      "expected": 28.27,
+      "correct": true,
+      "time": 9.608268737792969e-05,
+      "status": "success"
+    },
+    {
+      "problem_id": 5,
+      "answer": 49.99999999999999,
+      "expected": 50.0,
+      "correct": true,
+      "time": 0.00031280517578125,
+      "status": "success"
+    },
+    {
+      "problem_id": 6,
+      "answer": 1.0,
+      "expected": 25.0,
+      "correct": false,
+      "time": 8.296966552734375e-05,
+      "status": "success"
+    },
+    {
+      "problem_id": 7,
+      "answer": null,
+      "expected": 24.0,
+      "correct": false,
+      "time": 8.487701416015625e-05,
+      "status": "success"
+    }
+  ],
+  "summary": {}
+}

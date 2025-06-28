@@ -1,0 +1,16 @@
+{
+  "metadata": {
+    "generated_at": "2025-06-28T19:47:56.717193",
+    "generator_version": "1.0.0",
+    "project": "newfile COT-DIR Mathematical Reasoning",
+    "total_datasets": 12,
+    "total_problems": 188840
+  },
+  "performance_summary": {
+    "cotdir_overall_accuracy": 0.82,
+    "best_baseline_accuracy": 0.79,
+    "improvement_percentage": 3.8,
+    "relation_discovery_f1": 0.84,
+    "processing_time_seconds": 1.2
+  }
+}

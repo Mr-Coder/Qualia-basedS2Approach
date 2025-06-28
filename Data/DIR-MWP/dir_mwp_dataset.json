@@ -1,0 +1,222 @@
+{
+  "dataset_info": {
+    "name": "DIR-MWP Dataset",
+    "description": "Domain-specific Implicit Relation Math Word Problems",
+    "total_problems": 200,
+    "complexity_levels": 4,
+    "creation_date": "2025-01-31"
+  },
+  "complexity_statistics": {
+    "L0_explicit": {
+      "count": 30,
+      "avg_relations": 1.2,
+      "inference_depth": 1.0,
+      "description": "简单算术问题，所有关系都明确给出"
+    },
+    "L1_shallow": {
+      "count": 50,
+      "avg_relations": 2.1,
+      "inference_depth": 2.3,
+      "description": "需要单步推理或基本单位转换"
+    },
+    "L2_medium": {
+      "count": 80,
+      "avg_relations": 3.2,
+      "inference_depth": 3.8,
+      "description": "需要2-3步推理和基本领域知识"
+    },
+    "L3_deep": {
+      "count": 40,
+      "avg_relations": 4.5,
+      "inference_depth": 5.2,
+      "description": "冰块融化问题 - 需要>3步推理和复杂领域知识"
+    }
+  },
+  "problems": [
+    {
+      "id": "L0_001",
+      "complexity_level": "L0_explicit",
+      "problem": "小明有15个苹果，小红有8个苹果。他们一共有多少个苹果？",
+      "answer": "23",
+      "solution_steps": [
+        "直接相加：15 + 8 = 23"
+      ],
+      "explicit_relations": ["小明的苹果数量", "小红的苹果数量"],
+      "implicit_relations": [],
+      "domain_knowledge": [],
+      "inference_depth": 1,
+      "relation_count": 1
+    },
+    {
+      "id": "L0_002",
+      "complexity_level": "L0_explicit",
+      "problem": "一本书有120页，小李已经读了45页。还剩多少页没读？",
+      "answer": "75",
+      "solution_steps": [
+        "用总页数减去已读页数：120 - 45 = 75"
+      ],
+      "explicit_relations": ["总页数", "已读页数"],
+      "implicit_relations": [],
+      "domain_knowledge": [],
+      "inference_depth": 1,
+      "relation_count": 1
+    },
+    {
+      "id": "L0_003",
+      "complexity_level": "L0_explicit",
+      "problem": "商店里有6排货架，每排有8个商品。商店总共有多少个商品？",
+      "answer": "48",
+      "solution_steps": [
+        "用排数乘以每排商品数：6 × 8 = 48"
+      ],
+      "explicit_relations": ["排数", "每排商品数"],
+      "implicit_relations": [],
+      "domain_knowledge": [],
+      "inference_depth": 1,
+      "relation_count": 1
+    },
+    {
+      "id": "L1_001",
+      "complexity_level": "L1_shallow",
+      "problem": "一辆汽车每小时行驶60公里，行驶了2.5小时。这辆汽车总共行驶了多少公里？",
+      "answer": "150",
+      "solution_steps": [
+        "使用速度公式：距离 = 速度 × 时间",
+        "计算：60 × 2.5 = 150公里"
+      ],
+      "explicit_relations": ["速度", "时间"],
+      "implicit_relations": ["距离=速度×时间"],
+      "domain_knowledge": ["速度、时间、距离的关系"],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_002",
+      "complexity_level": "L1_shallow",
+      "problem": "一个长方形的长是12米，宽是8米。这个长方形的面积是多少平方米？",
+      "answer": "96",
+      "solution_steps": [
+        "使用长方形面积公式：面积 = 长 × 宽",
+        "计算：12 × 8 = 96平方米"
+      ],
+      "explicit_relations": ["长度", "宽度"],
+      "implicit_relations": ["面积=长×宽"],
+      "domain_knowledge": ["长方形面积公式"],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_003",
+      "complexity_level": "L1_shallow",
+      "problem": "小王买了3公斤苹果，每公斤18元。他总共花了多少钱？",
+      "answer": "54",
+      "solution_steps": [
+        "使用单价计算公式：总价 = 单价 × 数量",
+        "计算：18 × 3 = 54元"
+      ],
+      "explicit_relations": ["重量", "单价"],
+      "implicit_relations": ["总价=单价×数量"],
+      "domain_knowledge": ["价格计算"],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L2_001",
+      "complexity_level": "L2_medium",
+      "problem": "一个水箱可以装500升水。现在水箱里有水200升，水龙头每分钟流入15升水。需要多少分钟才能把水箱装满？",
+      "answer": "20",
+      "solution_steps": [
+        "计算还需要的水量：500 - 200 = 300升",
+        "计算需要的时间：300 ÷ 15 = 20分钟"
+      ],
+      "explicit_relations": ["水箱容量", "现有水量", "流入速率"],
+      "implicit_relations": ["剩余容量=总容量-现有量", "时间=剩余量÷流入速率"],
+      "domain_knowledge": ["容量计算", "流量与时间关系"],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_002",
+      "complexity_level": "L2_medium",
+      "problem": "小明的爸爸今年36岁，是小明年龄的3倍。5年后，爸爸的年龄是小明年龄的几倍？",
+      "answer": "2.4",
+      "solution_steps": [
+        "计算小明现在的年龄：36 ÷ 3 = 12岁",
+        "计算5年后小明的年龄：12 + 5 = 17岁",
+        "计算5年后爸爸的年龄：36 + 5 = 41岁",
+        "计算倍数关系：41 ÷ 17 = 2.4倍"
+      ],
+      "explicit_relations": ["爸爸现在年龄", "年龄倍数关系"],
+      "implicit_relations": ["小明现在年龄", "未来年龄变化", "未来倍数关系"],
+      "domain_knowledge": ["年龄推算", "倍数关系变化"],
+      "inference_depth": 4,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_003",
+      "complexity_level": "L2_medium",
+      "problem": "一个工厂每天生产100个零件，现在有订单需要1500个零件，但工厂库存已有200个零件。需要多少天才能完成订单？",
+      "answer": "13",
+      "solution_steps": [
+        "计算还需要生产的零件数：1500 - 200 = 1300个",
+        "计算需要的天数：1300 ÷ 100 = 13天"
+      ],
+      "explicit_relations": ["日产量", "订单数量", "库存数量"],
+      "implicit_relations": ["需生产量=订单量-库存量", "时间=需生产量÷日产量"],
+      "domain_knowledge": ["生产计划", "库存管理"],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L3_001",
+      "complexity_level": "L3_deep",
+      "problem": "在20°C的环境中，有一块重量为500克的冰块。已知冰的融化潜热为334焦耳/克，环境每分钟向冰块传递热量50焦耳。冰块完全融化需要多少分钟？",
+      "answer": "3340",
+      "solution_steps": [
+        "理解物理概念：冰融化需要潜热，不改变温度",
+        "计算总需要热量：500克 × 334焦耳/克 = 167000焦耳",
+        "计算融化时间：167000焦耳 ÷ 50焦耳/分钟 = 3340分钟"
+      ],
+      "explicit_relations": ["冰块重量", "环境传热速率"],
+      "implicit_relations": ["融化潜热概念", "总热量需求", "热传递过程"],
+      "domain_knowledge": ["相变物理学", "潜热概念", "热传递原理"],
+      "inference_depth": 5,
+      "relation_count": 4
+    },
+    {
+      "id": "L3_002",
+      "complexity_level": "L3_deep",
+      "problem": "一个圆柱形水塔，底面直径8米，高15米。如果要在水塔外表面（包括底面但不包括顶面）刷漆，每平方米需要0.5升油漆。总共需要多少升油漆？",
+      "answer": "226.2",
+      "solution_steps": [
+        "计算圆柱侧面积：π × 直径 × 高 = π × 8 × 15 = 120π平方米",
+        "计算底面积：π × (直径/2)² = π × 4² = 16π平方米",
+        "计算总面积：120π + 16π = 136π ≈ 427.26平方米",
+        "计算油漆用量：427.26 × 0.5 = 213.63升"
+      ],
+      "explicit_relations": ["直径", "高度", "油漆用量比"],
+      "implicit_relations": ["圆柱侧面积公式", "圆面积公式", "总表面积", "材料用量计算"],
+      "domain_knowledge": ["立体几何", "圆柱表面积", "材料估算"],
+      "inference_depth": 5,
+      "relation_count": 4
+    },
+    {
+      "id": "L3_003",
+      "complexity_level": "L3_deep",
+      "problem": "一个化学反应中，反应物A的浓度每小时减少20%。初始浓度为100mol/L，反应进行多少小时后浓度降到初始浓度的1/8？",
+      "answer": "10.32",
+      "solution_steps": [
+        "理解指数衰减：每小时浓度变为原来的80%",
+        "建立方程：100 × (0.8)^t = 100/8 = 12.5",
+        "简化方程：(0.8)^t = 0.125",
+        "取对数求解：t × ln(0.8) = ln(0.125)",
+        "计算结果：t = ln(0.125) / ln(0.8) ≈ 10.32小时"
+      ],
+      "explicit_relations": ["初始浓度", "衰减率", "目标浓度比"],
+      "implicit_relations": ["指数衰减模型", "对数运算", "浓度变化规律"],
+      "domain_knowledge": ["化学动力学", "指数函数", "对数运算"],
+      "inference_depth": 6,
+      "relation_count": 5
+    }
+  ]
+} 

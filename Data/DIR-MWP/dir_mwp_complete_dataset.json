@@ -1,0 +1,4862 @@
+{
+  "dataset_info": {
+    "name": "DIR-MWP Dataset",
+    "description": "Domain-specific Implicit Relation Math Word Problems",
+    "total_problems": 200,
+    "complexity_levels": 4,
+    "creation_date": "2025-06-25",
+    "version": "1.0"
+  },
+  "complexity_statistics": {
+    "L0_explicit": {
+      "count": 30,
+      "avg_relations": 1.2,
+      "inference_depth": 1.0,
+      "description": "简单算术问题，所有关系都明确给出"
+    },
+    "L1_shallow": {
+      "count": 50,
+      "avg_relations": 2.1,
+      "inference_depth": 2.3,
+      "description": "需要单步推理或基本单位转换"
+    },
+    "L2_medium": {
+      "count": 80,
+      "avg_relations": 3.2,
+      "inference_depth": 3.8,
+      "description": "需要2-3步推理和基本领域知识"
+    },
+    "L3_deep": {
+      "count": 40,
+      "avg_relations": 4.5,
+      "inference_depth": 5.2,
+      "description": "需要>3步推理和复杂领域知识"
+    }
+  },
+  "problems": [
+    {
+      "id": "L0_001",
+      "complexity_level": "L0_explicit",
+      "problem": "老师要把28个书本平均分给7个学生。每个学生能分到多少个书本？",
+      "answer": "4",
+      "solution_steps": [
+        "用总数除以学生数：28 ÷ 7 = 4"
+      ],
+      "explicit_relations": [
+        "总书本数",
+        "学生数"
+      ],
+      "implicit_relations": [],
+      "domain_knowledge": [],
+      "inference_depth": 1,
+      "relation_count": 1
+    },
+    {
+      "id": "L0_002",
+      "complexity_level": "L0_explicit",
+      "problem": "小明有35个书本，小红有8个书本。他们一共有多少个书本？",
+      "answer": "43",
+      "solution_steps": [
+        "直接相加：35 + 8 = 43"
+      ],
+      "explicit_relations": [
+        "小明的书本数量",
+        "小红的书本数量"
+      ],
+      "implicit_relations": [],
+      "domain_knowledge": [],
+      "inference_depth": 1,
+      "relation_count": 1
+    },
+    {
+      "id": "L0_003",
+      "complexity_level": "L0_explicit",
+      "problem": "小明有27个苹果，小红有22个苹果。他们一共有多少个苹果？",
+      "answer": "49",
+      "solution_steps": [
+        "直接相加：27 + 22 = 49"
+      ],
+      "explicit_relations": [
+        "小明的苹果数量",
+        "小红的苹果数量"
+      ],
+      "implicit_relations": [],
+      "domain_knowledge": [],
+      "inference_depth": 1,
+      "relation_count": 1
+    },
+    {
+      "id": "L0_004",
+      "complexity_level": "L0_explicit",
+      "problem": "小明有13个糖果，小红有6个糖果。他们一共有多少个糖果？",
+      "answer": "19",
+      "solution_steps": [
+        "直接相加：13 + 6 = 19"
+      ],
+      "explicit_relations": [
+        "小明的糖果数量",
+        "小红的糖果数量"
+      ],
+      "implicit_relations": [],
+      "domain_knowledge": [],
+      "inference_depth": 1,
+      "relation_count": 1
+    },
+    {
+      "id": "L0_005",
+      "complexity_level": "L0_explicit",
+      "problem": "一本书有206页，小李已经读了137页。还剩多少页没读？",
+      "answer": "69",
+      "solution_steps": [
+        "用总页数减去已读页数：206 - 137 = 69"
+      ],
+      "explicit_relations": [
+        "总页数",
+        "已读页数"
+      ],
+      "implicit_relations": [],
+      "domain_knowledge": [],
+      "inference_depth": 1,
+      "relation_count": 1
+    },
+    {
+      "id": "L0_006",
+      "complexity_level": "L0_explicit",
+      "problem": "一本书有134页，小李已经读了34页。还剩多少页没读？",
+      "answer": "100",
+      "solution_steps": [
+        "用总页数减去已读页数：134 - 34 = 100"
+      ],
+      "explicit_relations": [
+        "总页数",
+        "已读页数"
+      ],
+      "implicit_relations": [],
+      "domain_knowledge": [],
+      "inference_depth": 1,
+      "relation_count": 1
+    },
+    {
+      "id": "L0_007",
+      "complexity_level": "L0_explicit",
+      "problem": "商店里有10排货架，每排有14个商品。商店总共有多少个商品？",
+      "answer": "140",
+      "solution_steps": [
+        "用排数乘以每排商品数：10 × 14 = 140"
+      ],
+      "explicit_relations": [
+        "排数",
+        "每排商品数"
+      ],
+      "implicit_relations": [],
+      "domain_knowledge": [],
+      "inference_depth": 1,
+      "relation_count": 1
+    },
+    {
+      "id": "L0_008",
+      "complexity_level": "L0_explicit",
+      "problem": "老师要把40个橡皮平均分给4个学生。每个学生能分到多少个橡皮？",
+      "answer": "10",
+      "solution_steps": [
+        "用总数除以学生数：40 ÷ 4 = 10"
+      ],
+      "explicit_relations": [
+        "总橡皮数",
+        "学生数"
+      ],
+      "implicit_relations": [],
+      "domain_knowledge": [],
+      "inference_depth": 1,
+      "relation_count": 1
+    },
+    {
+      "id": "L0_009",
+      "complexity_level": "L0_explicit",
+      "problem": "小明有28个橘子，小红有25个橘子。他们一共有多少个橘子？",
+      "answer": "53",
+      "solution_steps": [
+        "直接相加：28 + 25 = 53"
+      ],
+      "explicit_relations": [
+        "小明的橘子数量",
+        "小红的橘子数量"
+      ],
+      "implicit_relations": [],
+      "domain_knowledge": [],
+      "inference_depth": 1,
+      "relation_count": 1
+    },
+    {
+      "id": "L0_010",
+      "complexity_level": "L0_explicit",
+      "problem": "商店里有6排货架，每排有15个商品。商店总共有多少个商品？",
+      "answer": "90",
+      "solution_steps": [
+        "用排数乘以每排商品数：6 × 15 = 90"
+      ],
+      "explicit_relations": [
+        "排数",
+        "每排商品数"
+      ],
+      "implicit_relations": [],
+      "domain_knowledge": [],
+      "inference_depth": 1,
+      "relation_count": 1
+    },
+    {
+      "id": "L0_011",
+      "complexity_level": "L0_explicit",
+      "problem": "商店里有9排货架，每排有11个商品。商店总共有多少个商品？",
+      "answer": "99",
+      "solution_steps": [
+        "用排数乘以每排商品数：9 × 11 = 99"
+      ],
+      "explicit_relations": [
+        "排数",
+        "每排商品数"
+      ],
+      "implicit_relations": [],
+      "domain_knowledge": [],
+      "inference_depth": 1,
+      "relation_count": 1
+    },
+    {
+      "id": "L0_012",
+      "complexity_level": "L0_explicit",
+      "problem": "一本书有290页，小李已经读了201页。还剩多少页没读？",
+      "answer": "89",
+      "solution_steps": [
+        "用总页数减去已读页数：290 - 201 = 89"
+      ],
+      "explicit_relations": [
+        "总页数",
+        "已读页数"
+      ],
+      "implicit_relations": [],
+      "domain_knowledge": [],
+      "inference_depth": 1,
+      "relation_count": 1
+    },
+    {
+      "id": "L0_013",
+      "complexity_level": "L0_explicit",
+      "problem": "一本书有149页，小李已经读了41页。还剩多少页没读？",
+      "answer": "108",
+      "solution_steps": [
+        "用总页数减去已读页数：149 - 41 = 108"
+      ],
+      "explicit_relations": [
+        "总页数",
+        "已读页数"
+      ],
+      "implicit_relations": [],
+      "domain_knowledge": [],
+      "inference_depth": 1,
+      "relation_count": 1
+    },
+    {
+      "id": "L0_014",
+      "complexity_level": "L0_explicit",
+      "problem": "小明有38个橘子，小红有16个橘子。他们一共有多少个橘子？",
+      "answer": "54",
+      "solution_steps": [
+        "直接相加：38 + 16 = 54"
+      ],
+      "explicit_relations": [
+        "小明的橘子数量",
+        "小红的橘子数量"
+      ],
+      "implicit_relations": [],
+      "domain_knowledge": [],
+      "inference_depth": 1,
+      "relation_count": 1
+    },
+    {
+      "id": "L0_015",
+      "complexity_level": "L0_explicit",
+      "problem": "小明有15个苹果，小红有5个苹果。他们一共有多少个苹果？",
+      "answer": "20",
+      "solution_steps": [
+        "直接相加：15 + 5 = 20"
+      ],
+      "explicit_relations": [
+        "小明的苹果数量",
+        "小红的苹果数量"
+      ],
+      "implicit_relations": [],
+      "domain_knowledge": [],
+      "inference_depth": 1,
+      "relation_count": 1
+    },
+    {
+      "id": "L0_016",
+      "complexity_level": "L0_explicit",
+      "problem": "商店里有3排货架，每排有15个商品。商店总共有多少个商品？",
+      "answer": "45",
+      "solution_steps": [
+        "用排数乘以每排商品数：3 × 15 = 45"
+      ],
+      "explicit_relations": [
+        "排数",
+        "每排商品数"
+      ],
+      "implicit_relations": [],
+      "domain_knowledge": [],
+      "inference_depth": 1,
+      "relation_count": 1
+    },
+    {
+      "id": "L0_017",
+      "complexity_level": "L0_explicit",
+      "problem": "老师要把9个书本平均分给3个学生。每个学生能分到多少个书本？",
+      "answer": "3",
+      "solution_steps": [
+        "用总数除以学生数：9 ÷ 3 = 3"
+      ],
+      "explicit_relations": [
+        "总书本数",
+        "学生数"
+      ],
+      "implicit_relations": [],
+      "domain_knowledge": [],
+      "inference_depth": 1,
+      "relation_count": 1
+    },
+    {
+      "id": "L0_018",
+      "complexity_level": "L0_explicit",
+      "problem": "商店里有9排货架，每排有13个商品。商店总共有多少个商品？",
+      "answer": "117",
+      "solution_steps": [
+        "用排数乘以每排商品数：9 × 13 = 117"
+      ],
+      "explicit_relations": [
+        "排数",
+        "每排商品数"
+      ],
+      "implicit_relations": [],
+      "domain_knowledge": [],
+      "inference_depth": 1,
+      "relation_count": 1
+    },
+    {
+      "id": "L0_019",
+      "complexity_level": "L0_explicit",
+      "problem": "一本书有211页，小李已经读了196页。还剩多少页没读？",
+      "answer": "15",
+      "solution_steps": [
+        "用总页数减去已读页数：211 - 196 = 15"
+      ],
+      "explicit_relations": [
+        "总页数",
+        "已读页数"
+      ],
+      "implicit_relations": [],
+      "domain_knowledge": [],
+      "inference_depth": 1,
+      "relation_count": 1
+    },
+    {
+      "id": "L0_020",
+      "complexity_level": "L0_explicit",
+      "problem": "小明有22个铅笔，小红有13个铅笔。他们一共有多少个铅笔？",
+      "answer": "35",
+      "solution_steps": [
+        "直接相加：22 + 13 = 35"
+      ],
+      "explicit_relations": [
+        "小明的铅笔数量",
+        "小红的铅笔数量"
+      ],
+      "implicit_relations": [],
+      "domain_knowledge": [],
+      "inference_depth": 1,
+      "relation_count": 1
+    },
+    {
+      "id": "L0_021",
+      "complexity_level": "L0_explicit",
+      "problem": "老师要把70个橡皮平均分给7个学生。每个学生能分到多少个橡皮？",
+      "answer": "10",
+      "solution_steps": [
+        "用总数除以学生数：70 ÷ 7 = 10"
+      ],
+      "explicit_relations": [
+        "总橡皮数",
+        "学生数"
+      ],
+      "implicit_relations": [],
+      "domain_knowledge": [],
+      "inference_depth": 1,
+      "relation_count": 1
+    },
+    {
+      "id": "L0_022",
+      "complexity_level": "L0_explicit",
+      "problem": "一本书有298页，小李已经读了139页。还剩多少页没读？",
+      "answer": "159",
+      "solution_steps": [
+        "用总页数减去已读页数：298 - 139 = 159"
+      ],
+      "explicit_relations": [
+        "总页数",
+        "已读页数"
+      ],
+      "implicit_relations": [],
+      "domain_knowledge": [],
+      "inference_depth": 1,
+      "relation_count": 1
+    },
+    {
+      "id": "L0_023",
+      "complexity_level": "L0_explicit",
+      "problem": "小明有14个糖果，小红有14个糖果。他们一共有多少个糖果？",
+      "answer": "28",
+      "solution_steps": [
+        "直接相加：14 + 14 = 28"
+      ],
+      "explicit_relations": [
+        "小明的糖果数量",
+        "小红的糖果数量"
+      ],
+      "implicit_relations": [],
+      "domain_knowledge": [],
+      "inference_depth": 1,
+      "relation_count": 1
+    },
+    {
+      "id": "L0_024",
+      "complexity_level": "L0_explicit",
+      "problem": "一本书有238页，小李已经读了38页。还剩多少页没读？",
+      "answer": "200",
+      "solution_steps": [
+        "用总页数减去已读页数：238 - 38 = 200"
+      ],
+      "explicit_relations": [
+        "总页数",
+        "已读页数"
+      ],
+      "implicit_relations": [],
+      "domain_knowledge": [],
+      "inference_depth": 1,
+      "relation_count": 1
+    },
+    {
+      "id": "L0_025",
+      "complexity_level": "L0_explicit",
+      "problem": "商店里有4排货架，每排有10个商品。商店总共有多少个商品？",
+      "answer": "40",
+      "solution_steps": [
+        "用排数乘以每排商品数：4 × 10 = 40"
+      ],
+      "explicit_relations": [
+        "排数",
+        "每排商品数"
+      ],
+      "implicit_relations": [],
+      "domain_knowledge": [],
+      "inference_depth": 1,
+      "relation_count": 1
+    },
+    {
+      "id": "L0_026",
+      "complexity_level": "L0_explicit",
+      "problem": "老师要把42个橡皮平均分给6个学生。每个学生能分到多少个橡皮？",
+      "answer": "7",
+      "solution_steps": [
+        "用总数除以学生数：42 ÷ 6 = 7"
+      ],
+      "explicit_relations": [
+        "总橡皮数",
+        "学生数"
+      ],
+      "implicit_relations": [],
+      "domain_knowledge": [],
+      "inference_depth": 1,
+      "relation_count": 1
+    },
+    {
+      "id": "L0_027",
+      "complexity_level": "L0_explicit",
+      "problem": "小明有43个书本，小红有23个书本。他们一共有多少个书本？",
+      "answer": "66",
+      "solution_steps": [
+        "直接相加：43 + 23 = 66"
+      ],
+      "explicit_relations": [
+        "小明的书本数量",
+        "小红的书本数量"
+      ],
+      "implicit_relations": [],
+      "domain_knowledge": [],
+      "inference_depth": 1,
+      "relation_count": 1
+    },
+    {
+      "id": "L0_028",
+      "complexity_level": "L0_explicit",
+      "problem": "老师要把30个贴纸平均分给6个学生。每个学生能分到多少个贴纸？",
+      "answer": "5",
+      "solution_steps": [
+        "用总数除以学生数：30 ÷ 6 = 5"
+      ],
+      "explicit_relations": [
+        "总贴纸数",
+        "学生数"
+      ],
+      "implicit_relations": [],
+      "domain_knowledge": [],
+      "inference_depth": 1,
+      "relation_count": 1
+    },
+    {
+      "id": "L0_029",
+      "complexity_level": "L0_explicit",
+      "problem": "商店里有5排货架，每排有7个商品。商店总共有多少个商品？",
+      "answer": "35",
+      "solution_steps": [
+        "用排数乘以每排商品数：5 × 7 = 35"
+      ],
+      "explicit_relations": [
+        "排数",
+        "每排商品数"
+      ],
+      "implicit_relations": [],
+      "domain_knowledge": [],
+      "inference_depth": 1,
+      "relation_count": 1
+    },
+    {
+      "id": "L0_030",
+      "complexity_level": "L0_explicit",
+      "problem": "老师要把21个贴纸平均分给7个学生。每个学生能分到多少个贴纸？",
+      "answer": "3",
+      "solution_steps": [
+        "用总数除以学生数：21 ÷ 7 = 3"
+      ],
+      "explicit_relations": [
+        "总贴纸数",
+        "学生数"
+      ],
+      "implicit_relations": [],
+      "domain_knowledge": [],
+      "inference_depth": 1,
+      "relation_count": 1
+    },
+    {
+      "id": "L1_001",
+      "complexity_level": "L1_shallow",
+      "problem": "一个正方形的边长是8分米。这个正方形的面积是多少平方厘米？",
+      "answer": "6400",
+      "solution_steps": [
+        "将分米转换为厘米：8分米 = 80厘米",
+        "计算正方形面积：80 × 80 = 6400平方厘米"
+      ],
+      "explicit_relations": [
+        "边长（分米）"
+      ],
+      "implicit_relations": [
+        "分米到厘米的转换",
+        "正方形面积公式"
+      ],
+      "domain_knowledge": [
+        "单位转换",
+        "面积计算"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_002",
+      "complexity_level": "L1_shallow",
+      "problem": "一个正方形的边长是3分米。这个正方形的面积是多少平方厘米？",
+      "answer": "900",
+      "solution_steps": [
+        "将分米转换为厘米：3分米 = 30厘米",
+        "计算正方形面积：30 × 30 = 900平方厘米"
+      ],
+      "explicit_relations": [
+        "边长（分米）"
+      ],
+      "implicit_relations": [
+        "分米到厘米的转换",
+        "正方形面积公式"
+      ],
+      "domain_knowledge": [
+        "单位转换",
+        "面积计算"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_003",
+      "complexity_level": "L1_shallow",
+      "problem": "小王买了2公斤橘子，每公斤22元。他总共花了多少钱？",
+      "answer": "44",
+      "solution_steps": [
+        "使用单价计算公式：总价 = 单价 × 数量",
+        "计算：22 × 2 = 44元"
+      ],
+      "explicit_relations": [
+        "重量",
+        "单价"
+      ],
+      "implicit_relations": [
+        "总价=单价×数量"
+      ],
+      "domain_knowledge": [
+        "价格计算"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_004",
+      "complexity_level": "L1_shallow",
+      "problem": "一个长方形的长是13米，宽是7米。这个长方形的面积是多少平方米？",
+      "answer": "91",
+      "solution_steps": [
+        "使用长方形面积公式：面积 = 长 × 宽",
+        "计算：13 × 7 = 91平方米"
+      ],
+      "explicit_relations": [
+        "长度",
+        "宽度"
+      ],
+      "implicit_relations": [
+        "面积=长×宽"
+      ],
+      "domain_knowledge": [
+        "长方形面积公式"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_005",
+      "complexity_level": "L1_shallow",
+      "problem": "小王买了5公斤香蕉，每公斤26元。他总共花了多少钱？",
+      "answer": "130",
+      "solution_steps": [
+        "使用单价计算公式：总价 = 单价 × 数量",
+        "计算：26 × 5 = 130元"
+      ],
+      "explicit_relations": [
+        "重量",
+        "单价"
+      ],
+      "implicit_relations": [
+        "总价=单价×数量"
+      ],
+      "domain_knowledge": [
+        "价格计算"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_006",
+      "complexity_level": "L1_shallow",
+      "problem": "一个正方形的边长是8分米。这个正方形的面积是多少平方厘米？",
+      "answer": "6400",
+      "solution_steps": [
+        "将分米转换为厘米：8分米 = 80厘米",
+        "计算正方形面积：80 × 80 = 6400平方厘米"
+      ],
+      "explicit_relations": [
+        "边长（分米）"
+      ],
+      "implicit_relations": [
+        "分米到厘米的转换",
+        "正方形面积公式"
+      ],
+      "domain_knowledge": [
+        "单位转换",
+        "面积计算"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_007",
+      "complexity_level": "L1_shallow",
+      "problem": "一辆汽车每小时行驶47公里，行驶了2小时。这辆汽车总共行驶了多少公里？",
+      "answer": "94",
+      "solution_steps": [
+        "使用速度公式：距离 = 速度 × 时间",
+        "计算：47 × 2 = 94公里"
+      ],
+      "explicit_relations": [
+        "速度",
+        "时间"
+      ],
+      "implicit_relations": [
+        "距离=速度×时间"
+      ],
+      "domain_knowledge": [
+        "速度、时间、距离的关系"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_008",
+      "complexity_level": "L1_shallow",
+      "problem": "一个长方形的长是17米，宽是10米。这个长方形的面积是多少平方米？",
+      "answer": "170",
+      "solution_steps": [
+        "使用长方形面积公式：面积 = 长 × 宽",
+        "计算：17 × 10 = 170平方米"
+      ],
+      "explicit_relations": [
+        "长度",
+        "宽度"
+      ],
+      "implicit_relations": [
+        "面积=长×宽"
+      ],
+      "domain_knowledge": [
+        "长方形面积公式"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_009",
+      "complexity_level": "L1_shallow",
+      "problem": "小王买了3公斤土豆，每公斤26元。他总共花了多少钱？",
+      "answer": "78",
+      "solution_steps": [
+        "使用单价计算公式：总价 = 单价 × 数量",
+        "计算：26 × 3 = 78元"
+      ],
+      "explicit_relations": [
+        "重量",
+        "单价"
+      ],
+      "implicit_relations": [
+        "总价=单价×数量"
+      ],
+      "domain_knowledge": [
+        "价格计算"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_010",
+      "complexity_level": "L1_shallow",
+      "problem": "一辆汽车每小时行驶53公里，行驶了3.5小时。这辆汽车总共行驶了多少公里？",
+      "answer": "185.5",
+      "solution_steps": [
+        "使用速度公式：距离 = 速度 × 时间",
+        "计算：53 × 3.5 = 185.5公里"
+      ],
+      "explicit_relations": [
+        "速度",
+        "时间"
+      ],
+      "implicit_relations": [
+        "距离=速度×时间"
+      ],
+      "domain_knowledge": [
+        "速度、时间、距离的关系"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_011",
+      "complexity_level": "L1_shallow",
+      "problem": "一辆汽车每小时行驶119公里，行驶了3小时。这辆汽车总共行驶了多少公里？",
+      "answer": "357",
+      "solution_steps": [
+        "使用速度公式：距离 = 速度 × 时间",
+        "计算：119 × 3 = 357公里"
+      ],
+      "explicit_relations": [
+        "速度",
+        "时间"
+      ],
+      "implicit_relations": [
+        "距离=速度×时间"
+      ],
+      "domain_knowledge": [
+        "速度、时间、距离的关系"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_012",
+      "complexity_level": "L1_shallow",
+      "problem": "一个长方形的长是18米，宽是14米。这个长方形的面积是多少平方米？",
+      "answer": "252",
+      "solution_steps": [
+        "使用长方形面积公式：面积 = 长 × 宽",
+        "计算：18 × 14 = 252平方米"
+      ],
+      "explicit_relations": [
+        "长度",
+        "宽度"
+      ],
+      "implicit_relations": [
+        "面积=长×宽"
+      ],
+      "domain_knowledge": [
+        "长方形面积公式"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_013",
+      "complexity_level": "L1_shallow",
+      "problem": "一辆汽车每小时行驶100公里，行驶了3.5小时。这辆汽车总共行驶了多少公里？",
+      "answer": "350.0",
+      "solution_steps": [
+        "使用速度公式：距离 = 速度 × 时间",
+        "计算：100 × 3.5 = 350.0公里"
+      ],
+      "explicit_relations": [
+        "速度",
+        "时间"
+      ],
+      "implicit_relations": [
+        "距离=速度×时间"
+      ],
+      "domain_knowledge": [
+        "速度、时间、距离的关系"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_014",
+      "complexity_level": "L1_shallow",
+      "problem": "一个长方形的长是12米，宽是13米。这个长方形的面积是多少平方米？",
+      "answer": "156",
+      "solution_steps": [
+        "使用长方形面积公式：面积 = 长 × 宽",
+        "计算：12 × 13 = 156平方米"
+      ],
+      "explicit_relations": [
+        "长度",
+        "宽度"
+      ],
+      "implicit_relations": [
+        "面积=长×宽"
+      ],
+      "domain_knowledge": [
+        "长方形面积公式"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_015",
+      "complexity_level": "L1_shallow",
+      "problem": "一个长方形的长是8米，宽是14米。这个长方形的面积是多少平方米？",
+      "answer": "112",
+      "solution_steps": [
+        "使用长方形面积公式：面积 = 长 × 宽",
+        "计算：8 × 14 = 112平方米"
+      ],
+      "explicit_relations": [
+        "长度",
+        "宽度"
+      ],
+      "implicit_relations": [
+        "面积=长×宽"
+      ],
+      "domain_knowledge": [
+        "长方形面积公式"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_016",
+      "complexity_level": "L1_shallow",
+      "problem": "小王买了4公斤橘子，每公斤22元。他总共花了多少钱？",
+      "answer": "88",
+      "solution_steps": [
+        "使用单价计算公式：总价 = 单价 × 数量",
+        "计算：22 × 4 = 88元"
+      ],
+      "explicit_relations": [
+        "重量",
+        "单价"
+      ],
+      "implicit_relations": [
+        "总价=单价×数量"
+      ],
+      "domain_knowledge": [
+        "价格计算"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_017",
+      "complexity_level": "L1_shallow",
+      "problem": "一个正方形的边长是7分米。这个正方形的面积是多少平方厘米？",
+      "answer": "4900",
+      "solution_steps": [
+        "将分米转换为厘米：7分米 = 70厘米",
+        "计算正方形面积：70 × 70 = 4900平方厘米"
+      ],
+      "explicit_relations": [
+        "边长（分米）"
+      ],
+      "implicit_relations": [
+        "分米到厘米的转换",
+        "正方形面积公式"
+      ],
+      "domain_knowledge": [
+        "单位转换",
+        "面积计算"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_018",
+      "complexity_level": "L1_shallow",
+      "problem": "一辆汽车每小时行驶65公里，行驶了1.5小时。这辆汽车总共行驶了多少公里？",
+      "answer": "97.5",
+      "solution_steps": [
+        "使用速度公式：距离 = 速度 × 时间",
+        "计算：65 × 1.5 = 97.5公里"
+      ],
+      "explicit_relations": [
+        "速度",
+        "时间"
+      ],
+      "implicit_relations": [
+        "距离=速度×时间"
+      ],
+      "domain_knowledge": [
+        "速度、时间、距离的关系"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_019",
+      "complexity_level": "L1_shallow",
+      "problem": "一个正方形的边长是5分米。这个正方形的面积是多少平方厘米？",
+      "answer": "2500",
+      "solution_steps": [
+        "将分米转换为厘米：5分米 = 50厘米",
+        "计算正方形面积：50 × 50 = 2500平方厘米"
+      ],
+      "explicit_relations": [
+        "边长（分米）"
+      ],
+      "implicit_relations": [
+        "分米到厘米的转换",
+        "正方形面积公式"
+      ],
+      "domain_knowledge": [
+        "单位转换",
+        "面积计算"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_020",
+      "complexity_level": "L1_shallow",
+      "problem": "一辆汽车每小时行驶111公里，行驶了2小时。这辆汽车总共行驶了多少公里？",
+      "answer": "222",
+      "solution_steps": [
+        "使用速度公式：距离 = 速度 × 时间",
+        "计算：111 × 2 = 222公里"
+      ],
+      "explicit_relations": [
+        "速度",
+        "时间"
+      ],
+      "implicit_relations": [
+        "距离=速度×时间"
+      ],
+      "domain_knowledge": [
+        "速度、时间、距离的关系"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_021",
+      "complexity_level": "L1_shallow",
+      "problem": "一辆汽车每小时行驶91公里，行驶了3小时。这辆汽车总共行驶了多少公里？",
+      "answer": "273",
+      "solution_steps": [
+        "使用速度公式：距离 = 速度 × 时间",
+        "计算：91 × 3 = 273公里"
+      ],
+      "explicit_relations": [
+        "速度",
+        "时间"
+      ],
+      "implicit_relations": [
+        "距离=速度×时间"
+      ],
+      "domain_knowledge": [
+        "速度、时间、距离的关系"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_022",
+      "complexity_level": "L1_shallow",
+      "problem": "一个长方形的长是9米，宽是15米。这个长方形的面积是多少平方米？",
+      "answer": "135",
+      "solution_steps": [
+        "使用长方形面积公式：面积 = 长 × 宽",
+        "计算：9 × 15 = 135平方米"
+      ],
+      "explicit_relations": [
+        "长度",
+        "宽度"
+      ],
+      "implicit_relations": [
+        "面积=长×宽"
+      ],
+      "domain_knowledge": [
+        "长方形面积公式"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_023",
+      "complexity_level": "L1_shallow",
+      "problem": "一个正方形的边长是4分米。这个正方形的面积是多少平方厘米？",
+      "answer": "1600",
+      "solution_steps": [
+        "将分米转换为厘米：4分米 = 40厘米",
+        "计算正方形面积：40 × 40 = 1600平方厘米"
+      ],
+      "explicit_relations": [
+        "边长（分米）"
+      ],
+      "implicit_relations": [
+        "分米到厘米的转换",
+        "正方形面积公式"
+      ],
+      "domain_knowledge": [
+        "单位转换",
+        "面积计算"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_024",
+      "complexity_level": "L1_shallow",
+      "problem": "一个正方形的边长是7分米。这个正方形的面积是多少平方厘米？",
+      "answer": "4900",
+      "solution_steps": [
+        "将分米转换为厘米：7分米 = 70厘米",
+        "计算正方形面积：70 × 70 = 4900平方厘米"
+      ],
+      "explicit_relations": [
+        "边长（分米）"
+      ],
+      "implicit_relations": [
+        "分米到厘米的转换",
+        "正方形面积公式"
+      ],
+      "domain_knowledge": [
+        "单位转换",
+        "面积计算"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_025",
+      "complexity_level": "L1_shallow",
+      "problem": "一个长方形的长是17米，宽是12米。这个长方形的面积是多少平方米？",
+      "answer": "204",
+      "solution_steps": [
+        "使用长方形面积公式：面积 = 长 × 宽",
+        "计算：17 × 12 = 204平方米"
+      ],
+      "explicit_relations": [
+        "长度",
+        "宽度"
+      ],
+      "implicit_relations": [
+        "面积=长×宽"
+      ],
+      "domain_knowledge": [
+        "长方形面积公式"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_026",
+      "complexity_level": "L1_shallow",
+      "problem": "一个正方形的边长是8分米。这个正方形的面积是多少平方厘米？",
+      "answer": "6400",
+      "solution_steps": [
+        "将分米转换为厘米：8分米 = 80厘米",
+        "计算正方形面积：80 × 80 = 6400平方厘米"
+      ],
+      "explicit_relations": [
+        "边长（分米）"
+      ],
+      "implicit_relations": [
+        "分米到厘米的转换",
+        "正方形面积公式"
+      ],
+      "domain_knowledge": [
+        "单位转换",
+        "面积计算"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_027",
+      "complexity_level": "L1_shallow",
+      "problem": "小王买了7公斤苹果，每公斤18元。他总共花了多少钱？",
+      "answer": "126",
+      "solution_steps": [
+        "使用单价计算公式：总价 = 单价 × 数量",
+        "计算：18 × 7 = 126元"
+      ],
+      "explicit_relations": [
+        "重量",
+        "单价"
+      ],
+      "implicit_relations": [
+        "总价=单价×数量"
+      ],
+      "domain_knowledge": [
+        "价格计算"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_028",
+      "complexity_level": "L1_shallow",
+      "problem": "小王买了7公斤土豆，每公斤15元。他总共花了多少钱？",
+      "answer": "105",
+      "solution_steps": [
+        "使用单价计算公式：总价 = 单价 × 数量",
+        "计算：15 × 7 = 105元"
+      ],
+      "explicit_relations": [
+        "重量",
+        "单价"
+      ],
+      "implicit_relations": [
+        "总价=单价×数量"
+      ],
+      "domain_knowledge": [
+        "价格计算"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_029",
+      "complexity_level": "L1_shallow",
+      "problem": "一辆汽车每小时行驶59公里，行驶了1.5小时。这辆汽车总共行驶了多少公里？",
+      "answer": "88.5",
+      "solution_steps": [
+        "使用速度公式：距离 = 速度 × 时间",
+        "计算：59 × 1.5 = 88.5公里"
+      ],
+      "explicit_relations": [
+        "速度",
+        "时间"
+      ],
+      "implicit_relations": [
+        "距离=速度×时间"
+      ],
+      "domain_knowledge": [
+        "速度、时间、距离的关系"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_030",
+      "complexity_level": "L1_shallow",
+      "problem": "一个正方形的边长是3分米。这个正方形的面积是多少平方厘米？",
+      "answer": "900",
+      "solution_steps": [
+        "将分米转换为厘米：3分米 = 30厘米",
+        "计算正方形面积：30 × 30 = 900平方厘米"
+      ],
+      "explicit_relations": [
+        "边长（分米）"
+      ],
+      "implicit_relations": [
+        "分米到厘米的转换",
+        "正方形面积公式"
+      ],
+      "domain_knowledge": [
+        "单位转换",
+        "面积计算"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_031",
+      "complexity_level": "L1_shallow",
+      "problem": "一个长方形的长是8米，宽是6米。这个长方形的面积是多少平方米？",
+      "answer": "48",
+      "solution_steps": [
+        "使用长方形面积公式：面积 = 长 × 宽",
+        "计算：8 × 6 = 48平方米"
+      ],
+      "explicit_relations": [
+        "长度",
+        "宽度"
+      ],
+      "implicit_relations": [
+        "面积=长×宽"
+      ],
+      "domain_knowledge": [
+        "长方形面积公式"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_032",
+      "complexity_level": "L1_shallow",
+      "problem": "一辆汽车每小时行驶120公里，行驶了2小时。这辆汽车总共行驶了多少公里？",
+      "answer": "240",
+      "solution_steps": [
+        "使用速度公式：距离 = 速度 × 时间",
+        "计算：120 × 2 = 240公里"
+      ],
+      "explicit_relations": [
+        "速度",
+        "时间"
+      ],
+      "implicit_relations": [
+        "距离=速度×时间"
+      ],
+      "domain_knowledge": [
+        "速度、时间、距离的关系"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_033",
+      "complexity_level": "L1_shallow",
+      "problem": "一个长方形的长是19米，宽是7米。这个长方形的面积是多少平方米？",
+      "answer": "133",
+      "solution_steps": [
+        "使用长方形面积公式：面积 = 长 × 宽",
+        "计算：19 × 7 = 133平方米"
+      ],
+      "explicit_relations": [
+        "长度",
+        "宽度"
+      ],
+      "implicit_relations": [
+        "面积=长×宽"
+      ],
+      "domain_knowledge": [
+        "长方形面积公式"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_034",
+      "complexity_level": "L1_shallow",
+      "problem": "一个长方形的长是19米，宽是6米。这个长方形的面积是多少平方米？",
+      "answer": "114",
+      "solution_steps": [
+        "使用长方形面积公式：面积 = 长 × 宽",
+        "计算：19 × 6 = 114平方米"
+      ],
+      "explicit_relations": [
+        "长度",
+        "宽度"
+      ],
+      "implicit_relations": [
+        "面积=长×宽"
+      ],
+      "domain_knowledge": [
+        "长方形面积公式"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_035",
+      "complexity_level": "L1_shallow",
+      "problem": "小王买了3公斤大米，每公斤26元。他总共花了多少钱？",
+      "answer": "78",
+      "solution_steps": [
+        "使用单价计算公式：总价 = 单价 × 数量",
+        "计算：26 × 3 = 78元"
+      ],
+      "explicit_relations": [
+        "重量",
+        "单价"
+      ],
+      "implicit_relations": [
+        "总价=单价×数量"
+      ],
+      "domain_knowledge": [
+        "价格计算"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_036",
+      "complexity_level": "L1_shallow",
+      "problem": "一个长方形的长是14米，宽是12米。这个长方形的面积是多少平方米？",
+      "answer": "168",
+      "solution_steps": [
+        "使用长方形面积公式：面积 = 长 × 宽",
+        "计算：14 × 12 = 168平方米"
+      ],
+      "explicit_relations": [
+        "长度",
+        "宽度"
+      ],
+      "implicit_relations": [
+        "面积=长×宽"
+      ],
+      "domain_knowledge": [
+        "长方形面积公式"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_037",
+      "complexity_level": "L1_shallow",
+      "problem": "一个正方形的边长是4分米。这个正方形的面积是多少平方厘米？",
+      "answer": "1600",
+      "solution_steps": [
+        "将分米转换为厘米：4分米 = 40厘米",
+        "计算正方形面积：40 × 40 = 1600平方厘米"
+      ],
+      "explicit_relations": [
+        "边长（分米）"
+      ],
+      "implicit_relations": [
+        "分米到厘米的转换",
+        "正方形面积公式"
+      ],
+      "domain_knowledge": [
+        "单位转换",
+        "面积计算"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_038",
+      "complexity_level": "L1_shallow",
+      "problem": "一个正方形的边长是8分米。这个正方形的面积是多少平方厘米？",
+      "answer": "6400",
+      "solution_steps": [
+        "将分米转换为厘米：8分米 = 80厘米",
+        "计算正方形面积：80 × 80 = 6400平方厘米"
+      ],
+      "explicit_relations": [
+        "边长（分米）"
+      ],
+      "implicit_relations": [
+        "分米到厘米的转换",
+        "正方形面积公式"
+      ],
+      "domain_knowledge": [
+        "单位转换",
+        "面积计算"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_039",
+      "complexity_level": "L1_shallow",
+      "problem": "一辆汽车每小时行驶111公里，行驶了1.5小时。这辆汽车总共行驶了多少公里？",
+      "answer": "166.5",
+      "solution_steps": [
+        "使用速度公式：距离 = 速度 × 时间",
+        "计算：111 × 1.5 = 166.5公里"
+      ],
+      "explicit_relations": [
+        "速度",
+        "时间"
+      ],
+      "implicit_relations": [
+        "距离=速度×时间"
+      ],
+      "domain_knowledge": [
+        "速度、时间、距离的关系"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_040",
+      "complexity_level": "L1_shallow",
+      "problem": "一个长方形的长是12米，宽是10米。这个长方形的面积是多少平方米？",
+      "answer": "120",
+      "solution_steps": [
+        "使用长方形面积公式：面积 = 长 × 宽",
+        "计算：12 × 10 = 120平方米"
+      ],
+      "explicit_relations": [
+        "长度",
+        "宽度"
+      ],
+      "implicit_relations": [
+        "面积=长×宽"
+      ],
+      "domain_knowledge": [
+        "长方形面积公式"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_041",
+      "complexity_level": "L1_shallow",
+      "problem": "一个正方形的边长是5分米。这个正方形的面积是多少平方厘米？",
+      "answer": "2500",
+      "solution_steps": [
+        "将分米转换为厘米：5分米 = 50厘米",
+        "计算正方形面积：50 × 50 = 2500平方厘米"
+      ],
+      "explicit_relations": [
+        "边长（分米）"
+      ],
+      "implicit_relations": [
+        "分米到厘米的转换",
+        "正方形面积公式"
+      ],
+      "domain_knowledge": [
+        "单位转换",
+        "面积计算"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_042",
+      "complexity_level": "L1_shallow",
+      "problem": "一个正方形的边长是5分米。这个正方形的面积是多少平方厘米？",
+      "answer": "2500",
+      "solution_steps": [
+        "将分米转换为厘米：5分米 = 50厘米",
+        "计算正方形面积：50 × 50 = 2500平方厘米"
+      ],
+      "explicit_relations": [
+        "边长（分米）"
+      ],
+      "implicit_relations": [
+        "分米到厘米的转换",
+        "正方形面积公式"
+      ],
+      "domain_knowledge": [
+        "单位转换",
+        "面积计算"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_043",
+      "complexity_level": "L1_shallow",
+      "problem": "一辆汽车每小时行驶90公里，行驶了4小时。这辆汽车总共行驶了多少公里？",
+      "answer": "360",
+      "solution_steps": [
+        "使用速度公式：距离 = 速度 × 时间",
+        "计算：90 × 4 = 360公里"
+      ],
+      "explicit_relations": [
+        "速度",
+        "时间"
+      ],
+      "implicit_relations": [
+        "距离=速度×时间"
+      ],
+      "domain_knowledge": [
+        "速度、时间、距离的关系"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_044",
+      "complexity_level": "L1_shallow",
+      "problem": "一辆汽车每小时行驶93公里，行驶了2小时。这辆汽车总共行驶了多少公里？",
+      "answer": "186",
+      "solution_steps": [
+        "使用速度公式：距离 = 速度 × 时间",
+        "计算：93 × 2 = 186公里"
+      ],
+      "explicit_relations": [
+        "速度",
+        "时间"
+      ],
+      "implicit_relations": [
+        "距离=速度×时间"
+      ],
+      "domain_knowledge": [
+        "速度、时间、距离的关系"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_045",
+      "complexity_level": "L1_shallow",
+      "problem": "一个长方形的长是12米，宽是5米。这个长方形的面积是多少平方米？",
+      "answer": "60",
+      "solution_steps": [
+        "使用长方形面积公式：面积 = 长 × 宽",
+        "计算：12 × 5 = 60平方米"
+      ],
+      "explicit_relations": [
+        "长度",
+        "宽度"
+      ],
+      "implicit_relations": [
+        "面积=长×宽"
+      ],
+      "domain_knowledge": [
+        "长方形面积公式"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_046",
+      "complexity_level": "L1_shallow",
+      "problem": "一辆汽车每小时行驶40公里，行驶了2.5小时。这辆汽车总共行驶了多少公里？",
+      "answer": "100.0",
+      "solution_steps": [
+        "使用速度公式：距离 = 速度 × 时间",
+        "计算：40 × 2.5 = 100.0公里"
+      ],
+      "explicit_relations": [
+        "速度",
+        "时间"
+      ],
+      "implicit_relations": [
+        "距离=速度×时间"
+      ],
+      "domain_knowledge": [
+        "速度、时间、距离的关系"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_047",
+      "complexity_level": "L1_shallow",
+      "problem": "一个长方形的长是16米，宽是7米。这个长方形的面积是多少平方米？",
+      "answer": "112",
+      "solution_steps": [
+        "使用长方形面积公式：面积 = 长 × 宽",
+        "计算：16 × 7 = 112平方米"
+      ],
+      "explicit_relations": [
+        "长度",
+        "宽度"
+      ],
+      "implicit_relations": [
+        "面积=长×宽"
+      ],
+      "domain_knowledge": [
+        "长方形面积公式"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_048",
+      "complexity_level": "L1_shallow",
+      "problem": "小王买了3公斤橘子，每公斤19元。他总共花了多少钱？",
+      "answer": "57",
+      "solution_steps": [
+        "使用单价计算公式：总价 = 单价 × 数量",
+        "计算：19 × 3 = 57元"
+      ],
+      "explicit_relations": [
+        "重量",
+        "单价"
+      ],
+      "implicit_relations": [
+        "总价=单价×数量"
+      ],
+      "domain_knowledge": [
+        "价格计算"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_049",
+      "complexity_level": "L1_shallow",
+      "problem": "一辆汽车每小时行驶67公里，行驶了3.5小时。这辆汽车总共行驶了多少公里？",
+      "answer": "234.5",
+      "solution_steps": [
+        "使用速度公式：距离 = 速度 × 时间",
+        "计算：67 × 3.5 = 234.5公里"
+      ],
+      "explicit_relations": [
+        "速度",
+        "时间"
+      ],
+      "implicit_relations": [
+        "距离=速度×时间"
+      ],
+      "domain_knowledge": [
+        "速度、时间、距离的关系"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L1_050",
+      "complexity_level": "L1_shallow",
+      "problem": "小王买了5公斤香蕉，每公斤24元。他总共花了多少钱？",
+      "answer": "120",
+      "solution_steps": [
+        "使用单价计算公式：总价 = 单价 × 数量",
+        "计算：24 × 5 = 120元"
+      ],
+      "explicit_relations": [
+        "重量",
+        "单价"
+      ],
+      "implicit_relations": [
+        "总价=单价×数量"
+      ],
+      "domain_knowledge": [
+        "价格计算"
+      ],
+      "inference_depth": 2,
+      "relation_count": 2
+    },
+    {
+      "id": "L2_001",
+      "complexity_level": "L2_medium",
+      "problem": "一个工厂每天生产114个零件，现在有订单需要1342个零件，但工厂库存已有316个零件。需要多少天才能完成订单？",
+      "answer": "9",
+      "solution_steps": [
+        "计算还需要生产的零件数：1342 - 316 = 1026个",
+        "计算需要的天数：1026 ÷ 114 = 9天"
+      ],
+      "explicit_relations": [
+        "日产量",
+        "订单数量",
+        "库存数量"
+      ],
+      "implicit_relations": [
+        "需生产量=订单量-库存量",
+        "时间=需生产量÷日产量"
+      ],
+      "domain_knowledge": [
+        "生产计划",
+        "库存管理"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_002",
+      "complexity_level": "L2_medium",
+      "problem": "一个工厂每天生产119个零件，现在有订单需要2527个零件，但工厂库存已有266个零件。需要多少天才能完成订单？",
+      "answer": "19",
+      "solution_steps": [
+        "计算还需要生产的零件数：2527 - 266 = 2261个",
+        "计算需要的天数：2261 ÷ 119 = 19天"
+      ],
+      "explicit_relations": [
+        "日产量",
+        "订单数量",
+        "库存数量"
+      ],
+      "implicit_relations": [
+        "需生产量=订单量-库存量",
+        "时间=需生产量÷日产量"
+      ],
+      "domain_knowledge": [
+        "生产计划",
+        "库存管理"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_003",
+      "complexity_level": "L2_medium",
+      "problem": "一个水箱可以装649升水。现在水箱里有水108升，水龙头每分钟流入10升水。需要多少分钟才能把水箱装满？",
+      "answer": "54",
+      "solution_steps": [
+        "计算还需要的水量：649 - 108 = 541升",
+        "计算需要的时间：541 ÷ 10 = 54分钟"
+      ],
+      "explicit_relations": [
+        "水箱容量",
+        "现有水量",
+        "流入速率"
+      ],
+      "implicit_relations": [
+        "剩余容量=总容量-现有量",
+        "时间=剩余量÷流入速率"
+      ],
+      "domain_knowledge": [
+        "容量计算",
+        "流量与时间关系"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_004",
+      "complexity_level": "L2_medium",
+      "problem": "小明的爸爸今年39岁，是小明年龄的3倍。8年后，爸爸的年龄是小明年龄的几倍？",
+      "answer": "2.2",
+      "solution_steps": [
+        "计算小明现在的年龄：39 ÷ 3 = 13岁",
+        "计算8年后小明的年龄：13 + 8 = 21岁",
+        "计算8年后爸爸的年龄：39 + 8 = 47岁",
+        "计算倍数关系：47 ÷ 21 = 2.2倍"
+      ],
+      "explicit_relations": [
+        "爸爸现在年龄",
+        "年龄倍数关系"
+      ],
+      "implicit_relations": [
+        "小明现在年龄",
+        "未来年龄变化",
+        "未来倍数关系"
+      ],
+      "domain_knowledge": [
+        "年龄推算",
+        "倍数关系变化"
+      ],
+      "inference_depth": 4,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_005",
+      "complexity_level": "L2_medium",
+      "problem": "一个工厂每天生产123个零件，现在有订单需要1504个零件，但工厂库存已有397个零件。需要多少天才能完成订单？",
+      "answer": "9",
+      "solution_steps": [
+        "计算还需要生产的零件数：1504 - 397 = 1107个",
+        "计算需要的天数：1107 ÷ 123 = 9天"
+      ],
+      "explicit_relations": [
+        "日产量",
+        "订单数量",
+        "库存数量"
+      ],
+      "implicit_relations": [
+        "需生产量=订单量-库存量",
+        "时间=需生产量÷日产量"
+      ],
+      "domain_knowledge": [
+        "生产计划",
+        "库存管理"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_006",
+      "complexity_level": "L2_medium",
+      "problem": "一个工厂每天生产121个零件，现在有订单需要1181个零件，但工厂库存已有213个零件。需要多少天才能完成订单？",
+      "answer": "8",
+      "solution_steps": [
+        "计算还需要生产的零件数：1181 - 213 = 968个",
+        "计算需要的天数：968 ÷ 121 = 8天"
+      ],
+      "explicit_relations": [
+        "日产量",
+        "订单数量",
+        "库存数量"
+      ],
+      "implicit_relations": [
+        "需生产量=订单量-库存量",
+        "时间=需生产量÷日产量"
+      ],
+      "domain_knowledge": [
+        "生产计划",
+        "库存管理"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_007",
+      "complexity_level": "L2_medium",
+      "problem": "一个工厂每天生产116个零件，现在有订单需要1535个零件，但工厂库存已有259个零件。需要多少天才能完成订单？",
+      "answer": "11",
+      "solution_steps": [
+        "计算还需要生产的零件数：1535 - 259 = 1276个",
+        "计算需要的天数：1276 ÷ 116 = 11天"
+      ],
+      "explicit_relations": [
+        "日产量",
+        "订单数量",
+        "库存数量"
+      ],
+      "implicit_relations": [
+        "需生产量=订单量-库存量",
+        "时间=需生产量÷日产量"
+      ],
+      "domain_knowledge": [
+        "生产计划",
+        "库存管理"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_008",
+      "complexity_level": "L2_medium",
+      "problem": "一个工厂每天生产103个零件，现在有订单需要1332个零件，但工厂库存已有199个零件。需要多少天才能完成订单？",
+      "answer": "11",
+      "solution_steps": [
+        "计算还需要生产的零件数：1332 - 199 = 1133个",
+        "计算需要的天数：1133 ÷ 103 = 11天"
+      ],
+      "explicit_relations": [
+        "日产量",
+        "订单数量",
+        "库存数量"
+      ],
+      "implicit_relations": [
+        "需生产量=订单量-库存量",
+        "时间=需生产量÷日产量"
+      ],
+      "domain_knowledge": [
+        "生产计划",
+        "库存管理"
+      ],
+      "inference_depth": 4,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_009",
+      "complexity_level": "L2_medium",
+      "problem": "一个工厂每天生产118个零件，现在有订单需要1619个零件，但工厂库存已有321个零件。需要多少天才能完成订单？",
+      "answer": "11",
+      "solution_steps": [
+        "计算还需要生产的零件数：1619 - 321 = 1298个",
+        "计算需要的天数：1298 ÷ 118 = 11天"
+      ],
+      "explicit_relations": [
+        "日产量",
+        "订单数量",
+        "库存数量"
+      ],
+      "implicit_relations": [
+        "需生产量=订单量-库存量",
+        "时间=需生产量÷日产量"
+      ],
+      "domain_knowledge": [
+        "生产计划",
+        "库存管理"
+      ],
+      "inference_depth": 4,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_010",
+      "complexity_level": "L2_medium",
+      "problem": "一个工厂每天生产145个零件，现在有订单需要3105个零件，但工厂库存已有350个零件。需要多少天才能完成订单？",
+      "answer": "19",
+      "solution_steps": [
+        "计算还需要生产的零件数：3105 - 350 = 2755个",
+        "计算需要的天数：2755 ÷ 145 = 19天"
+      ],
+      "explicit_relations": [
+        "日产量",
+        "订单数量",
+        "库存数量"
+      ],
+      "implicit_relations": [
+        "需生产量=订单量-库存量",
+        "时间=需生产量÷日产量"
+      ],
+      "domain_knowledge": [
+        "生产计划",
+        "库存管理"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_011",
+      "complexity_level": "L2_medium",
+      "problem": "一个工厂每天生产92个零件，现在有订单需要1183个零件，但工厂库存已有171个零件。需要多少天才能完成订单？",
+      "answer": "11",
+      "solution_steps": [
+        "计算还需要生产的零件数：1183 - 171 = 1012个",
+        "计算需要的天数：1012 ÷ 92 = 11天"
+      ],
+      "explicit_relations": [
+        "日产量",
+        "订单数量",
+        "库存数量"
+      ],
+      "implicit_relations": [
+        "需生产量=订单量-库存量",
+        "时间=需生产量÷日产量"
+      ],
+      "domain_knowledge": [
+        "生产计划",
+        "库存管理"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_012",
+      "complexity_level": "L2_medium",
+      "problem": "一个水箱可以装447升水。现在水箱里有水174升，水龙头每分钟流入10升水。需要多少分钟才能把水箱装满？",
+      "answer": "27",
+      "solution_steps": [
+        "计算还需要的水量：447 - 174 = 273升",
+        "计算需要的时间：273 ÷ 10 = 27分钟"
+      ],
+      "explicit_relations": [
+        "水箱容量",
+        "现有水量",
+        "流入速率"
+      ],
+      "implicit_relations": [
+        "剩余容量=总容量-现有量",
+        "时间=剩余量÷流入速率"
+      ],
+      "domain_knowledge": [
+        "容量计算",
+        "流量与时间关系"
+      ],
+      "inference_depth": 4,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_013",
+      "complexity_level": "L2_medium",
+      "problem": "一个工厂每天生产135个零件，现在有订单需要1859个零件，但工厂库存已有239个零件。需要多少天才能完成订单？",
+      "answer": "12",
+      "solution_steps": [
+        "计算还需要生产的零件数：1859 - 239 = 1620个",
+        "计算需要的天数：1620 ÷ 135 = 12天"
+      ],
+      "explicit_relations": [
+        "日产量",
+        "订单数量",
+        "库存数量"
+      ],
+      "implicit_relations": [
+        "需生产量=订单量-库存量",
+        "时间=需生产量÷日产量"
+      ],
+      "domain_knowledge": [
+        "生产计划",
+        "库存管理"
+      ],
+      "inference_depth": 4,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_014",
+      "complexity_level": "L2_medium",
+      "problem": "一个工厂每天生产98个零件，现在有订单需要1183个零件，但工厂库存已有203个零件。需要多少天才能完成订单？",
+      "answer": "10",
+      "solution_steps": [
+        "计算还需要生产的零件数：1183 - 203 = 980个",
+        "计算需要的天数：980 ÷ 98 = 10天"
+      ],
+      "explicit_relations": [
+        "日产量",
+        "订单数量",
+        "库存数量"
+      ],
+      "implicit_relations": [
+        "需生产量=订单量-库存量",
+        "时间=需生产量÷日产量"
+      ],
+      "domain_knowledge": [
+        "生产计划",
+        "库存管理"
+      ],
+      "inference_depth": 4,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_015",
+      "complexity_level": "L2_medium",
+      "problem": "一个工厂每天生产111个零件，现在有订单需要2219个零件，但工厂库存已有221个零件。需要多少天才能完成订单？",
+      "answer": "18",
+      "solution_steps": [
+        "计算还需要生产的零件数：2219 - 221 = 1998个",
+        "计算需要的天数：1998 ÷ 111 = 18天"
+      ],
+      "explicit_relations": [
+        "日产量",
+        "订单数量",
+        "库存数量"
+      ],
+      "implicit_relations": [
+        "需生产量=订单量-库存量",
+        "时间=需生产量÷日产量"
+      ],
+      "domain_knowledge": [
+        "生产计划",
+        "库存管理"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_016",
+      "complexity_level": "L2_medium",
+      "problem": "一个水箱可以装576升水。现在水箱里有水106升，水龙头每分钟流入15升水。需要多少分钟才能把水箱装满？",
+      "answer": "31",
+      "solution_steps": [
+        "计算还需要的水量：576 - 106 = 470升",
+        "计算需要的时间：470 ÷ 15 = 31分钟"
+      ],
+      "explicit_relations": [
+        "水箱容量",
+        "现有水量",
+        "流入速率"
+      ],
+      "implicit_relations": [
+        "剩余容量=总容量-现有量",
+        "时间=剩余量÷流入速率"
+      ],
+      "domain_knowledge": [
+        "容量计算",
+        "流量与时间关系"
+      ],
+      "inference_depth": 4,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_017",
+      "complexity_level": "L2_medium",
+      "problem": "一个水箱可以装595升水。现在水箱里有水153升，水龙头每分钟流入21升水。需要多少分钟才能把水箱装满？",
+      "answer": "21",
+      "solution_steps": [
+        "计算还需要的水量：595 - 153 = 442升",
+        "计算需要的时间：442 ÷ 21 = 21分钟"
+      ],
+      "explicit_relations": [
+        "水箱容量",
+        "现有水量",
+        "流入速率"
+      ],
+      "implicit_relations": [
+        "剩余容量=总容量-现有量",
+        "时间=剩余量÷流入速率"
+      ],
+      "domain_knowledge": [
+        "容量计算",
+        "流量与时间关系"
+      ],
+      "inference_depth": 4,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_018",
+      "complexity_level": "L2_medium",
+      "problem": "小明的爸爸今年36岁，是小明年龄的4倍。7年后，爸爸的年龄是小明年龄的几倍？",
+      "answer": "2.7",
+      "solution_steps": [
+        "计算小明现在的年龄：36 ÷ 4 = 9岁",
+        "计算7年后小明的年龄：9 + 7 = 16岁",
+        "计算7年后爸爸的年龄：36 + 7 = 43岁",
+        "计算倍数关系：43 ÷ 16 = 2.7倍"
+      ],
+      "explicit_relations": [
+        "爸爸现在年龄",
+        "年龄倍数关系"
+      ],
+      "implicit_relations": [
+        "小明现在年龄",
+        "未来年龄变化",
+        "未来倍数关系"
+      ],
+      "domain_knowledge": [
+        "年龄推算",
+        "倍数关系变化"
+      ],
+      "inference_depth": 4,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_019",
+      "complexity_level": "L2_medium",
+      "problem": "小明的爸爸今年48岁，是小明年龄的4倍。5年后，爸爸的年龄是小明年龄的几倍？",
+      "answer": "3.1",
+      "solution_steps": [
+        "计算小明现在的年龄：48 ÷ 4 = 12岁",
+        "计算5年后小明的年龄：12 + 5 = 17岁",
+        "计算5年后爸爸的年龄：48 + 5 = 53岁",
+        "计算倍数关系：53 ÷ 17 = 3.1倍"
+      ],
+      "explicit_relations": [
+        "爸爸现在年龄",
+        "年龄倍数关系"
+      ],
+      "implicit_relations": [
+        "小明现在年龄",
+        "未来年龄变化",
+        "未来倍数关系"
+      ],
+      "domain_knowledge": [
+        "年龄推算",
+        "倍数关系变化"
+      ],
+      "inference_depth": 4,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_020",
+      "complexity_level": "L2_medium",
+      "problem": "小明的爸爸今年32岁，是小明年龄的4倍。4年后，爸爸的年龄是小明年龄的几倍？",
+      "answer": "3.0",
+      "solution_steps": [
+        "计算小明现在的年龄：32 ÷ 4 = 8岁",
+        "计算4年后小明的年龄：8 + 4 = 12岁",
+        "计算4年后爸爸的年龄：32 + 4 = 36岁",
+        "计算倍数关系：36 ÷ 12 = 3.0倍"
+      ],
+      "explicit_relations": [
+        "爸爸现在年龄",
+        "年龄倍数关系"
+      ],
+      "implicit_relations": [
+        "小明现在年龄",
+        "未来年龄变化",
+        "未来倍数关系"
+      ],
+      "domain_knowledge": [
+        "年龄推算",
+        "倍数关系变化"
+      ],
+      "inference_depth": 4,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_021",
+      "complexity_level": "L2_medium",
+      "problem": "小明的爸爸今年24岁，是小明年龄的3倍。7年后，爸爸的年龄是小明年龄的几倍？",
+      "answer": "2.1",
+      "solution_steps": [
+        "计算小明现在的年龄：24 ÷ 3 = 8岁",
+        "计算7年后小明的年龄：8 + 7 = 15岁",
+        "计算7年后爸爸的年龄：24 + 7 = 31岁",
+        "计算倍数关系：31 ÷ 15 = 2.1倍"
+      ],
+      "explicit_relations": [
+        "爸爸现在年龄",
+        "年龄倍数关系"
+      ],
+      "implicit_relations": [
+        "小明现在年龄",
+        "未来年龄变化",
+        "未来倍数关系"
+      ],
+      "domain_knowledge": [
+        "年龄推算",
+        "倍数关系变化"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_022",
+      "complexity_level": "L2_medium",
+      "problem": "一个水箱可以装606升水。现在水箱里有水188升，水龙头每分钟流入24升水。需要多少分钟才能把水箱装满？",
+      "answer": "17",
+      "solution_steps": [
+        "计算还需要的水量：606 - 188 = 418升",
+        "计算需要的时间：418 ÷ 24 = 17分钟"
+      ],
+      "explicit_relations": [
+        "水箱容量",
+        "现有水量",
+        "流入速率"
+      ],
+      "implicit_relations": [
+        "剩余容量=总容量-现有量",
+        "时间=剩余量÷流入速率"
+      ],
+      "domain_knowledge": [
+        "容量计算",
+        "流量与时间关系"
+      ],
+      "inference_depth": 4,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_023",
+      "complexity_level": "L2_medium",
+      "problem": "一个水箱可以装711升水。现在水箱里有水189升，水龙头每分钟流入23升水。需要多少分钟才能把水箱装满？",
+      "answer": "22",
+      "solution_steps": [
+        "计算还需要的水量：711 - 189 = 522升",
+        "计算需要的时间：522 ÷ 23 = 22分钟"
+      ],
+      "explicit_relations": [
+        "水箱容量",
+        "现有水量",
+        "流入速率"
+      ],
+      "implicit_relations": [
+        "剩余容量=总容量-现有量",
+        "时间=剩余量÷流入速率"
+      ],
+      "domain_knowledge": [
+        "容量计算",
+        "流量与时间关系"
+      ],
+      "inference_depth": 4,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_024",
+      "complexity_level": "L2_medium",
+      "problem": "一个水箱可以装709升水。现在水箱里有水222升，水龙头每分钟流入13升水。需要多少分钟才能把水箱装满？",
+      "answer": "37",
+      "solution_steps": [
+        "计算还需要的水量：709 - 222 = 487升",
+        "计算需要的时间：487 ÷ 13 = 37分钟"
+      ],
+      "explicit_relations": [
+        "水箱容量",
+        "现有水量",
+        "流入速率"
+      ],
+      "implicit_relations": [
+        "剩余容量=总容量-现有量",
+        "时间=剩余量÷流入速率"
+      ],
+      "domain_knowledge": [
+        "容量计算",
+        "流量与时间关系"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_025",
+      "complexity_level": "L2_medium",
+      "problem": "一个工厂每天生产90个零件，现在有订单需要914个零件，但工厂库存已有104个零件。需要多少天才能完成订单？",
+      "answer": "9",
+      "solution_steps": [
+        "计算还需要生产的零件数：914 - 104 = 810个",
+        "计算需要的天数：810 ÷ 90 = 9天"
+      ],
+      "explicit_relations": [
+        "日产量",
+        "订单数量",
+        "库存数量"
+      ],
+      "implicit_relations": [
+        "需生产量=订单量-库存量",
+        "时间=需生产量÷日产量"
+      ],
+      "domain_knowledge": [
+        "生产计划",
+        "库存管理"
+      ],
+      "inference_depth": 4,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_026",
+      "complexity_level": "L2_medium",
+      "problem": "一个工厂每天生产93个零件，现在有订单需要1424个零件，但工厂库存已有215个零件。需要多少天才能完成订单？",
+      "answer": "13",
+      "solution_steps": [
+        "计算还需要生产的零件数：1424 - 215 = 1209个",
+        "计算需要的天数：1209 ÷ 93 = 13天"
+      ],
+      "explicit_relations": [
+        "日产量",
+        "订单数量",
+        "库存数量"
+      ],
+      "implicit_relations": [
+        "需生产量=订单量-库存量",
+        "时间=需生产量÷日产量"
+      ],
+      "domain_knowledge": [
+        "生产计划",
+        "库存管理"
+      ],
+      "inference_depth": 4,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_027",
+      "complexity_level": "L2_medium",
+      "problem": "小明的爸爸今年28岁，是小明年龄的2倍。4年后，爸爸的年龄是小明年龄的几倍？",
+      "answer": "1.8",
+      "solution_steps": [
+        "计算小明现在的年龄：28 ÷ 2 = 14岁",
+        "计算4年后小明的年龄：14 + 4 = 18岁",
+        "计算4年后爸爸的年龄：28 + 4 = 32岁",
+        "计算倍数关系：32 ÷ 18 = 1.8倍"
+      ],
+      "explicit_relations": [
+        "爸爸现在年龄",
+        "年龄倍数关系"
+      ],
+      "implicit_relations": [
+        "小明现在年龄",
+        "未来年龄变化",
+        "未来倍数关系"
+      ],
+      "domain_knowledge": [
+        "年龄推算",
+        "倍数关系变化"
+      ],
+      "inference_depth": 4,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_028",
+      "complexity_level": "L2_medium",
+      "problem": "一个水箱可以装624升水。现在水箱里有水301升，水龙头每分钟流入12升水。需要多少分钟才能把水箱装满？",
+      "answer": "26",
+      "solution_steps": [
+        "计算还需要的水量：624 - 301 = 323升",
+        "计算需要的时间：323 ÷ 12 = 26分钟"
+      ],
+      "explicit_relations": [
+        "水箱容量",
+        "现有水量",
+        "流入速率"
+      ],
+      "implicit_relations": [
+        "剩余容量=总容量-现有量",
+        "时间=剩余量÷流入速率"
+      ],
+      "domain_knowledge": [
+        "容量计算",
+        "流量与时间关系"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_029",
+      "complexity_level": "L2_medium",
+      "problem": "小明的爸爸今年28岁，是小明年龄的2倍。7年后，爸爸的年龄是小明年龄的几倍？",
+      "answer": "1.7",
+      "solution_steps": [
+        "计算小明现在的年龄：28 ÷ 2 = 14岁",
+        "计算7年后小明的年龄：14 + 7 = 21岁",
+        "计算7年后爸爸的年龄：28 + 7 = 35岁",
+        "计算倍数关系：35 ÷ 21 = 1.7倍"
+      ],
+      "explicit_relations": [
+        "爸爸现在年龄",
+        "年龄倍数关系"
+      ],
+      "implicit_relations": [
+        "小明现在年龄",
+        "未来年龄变化",
+        "未来倍数关系"
+      ],
+      "domain_knowledge": [
+        "年龄推算",
+        "倍数关系变化"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_030",
+      "complexity_level": "L2_medium",
+      "problem": "一个水箱可以装667升水。现在水箱里有水169升，水龙头每分钟流入16升水。需要多少分钟才能把水箱装满？",
+      "answer": "31",
+      "solution_steps": [
+        "计算还需要的水量：667 - 169 = 498升",
+        "计算需要的时间：498 ÷ 16 = 31分钟"
+      ],
+      "explicit_relations": [
+        "水箱容量",
+        "现有水量",
+        "流入速率"
+      ],
+      "implicit_relations": [
+        "剩余容量=总容量-现有量",
+        "时间=剩余量÷流入速率"
+      ],
+      "domain_knowledge": [
+        "容量计算",
+        "流量与时间关系"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_031",
+      "complexity_level": "L2_medium",
+      "problem": "小明的爸爸今年56岁，是小明年龄的4倍。7年后，爸爸的年龄是小明年龄的几倍？",
+      "answer": "3.0",
+      "solution_steps": [
+        "计算小明现在的年龄：56 ÷ 4 = 14岁",
+        "计算7年后小明的年龄：14 + 7 = 21岁",
+        "计算7年后爸爸的年龄：56 + 7 = 63岁",
+        "计算倍数关系：63 ÷ 21 = 3.0倍"
+      ],
+      "explicit_relations": [
+        "爸爸现在年龄",
+        "年龄倍数关系"
+      ],
+      "implicit_relations": [
+        "小明现在年龄",
+        "未来年龄变化",
+        "未来倍数关系"
+      ],
+      "domain_knowledge": [
+        "年龄推算",
+        "倍数关系变化"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_032",
+      "complexity_level": "L2_medium",
+      "problem": "小明的爸爸今年20岁，是小明年龄的2倍。8年后，爸爸的年龄是小明年龄的几倍？",
+      "answer": "1.6",
+      "solution_steps": [
+        "计算小明现在的年龄：20 ÷ 2 = 10岁",
+        "计算8年后小明的年龄：10 + 8 = 18岁",
+        "计算8年后爸爸的年龄：20 + 8 = 28岁",
+        "计算倍数关系：28 ÷ 18 = 1.6倍"
+      ],
+      "explicit_relations": [
+        "爸爸现在年龄",
+        "年龄倍数关系"
+      ],
+      "implicit_relations": [
+        "小明现在年龄",
+        "未来年龄变化",
+        "未来倍数关系"
+      ],
+      "domain_knowledge": [
+        "年龄推算",
+        "倍数关系变化"
+      ],
+      "inference_depth": 4,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_033",
+      "complexity_level": "L2_medium",
+      "problem": "一个水箱可以装524升水。现在水箱里有水127升，水龙头每分钟流入16升水。需要多少分钟才能把水箱装满？",
+      "answer": "24",
+      "solution_steps": [
+        "计算还需要的水量：524 - 127 = 397升",
+        "计算需要的时间：397 ÷ 16 = 24分钟"
+      ],
+      "explicit_relations": [
+        "水箱容量",
+        "现有水量",
+        "流入速率"
+      ],
+      "implicit_relations": [
+        "剩余容量=总容量-现有量",
+        "时间=剩余量÷流入速率"
+      ],
+      "domain_knowledge": [
+        "容量计算",
+        "流量与时间关系"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_034",
+      "complexity_level": "L2_medium",
+      "problem": "小明的爸爸今年22岁，是小明年龄的2倍。6年后，爸爸的年龄是小明年龄的几倍？",
+      "answer": "1.6",
+      "solution_steps": [
+        "计算小明现在的年龄：22 ÷ 2 = 11岁",
+        "计算6年后小明的年龄：11 + 6 = 17岁",
+        "计算6年后爸爸的年龄：22 + 6 = 28岁",
+        "计算倍数关系：28 ÷ 17 = 1.6倍"
+      ],
+      "explicit_relations": [
+        "爸爸现在年龄",
+        "年龄倍数关系"
+      ],
+      "implicit_relations": [
+        "小明现在年龄",
+        "未来年龄变化",
+        "未来倍数关系"
+      ],
+      "domain_knowledge": [
+        "年龄推算",
+        "倍数关系变化"
+      ],
+      "inference_depth": 4,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_035",
+      "complexity_level": "L2_medium",
+      "problem": "一个水箱可以装503升水。现在水箱里有水242升，水龙头每分钟流入15升水。需要多少分钟才能把水箱装满？",
+      "answer": "17",
+      "solution_steps": [
+        "计算还需要的水量：503 - 242 = 261升",
+        "计算需要的时间：261 ÷ 15 = 17分钟"
+      ],
+      "explicit_relations": [
+        "水箱容量",
+        "现有水量",
+        "流入速率"
+      ],
+      "implicit_relations": [
+        "剩余容量=总容量-现有量",
+        "时间=剩余量÷流入速率"
+      ],
+      "domain_knowledge": [
+        "容量计算",
+        "流量与时间关系"
+      ],
+      "inference_depth": 4,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_036",
+      "complexity_level": "L2_medium",
+      "problem": "一个工厂每天生产139个零件，现在有订单需要2367个零件，但工厂库存已有143个零件。需要多少天才能完成订单？",
+      "answer": "16",
+      "solution_steps": [
+        "计算还需要生产的零件数：2367 - 143 = 2224个",
+        "计算需要的天数：2224 ÷ 139 = 16天"
+      ],
+      "explicit_relations": [
+        "日产量",
+        "订单数量",
+        "库存数量"
+      ],
+      "implicit_relations": [
+        "需生产量=订单量-库存量",
+        "时间=需生产量÷日产量"
+      ],
+      "domain_knowledge": [
+        "生产计划",
+        "库存管理"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_037",
+      "complexity_level": "L2_medium",
+      "problem": "一个工厂每天生产100个零件，现在有订单需要1786个零件，但工厂库存已有186个零件。需要多少天才能完成订单？",
+      "answer": "16",
+      "solution_steps": [
+        "计算还需要生产的零件数：1786 - 186 = 1600个",
+        "计算需要的天数：1600 ÷ 100 = 16天"
+      ],
+      "explicit_relations": [
+        "日产量",
+        "订单数量",
+        "库存数量"
+      ],
+      "implicit_relations": [
+        "需生产量=订单量-库存量",
+        "时间=需生产量÷日产量"
+      ],
+      "domain_knowledge": [
+        "生产计划",
+        "库存管理"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_038",
+      "complexity_level": "L2_medium",
+      "problem": "一个工厂每天生产93个零件，现在有订单需要987个零件，但工厂库存已有243个零件。需要多少天才能完成订单？",
+      "answer": "8",
+      "solution_steps": [
+        "计算还需要生产的零件数：987 - 243 = 744个",
+        "计算需要的天数：744 ÷ 93 = 8天"
+      ],
+      "explicit_relations": [
+        "日产量",
+        "订单数量",
+        "库存数量"
+      ],
+      "implicit_relations": [
+        "需生产量=订单量-库存量",
+        "时间=需生产量÷日产量"
+      ],
+      "domain_knowledge": [
+        "生产计划",
+        "库存管理"
+      ],
+      "inference_depth": 4,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_039",
+      "complexity_level": "L2_medium",
+      "problem": "小明的爸爸今年18岁，是小明年龄的2倍。3年后，爸爸的年龄是小明年龄的几倍？",
+      "answer": "1.8",
+      "solution_steps": [
+        "计算小明现在的年龄：18 ÷ 2 = 9岁",
+        "计算3年后小明的年龄：9 + 3 = 12岁",
+        "计算3年后爸爸的年龄：18 + 3 = 21岁",
+        "计算倍数关系：21 ÷ 12 = 1.8倍"
+      ],
+      "explicit_relations": [
+        "爸爸现在年龄",
+        "年龄倍数关系"
+      ],
+      "implicit_relations": [
+        "小明现在年龄",
+        "未来年龄变化",
+        "未来倍数关系"
+      ],
+      "domain_knowledge": [
+        "年龄推算",
+        "倍数关系变化"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_040",
+      "complexity_level": "L2_medium",
+      "problem": "一个水箱可以装776升水。现在水箱里有水164升，水龙头每分钟流入19升水。需要多少分钟才能把水箱装满？",
+      "answer": "32",
+      "solution_steps": [
+        "计算还需要的水量：776 - 164 = 612升",
+        "计算需要的时间：612 ÷ 19 = 32分钟"
+      ],
+      "explicit_relations": [
+        "水箱容量",
+        "现有水量",
+        "流入速率"
+      ],
+      "implicit_relations": [
+        "剩余容量=总容量-现有量",
+        "时间=剩余量÷流入速率"
+      ],
+      "domain_knowledge": [
+        "容量计算",
+        "流量与时间关系"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_041",
+      "complexity_level": "L2_medium",
+      "problem": "一个水箱可以装722升水。现在水箱里有水200升，水龙头每分钟流入22升水。需要多少分钟才能把水箱装满？",
+      "answer": "23",
+      "solution_steps": [
+        "计算还需要的水量：722 - 200 = 522升",
+        "计算需要的时间：522 ÷ 22 = 23分钟"
+      ],
+      "explicit_relations": [
+        "水箱容量",
+        "现有水量",
+        "流入速率"
+      ],
+      "implicit_relations": [
+        "剩余容量=总容量-现有量",
+        "时间=剩余量÷流入速率"
+      ],
+      "domain_knowledge": [
+        "容量计算",
+        "流量与时间关系"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_042",
+      "complexity_level": "L2_medium",
+      "problem": "一个工厂每天生产108个零件，现在有订单需要2201个零件，但工厂库存已有257个零件。需要多少天才能完成订单？",
+      "answer": "18",
+      "solution_steps": [
+        "计算还需要生产的零件数：2201 - 257 = 1944个",
+        "计算需要的天数：1944 ÷ 108 = 18天"
+      ],
+      "explicit_relations": [
+        "日产量",
+        "订单数量",
+        "库存数量"
+      ],
+      "implicit_relations": [
+        "需生产量=订单量-库存量",
+        "时间=需生产量÷日产量"
+      ],
+      "domain_knowledge": [
+        "生产计划",
+        "库存管理"
+      ],
+      "inference_depth": 4,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_043",
+      "complexity_level": "L2_medium",
+      "problem": "小明的爸爸今年33岁，是小明年龄的3倍。3年后，爸爸的年龄是小明年龄的几倍？",
+      "answer": "2.6",
+      "solution_steps": [
+        "计算小明现在的年龄：33 ÷ 3 = 11岁",
+        "计算3年后小明的年龄：11 + 3 = 14岁",
+        "计算3年后爸爸的年龄：33 + 3 = 36岁",
+        "计算倍数关系：36 ÷ 14 = 2.6倍"
+      ],
+      "explicit_relations": [
+        "爸爸现在年龄",
+        "年龄倍数关系"
+      ],
+      "implicit_relations": [
+        "小明现在年龄",
+        "未来年龄变化",
+        "未来倍数关系"
+      ],
+      "domain_knowledge": [
+        "年龄推算",
+        "倍数关系变化"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_044",
+      "complexity_level": "L2_medium",
+      "problem": "一个水箱可以装730升水。现在水箱里有水197升，水龙头每分钟流入17升水。需要多少分钟才能把水箱装满？",
+      "answer": "31",
+      "solution_steps": [
+        "计算还需要的水量：730 - 197 = 533升",
+        "计算需要的时间：533 ÷ 17 = 31分钟"
+      ],
+      "explicit_relations": [
+        "水箱容量",
+        "现有水量",
+        "流入速率"
+      ],
+      "implicit_relations": [
+        "剩余容量=总容量-现有量",
+        "时间=剩余量÷流入速率"
+      ],
+      "domain_knowledge": [
+        "容量计算",
+        "流量与时间关系"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_045",
+      "complexity_level": "L2_medium",
+      "problem": "一个水箱可以装682升水。现在水箱里有水203升，水龙头每分钟流入20升水。需要多少分钟才能把水箱装满？",
+      "answer": "23",
+      "solution_steps": [
+        "计算还需要的水量：682 - 203 = 479升",
+        "计算需要的时间：479 ÷ 20 = 23分钟"
+      ],
+      "explicit_relations": [
+        "水箱容量",
+        "现有水量",
+        "流入速率"
+      ],
+      "implicit_relations": [
+        "剩余容量=总容量-现有量",
+        "时间=剩余量÷流入速率"
+      ],
+      "domain_knowledge": [
+        "容量计算",
+        "流量与时间关系"
+      ],
+      "inference_depth": 4,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_046",
+      "complexity_level": "L2_medium",
+      "problem": "一个工厂每天生产126个零件，现在有订单需要1733个零件，但工厂库存已有347个零件。需要多少天才能完成订单？",
+      "answer": "11",
+      "solution_steps": [
+        "计算还需要生产的零件数：1733 - 347 = 1386个",
+        "计算需要的天数：1386 ÷ 126 = 11天"
+      ],
+      "explicit_relations": [
+        "日产量",
+        "订单数量",
+        "库存数量"
+      ],
+      "implicit_relations": [
+        "需生产量=订单量-库存量",
+        "时间=需生产量÷日产量"
+      ],
+      "domain_knowledge": [
+        "生产计划",
+        "库存管理"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_047",
+      "complexity_level": "L2_medium",
+      "problem": "一个水箱可以装416升水。现在水箱里有水123升，水龙头每分钟流入24升水。需要多少分钟才能把水箱装满？",
+      "answer": "12",
+      "solution_steps": [
+        "计算还需要的水量：416 - 123 = 293升",
+        "计算需要的时间：293 ÷ 24 = 12分钟"
+      ],
+      "explicit_relations": [
+        "水箱容量",
+        "现有水量",
+        "流入速率"
+      ],
+      "implicit_relations": [
+        "剩余容量=总容量-现有量",
+        "时间=剩余量÷流入速率"
+      ],
+      "domain_knowledge": [
+        "容量计算",
+        "流量与时间关系"
+      ],
+      "inference_depth": 4,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_048",
+      "complexity_level": "L2_medium",
+      "problem": "一个工厂每天生产123个零件，现在有订单需要2074个零件，但工厂库存已有352个零件。需要多少天才能完成订单？",
+      "answer": "14",
+      "solution_steps": [
+        "计算还需要生产的零件数：2074 - 352 = 1722个",
+        "计算需要的天数：1722 ÷ 123 = 14天"
+      ],
+      "explicit_relations": [
+        "日产量",
+        "订单数量",
+        "库存数量"
+      ],
+      "implicit_relations": [
+        "需生产量=订单量-库存量",
+        "时间=需生产量÷日产量"
+      ],
+      "domain_knowledge": [
+        "生产计划",
+        "库存管理"
+      ],
+      "inference_depth": 4,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_049",
+      "complexity_level": "L2_medium",
+      "problem": "一个工厂每天生产129个零件，现在有订单需要1528个零件，但工厂库存已有238个零件。需要多少天才能完成订单？",
+      "answer": "10",
+      "solution_steps": [
+        "计算还需要生产的零件数：1528 - 238 = 1290个",
+        "计算需要的天数：1290 ÷ 129 = 10天"
+      ],
+      "explicit_relations": [
+        "日产量",
+        "订单数量",
+        "库存数量"
+      ],
+      "implicit_relations": [
+        "需生产量=订单量-库存量",
+        "时间=需生产量÷日产量"
+      ],
+      "domain_knowledge": [
+        "生产计划",
+        "库存管理"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_050",
+      "complexity_level": "L2_medium",
+      "problem": "一个工厂每天生产98个零件，现在有订单需要1338个零件，但工厂库存已有358个零件。需要多少天才能完成订单？",
+      "answer": "10",
+      "solution_steps": [
+        "计算还需要生产的零件数：1338 - 358 = 980个",
+        "计算需要的天数：980 ÷ 98 = 10天"
+      ],
+      "explicit_relations": [
+        "日产量",
+        "订单数量",
+        "库存数量"
+      ],
+      "implicit_relations": [
+        "需生产量=订单量-库存量",
+        "时间=需生产量÷日产量"
+      ],
+      "domain_knowledge": [
+        "生产计划",
+        "库存管理"
+      ],
+      "inference_depth": 4,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_051",
+      "complexity_level": "L2_medium",
+      "problem": "小明的爸爸今年42岁，是小明年龄的3倍。5年后，爸爸的年龄是小明年龄的几倍？",
+      "answer": "2.5",
+      "solution_steps": [
+        "计算小明现在的年龄：42 ÷ 3 = 14岁",
+        "计算5年后小明的年龄：14 + 5 = 19岁",
+        "计算5年后爸爸的年龄：42 + 5 = 47岁",
+        "计算倍数关系：47 ÷ 19 = 2.5倍"
+      ],
+      "explicit_relations": [
+        "爸爸现在年龄",
+        "年龄倍数关系"
+      ],
+      "implicit_relations": [
+        "小明现在年龄",
+        "未来年龄变化",
+        "未来倍数关系"
+      ],
+      "domain_knowledge": [
+        "年龄推算",
+        "倍数关系变化"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_052",
+      "complexity_level": "L2_medium",
+      "problem": "一个工厂每天生产130个零件，现在有订单需要1317个零件，但工厂库存已有277个零件。需要多少天才能完成订单？",
+      "answer": "8",
+      "solution_steps": [
+        "计算还需要生产的零件数：1317 - 277 = 1040个",
+        "计算需要的天数：1040 ÷ 130 = 8天"
+      ],
+      "explicit_relations": [
+        "日产量",
+        "订单数量",
+        "库存数量"
+      ],
+      "implicit_relations": [
+        "需生产量=订单量-库存量",
+        "时间=需生产量÷日产量"
+      ],
+      "domain_knowledge": [
+        "生产计划",
+        "库存管理"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_053",
+      "complexity_level": "L2_medium",
+      "problem": "一个水箱可以装545升水。现在水箱里有水271升，水龙头每分钟流入23升水。需要多少分钟才能把水箱装满？",
+      "answer": "11",
+      "solution_steps": [
+        "计算还需要的水量：545 - 271 = 274升",
+        "计算需要的时间：274 ÷ 23 = 11分钟"
+      ],
+      "explicit_relations": [
+        "水箱容量",
+        "现有水量",
+        "流入速率"
+      ],
+      "implicit_relations": [
+        "剩余容量=总容量-现有量",
+        "时间=剩余量÷流入速率"
+      ],
+      "domain_knowledge": [
+        "容量计算",
+        "流量与时间关系"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_054",
+      "complexity_level": "L2_medium",
+      "problem": "小明的爸爸今年36岁，是小明年龄的3倍。5年后，爸爸的年龄是小明年龄的几倍？",
+      "answer": "2.4",
+      "solution_steps": [
+        "计算小明现在的年龄：36 ÷ 3 = 12岁",
+        "计算5年后小明的年龄：12 + 5 = 17岁",
+        "计算5年后爸爸的年龄：36 + 5 = 41岁",
+        "计算倍数关系：41 ÷ 17 = 2.4倍"
+      ],
+      "explicit_relations": [
+        "爸爸现在年龄",
+        "年龄倍数关系"
+      ],
+      "implicit_relations": [
+        "小明现在年龄",
+        "未来年龄变化",
+        "未来倍数关系"
+      ],
+      "domain_knowledge": [
+        "年龄推算",
+        "倍数关系变化"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_055",
+      "complexity_level": "L2_medium",
+      "problem": "一个水箱可以装486升水。现在水箱里有水176升，水龙头每分钟流入20升水。需要多少分钟才能把水箱装满？",
+      "answer": "15",
+      "solution_steps": [
+        "计算还需要的水量：486 - 176 = 310升",
+        "计算需要的时间：310 ÷ 20 = 15分钟"
+      ],
+      "explicit_relations": [
+        "水箱容量",
+        "现有水量",
+        "流入速率"
+      ],
+      "implicit_relations": [
+        "剩余容量=总容量-现有量",
+        "时间=剩余量÷流入速率"
+      ],
+      "domain_knowledge": [
+        "容量计算",
+        "流量与时间关系"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_056",
+      "complexity_level": "L2_medium",
+      "problem": "一个工厂每天生产132个零件，现在有订单需要1947个零件，但工厂库存已有231个零件。需要多少天才能完成订单？",
+      "answer": "13",
+      "solution_steps": [
+        "计算还需要生产的零件数：1947 - 231 = 1716个",
+        "计算需要的天数：1716 ÷ 132 = 13天"
+      ],
+      "explicit_relations": [
+        "日产量",
+        "订单数量",
+        "库存数量"
+      ],
+      "implicit_relations": [
+        "需生产量=订单量-库存量",
+        "时间=需生产量÷日产量"
+      ],
+      "domain_knowledge": [
+        "生产计划",
+        "库存管理"
+      ],
+      "inference_depth": 4,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_057",
+      "complexity_level": "L2_medium",
+      "problem": "一个水箱可以装578升水。现在水箱里有水233升，水龙头每分钟流入19升水。需要多少分钟才能把水箱装满？",
+      "answer": "18",
+      "solution_steps": [
+        "计算还需要的水量：578 - 233 = 345升",
+        "计算需要的时间：345 ÷ 19 = 18分钟"
+      ],
+      "explicit_relations": [
+        "水箱容量",
+        "现有水量",
+        "流入速率"
+      ],
+      "implicit_relations": [
+        "剩余容量=总容量-现有量",
+        "时间=剩余量÷流入速率"
+      ],
+      "domain_knowledge": [
+        "容量计算",
+        "流量与时间关系"
+      ],
+      "inference_depth": 4,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_058",
+      "complexity_level": "L2_medium",
+      "problem": "一个水箱可以装546升水。现在水箱里有水230升，水龙头每分钟流入19升水。需要多少分钟才能把水箱装满？",
+      "answer": "16",
+      "solution_steps": [
+        "计算还需要的水量：546 - 230 = 316升",
+        "计算需要的时间：316 ÷ 19 = 16分钟"
+      ],
+      "explicit_relations": [
+        "水箱容量",
+        "现有水量",
+        "流入速率"
+      ],
+      "implicit_relations": [
+        "剩余容量=总容量-现有量",
+        "时间=剩余量÷流入速率"
+      ],
+      "domain_knowledge": [
+        "容量计算",
+        "流量与时间关系"
+      ],
+      "inference_depth": 4,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_059",
+      "complexity_level": "L2_medium",
+      "problem": "一个水箱可以装537升水。现在水箱里有水207升，水龙头每分钟流入12升水。需要多少分钟才能把水箱装满？",
+      "answer": "27",
+      "solution_steps": [
+        "计算还需要的水量：537 - 207 = 330升",
+        "计算需要的时间：330 ÷ 12 = 27分钟"
+      ],
+      "explicit_relations": [
+        "水箱容量",
+        "现有水量",
+        "流入速率"
+      ],
+      "implicit_relations": [
+        "剩余容量=总容量-现有量",
+        "时间=剩余量÷流入速率"
+      ],
+      "domain_knowledge": [
+        "容量计算",
+        "流量与时间关系"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_060",
+      "complexity_level": "L2_medium",
+      "problem": "一个水箱可以装615升水。现在水箱里有水107升，水龙头每分钟流入16升水。需要多少分钟才能把水箱装满？",
+      "answer": "31",
+      "solution_steps": [
+        "计算还需要的水量：615 - 107 = 508升",
+        "计算需要的时间：508 ÷ 16 = 31分钟"
+      ],
+      "explicit_relations": [
+        "水箱容量",
+        "现有水量",
+        "流入速率"
+      ],
+      "implicit_relations": [
+        "剩余容量=总容量-现有量",
+        "时间=剩余量÷流入速率"
+      ],
+      "domain_knowledge": [
+        "容量计算",
+        "流量与时间关系"
+      ],
+      "inference_depth": 4,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_061",
+      "complexity_level": "L2_medium",
+      "problem": "一个水箱可以装707升水。现在水箱里有水189升，水龙头每分钟流入18升水。需要多少分钟才能把水箱装满？",
+      "answer": "28",
+      "solution_steps": [
+        "计算还需要的水量：707 - 189 = 518升",
+        "计算需要的时间：518 ÷ 18 = 28分钟"
+      ],
+      "explicit_relations": [
+        "水箱容量",
+        "现有水量",
+        "流入速率"
+      ],
+      "implicit_relations": [
+        "剩余容量=总容量-现有量",
+        "时间=剩余量÷流入速率"
+      ],
+      "domain_knowledge": [
+        "容量计算",
+        "流量与时间关系"
+      ],
+      "inference_depth": 4,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_062",
+      "complexity_level": "L2_medium",
+      "problem": "一个水箱可以装510升水。现在水箱里有水159升，水龙头每分钟流入23升水。需要多少分钟才能把水箱装满？",
+      "answer": "15",
+      "solution_steps": [
+        "计算还需要的水量：510 - 159 = 351升",
+        "计算需要的时间：351 ÷ 23 = 15分钟"
+      ],
+      "explicit_relations": [
+        "水箱容量",
+        "现有水量",
+        "流入速率"
+      ],
+      "implicit_relations": [
+        "剩余容量=总容量-现有量",
+        "时间=剩余量÷流入速率"
+      ],
+      "domain_knowledge": [
+        "容量计算",
+        "流量与时间关系"
+      ],
+      "inference_depth": 4,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_063",
+      "complexity_level": "L2_medium",
+      "problem": "一个工厂每天生产118个零件，现在有订单需要2183个零件，但工厂库存已有295个零件。需要多少天才能完成订单？",
+      "answer": "16",
+      "solution_steps": [
+        "计算还需要生产的零件数：2183 - 295 = 1888个",
+        "计算需要的天数：1888 ÷ 118 = 16天"
+      ],
+      "explicit_relations": [
+        "日产量",
+        "订单数量",
+        "库存数量"
+      ],
+      "implicit_relations": [
+        "需生产量=订单量-库存量",
+        "时间=需生产量÷日产量"
+      ],
+      "domain_knowledge": [
+        "生产计划",
+        "库存管理"
+      ],
+      "inference_depth": 4,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_064",
+      "complexity_level": "L2_medium",
+      "problem": "一个工厂每天生产113个零件，现在有订单需要2206个零件，但工厂库存已有398个零件。需要多少天才能完成订单？",
+      "answer": "16",
+      "solution_steps": [
+        "计算还需要生产的零件数：2206 - 398 = 1808个",
+        "计算需要的天数：1808 ÷ 113 = 16天"
+      ],
+      "explicit_relations": [
+        "日产量",
+        "订单数量",
+        "库存数量"
+      ],
+      "implicit_relations": [
+        "需生产量=订单量-库存量",
+        "时间=需生产量÷日产量"
+      ],
+      "domain_knowledge": [
+        "生产计划",
+        "库存管理"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_065",
+      "complexity_level": "L2_medium",
+      "problem": "一个水箱可以装542升水。现在水箱里有水213升，水龙头每分钟流入10升水。需要多少分钟才能把水箱装满？",
+      "answer": "32",
+      "solution_steps": [
+        "计算还需要的水量：542 - 213 = 329升",
+        "计算需要的时间：329 ÷ 10 = 32分钟"
+      ],
+      "explicit_relations": [
+        "水箱容量",
+        "现有水量",
+        "流入速率"
+      ],
+      "implicit_relations": [
+        "剩余容量=总容量-现有量",
+        "时间=剩余量÷流入速率"
+      ],
+      "domain_knowledge": [
+        "容量计算",
+        "流量与时间关系"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_066",
+      "complexity_level": "L2_medium",
+      "problem": "一个工厂每天生产94个零件，现在有订单需要1566个零件，但工厂库存已有156个零件。需要多少天才能完成订单？",
+      "answer": "15",
+      "solution_steps": [
+        "计算还需要生产的零件数：1566 - 156 = 1410个",
+        "计算需要的天数：1410 ÷ 94 = 15天"
+      ],
+      "explicit_relations": [
+        "日产量",
+        "订单数量",
+        "库存数量"
+      ],
+      "implicit_relations": [
+        "需生产量=订单量-库存量",
+        "时间=需生产量÷日产量"
+      ],
+      "domain_knowledge": [
+        "生产计划",
+        "库存管理"
+      ],
+      "inference_depth": 4,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_067",
+      "complexity_level": "L2_medium",
+      "problem": "一个水箱可以装462升水。现在水箱里有水161升，水龙头每分钟流入18升水。需要多少分钟才能把水箱装满？",
+      "answer": "16",
+      "solution_steps": [
+        "计算还需要的水量：462 - 161 = 301升",
+        "计算需要的时间：301 ÷ 18 = 16分钟"
+      ],
+      "explicit_relations": [
+        "水箱容量",
+        "现有水量",
+        "流入速率"
+      ],
+      "implicit_relations": [
+        "剩余容量=总容量-现有量",
+        "时间=剩余量÷流入速率"
+      ],
+      "domain_knowledge": [
+        "容量计算",
+        "流量与时间关系"
+      ],
+      "inference_depth": 4,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_068",
+      "complexity_level": "L2_medium",
+      "problem": "一个工厂每天生产114个零件，现在有订单需要2328个零件，但工厂库存已有162个零件。需要多少天才能完成订单？",
+      "answer": "19",
+      "solution_steps": [
+        "计算还需要生产的零件数：2328 - 162 = 2166个",
+        "计算需要的天数：2166 ÷ 114 = 19天"
+      ],
+      "explicit_relations": [
+        "日产量",
+        "订单数量",
+        "库存数量"
+      ],
+      "implicit_relations": [
+        "需生产量=订单量-库存量",
+        "时间=需生产量÷日产量"
+      ],
+      "domain_knowledge": [
+        "生产计划",
+        "库存管理"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_069",
+      "complexity_level": "L2_medium",
+      "problem": "一个工厂每天生产128个零件，现在有订单需要1553个零件，但工厂库存已有145个零件。需要多少天才能完成订单？",
+      "answer": "11",
+      "solution_steps": [
+        "计算还需要生产的零件数：1553 - 145 = 1408个",
+        "计算需要的天数：1408 ÷ 128 = 11天"
+      ],
+      "explicit_relations": [
+        "日产量",
+        "订单数量",
+        "库存数量"
+      ],
+      "implicit_relations": [
+        "需生产量=订单量-库存量",
+        "时间=需生产量÷日产量"
+      ],
+      "domain_knowledge": [
+        "生产计划",
+        "库存管理"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_070",
+      "complexity_level": "L2_medium",
+      "problem": "一个工厂每天生产125个零件，现在有订单需要1813个零件，但工厂库存已有188个零件。需要多少天才能完成订单？",
+      "answer": "13",
+      "solution_steps": [
+        "计算还需要生产的零件数：1813 - 188 = 1625个",
+        "计算需要的天数：1625 ÷ 125 = 13天"
+      ],
+      "explicit_relations": [
+        "日产量",
+        "订单数量",
+        "库存数量"
+      ],
+      "implicit_relations": [
+        "需生产量=订单量-库存量",
+        "时间=需生产量÷日产量"
+      ],
+      "domain_knowledge": [
+        "生产计划",
+        "库存管理"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_071",
+      "complexity_level": "L2_medium",
+      "problem": "一个水箱可以装498升水。现在水箱里有水189升，水龙头每分钟流入24升水。需要多少分钟才能把水箱装满？",
+      "answer": "12",
+      "solution_steps": [
+        "计算还需要的水量：498 - 189 = 309升",
+        "计算需要的时间：309 ÷ 24 = 12分钟"
+      ],
+      "explicit_relations": [
+        "水箱容量",
+        "现有水量",
+        "流入速率"
+      ],
+      "implicit_relations": [
+        "剩余容量=总容量-现有量",
+        "时间=剩余量÷流入速率"
+      ],
+      "domain_knowledge": [
+        "容量计算",
+        "流量与时间关系"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_072",
+      "complexity_level": "L2_medium",
+      "problem": "一个工厂每天生产125个零件，现在有订单需要1739个零件，但工厂库存已有114个零件。需要多少天才能完成订单？",
+      "answer": "13",
+      "solution_steps": [
+        "计算还需要生产的零件数：1739 - 114 = 1625个",
+        "计算需要的天数：1625 ÷ 125 = 13天"
+      ],
+      "explicit_relations": [
+        "日产量",
+        "订单数量",
+        "库存数量"
+      ],
+      "implicit_relations": [
+        "需生产量=订单量-库存量",
+        "时间=需生产量÷日产量"
+      ],
+      "domain_knowledge": [
+        "生产计划",
+        "库存管理"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_073",
+      "complexity_level": "L2_medium",
+      "problem": "一个水箱可以装598升水。现在水箱里有水258升，水龙头每分钟流入12升水。需要多少分钟才能把水箱装满？",
+      "answer": "28",
+      "solution_steps": [
+        "计算还需要的水量：598 - 258 = 340升",
+        "计算需要的时间：340 ÷ 12 = 28分钟"
+      ],
+      "explicit_relations": [
+        "水箱容量",
+        "现有水量",
+        "流入速率"
+      ],
+      "implicit_relations": [
+        "剩余容量=总容量-现有量",
+        "时间=剩余量÷流入速率"
+      ],
+      "domain_knowledge": [
+        "容量计算",
+        "流量与时间关系"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_074",
+      "complexity_level": "L2_medium",
+      "problem": "小明的爸爸今年36岁，是小明年龄的4倍。3年后，爸爸的年龄是小明年龄的几倍？",
+      "answer": "3.2",
+      "solution_steps": [
+        "计算小明现在的年龄：36 ÷ 4 = 9岁",
+        "计算3年后小明的年龄：9 + 3 = 12岁",
+        "计算3年后爸爸的年龄：36 + 3 = 39岁",
+        "计算倍数关系：39 ÷ 12 = 3.2倍"
+      ],
+      "explicit_relations": [
+        "爸爸现在年龄",
+        "年龄倍数关系"
+      ],
+      "implicit_relations": [
+        "小明现在年龄",
+        "未来年龄变化",
+        "未来倍数关系"
+      ],
+      "domain_knowledge": [
+        "年龄推算",
+        "倍数关系变化"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_075",
+      "complexity_level": "L2_medium",
+      "problem": "小明的爸爸今年20岁，是小明年龄的2倍。7年后，爸爸的年龄是小明年龄的几倍？",
+      "answer": "1.6",
+      "solution_steps": [
+        "计算小明现在的年龄：20 ÷ 2 = 10岁",
+        "计算7年后小明的年龄：10 + 7 = 17岁",
+        "计算7年后爸爸的年龄：20 + 7 = 27岁",
+        "计算倍数关系：27 ÷ 17 = 1.6倍"
+      ],
+      "explicit_relations": [
+        "爸爸现在年龄",
+        "年龄倍数关系"
+      ],
+      "implicit_relations": [
+        "小明现在年龄",
+        "未来年龄变化",
+        "未来倍数关系"
+      ],
+      "domain_knowledge": [
+        "年龄推算",
+        "倍数关系变化"
+      ],
+      "inference_depth": 4,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_076",
+      "complexity_level": "L2_medium",
+      "problem": "一个水箱可以装556升水。现在水箱里有水256升，水龙头每分钟流入14升水。需要多少分钟才能把水箱装满？",
+      "answer": "21",
+      "solution_steps": [
+        "计算还需要的水量：556 - 256 = 300升",
+        "计算需要的时间：300 ÷ 14 = 21分钟"
+      ],
+      "explicit_relations": [
+        "水箱容量",
+        "现有水量",
+        "流入速率"
+      ],
+      "implicit_relations": [
+        "剩余容量=总容量-现有量",
+        "时间=剩余量÷流入速率"
+      ],
+      "domain_knowledge": [
+        "容量计算",
+        "流量与时间关系"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_077",
+      "complexity_level": "L2_medium",
+      "problem": "小明的爸爸今年24岁，是小明年龄的3倍。5年后，爸爸的年龄是小明年龄的几倍？",
+      "answer": "2.2",
+      "solution_steps": [
+        "计算小明现在的年龄：24 ÷ 3 = 8岁",
+        "计算5年后小明的年龄：8 + 5 = 13岁",
+        "计算5年后爸爸的年龄：24 + 5 = 29岁",
+        "计算倍数关系：29 ÷ 13 = 2.2倍"
+      ],
+      "explicit_relations": [
+        "爸爸现在年龄",
+        "年龄倍数关系"
+      ],
+      "implicit_relations": [
+        "小明现在年龄",
+        "未来年龄变化",
+        "未来倍数关系"
+      ],
+      "domain_knowledge": [
+        "年龄推算",
+        "倍数关系变化"
+      ],
+      "inference_depth": 4,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_078",
+      "complexity_level": "L2_medium",
+      "problem": "一个工厂每天生产115个零件，现在有订单需要2241个零件，但工厂库存已有286个零件。需要多少天才能完成订单？",
+      "answer": "17",
+      "solution_steps": [
+        "计算还需要生产的零件数：2241 - 286 = 1955个",
+        "计算需要的天数：1955 ÷ 115 = 17天"
+      ],
+      "explicit_relations": [
+        "日产量",
+        "订单数量",
+        "库存数量"
+      ],
+      "implicit_relations": [
+        "需生产量=订单量-库存量",
+        "时间=需生产量÷日产量"
+      ],
+      "domain_knowledge": [
+        "生产计划",
+        "库存管理"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_079",
+      "complexity_level": "L2_medium",
+      "problem": "一个工厂每天生产124个零件，现在有订单需要2217个零件，但工厂库存已有109个零件。需要多少天才能完成订单？",
+      "answer": "17",
+      "solution_steps": [
+        "计算还需要生产的零件数：2217 - 109 = 2108个",
+        "计算需要的天数：2108 ÷ 124 = 17天"
+      ],
+      "explicit_relations": [
+        "日产量",
+        "订单数量",
+        "库存数量"
+      ],
+      "implicit_relations": [
+        "需生产量=订单量-库存量",
+        "时间=需生产量÷日产量"
+      ],
+      "domain_knowledge": [
+        "生产计划",
+        "库存管理"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L2_080",
+      "complexity_level": "L2_medium",
+      "problem": "一个水箱可以装519升水。现在水箱里有水138升，水龙头每分钟流入12升水。需要多少分钟才能把水箱装满？",
+      "answer": "31",
+      "solution_steps": [
+        "计算还需要的水量：519 - 138 = 381升",
+        "计算需要的时间：381 ÷ 12 = 31分钟"
+      ],
+      "explicit_relations": [
+        "水箱容量",
+        "现有水量",
+        "流入速率"
+      ],
+      "implicit_relations": [
+        "剩余容量=总容量-现有量",
+        "时间=剩余量÷流入速率"
+      ],
+      "domain_knowledge": [
+        "容量计算",
+        "流量与时间关系"
+      ],
+      "inference_depth": 3,
+      "relation_count": 3
+    },
+    {
+      "id": "L3_001",
+      "complexity_level": "L3_deep",
+      "problem": "一个化学反应中，反应物A的浓度每小时减少30%。初始浓度为100mol/L，反应进行多少小时后浓度降到初始浓度的1/4？",
+      "answer": "3.89",
+      "solution_steps": [
+        "理解指数衰减：每小时浓度变为原来的70%",
+        "建立方程：100 × (0.7)^t = 100/4 = 25.0",
+        "简化方程：(0.7)^t = 0.25",
+        "取对数求解：t × ln(0.7) = ln(0.25)",
+        "计算结果：t = ln(0.25) / ln(0.7) ≈ 3.89小时"
+      ],
+      "explicit_relations": [
+        "初始浓度",
+        "衰减率",
+        "目标浓度比"
+      ],
+      "implicit_relations": [
+        "指数衰减模型",
+        "对数运算",
+        "浓度变化规律"
+      ],
+      "domain_knowledge": [
+        "化学动力学",
+        "指数函数",
+        "对数运算"
+      ],
+      "inference_depth": 6,
+      "relation_count": 5
+    },
+    {
+      "id": "L3_002",
+      "complexity_level": "L3_deep",
+      "problem": "一个化学反应中，反应物A的浓度每小时减少30%。初始浓度为100mol/L，反应进行多少小时后浓度降到初始浓度的1/16？",
+      "answer": "7.77",
+      "solution_steps": [
+        "理解指数衰减：每小时浓度变为原来的70%",
+        "建立方程：100 × (0.7)^t = 100/16 = 6.25",
+        "简化方程：(0.7)^t = 0.0625",
+        "取对数求解：t × ln(0.7) = ln(0.0625)",
+        "计算结果：t = ln(0.0625) / ln(0.7) ≈ 7.77小时"
+      ],
+      "explicit_relations": [
+        "初始浓度",
+        "衰减率",
+        "目标浓度比"
+      ],
+      "implicit_relations": [
+        "指数衰减模型",
+        "对数运算",
+        "浓度变化规律"
+      ],
+      "domain_knowledge": [
+        "化学动力学",
+        "指数函数",
+        "对数运算"
+      ],
+      "inference_depth": 5,
+      "relation_count": 5
+    },
+    {
+      "id": "L3_003",
+      "complexity_level": "L3_deep",
+      "problem": "一个化学反应中，反应物A的浓度每小时减少25%。初始浓度为100mol/L，反应进行多少小时后浓度降到初始浓度的1/16？",
+      "answer": "9.64",
+      "solution_steps": [
+        "理解指数衰减：每小时浓度变为原来的75%",
+        "建立方程：100 × (0.75)^t = 100/16 = 6.25",
+        "简化方程：(0.75)^t = 0.0625",
+        "取对数求解：t × ln(0.75) = ln(0.0625)",
+        "计算结果：t = ln(0.0625) / ln(0.75) ≈ 9.64小时"
+      ],
+      "explicit_relations": [
+        "初始浓度",
+        "衰减率",
+        "目标浓度比"
+      ],
+      "implicit_relations": [
+        "指数衰减模型",
+        "对数运算",
+        "浓度变化规律"
+      ],
+      "domain_knowledge": [
+        "化学动力学",
+        "指数函数",
+        "对数运算"
+      ],
+      "inference_depth": 6,
+      "relation_count": 4
+    },
+    {
+      "id": "L3_004",
+      "complexity_level": "L3_deep",
+      "problem": "一个圆柱形水塔，底面直径6米，高20米。如果要在水塔外表面（包括底面但不包括顶面）刷漆，每平方米需要0.5升油漆。总共需要多少升油漆？",
+      "answer": "202.6",
+      "solution_steps": [
+        "计算圆柱侧面积：π × 直径 × 高 = π × 6 × 20 = 120π平方米",
+        "计算底面积：π × (直径/2)² = π × 3² = 9π平方米",
+        "计算总面积：120π + 9π = 129π ≈ 405.27平方米",
+        "计算油漆用量：405.27 × 0.5 = 202.6升"
+      ],
+      "explicit_relations": [
+        "直径",
+        "高度",
+        "油漆用量比"
+      ],
+      "implicit_relations": [
+        "圆柱侧面积公式",
+        "圆面积公式",
+        "总表面积",
+        "材料用量计算"
+      ],
+      "domain_knowledge": [
+        "立体几何",
+        "圆柱表面积",
+        "材料估算"
+      ],
+      "inference_depth": 6,
+      "relation_count": 4
+    },
+    {
+      "id": "L3_005",
+      "complexity_level": "L3_deep",
+      "problem": "在20°C的环境中，有一块重量为224克的冰块。已知冰的融化潜热为334焦耳/克，环境每分钟向冰块传递热量55焦耳。冰块完全融化需要多少分钟？",
+      "answer": "1360",
+      "solution_steps": [
+        "理解物理概念：冰融化需要潜热，不改变温度",
+        "计算总需要热量：224克 × 334焦耳/克 = 74816焦耳",
+        "计算融化时间：74816焦耳 ÷ 55焦耳/分钟 = 1360分钟"
+      ],
+      "explicit_relations": [
+        "冰块重量",
+        "环境传热速率"
+      ],
+      "implicit_relations": [
+        "融化潜热概念",
+        "总热量需求",
+        "热传递过程"
+      ],
+      "domain_knowledge": [
+        "相变物理学",
+        "潜热概念",
+        "热传递原理"
+      ],
+      "inference_depth": 5,
+      "relation_count": 5
+    },
+    {
+      "id": "L3_006",
+      "complexity_level": "L3_deep",
+      "problem": "在20°C的环境中，有一块重量为502克的冰块。已知冰的融化潜热为334焦耳/克，环境每分钟向冰块传递热量70焦耳。冰块完全融化需要多少分钟？",
+      "answer": "2395",
+      "solution_steps": [
+        "理解物理概念：冰融化需要潜热，不改变温度",
+        "计算总需要热量：502克 × 334焦耳/克 = 167668焦耳",
+        "计算融化时间：167668焦耳 ÷ 70焦耳/分钟 = 2395分钟"
+      ],
+      "explicit_relations": [
+        "冰块重量",
+        "环境传热速率"
+      ],
+      "implicit_relations": [
+        "融化潜热概念",
+        "总热量需求",
+        "热传递过程"
+      ],
+      "domain_knowledge": [
+        "相变物理学",
+        "潜热概念",
+        "热传递原理"
+      ],
+      "inference_depth": 6,
+      "relation_count": 5
+    },
+    {
+      "id": "L3_007",
+      "complexity_level": "L3_deep",
+      "problem": "一个圆柱形水塔，底面直径9米，高14米。如果要在水塔外表面（包括底面但不包括顶面）刷漆，每平方米需要0.5升油漆。总共需要多少升油漆？",
+      "answer": "223.1",
+      "solution_steps": [
+        "计算圆柱侧面积：π × 直径 × 高 = π × 9 × 14 = 126π平方米",
+        "计算底面积：π × (直径/2)² = π × 4² = 16π平方米",
+        "计算总面积：126π + 16π = 142π ≈ 446.11平方米",
+        "计算油漆用量：446.11 × 0.5 = 223.1升"
+      ],
+      "explicit_relations": [
+        "直径",
+        "高度",
+        "油漆用量比"
+      ],
+      "implicit_relations": [
+        "圆柱侧面积公式",
+        "圆面积公式",
+        "总表面积",
+        "材料用量计算"
+      ],
+      "domain_knowledge": [
+        "立体几何",
+        "圆柱表面积",
+        "材料估算"
+      ],
+      "inference_depth": 6,
+      "relation_count": 4
+    },
+    {
+      "id": "L3_008",
+      "complexity_level": "L3_deep",
+      "problem": "一个化学反应中，反应物A的浓度每小时减少20%。初始浓度为100mol/L，反应进行多少小时后浓度降到初始浓度的1/4？",
+      "answer": "6.21",
+      "solution_steps": [
+        "理解指数衰减：每小时浓度变为原来的80%",
+        "建立方程：100 × (0.8)^t = 100/4 = 25.0",
+        "简化方程：(0.8)^t = 0.25",
+        "取对数求解：t × ln(0.8) = ln(0.25)",
+        "计算结果：t = ln(0.25) / ln(0.8) ≈ 6.21小时"
+      ],
+      "explicit_relations": [
+        "初始浓度",
+        "衰减率",
+        "目标浓度比"
+      ],
+      "implicit_relations": [
+        "指数衰减模型",
+        "对数运算",
+        "浓度变化规律"
+      ],
+      "domain_knowledge": [
+        "化学动力学",
+        "指数函数",
+        "对数运算"
+      ],
+      "inference_depth": 6,
+      "relation_count": 5
+    },
+    {
+      "id": "L3_009",
+      "complexity_level": "L3_deep",
+      "problem": "一个化学反应中，反应物A的浓度每小时减少20%。初始浓度为100mol/L，反应进行多少小时后浓度降到初始浓度的1/16？",
+      "answer": "12.43",
+      "solution_steps": [
+        "理解指数衰减：每小时浓度变为原来的80%",
+        "建立方程：100 × (0.8)^t = 100/16 = 6.25",
+        "简化方程：(0.8)^t = 0.0625",
+        "取对数求解：t × ln(0.8) = ln(0.0625)",
+        "计算结果：t = ln(0.0625) / ln(0.8) ≈ 12.43小时"
+      ],
+      "explicit_relations": [
+        "初始浓度",
+        "衰减率",
+        "目标浓度比"
+      ],
+      "implicit_relations": [
+        "指数衰减模型",
+        "对数运算",
+        "浓度变化规律"
+      ],
+      "domain_knowledge": [
+        "化学动力学",
+        "指数函数",
+        "对数运算"
+      ],
+      "inference_depth": 5,
+      "relation_count": 5
+    },
+    {
+      "id": "L3_010",
+      "complexity_level": "L3_deep",
+      "problem": "一个化学反应中，反应物A的浓度每小时减少15%。初始浓度为100mol/L，反应进行多少小时后浓度降到初始浓度的1/8？",
+      "answer": "12.8",
+      "solution_steps": [
+        "理解指数衰减：每小时浓度变为原来的85%",
+        "建立方程：100 × (0.85)^t = 100/8 = 12.5",
+        "简化方程：(0.85)^t = 0.125",
+        "取对数求解：t × ln(0.85) = ln(0.125)",
+        "计算结果：t = ln(0.125) / ln(0.85) ≈ 12.8小时"
+      ],
+      "explicit_relations": [
+        "初始浓度",
+        "衰减率",
+        "目标浓度比"
+      ],
+      "implicit_relations": [
+        "指数衰减模型",
+        "对数运算",
+        "浓度变化规律"
+      ],
+      "domain_knowledge": [
+        "化学动力学",
+        "指数函数",
+        "对数运算"
+      ],
+      "inference_depth": 5,
+      "relation_count": 5
+    },
+    {
+      "id": "L3_011",
+      "complexity_level": "L3_deep",
+      "problem": "一个化学反应中，反应物A的浓度每小时减少20%。初始浓度为100mol/L，反应进行多少小时后浓度降到初始浓度的1/16？",
+      "answer": "12.43",
+      "solution_steps": [
+        "理解指数衰减：每小时浓度变为原来的80%",
+        "建立方程：100 × (0.8)^t = 100/16 = 6.25",
+        "简化方程：(0.8)^t = 0.0625",
+        "取对数求解：t × ln(0.8) = ln(0.0625)",
+        "计算结果：t = ln(0.0625) / ln(0.8) ≈ 12.43小时"
+      ],
+      "explicit_relations": [
+        "初始浓度",
+        "衰减率",
+        "目标浓度比"
+      ],
+      "implicit_relations": [
+        "指数衰减模型",
+        "对数运算",
+        "浓度变化规律"
+      ],
+      "domain_knowledge": [
+        "化学动力学",
+        "指数函数",
+        "对数运算"
+      ],
+      "inference_depth": 6,
+      "relation_count": 5
+    },
+    {
+      "id": "L3_012",
+      "complexity_level": "L3_deep",
+      "problem": "一个化学反应中，反应物A的浓度每小时减少15%。初始浓度为100mol/L，反应进行多少小时后浓度降到初始浓度的1/4？",
+      "answer": "8.53",
+      "solution_steps": [
+        "理解指数衰减：每小时浓度变为原来的85%",
+        "建立方程：100 × (0.85)^t = 100/4 = 25.0",
+        "简化方程：(0.85)^t = 0.25",
+        "取对数求解：t × ln(0.85) = ln(0.25)",
+        "计算结果：t = ln(0.25) / ln(0.85) ≈ 8.53小时"
+      ],
+      "explicit_relations": [
+        "初始浓度",
+        "衰减率",
+        "目标浓度比"
+      ],
+      "implicit_relations": [
+        "指数衰减模型",
+        "对数运算",
+        "浓度变化规律"
+      ],
+      "domain_knowledge": [
+        "化学动力学",
+        "指数函数",
+        "对数运算"
+      ],
+      "inference_depth": 6,
+      "relation_count": 4
+    },
+    {
+      "id": "L3_013",
+      "complexity_level": "L3_deep",
+      "problem": "在20°C的环境中，有一块重量为514克的冰块。已知冰的融化潜热为334焦耳/克，环境每分钟向冰块传递热量75焦耳。冰块完全融化需要多少分钟？",
+      "answer": "2289",
+      "solution_steps": [
+        "理解物理概念：冰融化需要潜热，不改变温度",
+        "计算总需要热量：514克 × 334焦耳/克 = 171676焦耳",
+        "计算融化时间：171676焦耳 ÷ 75焦耳/分钟 = 2289分钟"
+      ],
+      "explicit_relations": [
+        "冰块重量",
+        "环境传热速率"
+      ],
+      "implicit_relations": [
+        "融化潜热概念",
+        "总热量需求",
+        "热传递过程"
+      ],
+      "domain_knowledge": [
+        "相变物理学",
+        "潜热概念",
+        "热传递原理"
+      ],
+      "inference_depth": 6,
+      "relation_count": 4
+    },
+    {
+      "id": "L3_014",
+      "complexity_level": "L3_deep",
+      "problem": "一个化学反应中，反应物A的浓度每小时减少15%。初始浓度为100mol/L，反应进行多少小时后浓度降到初始浓度的1/4？",
+      "answer": "8.53",
+      "solution_steps": [
+        "理解指数衰减：每小时浓度变为原来的85%",
+        "建立方程：100 × (0.85)^t = 100/4 = 25.0",
+        "简化方程：(0.85)^t = 0.25",
+        "取对数求解：t × ln(0.85) = ln(0.25)",
+        "计算结果：t = ln(0.25) / ln(0.85) ≈ 8.53小时"
+      ],
+      "explicit_relations": [
+        "初始浓度",
+        "衰减率",
+        "目标浓度比"
+      ],
+      "implicit_relations": [
+        "指数衰减模型",
+        "对数运算",
+        "浓度变化规律"
+      ],
+      "domain_knowledge": [
+        "化学动力学",
+        "指数函数",
+        "对数运算"
+      ],
+      "inference_depth": 6,
+      "relation_count": 5
+    },
+    {
+      "id": "L3_015",
+      "complexity_level": "L3_deep",
+      "problem": "一个圆柱形水塔，底面直径8米，高10米。如果要在水塔外表面（包括底面但不包括顶面）刷漆，每平方米需要0.5升油漆。总共需要多少升油漆？",
+      "answer": "150.8",
+      "solution_steps": [
+        "计算圆柱侧面积：π × 直径 × 高 = π × 8 × 10 = 80π平方米",
+        "计算底面积：π × (直径/2)² = π × 4² = 16π平方米",
+        "计算总面积：80π + 16π = 96π ≈ 301.59平方米",
+        "计算油漆用量：301.59 × 0.5 = 150.8升"
+      ],
+      "explicit_relations": [
+        "直径",
+        "高度",
+        "油漆用量比"
+      ],
+      "implicit_relations": [
+        "圆柱侧面积公式",
+        "圆面积公式",
+        "总表面积",
+        "材料用量计算"
+      ],
+      "domain_knowledge": [
+        "立体几何",
+        "圆柱表面积",
+        "材料估算"
+      ],
+      "inference_depth": 5,
+      "relation_count": 4
+    },
+    {
+      "id": "L3_016",
+      "complexity_level": "L3_deep",
+      "problem": "在20°C的环境中，有一块重量为348克的冰块。已知冰的融化潜热为334焦耳/克，环境每分钟向冰块传递热量78焦耳。冰块完全融化需要多少分钟？",
+      "answer": "1490",
+      "solution_steps": [
+        "理解物理概念：冰融化需要潜热，不改变温度",
+        "计算总需要热量：348克 × 334焦耳/克 = 116232焦耳",
+        "计算融化时间：116232焦耳 ÷ 78焦耳/分钟 = 1490分钟"
+      ],
+      "explicit_relations": [
+        "冰块重量",
+        "环境传热速率"
+      ],
+      "implicit_relations": [
+        "融化潜热概念",
+        "总热量需求",
+        "热传递过程"
+      ],
+      "domain_knowledge": [
+        "相变物理学",
+        "潜热概念",
+        "热传递原理"
+      ],
+      "inference_depth": 6,
+      "relation_count": 4
+    },
+    {
+      "id": "L3_017",
+      "complexity_level": "L3_deep",
+      "problem": "一个圆柱形水塔，底面直径10米，高15米。如果要在水塔外表面（包括底面但不包括顶面）刷漆，每平方米需要0.5升油漆。总共需要多少升油漆？",
+      "answer": "274.9",
+      "solution_steps": [
+        "计算圆柱侧面积：π × 直径 × 高 = π × 10 × 15 = 150π平方米",
+        "计算底面积：π × (直径/2)² = π × 5² = 25π平方米",
+        "计算总面积：150π + 25π = 175π ≈ 549.78平方米",
+        "计算油漆用量：549.78 × 0.5 = 274.9升"
+      ],
+      "explicit_relations": [
+        "直径",
+        "高度",
+        "油漆用量比"
+      ],
+      "implicit_relations": [
+        "圆柱侧面积公式",
+        "圆面积公式",
+        "总表面积",
+        "材料用量计算"
+      ],
+      "domain_knowledge": [
+        "立体几何",
+        "圆柱表面积",
+        "材料估算"
+      ],
+      "inference_depth": 5,
+      "relation_count": 5
+    },
+    {
+      "id": "L3_018",
+      "complexity_level": "L3_deep",
+      "problem": "一个圆柱形水塔，底面直径10米，高17米。如果要在水塔外表面（包括底面但不包括顶面）刷漆，每平方米需要0.5升油漆。总共需要多少升油漆？",
+      "answer": "306.3",
+      "solution_steps": [
+        "计算圆柱侧面积：π × 直径 × 高 = π × 10 × 17 = 170π平方米",
+        "计算底面积：π × (直径/2)² = π × 5² = 25π平方米",
+        "计算总面积：170π + 25π = 195π ≈ 612.61平方米",
+        "计算油漆用量：612.61 × 0.5 = 306.3升"
+      ],
+      "explicit_relations": [
+        "直径",
+        "高度",
+        "油漆用量比"
+      ],
+      "implicit_relations": [
+        "圆柱侧面积公式",
+        "圆面积公式",
+        "总表面积",
+        "材料用量计算"
+      ],
+      "domain_knowledge": [
+        "立体几何",
+        "圆柱表面积",
+        "材料估算"
+      ],
+      "inference_depth": 5,
+      "relation_count": 5
+    },
+    {
+      "id": "L3_019",
+      "complexity_level": "L3_deep",
+      "problem": "一个圆柱形水塔，底面直径9米，高16米。如果要在水塔外表面（包括底面但不包括顶面）刷漆，每平方米需要0.5升油漆。总共需要多少升油漆？",
+      "answer": "251.3",
+      "solution_steps": [
+        "计算圆柱侧面积：π × 直径 × 高 = π × 9 × 16 = 144π平方米",
+        "计算底面积：π × (直径/2)² = π × 4² = 16π平方米",
+        "计算总面积：144π + 16π = 160π ≈ 502.65平方米",
+        "计算油漆用量：502.65 × 0.5 = 251.3升"
+      ],
+      "explicit_relations": [
+        "直径",
+        "高度",
+        "油漆用量比"
+      ],
+      "implicit_relations": [
+        "圆柱侧面积公式",
+        "圆面积公式",
+        "总表面积",
+        "材料用量计算"
+      ],
+      "domain_knowledge": [
+        "立体几何",
+        "圆柱表面积",
+        "材料估算"
+      ],
+      "inference_depth": 6,
+      "relation_count": 5
+    },
+    {
+      "id": "L3_020",
+      "complexity_level": "L3_deep",
+      "problem": "一个化学反应中，反应物A的浓度每小时减少30%。初始浓度为100mol/L，反应进行多少小时后浓度降到初始浓度的1/8？",
+      "answer": "5.83",
+      "solution_steps": [
+        "理解指数衰减：每小时浓度变为原来的70%",
+        "建立方程：100 × (0.7)^t = 100/8 = 12.5",
+        "简化方程：(0.7)^t = 0.125",
+        "取对数求解：t × ln(0.7) = ln(0.125)",
+        "计算结果：t = ln(0.125) / ln(0.7) ≈ 5.83小时"
+      ],
+      "explicit_relations": [
+        "初始浓度",
+        "衰减率",
+        "目标浓度比"
+      ],
+      "implicit_relations": [
+        "指数衰减模型",
+        "对数运算",
+        "浓度变化规律"
+      ],
+      "domain_knowledge": [
+        "化学动力学",
+        "指数函数",
+        "对数运算"
+      ],
+      "inference_depth": 6,
+      "relation_count": 5
+    },
+    {
+      "id": "L3_021",
+      "complexity_level": "L3_deep",
+      "problem": "一个化学反应中，反应物A的浓度每小时减少30%。初始浓度为100mol/L，反应进行多少小时后浓度降到初始浓度的1/16？",
+      "answer": "7.77",
+      "solution_steps": [
+        "理解指数衰减：每小时浓度变为原来的70%",
+        "建立方程：100 × (0.7)^t = 100/16 = 6.25",
+        "简化方程：(0.7)^t = 0.0625",
+        "取对数求解：t × ln(0.7) = ln(0.0625)",
+        "计算结果：t = ln(0.0625) / ln(0.7) ≈ 7.77小时"
+      ],
+      "explicit_relations": [
+        "初始浓度",
+        "衰减率",
+        "目标浓度比"
+      ],
+      "implicit_relations": [
+        "指数衰减模型",
+        "对数运算",
+        "浓度变化规律"
+      ],
+      "domain_knowledge": [
+        "化学动力学",
+        "指数函数",
+        "对数运算"
+      ],
+      "inference_depth": 5,
+      "relation_count": 5
+    },
+    {
+      "id": "L3_022",
+      "complexity_level": "L3_deep",
+      "problem": "一个化学反应中，反应物A的浓度每小时减少25%。初始浓度为100mol/L，反应进行多少小时后浓度降到初始浓度的1/8？",
+      "answer": "7.23",
+      "solution_steps": [
+        "理解指数衰减：每小时浓度变为原来的75%",
+        "建立方程：100 × (0.75)^t = 100/8 = 12.5",
+        "简化方程：(0.75)^t = 0.125",
+        "取对数求解：t × ln(0.75) = ln(0.125)",
+        "计算结果：t = ln(0.125) / ln(0.75) ≈ 7.23小时"
+      ],
+      "explicit_relations": [
+        "初始浓度",
+        "衰减率",
+        "目标浓度比"
+      ],
+      "implicit_relations": [
+        "指数衰减模型",
+        "对数运算",
+        "浓度变化规律"
+      ],
+      "domain_knowledge": [
+        "化学动力学",
+        "指数函数",
+        "对数运算"
+      ],
+      "inference_depth": 6,
+      "relation_count": 5
+    },
+    {
+      "id": "L3_023",
+      "complexity_level": "L3_deep",
+      "problem": "在20°C的环境中，有一块重量为361克的冰块。已知冰的融化潜热为334焦耳/克，环境每分钟向冰块传递热量30焦耳。冰块完全融化需要多少分钟？",
+      "answer": "4019",
+      "solution_steps": [
+        "理解物理概念：冰融化需要潜热，不改变温度",
+        "计算总需要热量：361克 × 334焦耳/克 = 120574焦耳",
+        "计算融化时间：120574焦耳 ÷ 30焦耳/分钟 = 4019分钟"
+      ],
+      "explicit_relations": [
+        "冰块重量",
+        "环境传热速率"
+      ],
+      "implicit_relations": [
+        "融化潜热概念",
+        "总热量需求",
+        "热传递过程"
+      ],
+      "domain_knowledge": [
+        "相变物理学",
+        "潜热概念",
+        "热传递原理"
+      ],
+      "inference_depth": 5,
+      "relation_count": 5
+    },
+    {
+      "id": "L3_024",
+      "complexity_level": "L3_deep",
+      "problem": "一个化学反应中，反应物A的浓度每小时减少30%。初始浓度为100mol/L，反应进行多少小时后浓度降到初始浓度的1/16？",
+      "answer": "7.77",
+      "solution_steps": [
+        "理解指数衰减：每小时浓度变为原来的70%",
+        "建立方程：100 × (0.7)^t = 100/16 = 6.25",
+        "简化方程：(0.7)^t = 0.0625",
+        "取对数求解：t × ln(0.7) = ln(0.0625)",
+        "计算结果：t = ln(0.0625) / ln(0.7) ≈ 7.77小时"
+      ],
+      "explicit_relations": [
+        "初始浓度",
+        "衰减率",
+        "目标浓度比"
+      ],
+      "implicit_relations": [
+        "指数衰减模型",
+        "对数运算",
+        "浓度变化规律"
+      ],
+      "domain_knowledge": [
+        "化学动力学",
+        "指数函数",
+        "对数运算"
+      ],
+      "inference_depth": 5,
+      "relation_count": 5
+    },
+    {
+      "id": "L3_025",
+      "complexity_level": "L3_deep",
+      "problem": "一个化学反应中，反应物A的浓度每小时减少30%。初始浓度为100mol/L，反应进行多少小时后浓度降到初始浓度的1/16？",
+      "answer": "7.77",
+      "solution_steps": [
+        "理解指数衰减：每小时浓度变为原来的70%",
+        "建立方程：100 × (0.7)^t = 100/16 = 6.25",
+        "简化方程：(0.7)^t = 0.0625",
+        "取对数求解：t × ln(0.7) = ln(0.0625)",
+        "计算结果：t = ln(0.0625) / ln(0.7) ≈ 7.77小时"
+      ],
+      "explicit_relations": [
+        "初始浓度",
+        "衰减率",
+        "目标浓度比"
+      ],
+      "implicit_relations": [
+        "指数衰减模型",
+        "对数运算",
+        "浓度变化规律"
+      ],
+      "domain_knowledge": [
+        "化学动力学",
+        "指数函数",
+        "对数运算"
+      ],
+      "inference_depth": 6,
+      "relation_count": 5
+    },
+    {
+      "id": "L3_026",
+      "complexity_level": "L3_deep",
+      "problem": "在20°C的环境中，有一块重量为488克的冰块。已知冰的融化潜热为334焦耳/克，环境每分钟向冰块传递热量30焦耳。冰块完全融化需要多少分钟？",
+      "answer": "5433",
+      "solution_steps": [
+        "理解物理概念：冰融化需要潜热，不改变温度",
+        "计算总需要热量：488克 × 334焦耳/克 = 162992焦耳",
+        "计算融化时间：162992焦耳 ÷ 30焦耳/分钟 = 5433分钟"
+      ],
+      "explicit_relations": [
+        "冰块重量",
+        "环境传热速率"
+      ],
+      "implicit_relations": [
+        "融化潜热概念",
+        "总热量需求",
+        "热传递过程"
+      ],
+      "domain_knowledge": [
+        "相变物理学",
+        "潜热概念",
+        "热传递原理"
+      ],
+      "inference_depth": 6,
+      "relation_count": 5
+    },
+    {
+      "id": "L3_027",
+      "complexity_level": "L3_deep",
+      "problem": "在20°C的环境中，有一块重量为260克的冰块。已知冰的融化潜热为334焦耳/克，环境每分钟向冰块传递热量42焦耳。冰块完全融化需要多少分钟？",
+      "answer": "2067",
+      "solution_steps": [
+        "理解物理概念：冰融化需要潜热，不改变温度",
+        "计算总需要热量：260克 × 334焦耳/克 = 86840焦耳",
+        "计算融化时间：86840焦耳 ÷ 42焦耳/分钟 = 2067分钟"
+      ],
+      "explicit_relations": [
+        "冰块重量",
+        "环境传热速率"
+      ],
+      "implicit_relations": [
+        "融化潜热概念",
+        "总热量需求",
+        "热传递过程"
+      ],
+      "domain_knowledge": [
+        "相变物理学",
+        "潜热概念",
+        "热传递原理"
+      ],
+      "inference_depth": 5,
+      "relation_count": 5
+    },
+    {
+      "id": "L3_028",
+      "complexity_level": "L3_deep",
+      "problem": "一个化学反应中，反应物A的浓度每小时减少30%。初始浓度为100mol/L，反应进行多少小时后浓度降到初始浓度的1/16？",
+      "answer": "7.77",
+      "solution_steps": [
+        "理解指数衰减：每小时浓度变为原来的70%",
+        "建立方程：100 × (0.7)^t = 100/16 = 6.25",
+        "简化方程：(0.7)^t = 0.0625",
+        "取对数求解：t × ln(0.7) = ln(0.0625)",
+        "计算结果：t = ln(0.0625) / ln(0.7) ≈ 7.77小时"
+      ],
+      "explicit_relations": [
+        "初始浓度",
+        "衰减率",
+        "目标浓度比"
+      ],
+      "implicit_relations": [
+        "指数衰减模型",
+        "对数运算",
+        "浓度变化规律"
+      ],
+      "domain_knowledge": [
+        "化学动力学",
+        "指数函数",
+        "对数运算"
+      ],
+      "inference_depth": 5,
+      "relation_count": 4
+    },
+    {
+      "id": "L3_029",
+      "complexity_level": "L3_deep",
+      "problem": "在20°C的环境中，有一块重量为747克的冰块。已知冰的融化潜热为334焦耳/克，环境每分钟向冰块传递热量58焦耳。冰块完全融化需要多少分钟？",
+      "answer": "4301",
+      "solution_steps": [
+        "理解物理概念：冰融化需要潜热，不改变温度",
+        "计算总需要热量：747克 × 334焦耳/克 = 249498焦耳",
+        "计算融化时间：249498焦耳 ÷ 58焦耳/分钟 = 4301分钟"
+      ],
+      "explicit_relations": [
+        "冰块重量",
+        "环境传热速率"
+      ],
+      "implicit_relations": [
+        "融化潜热概念",
+        "总热量需求",
+        "热传递过程"
+      ],
+      "domain_knowledge": [
+        "相变物理学",
+        "潜热概念",
+        "热传递原理"
+      ],
+      "inference_depth": 6,
+      "relation_count": 4
+    },
+    {
+      "id": "L3_030",
+      "complexity_level": "L3_deep",
+      "problem": "在20°C的环境中，有一块重量为219克的冰块。已知冰的融化潜热为334焦耳/克，环境每分钟向冰块传递热量32焦耳。冰块完全融化需要多少分钟？",
+      "answer": "2285",
+      "solution_steps": [
+        "理解物理概念：冰融化需要潜热，不改变温度",
+        "计算总需要热量：219克 × 334焦耳/克 = 73146焦耳",
+        "计算融化时间：73146焦耳 ÷ 32焦耳/分钟 = 2285分钟"
+      ],
+      "explicit_relations": [
+        "冰块重量",
+        "环境传热速率"
+      ],
+      "implicit_relations": [
+        "融化潜热概念",
+        "总热量需求",
+        "热传递过程"
+      ],
+      "domain_knowledge": [
+        "相变物理学",
+        "潜热概念",
+        "热传递原理"
+      ],
+      "inference_depth": 5,
+      "relation_count": 5
+    },
+    {
+      "id": "L3_031",
+      "complexity_level": "L3_deep",
+      "problem": "在20°C的环境中，有一块重量为507克的冰块。已知冰的融化潜热为334焦耳/克，环境每分钟向冰块传递热量61焦耳。冰块完全融化需要多少分钟？",
+      "answer": "2776",
+      "solution_steps": [
+        "理解物理概念：冰融化需要潜热，不改变温度",
+        "计算总需要热量：507克 × 334焦耳/克 = 169338焦耳",
+        "计算融化时间：169338焦耳 ÷ 61焦耳/分钟 = 2776分钟"
+      ],
+      "explicit_relations": [
+        "冰块重量",
+        "环境传热速率"
+      ],
+      "implicit_relations": [
+        "融化潜热概念",
+        "总热量需求",
+        "热传递过程"
+      ],
+      "domain_knowledge": [
+        "相变物理学",
+        "潜热概念",
+        "热传递原理"
+      ],
+      "inference_depth": 6,
+      "relation_count": 4
+    },
+    {
+      "id": "L3_032",
+      "complexity_level": "L3_deep",
+      "problem": "一个化学反应中，反应物A的浓度每小时减少20%。初始浓度为100mol/L，反应进行多少小时后浓度降到初始浓度的1/4？",
+      "answer": "6.21",
+      "solution_steps": [
+        "理解指数衰减：每小时浓度变为原来的80%",
+        "建立方程：100 × (0.8)^t = 100/4 = 25.0",
+        "简化方程：(0.8)^t = 0.25",
+        "取对数求解：t × ln(0.8) = ln(0.25)",
+        "计算结果：t = ln(0.25) / ln(0.8) ≈ 6.21小时"
+      ],
+      "explicit_relations": [
+        "初始浓度",
+        "衰减率",
+        "目标浓度比"
+      ],
+      "implicit_relations": [
+        "指数衰减模型",
+        "对数运算",
+        "浓度变化规律"
+      ],
+      "domain_knowledge": [
+        "化学动力学",
+        "指数函数",
+        "对数运算"
+      ],
+      "inference_depth": 5,
+      "relation_count": 4
+    },
+    {
+      "id": "L3_033",
+      "complexity_level": "L3_deep",
+      "problem": "一个圆柱形水塔，底面直径8米，高18米。如果要在水塔外表面（包括底面但不包括顶面）刷漆，每平方米需要0.5升油漆。总共需要多少升油漆？",
+      "answer": "251.3",
+      "solution_steps": [
+        "计算圆柱侧面积：π × 直径 × 高 = π × 8 × 18 = 144π平方米",
+        "计算底面积：π × (直径/2)² = π × 4² = 16π平方米",
+        "计算总面积：144π + 16π = 160π ≈ 502.65平方米",
+        "计算油漆用量：502.65 × 0.5 = 251.3升"
+      ],
+      "explicit_relations": [
+        "直径",
+        "高度",
+        "油漆用量比"
+      ],
+      "implicit_relations": [
+        "圆柱侧面积公式",
+        "圆面积公式",
+        "总表面积",
+        "材料用量计算"
+      ],
+      "domain_knowledge": [
+        "立体几何",
+        "圆柱表面积",
+        "材料估算"
+      ],
+      "inference_depth": 5,
+      "relation_count": 4
+    },
+    {
+      "id": "L3_034",
+      "complexity_level": "L3_deep",
+      "problem": "在20°C的环境中，有一块重量为219克的冰块。已知冰的融化潜热为334焦耳/克，环境每分钟向冰块传递热量42焦耳。冰块完全融化需要多少分钟？",
+      "answer": "1741",
+      "solution_steps": [
+        "理解物理概念：冰融化需要潜热，不改变温度",
+        "计算总需要热量：219克 × 334焦耳/克 = 73146焦耳",
+        "计算融化时间：73146焦耳 ÷ 42焦耳/分钟 = 1741分钟"
+      ],
+      "explicit_relations": [
+        "冰块重量",
+        "环境传热速率"
+      ],
+      "implicit_relations": [
+        "融化潜热概念",
+        "总热量需求",
+        "热传递过程"
+      ],
+      "domain_knowledge": [
+        "相变物理学",
+        "潜热概念",
+        "热传递原理"
+      ],
+      "inference_depth": 5,
+      "relation_count": 5
+    },
+    {
+      "id": "L3_035",
+      "complexity_level": "L3_deep",
+      "problem": "一个化学反应中，反应物A的浓度每小时减少30%。初始浓度为100mol/L，反应进行多少小时后浓度降到初始浓度的1/16？",
+      "answer": "7.77",
+      "solution_steps": [
+        "理解指数衰减：每小时浓度变为原来的70%",
+        "建立方程：100 × (0.7)^t = 100/16 = 6.25",
+        "简化方程：(0.7)^t = 0.0625",
+        "取对数求解：t × ln(0.7) = ln(0.0625)",
+        "计算结果：t = ln(0.0625) / ln(0.7) ≈ 7.77小时"
+      ],
+      "explicit_relations": [
+        "初始浓度",
+        "衰减率",
+        "目标浓度比"
+      ],
+      "implicit_relations": [
+        "指数衰减模型",
+        "对数运算",
+        "浓度变化规律"
+      ],
+      "domain_knowledge": [
+        "化学动力学",
+        "指数函数",
+        "对数运算"
+      ],
+      "inference_depth": 5,
+      "relation_count": 5
+    },
+    {
+      "id": "L3_036",
+      "complexity_level": "L3_deep",
+      "problem": "一个圆柱形水塔，底面直径11米，高20米。如果要在水塔外表面（包括底面但不包括顶面）刷漆，每平方米需要0.5升油漆。总共需要多少升油漆？",
+      "answer": "384.8",
+      "solution_steps": [
+        "计算圆柱侧面积：π × 直径 × 高 = π × 11 × 20 = 220π平方米",
+        "计算底面积：π × (直径/2)² = π × 5² = 25π平方米",
+        "计算总面积：220π + 25π = 245π ≈ 769.69平方米",
+        "计算油漆用量：769.69 × 0.5 = 384.8升"
+      ],
+      "explicit_relations": [
+        "直径",
+        "高度",
+        "油漆用量比"
+      ],
+      "implicit_relations": [
+        "圆柱侧面积公式",
+        "圆面积公式",
+        "总表面积",
+        "材料用量计算"
+      ],
+      "domain_knowledge": [
+        "立体几何",
+        "圆柱表面积",
+        "材料估算"
+      ],
+      "inference_depth": 6,
+      "relation_count": 5
+    },
+    {
+      "id": "L3_037",
+      "complexity_level": "L3_deep",
+      "problem": "一个化学反应中，反应物A的浓度每小时减少15%。初始浓度为100mol/L，反应进行多少小时后浓度降到初始浓度的1/4？",
+      "answer": "8.53",
+      "solution_steps": [
+        "理解指数衰减：每小时浓度变为原来的85%",
+        "建立方程：100 × (0.85)^t = 100/4 = 25.0",
+        "简化方程：(0.85)^t = 0.25",
+        "取对数求解：t × ln(0.85) = ln(0.25)",
+        "计算结果：t = ln(0.25) / ln(0.85) ≈ 8.53小时"
+      ],
+      "explicit_relations": [
+        "初始浓度",
+        "衰减率",
+        "目标浓度比"
+      ],
+      "implicit_relations": [
+        "指数衰减模型",
+        "对数运算",
+        "浓度变化规律"
+      ],
+      "domain_knowledge": [
+        "化学动力学",
+        "指数函数",
+        "对数运算"
+      ],
+      "inference_depth": 6,
+      "relation_count": 5
+    },
+    {
+      "id": "L3_038",
+      "complexity_level": "L3_deep",
+      "problem": "一个圆柱形水塔，底面直径7米，高12米。如果要在水塔外表面（包括底面但不包括顶面）刷漆，每平方米需要0.5升油漆。总共需要多少升油漆？",
+      "answer": "146.1",
+      "solution_steps": [
+        "计算圆柱侧面积：π × 直径 × 高 = π × 7 × 12 = 84π平方米",
+        "计算底面积：π × (直径/2)² = π × 3² = 9π平方米",
+        "计算总面积：84π + 9π = 93π ≈ 292.17平方米",
+        "计算油漆用量：292.17 × 0.5 = 146.1升"
+      ],
+      "explicit_relations": [
+        "直径",
+        "高度",
+        "油漆用量比"
+      ],
+      "implicit_relations": [
+        "圆柱侧面积公式",
+        "圆面积公式",
+        "总表面积",
+        "材料用量计算"
+      ],
+      "domain_knowledge": [
+        "立体几何",
+        "圆柱表面积",
+        "材料估算"
+      ],
+      "inference_depth": 5,
+      "relation_count": 5
+    },
+    {
+      "id": "L3_039",
+      "complexity_level": "L3_deep",
+      "problem": "一个圆柱形水塔，底面直径10米，高14米。如果要在水塔外表面（包括底面但不包括顶面）刷漆，每平方米需要0.5升油漆。总共需要多少升油漆？",
+      "answer": "259.2",
+      "solution_steps": [
+        "计算圆柱侧面积：π × 直径 × 高 = π × 10 × 14 = 140π平方米",
+        "计算底面积：π × (直径/2)² = π × 5² = 25π平方米",
+        "计算总面积：140π + 25π = 165π ≈ 518.36平方米",
+        "计算油漆用量：518.36 × 0.5 = 259.2升"
+      ],
+      "explicit_relations": [
+        "直径",
+        "高度",
+        "油漆用量比"
+      ],
+      "implicit_relations": [
+        "圆柱侧面积公式",
+        "圆面积公式",
+        "总表面积",
+        "材料用量计算"
+      ],
+      "domain_knowledge": [
+        "立体几何",
+        "圆柱表面积",
+        "材料估算"
+      ],
+      "inference_depth": 5,
+      "relation_count": 4
+    },
+    {
+      "id": "L3_040",
+      "complexity_level": "L3_deep",
+      "problem": "一个化学反应中，反应物A的浓度每小时减少30%。初始浓度为100mol/L，反应进行多少小时后浓度降到初始浓度的1/8？",
+      "answer": "5.83",
+      "solution_steps": [
+        "理解指数衰减：每小时浓度变为原来的70%",
+        "建立方程：100 × (0.7)^t = 100/8 = 12.5",
+        "简化方程：(0.7)^t = 0.125",
+        "取对数求解：t × ln(0.7) = ln(0.125)",
+        "计算结果：t = ln(0.125) / ln(0.7) ≈ 5.83小时"
+      ],
+      "explicit_relations": [
+        "初始浓度",
+        "衰减率",
+        "目标浓度比"
+      ],
+      "implicit_relations": [
+        "指数衰减模型",
+        "对数运算",
+        "浓度变化规律"
+      ],
+      "domain_knowledge": [
+        "化学动力学",
+        "指数函数",
+        "对数运算"
+      ],
+      "inference_depth": 5,
+      "relation_count": 4
+    }
+  ]
+}

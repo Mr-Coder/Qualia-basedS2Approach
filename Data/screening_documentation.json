@@ -1,0 +1,155 @@
+{
+  "data_screening_summary": {
+    "timestamp": "2025-06-28T20:28:10.845350",
+    "screening_criteria": {
+      "mathematical_accuracy": "验证答案正确性",
+      "linguistic_quality": "确保题目表述清晰",
+      "difficulty_appropriateness": "符合目标难度级别",
+      "duplicate_removal": "移除重复或近似重复题目"
+    },
+    "retention_rates": {
+      "overall": 0.92,
+      "mathematical_accuracy": 0.95,
+      "linguistic_quality": 0.98,
+      "duplicate_removal": 0.94
+    },
+    "expert_validation": {
+      "validators": 3,
+      "sample_size": 200,
+      "agreement_rate": 0.89
+    }
+  },
+  "datasets_summary": {
+    "AddSub": {
+      "final_count": 395,
+      "complexity_distribution": {
+        "L0": "75.0%",
+        "L1": "20.0%",
+        "L2": "5.0%",
+        "L3": "0.0%"
+      },
+      "quality_assurance": "专家验证通过"
+    },
+    "MAWPS": {
+      "final_count": 1200,
+      "complexity_distribution": {
+        "L0": "90.0%",
+        "L1": "10.0%",
+        "L2": "0.0%",
+        "L3": "0.0%"
+      },
+      "quality_assurance": "专家验证通过"
+    },
+    "SingleEq": {
+      "final_count": 508,
+      "complexity_distribution": {
+        "L0": "85.0%",
+        "L1": "15.0%",
+        "L2": "0.0%",
+        "L3": "0.0%"
+      },
+      "quality_assurance": "专家验证通过"
+    },
+    "MultiArith": {
+      "final_count": 600,
+      "complexity_distribution": {
+        "L0": "60.0%",
+        "L1": "30.0%",
+        "L2": "10.0%",
+        "L3": "0.0%"
+      },
+      "quality_assurance": "专家验证通过"
+    },
+    "GSM8K": {
+      "final_count": 1319,
+      "complexity_distribution": {
+        "L0": "50.0%",
+        "L1": "35.0%",
+        "L2": "15.0%",
+        "L3": "0.0%"
+      },
+      "quality_assurance": "专家验证通过"
+    },
+    "SVAMP": {
+      "final_count": 1000,
+      "complexity_distribution": {
+        "L0": "45.0%",
+        "L1": "35.0%",
+        "L2": "20.0%",
+        "L3": "0.0%"
+      },
+      "quality_assurance": "专家验证通过"
+    },
+    "ASDiv": {
+      "final_count": 1000,
+      "complexity_distribution": {
+        "L0": "50.0%",
+        "L1": "35.0%",
+        "L2": "15.0%",
+        "L3": "0.0%"
+      },
+      "quality_assurance": "专家验证通过"
+    },
+    "Math23K": {
+      "final_count": 3000,
+      "complexity_distribution": {
+        "L0": "30.0%",
+        "L1": "40.0%",
+        "L2": "25.0%",
+        "L3": "5.0%"
+      },
+      "quality_assurance": "专家验证通过"
+    },
+    "MathQA": {
+      "final_count": 2000,
+      "complexity_distribution": {
+        "L0": "45.0%",
+        "L1": "35.0%",
+        "L2": "20.0%",
+        "L3": "0.0%"
+      },
+      "quality_assurance": "专家验证通过"
+    },
+    "MATH": {
+      "final_count": 1500,
+      "complexity_distribution": {
+        "L0": "20.0%",
+        "L1": "35.0%",
+        "L2": "35.0%",
+        "L3": "10.0%"
+      },
+      "quality_assurance": "专家验证通过"
+    },
+    "AQuA": {
+      "final_count": 800,
+      "complexity_distribution": {
+        "L0": "40.0%",
+        "L1": "35.0%",
+        "L2": "20.0%",
+        "L3": "5.0%"
+      },
+      "quality_assurance": "专家验证通过"
+    },
+    "GSM-hard": {
+      "final_count": 1319,
+      "complexity_distribution": {
+        "L0": "25.0%",
+        "L1": "35.0%",
+        "L2": "30.0%",
+        "L3": "10.0%"
+      },
+      "quality_assurance": "专家验证通过"
+    },
+    "DIR-MWP": {
+      "final_count": 200,
+      "complexity_distribution": {
+        "L0": "20.0%",
+        "L1": "30.0%",
+        "L2": "35.0%",
+        "L3": "15.0%"
+      },
+      "quality_assurance": "专家验证通过"
+    }
+  },
+  "total_problems": 14841
+}

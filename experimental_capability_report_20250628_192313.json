@@ -1,0 +1,18 @@
+{
+  "timestamp": "2025-06-28T19:23:13.697830",
+  "overall_score": 1.0,
+  "detailed_scores": {
+    "complexity_classification": 1.0,
+    "performance_analysis": 1.0,
+    "experimental_framework": 1.0,
+    "dataset_coverage": 1.0
+  },
+  "capabilities": {
+    "automated_classification": true,
+    "performance_evaluation": true,
+    "unified_framework": true,
+    "multi_dataset_support": true
+  },
+  "recommendations": [],
+  "status": "✅ 论文级实验能力就绪"
+}

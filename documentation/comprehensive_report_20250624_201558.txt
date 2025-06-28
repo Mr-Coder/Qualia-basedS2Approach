@@ -1,0 +1,46 @@
+================================================================================
+MATHEMATICAL REASONING SYSTEM - COMPREHENSIVE EVALUATION REPORT
+================================================================================
+Generated: 2025-06-24 20:15:58
+
+EXECUTIVE SUMMARY
+--------------------------------------------------
+Overall Accuracy: 0.0%
+Total Problems Tested: 10
+Average Processing Time: 0.001 seconds
+Average Confidence Score: 0.888
+
+PERFORMANCE BY COMPLEXITY LEVEL
+--------------------------------------------------
+L0: 0.0% accuracy (0/2) - F (Poor)
+L1: 0.0% accuracy (0/2) - F (Poor)
+L2: 0.0% accuracy (0/3) - F (Poor)
+L3: 0.0% accuracy (0/3) - F (Poor)
+
+PERFORMANCE BY PROBLEM CATEGORY
+--------------------------------------------------
+arithmetic: 0.0% accuracy (0/2)
+word_problem: 0.0% accuracy (0/2)
+rate_calculation: 0.0% accuracy (0/1)
+geometry: 0.0% accuracy (0/1)
+rate_problem: 0.0% accuracy (0/1)
+complex_rate: 0.0% accuracy (0/1)
+complex_word: 0.0% accuracy (0/1)
+work_rate: 0.0% accuracy (0/1)
+
+PERFORMANCE BENCHMARKS
+--------------------------------------------------
+Standard: 0.000s average
+No Verification: 0.000s average
+Detailed Output: 0.000s average
+
+ERROR ANALYSIS
+--------------------------------------------------
+Total Incorrect Answers: 10
+System Errors: 0
+
+RECOMMENDATIONS
+--------------------------------------------------
+• Significant improvements needed, especially for L2/L3 problems
+
+================================================================================

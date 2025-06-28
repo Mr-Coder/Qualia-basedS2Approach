@@ -1,0 +1,99 @@
+{
+  "dataset_name": "MathQA",
+  "total_problems": 5,
+  "classification_results": [
+    {
+      "id": "mathqa_001",
+      "problem_text": "If the ratio of boys to girls in a class is 5:3 and there are 32 students in total, how many boys ar...",
+      "complexity_level": "L1_浅层推理",
+      "confidence": 0.18583333333333332,
+      "detailed_scores": {
+        "L0_显式计算": 0.15,
+        "L1_浅层推理": 0.18583333333333332,
+        "L2_中等推理": 0.105,
+        "L3_深层推理": 0.033749999999999995
+      }
+    },
+    {
+      "id": "mathqa_002",
+      "problem_text": "A rectangular garden has a length of 15 meters and width of 8 meters. What is the area of the garden...",
+      "complexity_level": "L0_显式计算",
+      "confidence": 0.21,
+      "detailed_scores": {
+        "L0_显式计算": 0.21,
+        "L1_浅层推理": 0.19499999999999998,
+        "L2_中等推理": 0.09,
+        "L3_深层推理": 0.0225
+      }
+    },
+    {
+      "id": "mathqa_003",
+      "problem_text": "If 3/4 of a number is 18, what is the number?",
+      "complexity_level": "L2_中等推理",
+      "confidence": 0.13499999999999998,
+      "detailed_scores": {
+        "L0_显式计算": 0.06,
+        "L1_浅层推理": 0.1275,
+        "L2_中等推理": 0.13499999999999998,
+        "L3_深层推理": 0.05175
+      }
+    },
+    {
+      "id": "mathqa_004",
+      "problem_text": "A bag contains 6 red balls and 4 blue balls. What is the probability of drawing a red ball?",
+      "complexity_level": "L0_显式计算",
+      "confidence": 0.21,
+      "detailed_scores": {
+        "L0_显式计算": 0.21,
+        "L1_浅层推理": 0.19499999999999998,
+        "L2_中等推理": 0.09,
+        "L3_深层推理": 0.0225
+      }
+    },
+    {
+      "id": "mathqa_005",
+      "problem_text": "A train travels 120 km in 2 hours. What is its average speed?",
+      "complexity_level": "L1_浅层推理",
+      "confidence": 0.19499999999999998,
+      "detailed_scores": {
+        "L0_显式计算": 0.15,
+        "L1_浅层推理": 0.19499999999999998,
+        "L2_中等推理": 0.10142857142857144,
+        "L3_深层推理": 0.0225
+      }
+    }
+  ],
+  "distribution": {
+    "L0_显式计算": 2,
+    "L1_浅层推理": 2,
+    "L2_中等推理": 1,
+    "L3_深层推理": 0
+  },
+  "confidence_stats": {
+    "L0_显式计算": [
+      0.21,
+      0.21
+    ],
+    "L1_浅层推理": [
+      0.18583333333333332,
+      0.19499999999999998
+    ],
+    "L2_中等推理": [
+      0.13499999999999998
+    ],
+    "L3_深层推理": []
+  },
+  "percentage_distribution": {
+    "L0_显式计算": 40.0,
+    "L1_浅层推理": 40.0,
+    "L2_中等推理": 20.0,
+    "L3_深层推理": 0.0
+  },
+  "average_confidence": {
+    "L0_显式计算": 0.21,
+    "L1_浅层推理": 0.19041666666666665,
+    "L2_中等推理": 0.13499999999999998,
+    "L3_深层推理": 0.0
+  },
+  "dir_score": 0.8
+}

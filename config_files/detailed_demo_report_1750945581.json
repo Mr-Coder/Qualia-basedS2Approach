@@ -1,0 +1,201 @@
+{
+  "question": "小明有3个苹果，小红有5个苹果，他们一共有多少个苹果？",
+  "final_result": {
+    "original_question": "小明有3个苹果，小红有5个苹果，他们一共有多少个苹果？",
+    "final_answer": 8,
+    "confidence": 0.9019999999999999,
+    "reasoning_summary": "通过3步推理，从L1直接计算到L3目标确认，得出答案8",
+    "verification_status": "通过",
+    "processing_time": 1750945581.835487,
+    "intermediate_steps": 5
+  },
+  "intermediate_steps": [
+    {
+      "step": "文字输入处理",
+      "result": {
+        "original_text": "小明有3个苹果，小红有5个苹果，他们一共有多少个苹果？",
+        "problem_type": "加法计算",
+        "keywords": [
+          "一共",
+          "有",
+          "个",
+          "多少",
+          "苹果",
+          "小明",
+          "小红"
+        ],
+        "numbers": [
+          3,
+          5
+        ],
+        "char_count": 27,
+        "word_count": 1
+      }
+    },
+    {
+      "step": "实体发现",
+      "result": [
+        {
+          "id": "person_1",
+          "name": "小明",
+          "type": "人物",
+          "attributes": {
+            "role": "问题参与者"
+          },
+          "confidence": 0.9
+        },
+        {
+          "id": "person_2",
+          "name": "小红",
+          "type": "人物",
+          "attributes": {
+            "role": "问题参与者"
+          },
+          "confidence": 0.9
+        },
+        {
+          "id": "object_1",
+          "name": "苹果",
+          "type": "物品",
+          "attributes": {
+            "category": "可计数物品"
+          },
+          "confidence": 0.85
+        },
+        {
+          "id": "quantity_1",
+          "name": "3",
+          "type": "数量",
+          "attributes": {
+            "value": 3,
+            "unit": "个"
+          },
+          "confidence": 0.95
+        },
+        {
+          "id": "quantity_2",
+          "name": "5",
+          "type": "数量",
+          "attributes": {
+            "value": 5,
+            "unit": "个"
+          },
+          "confidence": 0.95
+        }
+      ]
+    },
+    {
+      "step": "关系发现",
+      "result": [
+        {
+          "type": "拥有关系",
+          "entities": [
+            "小明",
+            "3个苹果"
+          ],
+          "expression": "小明.苹果 = 3",
+          "confidence": 0.9,
+          "description": "小明拥有3个苹果"
+        },
+        {
+          "type": "拥有关系",
+          "entities": [
+            "小红",
+            "5个苹果"
+          ],
+          "expression": "小红.苹果 = 5",
+          "confidence": 0.9,
+          "description": "小红拥有5个苹果"
+        },
+        {
+          "type": "计算关系",
+          "entities": [
+            "总数",
+            "小明苹果",
+            "小红苹果"
+          ],
+          "expression": "总数 = 小明苹果 + 小红苹果",
+          "confidence": 0.95,
+          "description": "总数等于各人苹果数的和"
+        }
+      ]
+    },
+    {
+      "step": "多层推理",
+      "result": {
+        "reasoning_steps": [
+          {
+            "layer": "L1",
+            "operation": "数值提取",
+            "description": "识别数值：3 和 5",
+            "result": [
+              3,
+              5
+            ],
+            "confidence": 0.95
+          },
+          {
+            "layer": "L2",
+            "operation": "关系应用",
+            "description": "应用加法关系：3 + 5",
+            "result": 8,
+            "confidence": 0.92
+          },
+          {
+            "layer": "L3",
+            "operation": "目标确认",
+            "description": "确认最终答案满足问题要求",
+            "result": 8,
+            "confidence": 0.9
+          }
+        ],
+        "final_answer": 8,
+        "overall_confidence": 0.9233333333333333,
+        "reasoning_layers_used": [
+          "L1",
+          "L2",
+          "L3"
+        ],
+        "total_steps": 3
+      }
+    },
+    {
+      "step": "置信度验证",
+      "result": {
+        "individual_scores": {
+          "逻辑一致性": 0.92,
+          "数学正确性": 0.95,
+          "语义对齐": 0.88,
+          "约束满足": 0.9,
+          "常识检查": 0.85,
+          "推理完整性": 0.87,
+          "解决方案最优性": 0.83
+        },
+        "final_confidence": 0.9019999999999999,
+        "verification_passed": true,
+        "weights": {
+          "逻辑一致性": 0.2,
+          "数学正确性": 0.25,
+          "语义对齐": 0.15,
+          "约束满足": 0.15,
+          "常识检查": 0.1,
+          "推理完整性": 0.1,
+          "解决方案最优性": 0.05
+        }
+      }
+    },
+    {
+      "step": "最终结果",
+      "result": {
+        "original_question": "小明有3个苹果，小红有5个苹果，他们一共有多少个苹果？",
+        "final_answer": 8,
+        "confidence": 0.9019999999999999,
+        "reasoning_summary": "通过3步推理，从L1直接计算到L3目标确认，得出答案8",
+        "verification_status": "通过",
+        "processing_time": 1750945581.835487,
+        "intermediate_steps": 5
+      }
+    }
+  ],
+  "processing_time": 0.000186920166015625
+}

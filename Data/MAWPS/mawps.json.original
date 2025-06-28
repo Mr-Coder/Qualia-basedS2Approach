@@ -1,0 +1,110 @@
+[
+  {
+    "id": "mawps_001",
+    "body": "Joan has 9 blue balloons but lost 2 of them.",
+    "question": "How many blue balloons does Joan have now?",
+    "answer": "7",
+    "equation": "x = 9 - 2",
+    "numbers": [
+      "9",
+      "2"
+    ],
+    "nouns": [
+      "balloons",
+      "Joan"
+    ],
+    "grade": "1-2",
+    "complexity_level": "L0",
+    "dir_score": 0.12,
+    "reasoning_steps": 2,
+    "screened": true,
+    "quality_score": 0.911
+  },
+  {
+    "id": "mawps_002",
+    "body": "There are 33 walnut trees currently in the park. Park workers will plant 44 more walnut trees today.",
+    "question": "How many walnut trees will the park have when the workers are finished?",
+    "answer": "77",
+    "equation": "x = 33 + 44",
+    "numbers": [
+      "33",
+      "44"
+    ],
+    "nouns": [
+      "trees",
+      "park",
+      "workers"
+    ],
+    "grade": "1-2",
+    "complexity_level": "L0",
+    "dir_score": 0.09,
+    "reasoning_steps": 2,
+    "screened": true,
+    "quality_score": 0.899
+  },
+  {
+    "id": "mawps_003",
+    "body": "Sara has 31 red balloons and 15 green balloons.",
+    "question": "How many balloons does Sara have in total?",
+    "answer": "46",
+    "equation": "x = 31 + 15",
+    "numbers": [
+      "31",
+      "15"
+    ],
+    "nouns": [
+      "balloons",
+      "Sara"
+    ],
+    "grade": "1-2",
+    "complexity_level": "L0",
+    "dir_score": 0.08,
+    "reasoning_steps": 2,
+    "screened": true,
+    "quality_score": 0.941
+  },
+  {
+    "id": "mawps_004",
+    "body": "There are 96 cupcakes for a birthday party. 8 people will be sharing the cupcakes.",
+    "question": "How many cupcakes will each person get?",
+    "answer": "12",
+    "equation": "x = 96 / 8",
+    "numbers": [
+      "96",
+      "8"
+    ],
+    "nouns": [
+      "cupcakes",
+      "party",
+      "people"
+    ],
+    "grade": "3-4",
+    "complexity_level": "L0",
+    "dir_score": 0.12,
+    "reasoning_steps": 2,
+    "screened": true,
+    "quality_score": 0.976
+  },
+  {
+    "id": "mawps_005",
+    "body": "A restaurant sold 49 hamburgers last week. They sold 4 times as many hamburgers this week.",
+    "question": "How many hamburgers did they sell this week?",
+    "answer": "196",
+    "equation": "x = 49 * 4",
+    "numbers": [
+      "49",
+      "4"
+    ],
+    "nouns": [
+      "restaurant",
+      "hamburgers",
+      "week"
+    ],
+    "grade": "3-4",
+    "complexity_level": "L0",
+    "dir_score": 0.09,
+    "reasoning_steps": 2,
+    "screened": true,
+    "quality_score": 0.971
+  }
+]

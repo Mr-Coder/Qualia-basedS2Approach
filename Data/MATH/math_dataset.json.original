@@ -1,0 +1,67 @@
+[
+  {
+    "problem": "Find the value of $x$ such that $\\sqrt{x + 7} = 9$.",
+    "solution": "We want to find the value of $x$ such that $\\sqrt{x + 7} = 9$.\n\nSquaring both sides, we get:\n$x + 7 = 81$\n\nSubtracting 7 from both sides:\n$x = 81 - 7 = 74$\n\nLet's verify: $\\sqrt{74 + 7} = \\sqrt{81} = 9$ ✓",
+    "answer": "74",
+    "subject": "Algebra",
+    "level": 2,
+    "unique_id": "math_001",
+    "complexity_level": "L2",
+    "dir_score": 0.74,
+    "reasoning_steps": 5,
+    "screened": true,
+    "quality_score": 0.946
+  },
+  {
+    "problem": "What is the sum of all positive integers $n$ such that when $n$ is divided by 7, the remainder is 3?",
+    "solution": "We want positive integers $n$ such that $n \\equiv 3 \\pmod{7}$.\n\nThis means $n = 7k + 3$ for non-negative integers $k$.\n\nFor $k = 0, 1, 2, \\ldots$, we get $n = 3, 10, 17, 24, \\ldots$\n\nWe need to specify a range. Let's assume $n \\leq 50$.\n\nThen $7k + 3 \\leq 50$, so $k \\leq \\frac{47}{7} = 6.7\\ldots$\n\nSo $k \\in \\{0, 1, 2, 3, 4, 5, 6\\}$.\n\nThe values are: $3, 10, 17, 24, 31, 38, 45$.\n\nSum = $3 + 10 + 17 + 24 + 31 + 38 + 45 = 168$.",
+    "answer": "168",
+    "subject": "Number Theory",
+    "level": 3,
+    "unique_id": "math_002",
+    "complexity_level": "L2",
+    "dir_score": 0.71,
+    "reasoning_steps": 4,
+    "screened": true,
+    "quality_score": 0.956
+  },
+  {
+    "problem": "In how many ways can 5 distinct balls be placed into 3 distinct boxes?",
+    "solution": "Each ball can be placed in any of the 3 boxes independently.\n\nFor ball 1: 3 choices\nFor ball 2: 3 choices\nFor ball 3: 3 choices\nFor ball 4: 3 choices\nFor ball 5: 3 choices\n\nBy the multiplication principle, the total number of ways is:\n$3^5 = 243$",
+    "answer": "243",
+    "subject": "Counting & Probability",
+    "level": 2,
+    "unique_id": "math_003",
+    "complexity_level": "L0",
+    "dir_score": 0.12,
+    "reasoning_steps": 1,
+    "screened": true,
+    "quality_score": 0.945
+  },
+  {
+    "problem": "A circle has center $(3, -2)$ and radius 5. Find the equation of the circle.",
+    "solution": "The standard form of a circle with center $(h, k)$ and radius $r$ is:\n$(x - h)^2 + (y - k)^2 = r^2$\n\nGiven:\n- Center: $(h, k) = (3, -2)$\n- Radius: $r = 5$\n\nSubstituting into the standard form:\n$(x - 3)^2 + (y - (-2))^2 = 5^2$\n$(x - 3)^2 + (y + 2)^2 = 25$",
+    "answer": "$(x - 3)^2 + (y + 2)^2 = 25$",
+    "subject": "Geometry",
+    "level": 2,
+    "unique_id": "math_004",
+    "complexity_level": "L1",
+    "dir_score": 0.42,
+    "reasoning_steps": 2,
+    "screened": true,
+    "quality_score": 0.89
+  },
+  {
+    "problem": "Solve for $x$: $2^{x+1} + 2^{x-1} = 20$.",
+    "solution": "Let's factor out the smaller power of 2.\n\n$2^{x+1} + 2^{x-1} = 20$\n\nWe can write:\n$2^{x+1} = 2 \\cdot 2^x$ and $2^{x-1} = \\frac{2^x}{2}$\n\nSo the equation becomes:\n$2 \\cdot 2^x + \\frac{2^x}{2} = 20$\n\nLet $y = 2^x$. Then:\n$2y + \\frac{y}{2} = 20$\n\nMultiplying by 2:\n$4y + y = 40$\n$5y = 40$\n$y = 8$\n\nSince $y = 2^x = 8 = 2^3$, we have $x = 3$.",
+    "answer": "3",
+    "subject": "Intermediate Algebra",
+    "level": 3,
+    "unique_id": "math_005",
+    "complexity_level": "L0",
+    "dir_score": 0.08,
+    "reasoning_steps": 1,
+    "screened": true,
+    "quality_score": 0.858
+  }
+]

@@ -1,0 +1,365 @@
+{
+  "metadata": {
+    "framework": "COT-DIR + MLR Integration",
+    "version": "1.0",
+    "timestamp": "20250626_205908",
+    "total_test_cases": 5
+  },
+  "performance_summary": {
+    "total_problems": 5,
+    "correct_answers": 1,
+    "accuracy": 0.2,
+    "average_confidence": 0.85,
+    "average_reasoning_steps": 3.0,
+    "average_processing_time": 1.0728836059570312e-05,
+    "difficulty_breakdown": {
+      "简单": {
+        "total": 2,
+        "correct": 1
+      },
+      "中等": {
+        "total": 2,
+        "correct": 0
+      },
+      "困难": {
+        "total": 1,
+        "correct": 0
+      }
+    }
+  },
+  "detailed_results": [
+    {
+      "id": 1,
+      "question": "小明有3个苹果，小红有5个苹果，他们一共有多少个苹果？",
+      "type": "arithmetic_addition",
+      "difficulty": "简单",
+      "domain": "基础算术",
+      "expected": 8,
+      "actual": 8,
+      "correct": true,
+      "confidence": 0.85,
+      "reasoning_steps": 3,
+      "processing_time": 3.695487976074219e-05,
+      "detailed_result": {
+        "answer": {
+          "value": 8,
+          "confidence": 0.85,
+          "unit": "个"
+        },
+        "reasoning_process": {
+          "steps": [
+            {
+              "id": 1,
+              "operation": "问题分析",
+              "description": "识别问题类型：arithmetic_addition",
+              "confidence": 0.9
+            },
+            {
+              "id": 2,
+              "operation": "实体提取",
+              "description": "提取数字：[3, 5]",
+              "confidence": 0.9
+            },
+            {
+              "id": 3,
+              "operation": "加法运算",
+              "description": "执行计算：8",
+              "confidence": 0.85
+            }
+          ],
+          "total_steps": 3
+        },
+        "discovered_relations": [
+          {
+            "type": "arithmetic_relation",
+            "entities": [
+              "数量0",
+              "数量1"
+            ],
+            "confidence": 0.8
+          }
+        ],
+        "validation_report": {
+          "mathematical_correctness": {
+            "score": 0.9,
+            "issues": []
+          },
+          "logical_consistency": {
+            "score": 0.85,
+            "issues": []
+          }
+        },
+        "overall_confidence": 0.85,
+        "explanation": "通过加法运算处理，置信度85%"
+      }
+    },
+    {
+      "id": 2,
+      "question": "一个班有30个学生，其中男生比女生多6个，请问男生有多少个？",
+      "type": "algebra_equation",
+      "difficulty": "中等",
+      "domain": "代数方程",
+      "expected": 18,
+      "actual": 21,
+      "correct": false,
+      "confidence": 0.85,
+      "reasoning_steps": 3,
+      "processing_time": 5.0067901611328125e-06,
+      "detailed_result": {
+        "answer": {
+          "value": 21,
+          "confidence": 0.85,
+          "unit": "个"
+        },
+        "reasoning_process": {
+          "steps": [
+            {
+              "id": 1,
+              "operation": "问题分析",
+              "description": "识别问题类型：algebra_equation",
+              "confidence": 0.9
+            },
+            {
+              "id": 2,
+              "operation": "实体提取",
+              "description": "提取数字：[30, 6]",
+              "confidence": 0.9
+            },
+            {
+              "id": 3,
+              "operation": "比较运算",
+              "description": "执行计算：21",
+              "confidence": 0.85
+            }
+          ],
+          "total_steps": 3
+        },
+        "discovered_relations": [
+          {
+            "type": "arithmetic_relation",
+            "entities": [
+              "数量0",
+              "数量1"
+            ],
+            "confidence": 0.8
+          }
+        ],
+        "validation_report": {
+          "mathematical_correctness": {
+            "score": 0.9,
+            "issues": []
+          },
+          "logical_consistency": {
+            "score": 0.85,
+            "issues": []
+          }
+        },
+        "overall_confidence": 0.85,
+        "explanation": "通过比较运算处理，置信度85%"
+      }
+    },
+    {
+      "id": 3,
+      "question": "小华从家到学校需要20分钟，从学校到图书馆需要15分钟，请问他从家到图书馆需要多少分钟？",
+      "type": "time_calculation",
+      "difficulty": "简单",
+      "domain": "时间计算",
+      "expected": 35,
+      "actual": 24,
+      "correct": false,
+      "confidence": 0.85,
+      "reasoning_steps": 3,
+      "processing_time": 3.814697265625e-06,
+      "detailed_result": {
+        "answer": {
+          "value": 24,
+          "confidence": 0.85,
+          "unit": "分钟"
+        },
+        "reasoning_process": {
+          "steps": [
+            {
+              "id": 1,
+              "operation": "问题分析",
+              "description": "识别问题类型：time_calculation",
+              "confidence": 0.9
+            },
+            {
+              "id": 2,
+              "operation": "实体提取",
+              "description": "提取数字：[20, 15]",
+              "confidence": 0.9
+            },
+            {
+              "id": 3,
+              "operation": "比较运算",
+              "description": "执行计算：24",
+              "confidence": 0.85
+            }
+          ],
+          "total_steps": 3
+        },
+        "discovered_relations": [
+          {
+            "type": "arithmetic_relation",
+            "entities": [
+              "数量0",
+              "数量1"
+            ],
+            "confidence": 0.8
+          }
+        ],
+        "validation_report": {
+          "mathematical_correctness": {
+            "score": 0.9,
+            "issues": []
+          },
+          "logical_consistency": {
+            "score": 0.85,
+            "issues": []
+          }
+        },
+        "overall_confidence": 0.85,
+        "explanation": "通过比较运算处理，置信度85%"
+      }
+    },
+    {
+      "id": 4,
+      "question": "一本书原价40元，现在打8折，小明买3本这样的书需要多少钱？",
+      "type": "percentage_calculation",
+      "difficulty": "中等",
+      "domain": "百分比计算",
+      "expected": 96,
+      "actual": 28,
+      "correct": false,
+      "confidence": 0.85,
+      "reasoning_steps": 3,
+      "processing_time": 5.0067901611328125e-06,
+      "detailed_result": {
+        "answer": {
+          "value": 28,
+          "confidence": 0.85,
+          "unit": ""
+        },
+        "reasoning_process": {
+          "steps": [
+            {
+              "id": 1,
+              "operation": "问题分析",
+              "description": "识别问题类型：percentage_calculation",
+              "confidence": 0.9
+            },
+            {
+              "id": 2,
+              "operation": "实体提取",
+              "description": "提取数字：[40, 8, 3]",
+              "confidence": 0.9
+            },
+            {
+              "id": 3,
+              "operation": "比较运算",
+              "description": "执行计算：28",
+              "confidence": 0.85
+            }
+          ],
+          "total_steps": 3
+        },
+        "discovered_relations": [
+          {
+            "type": "arithmetic_relation",
+            "entities": [
+              "数量0",
+              "数量1",
+              "数量2"
+            ],
+            "confidence": 0.8
+          }
+        ],
+        "validation_report": {
+          "mathematical_correctness": {
+            "score": 0.9,
+            "issues": []
+          },
+          "logical_consistency": {
+            "score": 0.85,
+            "issues": []
+          }
+        },
+        "overall_confidence": 0.85,
+        "explanation": "通过比较运算处理，置信度85%"
+      }
+    },
+    {
+      "id": 5,
+      "question": "农场里有鸡和兔子共15只，总共有42条腿，请问鸡有多少只？",
+      "type": "system_equations",
+      "difficulty": "困难",
+      "domain": "方程组",
+      "expected": 9,
+      "actual": 57,
+      "correct": false,
+      "confidence": 0.85,
+      "reasoning_steps": 3,
+      "processing_time": 2.86102294921875e-06,
+      "detailed_result": {
+        "answer": {
+          "value": 57,
+          "confidence": 0.85,
+          "unit": ""
+        },
+        "reasoning_process": {
+          "steps": [
+            {
+              "id": 1,
+              "operation": "问题分析",
+              "description": "识别问题类型：system_equations",
+              "confidence": 0.9
+            },
+            {
+              "id": 2,
+              "operation": "实体提取",
+              "description": "提取数字：[15, 42]",
+              "confidence": 0.9
+            },
+            {
+              "id": 3,
+              "operation": "加法运算",
+              "description": "执行计算：57",
+              "confidence": 0.85
+            }
+          ],
+          "total_steps": 3
+        },
+        "discovered_relations": [
+          {
+            "type": "arithmetic_relation",
+            "entities": [
+              "数量0",
+              "数量1"
+            ],
+            "confidence": 0.8
+          }
+        ],
+        "validation_report": {
+          "mathematical_correctness": {
+            "score": 0.9,
+            "issues": []
+          },
+          "logical_consistency": {
+            "score": 0.85,
+            "issues": []
+          }
+        },
+        "overall_confidence": 0.85,
+        "explanation": "通过加法运算处理，置信度85%"
+      }
+    }
+  ],
+  "system_performance": {
+    "performance_metrics": {
+      "total_problems_solved": 5,
+      "success_rate": 0.85,
+      "average_confidence": 0.85
+    }
+  }
+}

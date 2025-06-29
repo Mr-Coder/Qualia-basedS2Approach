@@ -21,8 +21,9 @@ from typing import Any, Dict, List, Optional, Set, Tuple, Union
 import numpy as np
 import spacy
 
-from models.processed_text import ProcessedText
-from models.structures import FeatureSet, PatternMatch
+# 临时使用字典来替代 ProcessedText, FeatureSet, PatternMatch
+# from models.processed_text import ProcessedText
+# from models.structures import FeatureSet, PatternMatch
 
 logger = logging.getLogger(__name__)
 
@@ -94,7 +95,7 @@ class NLPProcessor:
         # 目前直接返回unknown
         return 'unknown'
 
-    def process_text(self, text: str) -> ProcessedText:
+    def process_text(self, text: str) -> Dict:
         """处理文本
         
         Args:
@@ -125,15 +126,15 @@ class NLPProcessor:
         # 提取数值和单位
         values_and_units = self._extract_values_and_units(text)
         
-        result = ProcessedText(
-            raw_text=text,
-            segmentation=tokens,
-            pos_tags=pos_tags,
-            dependencies=dependencies,
-            semantic_roles={},
-            features=features,
-            values_and_units=values_and_units
-        )
+        result = {
+            'raw_text': text,
+            'segmentation': tokens,
+            'pos_tags': pos_tags,
+            'dependencies': dependencies,
+            'semantic_roles': {},
+            'features': features,
+            'values_and_units': values_and_units
+        }
         logger.info(f"[NLPProcessor] 输出: {result}")
         return result
 
@@ -241,7 +242,7 @@ class NLPProcessor:
                 
         return dependencies
 
-    def _extract_features(self, text: str, tokens: List[str], pos_tags: List[str]) -> FeatureSet:
+    def _extract_features(self, text: str, tokens: List[str], pos_tags: List[str]) -> Dict:
         """提取问题特征
         
         Args:
@@ -250,33 +251,33 @@ class NLPProcessor:
             pos_tags: 词性标注结果
             
         Returns:
-            FeatureSet: 问题特征集
+            Dict: 问题特征集
         """
-        features = FeatureSet()
+        features = {}
         
         # 1. 数学复杂度特征
-        features.math_complexity = {
+        features['math_complexity'] = {
             'variable_count': len(self._extract_values_and_units(text)),
             'operation_indicators': self._detect_operations(text),
             'function_indicators': self._detect_functions(text)
         }
         
         # 2. 语言表达结构特征
-        features.linguistic_structure = {
+        features['linguistic_structure'] = {
             'pos_distribution': self._analyze_pos_distribution(pos_tags),
             'pos_sequence': ','.join(pos_tags),
             'sentence_structure': self._analyze_sentence_structure(text)
         }
         
         # 3. 关系类型特征
-        features.relation_type = {
+        features['relation_type'] = {
             'explicit_relations': self._detect_explicit_relations(text),
             'implicit_relations': self._detect_implicit_relations(text),
             'dominant_type': self._determine_dominant_relation_type(text)
         }
         
         # 4. 问题领域特征
-        features.domain_indicators = {
+        features['domain_indicators'] = {
             'liquid_related': self._contains_domain_terms(text, 'liquid_related'),
             'motion_related': self._contains_domain_terms(text, 'motion_related'),
             'work_related': self._contains_domain_terms(text, 'work_related'),
@@ -284,7 +285,7 @@ class NLPProcessor:
         }
         
         # 5. 问题目标特征
-        features.question_target = {
+        features['question_target'] = {
             'target_variable': self._identify_target_variable(text),
             'question_type': self._classify_question_type(text)
         }

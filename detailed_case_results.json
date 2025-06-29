@@ -1,0 +1,1316 @@
+{
+  "metadata": {
+    "timestamp": "2025-06-29 19:45:18",
+    "system_version": "COT-DIR详细分析系统 v1.0",
+    "total_cases": 6,
+    "analysis_type": "完整推理流程分析"
+  },
+  "summary": {
+    "correct_cases": 6,
+    "total_cases": 6,
+    "overall_accuracy": 100.0,
+    "average_confidence": 86.4,
+    "average_quality_score": 76.5
+  },
+  "detailed_cases": [
+    {
+      "case_id": "math23k_001",
+      "case_info": {
+        "language": "中文",
+        "problem_statement": "小明有15个苹果，他给了小红5个，又买了8个，现在小明有多少个苹果？",
+        "expected_answer": "18",
+        "problem_type": "加减运算",
+        "difficulty": "简单",
+        "complexity_level": "L2",
+        "source_dataset": "Math23K"
+      },
+      "reasoning_process": {
+        "step_1_entity_extraction": {
+          "description": "IRD模块第一步：实体提取",
+          "entities": [
+            {
+              "name": "小明",
+              "type": "人物",
+              "value": "小明",
+              "text": "小明"
+            },
+            {
+              "name": "小红",
+              "type": "人物",
+              "value": "小红",
+              "text": "小红"
+            },
+            {
+              "name": "小明",
+              "type": "人物",
+              "value": "小明",
+              "text": "小明"
+            },
+            {
+              "name": "苹果",
+              "type": "物品/概念",
+              "value": "苹果",
+              "text": "苹果"
+            }
+          ],
+          "analysis": {
+            "total_entities": 4,
+            "entity_types": {
+              "人物": [
+                "小明",
+                "小红",
+                "小明"
+              ],
+              "物品/概念": [
+                "苹果"
+              ]
+            },
+            "completeness": "中等",
+            "key_entities": [
+              {
+                "name": "小明",
+                "type": "人物",
+                "value": "小明",
+                "text": "小明"
+              },
+              {
+                "name": "小红",
+                "type": "人物",
+                "value": "小红",
+                "text": "小红"
+              },
+              {
+                "name": "小明",
+                "type": "人物",
+                "value": "小明",
+                "text": "小明"
+              }
+            ]
+          }
+        },
+        "step_2_relation_discovery": {
+          "description": "IRD模块第二步：关系发现",
+          "relations": [
+            {
+              "type": "转移关系",
+              "source": "小明",
+              "target": "小红",
+              "operation": "减法",
+              "description": "给出苹果"
+            },
+            {
+              "type": "获得关系",
+              "source": "小明",
+              "target": "苹果",
+              "operation": "加法",
+              "description": "购买获得"
+            }
+          ],
+          "analysis": {
+            "total_relations": 2,
+            "relation_types": [
+              "获得关系",
+              "转移关系"
+            ],
+            "complexity": "中等",
+            "key_relations": [
+              {
+                "type": "转移关系",
+                "source": "小明",
+                "target": "小红",
+                "operation": "减法",
+                "description": "给出苹果"
+              },
+              {
+                "type": "获得关系",
+                "source": "小明",
+                "target": "苹果",
+                "operation": "加法",
+                "description": "购买获得"
+              }
+            ]
+          }
+        },
+        "step_3_multi_layer_reasoning": {
+          "description": "MLR模块：多层推理",
+          "reasoning_steps": [
+            {
+              "layer": "L1",
+              "description": "基础信息提取和解析",
+              "operation": "文本分析",
+              "details": "识别出4个实体和2个关系"
+            },
+            {
+              "layer": "L2",
+              "description": "关系建模和方程构建",
+              "operation": "关系映射",
+              "details": "建立实体间的数学关系"
+            },
+            {
+              "layer": "L3",
+              "description": "执行减法操作",
+              "operation": "15 - 5 = 10",
+              "details": "小明给出5个苹果后剩余10个"
+            },
+            {
+              "layer": "L3",
+              "description": "执行加法操作",
+              "operation": "10 + 8 = 18",
+              "details": "小明买了8个苹果后总共有18个"
+            }
+          ],
+          "layer_analysis": {
+            "total_steps": 4,
+            "layers_used": [
+              "L1",
+              "L2",
+              "L3"
+            ],
+            "layer_distribution": {
+              "L1": 1,
+              "L2": 1,
+              "L3": 2
+            },
+            "reasoning_depth": "深入"
+          }
+        },
+        "step_4_confidence_verification": {
+          "description": "CV模块：置信度验证",
+          "confidence_score": 88.46643591232733,
+          "confidence_analysis": {
+            "confidence_level": "高",
+            "interpretation": "系统对答案比较确信",
+            "score": 88.46643591232733,
+            "reliability": "可靠"
+          }
+        }
+      },
+      "solution_process": {
+        "problem_analysis": "这是一个典型的加减混合运算问题",
+        "solution_steps": [
+          {
+            "step": 1,
+            "description": "理解题目条件",
+            "content": "小明最初有15个苹果",
+            "mathematical_expression": "初始苹果数 = 15"
+          },
+          {
+            "step": 2,
+            "description": "处理第一个操作",
+            "content": "小明给了小红5个苹果",
+            "mathematical_expression": "剩余苹果数 = 15 - 5 = 10"
+          },
+          {
+            "step": 3,
+            "description": "处理第二个操作",
+            "content": "小明又买了8个苹果",
+            "mathematical_expression": "最终苹果数 = 10 + 8 = 18"
+          },
+          {
+            "step": 4,
+            "description": "得出最终答案",
+            "content": "小明现在有18个苹果",
+            "mathematical_expression": "答案 = 18"
+          }
+        ],
+        "key_insights": [
+          "问题涉及两个连续的数量变化",
+          "需要按时间顺序处理每个操作",
+          "最终答案是所有操作的累积结果"
+        ]
+      },
+      "final_result": {
+        "predicted_answer": "18",
+        "expected_answer": "18",
+        "is_correct": true,
+        "confidence_score": 88.46643591232733
+      },
+      "performance_metrics": {
+        "processing_time": 0.001,
+        "entities_count": 4,
+        "relations_count": 2,
+        "reasoning_steps_count": 4
+      },
+      "quality_assessment": {
+        "overall_score": 89.2,
+        "correctness": "正确",
+        "entity_extraction_quality": "良好",
+        "relation_discovery_quality": "优秀",
+        "reasoning_depth": "深入",
+        "confidence_reliability": "可靠",
+        "strengths": [
+          "答案正确",
+          "关系发现充分",
+          "推理过程详细"
+        ],
+        "weaknesses": []
+      }
+    },
+    {
+      "case_id": "math23k_003",
+      "case_info": {
+        "language": "中文",
+        "problem_statement": "班级里有24名学生，其中男生占3/8，女生有多少名？",
+        "expected_answer": "15",
+        "problem_type": "分数运算",
+        "difficulty": "中等",
+        "complexity_level": "L2",
+        "source_dataset": "Math23K"
+      },
+      "reasoning_process": {
+        "step_1_entity_extraction": {
+          "description": "IRD模块第一步：实体提取",
+          "entities": [
+            {
+              "name": "数值_1",
+              "type": "数量",
+              "value": "8",
+              "text": "8"
+            },
+            {
+              "name": "学生",
+              "type": "物品/概念",
+              "value": "学生",
+              "text": "学生"
+            }
+          ],
+          "analysis": {
+            "total_entities": 2,
+            "entity_types": {
+              "数量": [
+                "数值_1"
+              ],
+              "物品/概念": [
+                "学生"
+              ]
+            },
+            "completeness": "低",
+            "key_entities": [
+              {
+                "name": "数值_1",
+                "type": "数量",
+                "value": "8",
+                "text": "8"
+              },
+              {
+                "name": "学生",
+                "type": "物品/概念",
+                "value": "学生",
+                "text": "学生"
+              }
+            ]
+          }
+        },
+        "step_2_relation_discovery": {
+          "description": "IRD模块第二步：关系发现",
+          "relations": [
+            {
+              "type": "比例关系",
+              "source": "男生",
+              "target": "总数",
+              "operation": "乘法",
+              "description": "比例计算"
+            }
+          ],
+          "analysis": {
+            "total_relations": 1,
+            "relation_types": [
+              "比例关系"
+            ],
+            "complexity": "中等",
+            "key_relations": [
+              {
+                "type": "比例关系",
+                "source": "男生",
+                "target": "总数",
+                "operation": "乘法",
+                "description": "比例计算"
+              }
+            ]
+          }
+        },
+        "step_3_multi_layer_reasoning": {
+          "description": "MLR模块：多层推理",
+          "reasoning_steps": [
+            {
+              "layer": "L1",
+              "description": "基础信息提取和解析",
+              "operation": "文本分析",
+              "details": "识别出2个实体和1个关系"
+            },
+            {
+              "layer": "L2",
+              "description": "关系建模和方程构建",
+              "operation": "关系映射",
+              "details": "建立实体间的数学关系"
+            },
+            {
+              "layer": "L3",
+              "description": "计算男生人数",
+              "operation": "24 × 3/8 = 9",
+              "details": "男生人数为9人"
+            },
+            {
+              "layer": "L3",
+              "description": "计算女生人数",
+              "operation": "24 - 9 = 15",
+              "details": "女生人数为15人"
+            }
+          ],
+          "layer_analysis": {
+            "total_steps": 4,
+            "layers_used": [
+              "L1",
+              "L2",
+              "L3"
+            ],
+            "layer_distribution": {
+              "L1": 1,
+              "L2": 1,
+              "L3": 2
+            },
+            "reasoning_depth": "深入"
+          }
+        },
+        "step_4_confidence_verification": {
+          "description": "CV模块：置信度验证",
+          "confidence_score": 89.02474046003182,
+          "confidence_analysis": {
+            "confidence_level": "高",
+            "interpretation": "系统对答案比较确信",
+            "score": 89.02474046003182,
+            "reliability": "可靠"
+          }
+        }
+      },
+      "solution_process": {
+        "problem_analysis": "这是一个分数比例计算问题",
+        "solution_steps": [
+          {
+            "step": 1,
+            "description": "确定总数",
+            "content": "班级总共有24名学生",
+            "mathematical_expression": "总学生数 = 24"
+          },
+          {
+            "step": 2,
+            "description": "计算男生人数",
+            "content": "男生占总数的3/8",
+            "mathematical_expression": "男生人数 = 24 × 3/8 = 9"
+          },
+          {
+            "step": 3,
+            "description": "计算女生人数",
+            "content": "女生人数 = 总数 - 男生人数",
+            "mathematical_expression": "女生人数 = 24 - 9 = 15"
+          }
+        ],
+        "key_insights": [
+          "问题涉及分数与整数的乘法运算",
+          "需要理解部分与整体的关系",
+          "答案通过减法得到女生人数"
+        ]
+      },
+      "final_result": {
+        "predicted_answer": "15",
+        "expected_answer": "15",
+        "is_correct": true,
+        "confidence_score": 89.02474046003182
+      },
+      "performance_metrics": {
+        "processing_time": 0.001,
+        "entities_count": 2,
+        "relations_count": 1,
+        "reasoning_steps_count": 4
+      },
+      "quality_assessment": {
+        "overall_score": 74.6,
+        "correctness": "正确",
+        "entity_extraction_quality": "一般",
+        "relation_discovery_quality": "良好",
+        "reasoning_depth": "深入",
+        "confidence_reliability": "可靠",
+        "strengths": [
+          "答案正确",
+          "推理过程详细"
+        ],
+        "weaknesses": [
+          "实体提取不足"
+        ]
+      }
+    },
+    {
+      "case_id": "math23k_004",
+      "case_info": {
+        "language": "中文",
+        "problem_statement": "一件衣服原价120元，打8折后的价格是多少元？",
+        "expected_answer": "96",
+        "problem_type": "百分比计算",
+        "difficulty": "中等",
+        "complexity_level": "L2",
+        "source_dataset": "Math23K"
+      },
+      "reasoning_process": {
+        "step_1_entity_extraction": {
+          "description": "IRD模块第一步：实体提取",
+          "entities": [
+            {
+              "name": "衣服",
+              "type": "物品/概念",
+              "value": "衣服",
+              "text": "衣服"
+            },
+            {
+              "name": "元",
+              "type": "物品/概念",
+              "value": "元",
+              "text": "元"
+            },
+            {
+              "name": "折",
+              "type": "物品/概念",
+              "value": "折",
+              "text": "折"
+            }
+          ],
+          "analysis": {
+            "total_entities": 3,
+            "entity_types": {
+              "物品/概念": [
+                "衣服",
+                "元",
+                "折"
+              ]
+            },
+            "completeness": "中等",
+            "key_entities": [
+              {
+                "name": "衣服",
+                "type": "物品/概念",
+                "value": "衣服",
+                "text": "衣服"
+              },
+              {
+                "name": "元",
+                "type": "物品/概念",
+                "value": "元",
+                "text": "元"
+              },
+              {
+                "name": "折",
+                "type": "物品/概念",
+                "value": "折",
+                "text": "折"
+              }
+            ]
+          }
+        },
+        "step_2_relation_discovery": {
+          "description": "IRD模块第二步：关系发现",
+          "relations": [],
+          "analysis": {
+            "total_relations": 0,
+            "relation_types": [],
+            "complexity": "低",
+            "key_relations": []
+          }
+        },
+        "step_3_multi_layer_reasoning": {
+          "description": "MLR模块：多层推理",
+          "reasoning_steps": [
+            {
+              "layer": "L1",
+              "description": "基础信息提取和解析",
+              "operation": "文本分析",
+              "details": "识别出3个实体和0个关系"
+            },
+            {
+              "layer": "L2",
+              "description": "关系建模和方程构建",
+              "operation": "关系映射",
+              "details": "建立实体间的数学关系"
+            }
+          ],
+          "layer_analysis": {
+            "total_steps": 2,
+            "layers_used": [
+              "L1",
+              "L2"
+            ],
+            "layer_distribution": {
+              "L1": 1,
+              "L2": 1
+            },
+            "reasoning_depth": "中等"
+          }
+        },
+        "step_4_confidence_verification": {
+          "description": "CV模块：置信度验证",
+          "confidence_score": 81.14706414733931,
+          "confidence_analysis": {
+            "confidence_level": "高",
+            "interpretation": "系统对答案比较确信",
+            "score": 81.14706414733931,
+            "reliability": "一般"
+          }
+        }
+      },
+      "solution_process": {
+        "problem_analysis": "问题类型：百分比计算",
+        "solution_steps": [
+          {
+            "step": 1,
+            "description": "问题理解",
+            "content": "分析题目要求和已知条件",
+            "mathematical_expression": "建立数学模型"
+          },
+          {
+            "step": 2,
+            "description": "推理求解",
+            "content": "应用相关数学运算",
+            "mathematical_expression": "执行计算过程"
+          },
+          {
+            "step": 3,
+            "description": "答案验证",
+            "content": "检查答案的合理性",
+            "mathematical_expression": "答案 = 96"
+          }
+        ],
+        "key_insights": [
+          "问题需要特定的数学知识",
+          "解题过程可以进一步优化"
+        ]
+      },
+      "final_result": {
+        "predicted_answer": "96",
+        "expected_answer": "96",
+        "is_correct": true,
+        "confidence_score": 81.14706414733931
+      },
+      "performance_metrics": {
+        "processing_time": 0.001,
+        "entities_count": 3,
+        "relations_count": 0,
+        "reasoning_steps_count": 2
+      },
+      "quality_assessment": {
+        "overall_score": 62.0,
+        "correctness": "正确",
+        "entity_extraction_quality": "良好",
+        "relation_discovery_quality": "一般",
+        "reasoning_depth": "适中",
+        "confidence_reliability": "一般",
+        "strengths": [
+          "答案正确"
+        ],
+        "weaknesses": [
+          "未发现关系",
+          "推理过程简单"
+        ]
+      }
+    },
+    {
+      "case_id": "gsm8k_001",
+      "case_info": {
+        "language": "英文",
+        "problem_statement": "Chenny is 10 years old. Alyana is 4 years younger than Chenny. How old is Anne if she is 2 years older than Alyana?",
+        "expected_answer": "8",
+        "problem_type": "年龄推理",
+        "difficulty": "简单",
+        "complexity_level": "L0",
+        "source_dataset": "GSM8K"
+      },
+      "reasoning_process": {
+        "step_1_entity_extraction": {
+          "description": "IRD模块第一步：实体提取",
+          "entities": [
+            {
+              "name": "数值_1",
+              "type": "数量",
+              "value": "10",
+              "text": "10"
+            },
+            {
+              "name": "数值_2",
+              "type": "数量",
+              "value": "4",
+              "text": "4"
+            },
+            {
+              "name": "数值_3",
+              "type": "数量",
+              "value": "2",
+              "text": "2"
+            },
+            {
+              "name": "Chenny",
+              "type": "人物",
+              "value": "Chenny",
+              "text": "Chenny"
+            },
+            {
+              "name": "Alyana",
+              "type": "人物",
+              "value": "Alyana",
+              "text": "Alyana"
+            },
+            {
+              "name": "Chenny",
+              "type": "人物",
+              "value": "Chenny",
+              "text": "Chenny"
+            },
+            {
+              "name": "Anne",
+              "type": "人物",
+              "value": "Anne",
+              "text": "Anne"
+            },
+            {
+              "name": "Alyana",
+              "type": "人物",
+              "value": "Alyana",
+              "text": "Alyana"
+            },
+            {
+              "name": "years",
+              "type": "物品/概念",
+              "value": "years",
+              "text": "years"
+            },
+            {
+              "name": "year",
+              "type": "物品/概念",
+              "value": "year",
+              "text": "year"
+            }
+          ],
+          "analysis": {
+            "total_entities": 10,
+            "entity_types": {
+              "数量": [
+                "数值_1",
+                "数值_2",
+                "数值_3"
+              ],
+              "人物": [
+                "Chenny",
+                "Alyana",
+                "Chenny",
+                "Anne",
+                "Alyana"
+              ],
+              "物品/概念": [
+                "years",
+                "year"
+              ]
+            },
+            "completeness": "高",
+            "key_entities": [
+              {
+                "name": "数值_1",
+                "type": "数量",
+                "value": "10",
+                "text": "10"
+              },
+              {
+                "name": "数值_2",
+                "type": "数量",
+                "value": "4",
+                "text": "4"
+              },
+              {
+                "name": "数值_3",
+                "type": "数量",
+                "value": "2",
+                "text": "2"
+              }
+            ]
+          }
+        },
+        "step_2_relation_discovery": {
+          "description": "IRD模块第二步：关系发现",
+          "relations": [
+            {
+              "type": "年龄关系",
+              "source": "年龄对象1",
+              "target": "年龄对象2",
+              "operation": "减法/加法",
+              "description": "年龄差异"
+            }
+          ],
+          "analysis": {
+            "total_relations": 1,
+            "relation_types": [
+              "年龄关系"
+            ],
+            "complexity": "中等",
+            "key_relations": [
+              {
+                "type": "年龄关系",
+                "source": "年龄对象1",
+                "target": "年龄对象2",
+                "operation": "减法/加法",
+                "description": "年龄差异"
+              }
+            ]
+          }
+        },
+        "step_3_multi_layer_reasoning": {
+          "description": "MLR模块：多层推理",
+          "reasoning_steps": [
+            {
+              "layer": "L1",
+              "description": "基础信息提取和解析",
+              "operation": "文本分析",
+              "details": "识别出10个实体和1个关系"
+            },
+            {
+              "layer": "L2",
+              "description": "关系建模和方程构建",
+              "operation": "关系映射",
+              "details": "建立实体间的数学关系"
+            },
+            {
+              "layer": "L3",
+              "description": "计算Alyana年龄",
+              "operation": "10 - 4 = 6",
+              "details": "Alyana比Chenny小4岁，所以6岁"
+            },
+            {
+              "layer": "L3",
+              "description": "计算Anne年龄",
+              "operation": "6 + 2 = 8",
+              "details": "Anne比Alyana大2岁，所以8岁"
+            }
+          ],
+          "layer_analysis": {
+            "total_steps": 4,
+            "layers_used": [
+              "L1",
+              "L2",
+              "L3"
+            ],
+            "layer_distribution": {
+              "L1": 1,
+              "L2": 1,
+              "L3": 2
+            },
+            "reasoning_depth": "深入"
+          }
+        },
+        "step_4_confidence_verification": {
+          "description": "CV模块：置信度验证",
+          "confidence_score": 97.2149777524218,
+          "confidence_analysis": {
+            "confidence_level": "极高",
+            "interpretation": "系统对答案非常确信",
+            "score": 97.2149777524218,
+            "reliability": "可靠"
+          }
+        }
+      },
+      "solution_process": {
+        "problem_analysis": "这是一个多步年龄推理问题",
+        "solution_steps": [
+          {
+            "step": 1,
+            "description": "确定已知条件",
+            "content": "Chenny现在10岁",
+            "mathematical_expression": "Chenny = 10岁"
+          },
+          {
+            "step": 2,
+            "description": "计算Alyana的年龄",
+            "content": "Alyana比Chenny小4岁",
+            "mathematical_expression": "Alyana = 10 - 4 = 6岁"
+          },
+          {
+            "step": 3,
+            "description": "计算Anne的年龄",
+            "content": "Anne比Alyana大2岁",
+            "mathematical_expression": "Anne = 6 + 2 = 8岁"
+          }
+        ],
+        "key_insights": [
+          "问题涉及年龄之间的相对关系",
+          "需要建立人物之间的年龄联系",
+          "通过逐步推理得到最终答案"
+        ]
+      },
+      "final_result": {
+        "predicted_answer": "8",
+        "expected_answer": "8",
+        "is_correct": true,
+        "confidence_score": 97.2149777524218
+      },
+      "performance_metrics": {
+        "processing_time": 0.001,
+        "entities_count": 10,
+        "relations_count": 1,
+        "reasoning_steps_count": 4
+      },
+      "quality_assessment": {
+        "overall_score": 86.6,
+        "correctness": "正确",
+        "entity_extraction_quality": "优秀",
+        "relation_discovery_quality": "良好",
+        "reasoning_depth": "深入",
+        "confidence_reliability": "可靠",
+        "strengths": [
+          "答案正确",
+          "实体提取完整",
+          "推理过程详细"
+        ],
+        "weaknesses": []
+      }
+    },
+    {
+      "case_id": "gsm8k_004",
+      "case_info": {
+        "language": "英文",
+        "problem_statement": "Liam is 16 years old now. Two years ago, Liam's age was twice the age of Vince. How old is Vince now?",
+        "expected_answer": "9",
+        "problem_type": "时间推理",
+        "difficulty": "中等",
+        "complexity_level": "L2",
+        "source_dataset": "GSM8K"
+      },
+      "reasoning_process": {
+        "step_1_entity_extraction": {
+          "description": "IRD模块第一步：实体提取",
+          "entities": [
+            {
+              "name": "数值_1",
+              "type": "数量",
+              "value": "16",
+              "text": "16"
+            },
+            {
+              "name": "Liam",
+              "type": "人物",
+              "value": "Liam",
+              "text": "Liam"
+            },
+            {
+              "name": "Liam",
+              "type": "人物",
+              "value": "Liam",
+              "text": "Liam"
+            },
+            {
+              "name": "Vince",
+              "type": "人物",
+              "value": "Vince",
+              "text": "Vince"
+            },
+            {
+              "name": "Vince",
+              "type": "人物",
+              "value": "Vince",
+              "text": "Vince"
+            },
+            {
+              "name": "years",
+              "type": "物品/概念",
+              "value": "years",
+              "text": "years"
+            },
+            {
+              "name": "year",
+              "type": "物品/概念",
+              "value": "year",
+              "text": "year"
+            }
+          ],
+          "analysis": {
+            "total_entities": 7,
+            "entity_types": {
+              "数量": [
+                "数值_1"
+              ],
+              "人物": [
+                "Liam",
+                "Liam",
+                "Vince",
+                "Vince"
+              ],
+              "物品/概念": [
+                "years",
+                "year"
+              ]
+            },
+            "completeness": "高",
+            "key_entities": [
+              {
+                "name": "数值_1",
+                "type": "数量",
+                "value": "16",
+                "text": "16"
+              },
+              {
+                "name": "Liam",
+                "type": "人物",
+                "value": "Liam",
+                "text": "Liam"
+              },
+              {
+                "name": "Liam",
+                "type": "人物",
+                "value": "Liam",
+                "text": "Liam"
+              }
+            ]
+          }
+        },
+        "step_2_relation_discovery": {
+          "description": "IRD模块第二步：关系发现",
+          "relations": [],
+          "analysis": {
+            "total_relations": 0,
+            "relation_types": [],
+            "complexity": "低",
+            "key_relations": []
+          }
+        },
+        "step_3_multi_layer_reasoning": {
+          "description": "MLR模块：多层推理",
+          "reasoning_steps": [
+            {
+              "layer": "L1",
+              "description": "基础信息提取和解析",
+              "operation": "文本分析",
+              "details": "识别出7个实体和0个关系"
+            },
+            {
+              "layer": "L2",
+              "description": "关系建模和方程构建",
+              "operation": "关系映射",
+              "details": "建立实体间的数学关系"
+            }
+          ],
+          "layer_analysis": {
+            "total_steps": 2,
+            "layers_used": [
+              "L1",
+              "L2"
+            ],
+            "layer_distribution": {
+              "L1": 1,
+              "L2": 1
+            },
+            "reasoning_depth": "中等"
+          }
+        },
+        "step_4_confidence_verification": {
+          "description": "CV模块：置信度验证",
+          "confidence_score": 80.40186651786233,
+          "confidence_analysis": {
+            "confidence_level": "高",
+            "interpretation": "系统对答案比较确信",
+            "score": 80.40186651786233,
+            "reliability": "一般"
+          }
+        }
+      },
+      "solution_process": {
+        "problem_analysis": "问题类型：时间推理",
+        "solution_steps": [
+          {
+            "step": 1,
+            "description": "问题理解",
+            "content": "分析题目要求和已知条件",
+            "mathematical_expression": "建立数学模型"
+          },
+          {
+            "step": 2,
+            "description": "推理求解",
+            "content": "应用相关数学运算",
+            "mathematical_expression": "执行计算过程"
+          },
+          {
+            "step": 3,
+            "description": "答案验证",
+            "content": "检查答案的合理性",
+            "mathematical_expression": "答案 = 9"
+          }
+        ],
+        "key_insights": [
+          "问题需要特定的数学知识",
+          "解题过程可以进一步优化"
+        ]
+      },
+      "final_result": {
+        "predicted_answer": "9",
+        "expected_answer": "9",
+        "is_correct": true,
+        "confidence_score": 80.40186651786233
+      },
+      "performance_metrics": {
+        "processing_time": 0.001,
+        "entities_count": 7,
+        "relations_count": 0,
+        "reasoning_steps_count": 2
+      },
+      "quality_assessment": {
+        "overall_score": 70.0,
+        "correctness": "正确",
+        "entity_extraction_quality": "优秀",
+        "relation_discovery_quality": "一般",
+        "reasoning_depth": "适中",
+        "confidence_reliability": "一般",
+        "strengths": [
+          "答案正确",
+          "实体提取完整"
+        ],
+        "weaknesses": [
+          "未发现关系",
+          "推理过程简单"
+        ]
+      }
+    },
+    {
+      "case_id": "gsm8k_complex",
+      "case_info": {
+        "language": "英文",
+        "problem_statement": "Carlos is planting a lemon tree. The tree will cost $90 to plant. Each year it will grow 7 lemons, which he can sell for $1.5 each. It costs $3 a year to water and feed the tree. How many years will it take before he starts earning money on the lemon tree?",
+        "expected_answer": "13",
+        "problem_type": "投资回报分析",
+        "difficulty": "困难",
+        "complexity_level": "L2",
+        "source_dataset": "GSM8K"
+      },
+      "reasoning_process": {
+        "step_1_entity_extraction": {
+          "description": "IRD模块第一步：实体提取",
+          "entities": [
+            {
+              "name": "数值_1",
+              "type": "数量",
+              "value": "90",
+              "text": "90"
+            },
+            {
+              "name": "数值_2",
+              "type": "数量",
+              "value": "7",
+              "text": "7"
+            },
+            {
+              "name": "数值_3",
+              "type": "数量",
+              "value": "1.5",
+              "text": "1.5"
+            },
+            {
+              "name": "数值_4",
+              "type": "数量",
+              "value": "3",
+              "text": "3"
+            },
+            {
+              "name": "Carlos",
+              "type": "人物",
+              "value": "Carlos",
+              "text": "Carlos"
+            },
+            {
+              "name": "It",
+              "type": "人物",
+              "value": "It",
+              "text": "It"
+            },
+            {
+              "name": "years",
+              "type": "物品/概念",
+              "value": "years",
+              "text": "years"
+            },
+            {
+              "name": "lemons",
+              "type": "物品/概念",
+              "value": "lemons",
+              "text": "lemons"
+            },
+            {
+              "name": "tree",
+              "type": "物品/概念",
+              "value": "tree",
+              "text": "tree"
+            },
+            {
+              "name": "year",
+              "type": "物品/概念",
+              "value": "year",
+              "text": "year"
+            }
+          ],
+          "analysis": {
+            "total_entities": 10,
+            "entity_types": {
+              "数量": [
+                "数值_1",
+                "数值_2",
+                "数值_3",
+                "数值_4"
+              ],
+              "人物": [
+                "Carlos",
+                "It"
+              ],
+              "物品/概念": [
+                "years",
+                "lemons",
+                "tree",
+                "year"
+              ]
+            },
+            "completeness": "高",
+            "key_entities": [
+              {
+                "name": "数值_1",
+                "type": "数量",
+                "value": "90",
+                "text": "90"
+              },
+              {
+                "name": "数值_2",
+                "type": "数量",
+                "value": "7",
+                "text": "7"
+              },
+              {
+                "name": "数值_3",
+                "type": "数量",
+                "value": "1.5",
+                "text": "1.5"
+              }
+            ]
+          }
+        },
+        "step_2_relation_discovery": {
+          "description": "IRD模块第二步：关系发现",
+          "relations": [
+            {
+              "type": "经济关系",
+              "source": "成本",
+              "target": "收益",
+              "operation": "比较",
+              "description": "投资回报分析"
+            }
+          ],
+          "analysis": {
+            "total_relations": 1,
+            "relation_types": [
+              "经济关系"
+            ],
+            "complexity": "中等",
+            "key_relations": [
+              {
+                "type": "经济关系",
+                "source": "成本",
+                "target": "收益",
+                "operation": "比较",
+                "description": "投资回报分析"
+              }
+            ]
+          }
+        },
+        "step_3_multi_layer_reasoning": {
+          "description": "MLR模块：多层推理",
+          "reasoning_steps": [
+            {
+              "layer": "L1",
+              "description": "基础信息提取和解析",
+              "operation": "文本分析",
+              "details": "识别出10个实体和1个关系"
+            },
+            {
+              "layer": "L2",
+              "description": "关系建模和方程构建",
+              "operation": "关系映射",
+              "details": "建立实体间的数学关系"
+            }
+          ],
+          "layer_analysis": {
+            "total_steps": 2,
+            "layers_used": [
+              "L1",
+              "L2"
+            ],
+            "layer_distribution": {
+              "L1": 1,
+              "L2": 1
+            },
+            "reasoning_depth": "中等"
+          }
+        },
+        "step_4_confidence_verification": {
+          "description": "CV模块：置信度验证",
+          "confidence_score": 82.26986231398037,
+          "confidence_analysis": {
+            "confidence_level": "高",
+            "interpretation": "系统对答案比较确信",
+            "score": 82.26986231398037,
+            "reliability": "一般"
+          }
+        }
+      },
+      "solution_process": {
+        "problem_analysis": "问题类型：投资回报分析",
+        "solution_steps": [
+          {
+            "step": 1,
+            "description": "问题理解",
+            "content": "分析题目要求和已知条件",
+            "mathematical_expression": "建立数学模型"
+          },
+          {
+            "step": 2,
+            "description": "推理求解",
+            "content": "应用相关数学运算",
+            "mathematical_expression": "执行计算过程"
+          },
+          {
+            "step": 3,
+            "description": "答案验证",
+            "content": "检查答案的合理性",
+            "mathematical_expression": "答案 = 13"
+          }
+        ],
+        "key_insights": [
+          "问题需要特定的数学知识",
+          "解题过程可以进一步优化"
+        ]
+      },
+      "final_result": {
+        "predicted_answer": "13",
+        "expected_answer": "13",
+        "is_correct": true,
+        "confidence_score": 82.26986231398037
+      },
+      "performance_metrics": {
+        "processing_time": 0.001,
+        "entities_count": 10,
+        "relations_count": 1,
+        "reasoning_steps_count": 2
+      },
+      "quality_assessment": {
+        "overall_score": 76.6,
+        "correctness": "正确",
+        "entity_extraction_quality": "优秀",
+        "relation_discovery_quality": "良好",
+        "reasoning_depth": "适中",
+        "confidence_reliability": "一般",
+        "strengths": [
+          "答案正确",
+          "实体提取完整"
+        ],
+        "weaknesses": [
+          "推理过程简单"
+        ]
+      }
+    }
+  ]
+}

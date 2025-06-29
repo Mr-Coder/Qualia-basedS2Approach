@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)
 
 # from .equation_builder import EquationBuilder  # 临时注释掉
 # 使用相对导入
-from .nlp_processor import NLPProcessor
+# from .nlp_processor import NLPProcessor  # 临时注释掉，有导入问题
 from .relation_extractor import RelationExtractor
 from .relation_matcher import RelationMatcher
 
@@ -36,7 +36,7 @@ from .inference_tracker import InferenceTracker
 processor_classes = [
     # EquationBuilder,  # 临时注释掉
     InferenceTracker,
-    NLPProcessor,
+    # NLPProcessor,  # 临时注释掉，有导入问题
     RelationExtractor,
     RelationMatcher,
     DatasetLoader,
@@ -54,7 +54,7 @@ for cls in processor_classes:
 
 # 导出的类
 __all__ = [
-    'NLPProcessor',
+    # 'NLPProcessor',  # 临时注释掉，有导入问题
     'RelationExtractor', 
     # 'EquationBuilder',  # 临时注释掉
     'RelationMatcher',

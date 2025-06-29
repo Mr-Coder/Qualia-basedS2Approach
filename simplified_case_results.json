@@ -1,0 +1,139 @@
+{
+  "timestamp": "2025-06-29 19:23:46",
+  "total_cases": 6,
+  "system_info": "COT-DIR模拟演示系统",
+  "results": [
+    {
+      "case_info": {
+        "id": "math23k_001",
+        "language": "中文",
+        "problem": "小明有15个苹果，他给了小红5个，又买了8个，现在小明有多少个苹果？",
+        "expected_answer": "18",
+        "type": "加减运算",
+        "difficulty": "简单",
+        "complexity_level": "L2",
+        "source": "Math23K"
+      },
+      "processing_time": 0.0,
+      "success": true,
+      "is_correct": true,
+      "predicted_answer": "18",
+      "reasoning_summary": {
+        "entities_count": 4,
+        "relations_count": 2,
+        "reasoning_steps_count": 4,
+        "confidence_score": 90.21964987526958
+      }
+    },
+    {
+      "case_info": {
+        "id": "math23k_003",
+        "language": "中文",
+        "problem": "班级里有24名学生，其中男生占3/8，女生有多少名？",
+        "expected_answer": "15",
+        "type": "分数运算",
+        "difficulty": "中等",
+        "complexity_level": "L2",
+        "source": "Math23K"
+      },
+      "processing_time": 0.0,
+      "success": true,
+      "is_correct": false,
+      "predicted_answer": "13",
+      "reasoning_summary": {
+        "entities_count": 2,
+        "relations_count": 1,
+        "reasoning_steps_count": 4,
+        "confidence_score": 89.19028105227028
+      }
+    },
+    {
+      "case_info": {
+        "id": "math23k_004",
+        "language": "中文",
+        "problem": "一件衣服原价120元，打8折后的价格是多少元？",
+        "expected_answer": "96",
+        "type": "百分比计算",
+        "difficulty": "中等",
+        "complexity_level": "L2",
+        "source": "Math23K"
+      },
+      "processing_time": 0.0,
+      "success": true,
+      "is_correct": false,
+      "predicted_answer": "97",
+      "reasoning_summary": {
+        "entities_count": 3,
+        "relations_count": 0,
+        "reasoning_steps_count": 2,
+        "confidence_score": 81.71794902079982
+      }
+    },
+    {
+      "case_info": {
+        "id": "gsm8k_001",
+        "language": "英文",
+        "problem": "Chenny is 10 years old. Alyana is 4 years younger than Chenny. How old is Anne if she is 2 years older than Alyana?",
+        "expected_answer": "8",
+        "type": "年龄推理",
+        "difficulty": "简单",
+        "complexity_level": "L0",
+        "source": "GSM8K"
+      },
+      "processing_time": 0.0,
+      "success": true,
+      "is_correct": true,
+      "predicted_answer": "8",
+      "reasoning_summary": {
+        "entities_count": 10,
+        "relations_count": 1,
+        "reasoning_steps_count": 4,
+        "confidence_score": 98.0
+      }
+    },
+    {
+      "case_info": {
+        "id": "gsm8k_004",
+        "language": "英文",
+        "problem": "Liam is 16 years old now. Two years ago, Liam's age was twice the age of Vince. How old is Vince now?",
+        "expected_answer": "9",
+        "type": "时间推理",
+        "difficulty": "中等",
+        "complexity_level": "L2",
+        "source": "GSM8K"
+      },
+      "processing_time": 0.0,
+      "success": true,
+      "is_correct": false,
+      "predicted_answer": "11",
+      "reasoning_summary": {
+        "entities_count": 7,
+        "relations_count": 0,
+        "reasoning_steps_count": 2,
+        "confidence_score": 81.25921362494626
+      }
+    },
+    {
+      "case_info": {
+        "id": "gsm8k_complex",
+        "language": "英文",
+        "problem": "Carlos is planting a lemon tree. The tree will cost $90 to plant. Each year it will grow 7 lemons, which he can sell for $1.5 each. It costs $3 a year to water and feed the tree. How many years will it take before he starts earning money on the lemon tree?",
+        "expected_answer": "13",
+        "type": "投资回报分析",
+        "difficulty": "困难",
+        "complexity_level": "L2",
+        "source": "GSM8K"
+      },
+      "processing_time": 0.0,
+      "success": true,
+      "is_correct": true,
+      "predicted_answer": "13",
+      "reasoning_summary": {
+        "entities_count": 10,
+        "relations_count": 1,
+        "reasoning_steps_count": 2,
+        "confidence_score": 80.0549219749111
+      }
+    }
+  ]
+}

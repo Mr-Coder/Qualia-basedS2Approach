@@ -65,4 +65,13 @@ __all__ = [
     'get_robustness_ranking',
     'analyze_component_contribution',
     'export_performance_data'
-] 
+]
+
+# 导入新的模块化架构
+try:
+    from .orchestrator import DataOrchestrator, data_orchestrator
+    from .public_api import DataAPI, data_api
+    __all__.extend(['DataAPI', 'data_api', 'DataOrchestrator', 'data_orchestrator'])
+    modular_architecture_available = True
+except ImportError:
+    modular_architecture_available = False 

@@ -53,14 +53,6 @@ for cls in LOGGED_CLASSES:
     if not hasattr(cls, 'logger'):
         setattr(cls, 'logger', logging.getLogger(f"{__name__}.{cls.__name__}"))
 
-# 导入新的模块化架构
-try:
-    from .orchestrator import ModelsOrchestrator, models_orchestrator
-    from .public_api import ModelsAPI, models_api
-    modular_architecture_available = True
-except ImportError:
-    modular_architecture_available = False
-
 # 导出的类
 __all__ = [
     'ProcessedText',
@@ -76,10 +68,6 @@ __all__ = [
     'InferenceStep',
     'Equation'
 ]
-
-# 如果模块化架构可用，添加到导出列表
-if modular_architecture_available:
-    __all__.extend(['ModelsAPI', 'models_api', 'ModelsOrchestrator', 'models_orchestrator'])
 
 # 包元数据
 __version__ = '1.0.0'

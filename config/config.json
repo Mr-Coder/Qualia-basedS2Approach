@@ -1,0 +1,70 @@
+{
+    "version": "1.0.0",
+    "log_level": "INFO",
+    "log_file": "logging.yaml",
+    "use_gpu": false,
+    "solver": {
+        "max_iterations": 1000,
+        "tolerance": 1.0
+    },
+    "nlp": {
+        "device": "mps",
+        "model_path": "models/nlp"
+    },
+    "problem_types": {
+        "motion": {
+            "keywords": ["speed", "distance", "velocity", "motion", "travel", "journey", 
+                        "速度", "距离", "路程", "运动", "行驶", "相遇", "追及", "相向", "同向"],
+            "units": ["km", "miles", "meters", "公里", "千米", "米", "小时", "分钟", "秒"],
+            "subtypes": ["meet_head_on", "same_direction", "chase", "unknown"],
+            "priority": 1
+        },
+        "work_efficiency": {
+            "keywords": ["work", "efficiency", "rate", "together", "separately", 
+                        "工作", "效率", "速度", "共同", "单独", "合作", "完成", "甲", "乙", "丙", "丁"],
+            "units": ["完成", "工作", "任务", "小时", "天", "分钟", "时间"],
+            "exclusion_keywords": ["相遇", "追及", "相向", "同向", "A地", "B地", "两地相距"],
+            "priority": 2
+        },
+        "rate_and_volume": {
+            "keywords": ["cube", "volume", "冰块", "水箱", "容器", "水池", "水缸", "容量", "体积"],
+            "units": ["升水", "毫升", "漏水", "注水", "放水", "加水", "流入", "流出", "注入"],
+            "subtypes": ["ice_cube_problem", "water_tank", "general"],
+            "priority": 3
+        },
+        "mixture": {
+            "keywords": ["mixture", "solution", "concentration", "percent", "混合", "溶液", "浓度", "百分比"],
+            "units": ["浓度", "溶液", "混合", "稀释", "配制", "%", "百分比"],
+            "priority": 4
+        },
+        "sequence": {
+            "keywords": ["sequence", "series", "term", "arithmetic", "geometric", 
+                        "数列", "序列", "项", "等差", "等比", "首项", "末项", "通项"],
+            "priority": 5
+        },
+        "investment_growth": {
+            "keywords": ["investment", "interest", "rate", "compound", "principal", 
+                        "投资", "利息", "利率", "本金", "复利", "增长", "收益"],
+            "units": ["年", "月", "日", "期", "year", "month", "day", "period", "%", "百分比"],
+            "priority": 6
+        },
+        "probability": {
+            "keywords": ["probability", "chance", "likelihood", "random", "statistics", 
+                        "概率", "可能性", "随机", "统计", "抽取", "选择"],
+            "units": ["概率", "可能", "几率", "%", "百分比", "分之"],
+            "priority": 7
+        },
+        "geometry": {
+            "keywords": ["triangle", "circle", "square", "rectangle", "area", "volume", "perimeter", 
+                        "三角形", "圆", "正方形", "长方形", "面积", "体积", "周长", "边长"],
+            "priority": 8
+        }
+    },
+    "patterns": {
+        "path": "src/models/patterns/",
+        "default_pattern": "default_patterns.json"
+    },
+    "examples": {
+        "path": "examples/problems.json"
+    }
+}

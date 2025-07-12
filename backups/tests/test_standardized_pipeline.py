@@ -152,7 +152,7 @@ class TestReasoningEngine:
     
     def test_engine_initialization(self):
         """Test ReasoningEngine initialization"""
-        from src.bridge.reasoning_bridge import ReasoningEngine
+        from src.reasoning_core.reasoning_engine import ReasoningEngine
         
         engine = ReasoningEngine()
         assert engine is not None
@@ -160,7 +160,7 @@ class TestReasoningEngine:
     
     def test_solve_simple_problem(self):
         """Test solving a simple mathematical problem"""
-        from src.bridge.reasoning_bridge import ReasoningEngine
+        from src.reasoning_core.reasoning_engine import ReasoningEngine
         
         engine = ReasoningEngine()
         
@@ -188,7 +188,7 @@ class TestReasoningEngine:
     
     def test_solve_complex_problem(self):
         """Test solving a more complex problem"""
-        from src.bridge.reasoning_bridge import ReasoningEngine
+        from src.reasoning_core.reasoning_engine import ReasoningEngine
         
         engine = ReasoningEngine()
         
@@ -289,7 +289,7 @@ class TestIntegrationPipeline:
         from src.data.loader import DataLoader
         from src.data.preprocessor import Preprocessor
         from src.evaluation.evaluator import Evaluator
-        from src.bridge.reasoning_bridge import ReasoningEngine
+        from src.reasoning_core.reasoning_engine import ReasoningEngine
 
         # Initialize all components
         loader = DataLoader()
@@ -326,7 +326,7 @@ class TestIntegrationPipeline:
         """Test pipeline with mock data when real datasets are unavailable"""
         from src.data.preprocessor import Preprocessor
         from src.evaluation.evaluator import Evaluator
-        from src.bridge.reasoning_bridge import ReasoningEngine
+        from src.reasoning_core.reasoning_engine import ReasoningEngine
 
         # Mock data
         mock_samples = [

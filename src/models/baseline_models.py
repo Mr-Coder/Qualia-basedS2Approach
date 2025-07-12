@@ -1,0 +1,596 @@
+#!/usr/bin/env python3
+"""
+Baseline Models Implementation
+
+This module implements various baseline models for mathematical word problem solving.
+These serve as comparison baselines for the proposed COT-DIR method.
+"""
+
+import json
+import random
+import re
+import time
+from typing import Any, Dict, List, Optional, Tuple
+
+import numpy as np
+from sympy import SympifyError, solve, symbols, sympify
+
+from .base_model import BaselineModel, ModelInput, ModelOutput
+
+
+class TemplateBasedModel(BaselineModel):
+    """Template-based baseline model using predefined patterns."""
+    
+    def __init__(self, config: Optional[Dict[str, Any]] = None):
+        super().__init__("Template-Based", config)
+        self.templates = self._load_templates()
+        
+    def initialize(self) -> bool:
+        """Initialize the template-based model."""
+        try:
+            self.logger.info("Initializing Template-Based model")
+            # Template patterns for common problem types
+            self.templates = {
+                "addition": [
+                    r"(\d+(?:\.\d+)?).+?(\d+(?:\.\d+)?).+?total",
+                    r"(\d+(?:\.\d+)?).+?(\d+(?:\.\d+)?).+?altogether",
+                    r"(\d+(?:\.\d+)?).+?plus.+?(\d+(?:\.\d+)?)"
+                ],
+                "subtraction": [
+                    r"(\d+(?:\.\d+)?).+?minus.+?(\d+(?:\.\d+)?)",
+                    r"(\d+(?:\.\d+)?).+?take away.+?(\d+(?:\.\d+)?)",
+                    r"(\d+(?:\.\d+)?).+?left.+?(\d+(?:\.\d+)?)"
+                ],
+                "multiplication": [
+                    r"(\d+(?:\.\d+)?).+?times.+?(\d+(?:\.\d+)?)",
+                    r"(\d+(?:\.\d+)?).+?each.+?(\d+(?:\.\d+)?)",
+                    r"(\d+(?:\.\d+)?).+?groups.+?(\d+(?:\.\d+)?)"
+                ],
+                "division": [
+                    r"(\d+(?:\.\d+)?).+?divided.+?(\d+(?:\.\d+)?)",
+                    r"(\d+(?:\.\d+)?).+?share.+?(\d+(?:\.\d+)?)",
+                    r"(\d+(?:\.\d+)?).+?each.+?(\d+(?:\.\d+)?)"
+                ]
+            }
+            self.is_initialized = True
+            return True
+        except Exception as e:
+            self.logger.error(f"Failed to initialize Template-Based model: {e}")
+            return False
+    
+    def solve_problem(self, problem_input: ModelInput) -> ModelOutput:
+        """Solve problem using template matching."""
+        start_time = time.time()
+        
+        if not self.validate_input(problem_input):
+            return ModelOutput(
+                answer="",
+                reasoning_chain=["Invalid input"],
+                confidence_score=0.0,
+                processing_time=time.time() - start_time,
+                error_message="Invalid input format"
+            )
+        
+        try:
+            reasoning_chain = []
+            answer = ""
+            confidence = 0.0
+            
+            # Extract numbers from text
+            numbers = self._extract_numbers(problem_input.problem_text)
+            reasoning_chain.append(f"Extracted numbers: {numbers}")
+            
+            # Try to match templates
+            operation, operands = self._match_template(problem_input.problem_text)
+            reasoning_chain.append(f"Identified operation: {operation}")
+            
+            if operation and operands:
+                result = self._perform_operation(operation, operands)
+                answer = str(result)
+                confidence = 0.8 if operation != "unknown" else 0.3
+                reasoning_chain.append(f"Applied {operation}: {operands} = {result}")
+            else:
+                # Fallback: simple arithmetic with first two numbers
+                if len(numbers) >= 2:
+                    result = numbers[0] + numbers[1]  # Default to addition
+                    answer = str(result)
+                    confidence = 0.3
+                    reasoning_chain.append(f"Fallback addition: {numbers[0]} + {numbers[1]} = {result}")
+            
+            return ModelOutput(
+                answer=answer,
+                reasoning_chain=reasoning_chain,
+                confidence_score=confidence,
+                processing_time=time.time() - start_time,
+                memory_usage=0.1  # Minimal memory usage
+            )
+            
+        except Exception as e:
+            return ModelOutput(
+                answer="",
+                reasoning_chain=[f"Error in template matching: {str(e)}"],
+                confidence_score=0.0,
+                processing_time=time.time() - start_time,
+                error_message=str(e)
+            )
+    
+    def batch_solve(self, problems: List[ModelInput]) -> List[ModelOutput]:
+        """Solve multiple problems using template matching."""
+        return [self.solve_problem(problem) for problem in problems]
+    
+    def extract_equations(self, problem_text: str) -> List[str]:
+        """Extract equations using template patterns."""
+        equations = []
+        operation, operands = self._match_template(problem_text)
+        if operation and operands:
+            if operation == "addition":
+                equations.append(f"x = {operands[0]} + {operands[1]}")
+            elif operation == "subtraction":
+                equations.append(f"x = {operands[0]} - {operands[1]}")
+            elif operation == "multiplication":
+                equations.append(f"x = {operands[0]} * {operands[1]}")
+            elif operation == "division":
+                equations.append(f"x = {operands[0]} / {operands[1]}")
+        return equations
+    
+    def solve_equations(self, equations: List[str]) -> Dict[str, Any]:
+        """Solve extracted equations."""
+        results = {}
+        for i, eq in enumerate(equations):
+            try:
+                # Simple evaluation for basic equations
+                if "=" in eq:
+                    _, expression = eq.split("=", 1)
+                    result = eval(expression.strip())
+                    results[f"equation_{i}"] = result
+            except Exception as e:
+                results[f"equation_{i}"] = f"Error: {e}"
+        return results
+    
+    def _load_templates(self) -> Dict[str, List[str]]:
+        """Load predefined templates."""
+        return {}  # Implemented in initialize method
+    
+    def _extract_numbers(self, text: str) -> List[float]:
+        """Extract numerical values from text."""
+        pattern = r'\d+(?:\.\d+)?'
+        matches = re.findall(pattern, text)
+        return [float(match) for match in matches]
+    
+    def _match_template(self, text: str) -> Tuple[str, List[float]]:
+        """Match text against templates to identify operation."""
+        text_lower = text.lower()
+        
+        for operation, patterns in self.templates.items():
+            for pattern in patterns:
+                match = re.search(pattern, text_lower)
+                if match:
+                    numbers = [float(group) for group in match.groups()]
+                    return operation, numbers
+        
+        # No template matched
+        numbers = self._extract_numbers(text)
+        return "unknown", numbers[:2] if len(numbers) >= 2 else numbers
+    
+    def _perform_operation(self, operation: str, operands: List[float]) -> float:
+        """Perform the identified operation."""
+        if len(operands) < 2:
+            return operands[0] if operands else 0
+        
+        a, b = operands[0], operands[1]
+        
+        if operation == "addition":
+            return a + b
+        elif operation == "subtraction":
+            return a - b
+        elif operation == "multiplication":
+            return a * b
+        elif operation == "division":
+            return a / b if b != 0 else 0
+        else:
+            return a + b  # Default to addition
+
+
+class EquationBasedModel(BaselineModel):
+    """Equation-based model using symbolic math."""
+    
+    def __init__(self, config: Optional[Dict[str, Any]] = None):
+        super().__init__("Equation-Based", config)
+        
+    def initialize(self) -> bool:
+        """Initialize the equation-based model."""
+        try:
+            self.logger.info("Initializing Equation-Based model")
+            # Define common variable symbols
+            self.variables = symbols('x y z a b c')
+            self.is_initialized = True
+            return True
+        except Exception as e:
+            self.logger.error(f"Failed to initialize Equation-Based model: {e}")
+            return False
+    
+    def solve_problem(self, problem_input: ModelInput) -> ModelOutput:
+        """Solve problem by extracting and solving equations."""
+        start_time = time.time()
+        
+        if not self.validate_input(problem_input):
+            return ModelOutput(
+                answer="",
+                reasoning_chain=["Invalid input"],
+                confidence_score=0.0,
+                processing_time=time.time() - start_time,
+                error_message="Invalid input format"
+            )
+        
+        try:
+            reasoning_chain = []
+            
+            # Extract equations from text
+            equations = self.extract_equations(problem_input.problem_text)
+            reasoning_chain.append(f"Extracted equations: {equations}")
+            
+            if not equations:
+                # Fallback to simple arithmetic
+                numbers = self._extract_numbers(problem_input.problem_text)
+                if len(numbers) >= 2:
+                    result = sum(numbers)  # Simple sum as fallback
+                    reasoning_chain.append(f"Fallback sum: {numbers} = {result}")
+                    return ModelOutput(
+                        answer=str(result),
+                        reasoning_chain=reasoning_chain,
+                        confidence_score=0.3,
+                        processing_time=time.time() - start_time
+                    )
+            
+            # Solve equations
+            solutions = self.solve_equations(equations)
+            reasoning_chain.append(f"Solutions: {solutions}")
+            
+            # Extract final answer
+            answer = self._extract_final_answer(solutions)
+            confidence = 0.7 if answer else 0.2
+            
+            return ModelOutput(
+                answer=answer,
+                reasoning_chain=reasoning_chain,
+                confidence_score=confidence,
+                processing_time=time.time() - start_time,
+                memory_usage=0.2
+            )
+            
+        except Exception as e:
+            return ModelOutput(
+                answer="",
+                reasoning_chain=[f"Error in equation solving: {str(e)}"],
+                confidence_score=0.0,
+                processing_time=time.time() - start_time,
+                error_message=str(e)
+            )
+    
+    def batch_solve(self, problems: List[ModelInput]) -> List[ModelOutput]:
+        """Solve multiple problems using equation-based approach."""
+        return [self.solve_problem(problem) for problem in problems]
+    
+    def extract_equations(self, problem_text: str) -> List[str]:
+        """Extract mathematical equations from problem text."""
+        equations = []
+        
+        # Look for explicit equations with = sign
+        equation_pattern = r'[^.!?]*[=][^.!?]*'
+        explicit_equations = re.findall(equation_pattern, problem_text)
+        equations.extend(explicit_equations)
+        
+        # Look for implicit relationships
+        numbers = self._extract_numbers(problem_text)
+        text_lower = problem_text.lower()
+        
+        # Pattern: "x is y more than z"
+        if "more than" in text_lower and len(numbers) >= 2:
+            equations.append(f"x = {numbers[1]} + {numbers[0]}")
+        
+        # Pattern: "x is y less than z" 
+        elif "less than" in text_lower and len(numbers) >= 2:
+            equations.append(f"x = {numbers[1]} - {numbers[0]}")
+        
+        # Pattern: "total is x"
+        elif "total" in text_lower and len(numbers) >= 3:
+            variables = " + ".join([str(n) for n in numbers[:-1]])
+            equations.append(f"{variables} = {numbers[-1]}")
+        
+        return equations
+    
+    def solve_equations(self, equations: List[str]) -> Dict[str, Any]:
+        """Solve extracted equations using symbolic math."""
+        solutions = {}
+        
+        for i, eq_str in enumerate(equations):
+            try:
+                # Clean and prepare equation
+                eq_str = eq_str.strip()
+                if '=' not in eq_str:
+                    continue
+                
+                # Split equation
+                left, right = eq_str.split('=', 1)
+                left = left.strip()
+                right = right.strip()
+                
+                # Try to solve symbolically
+                try:
+                    left_expr = sympify(left)
+                    right_expr = sympify(right)
+                    equation = left_expr - right_expr
+                    
+                    # Get free symbols (variables)
+                    free_vars = equation.free_symbols
+                    
+                    if free_vars:
+                        solution = solve(equation, list(free_vars))
+                        solutions[f"equation_{i}"] = solution
+                    else:
+                        # Just evaluate if no variables
+                        result = float(right_expr)
+                        solutions[f"equation_{i}"] = result
+                        
+                except SympifyError:
+                    # Fallback to simple evaluation
+                    try:
+                        result = eval(right.replace('^', '**'))
+                        solutions[f"equation_{i}"] = result
+                    except:
+                        solutions[f"equation_{i}"] = "Could not solve"
+                        
+            except Exception as e:
+                solutions[f"equation_{i}"] = f"Error: {e}"
+        
+        return solutions
+    
+    def _extract_numbers(self, text: str) -> List[float]:
+        """Extract numerical values from text."""
+        pattern = r'\d+(?:\.\d+)?'
+        matches = re.findall(pattern, text)
+        return [float(match) for match in matches]
+    
+    def _extract_final_answer(self, solutions: Dict[str, Any]) -> str:
+        """Extract final numerical answer from solutions."""
+        for key, value in solutions.items():
+            if isinstance(value, (int, float)):
+                return str(value)
+            elif isinstance(value, dict) and value:
+                # Take first solution from dict
+                for var, sol in value.items():
+                    if isinstance(sol, (int, float)):
+                        return str(sol)
+                    elif isinstance(sol, list) and sol:
+                        return str(sol[0])
+            elif isinstance(value, list) and value:
+                return str(value[0])
+        
+        return ""
+
+
+class RuleBasedModel(BaselineModel):
+    """Rule-based model using heuristic rules."""
+    
+    def __init__(self, config: Optional[Dict[str, Any]] = None):
+        super().__init__("Rule-Based", config)
+        self.rules = []
+        
+    def initialize(self) -> bool:
+        """Initialize the rule-based model."""
+        try:
+            self.logger.info("Initializing Rule-Based model")
+            self.rules = [
+                self._rule_simple_arithmetic,
+                self._rule_word_problems,
+                self._rule_percentage,
+                self._rule_ratio_proportion,
+                self._rule_age_problems
+            ]
+            self.is_initialized = True
+            return True
+        except Exception as e:
+            self.logger.error(f"Failed to initialize Rule-Based model: {e}")
+            return False
+    
+    def solve_problem(self, problem_input: ModelInput) -> ModelOutput:
+        """Solve problem using rule-based approach."""
+        start_time = time.time()
+        
+        if not self.validate_input(problem_input):
+            return ModelOutput(
+                answer="",
+                reasoning_chain=["Invalid input"],
+                confidence_score=0.0,
+                processing_time=time.time() - start_time,
+                error_message="Invalid input format"
+            )
+        
+        try:
+            reasoning_chain = []
+            best_answer = ""
+            best_confidence = 0.0
+            
+            # Try each rule
+            for rule in self.rules:
+                try:
+                    answer, confidence, steps = rule(problem_input.problem_text)
+                    reasoning_chain.extend(steps)
+                    
+                    if confidence > best_confidence:
+                        best_answer = answer
+                        best_confidence = confidence
+                        
+                except Exception as e:
+                    reasoning_chain.append(f"Rule failed: {str(e)}")
+            
+            return ModelOutput(
+                answer=best_answer,
+                reasoning_chain=reasoning_chain,
+                confidence_score=best_confidence,
+                processing_time=time.time() - start_time,
+                memory_usage=0.15
+            )
+            
+        except Exception as e:
+            return ModelOutput(
+                answer="",
+                reasoning_chain=[f"Error in rule-based solving: {str(e)}"],
+                confidence_score=0.0,
+                processing_time=time.time() - start_time,
+                error_message=str(e)
+            )
+    
+    def batch_solve(self, problems: List[ModelInput]) -> List[ModelOutput]:
+        """Solve multiple problems using rule-based approach."""
+        return [self.solve_problem(problem) for problem in problems]
+    
+    def extract_equations(self, problem_text: str) -> List[str]:
+        """Extract equations using rules."""
+        equations = []
+        
+        # Apply each rule to extract potential equations
+        for rule in self.rules:
+            try:
+                _, _, steps = rule(problem_text)
+                # Extract equations from reasoning steps
+                for step in steps:
+                    if "=" in step:
+                        equations.append(step)
+            except:
+                continue
+        
+        return equations
+    
+    def solve_equations(self, equations: List[str]) -> Dict[str, Any]:
+        """Solve equations using rule-based evaluation."""
+        results = {}
+        for i, eq in enumerate(equations):
+            try:
+                if "=" in eq:
+                    parts = eq.split("=")
+                    if len(parts) == 2:
+                        right_side = parts[1].strip()
+                        # Simple evaluation
+                        result = eval(right_side.replace("×", "*").replace("÷", "/"))
+                        results[f"equation_{i}"] = result
+            except Exception as e:
+                results[f"equation_{i}"] = f"Error: {e}"
+        return results
+    
+    def _rule_simple_arithmetic(self, text: str) -> Tuple[str, float, List[str]]:
+        """Rule for simple arithmetic operations."""
+        steps = ["Applying simple arithmetic rule"]
+        numbers = self._extract_numbers(text)
+        
+        if len(numbers) < 2:
+            return "", 0.0, steps
+        
+        text_lower = text.lower()
+        
+        if any(word in text_lower for word in ["total", "sum", "altogether", "plus"]):
+            result = sum(numbers)
+            steps.append(f"Sum of {numbers} = {result}")
+            return str(result), 0.8, steps
+        elif any(word in text_lower for word in ["difference", "minus", "less", "subtract"]):
+            result = numbers[0] - numbers[1]
+            steps.append(f"{numbers[0]} - {numbers[1]} = {result}")
+            return str(result), 0.8, steps
+        elif any(word in text_lower for word in ["product", "times", "multiply"]):
+            result = numbers[0] * numbers[1]
+            steps.append(f"{numbers[0]} × {numbers[1]} = {result}")
+            return str(result), 0.8, steps
+        elif any(word in text_lower for word in ["quotient", "divide", "per"]):
+            if numbers[1] != 0:
+                result = numbers[0] / numbers[1]
+                steps.append(f"{numbers[0]} ÷ {numbers[1]} = {result}")
+                return str(result), 0.8, steps
+        
+        return "", 0.1, steps
+    
+    def _rule_word_problems(self, text: str) -> Tuple[str, float, List[str]]:
+        """Rule for common word problem patterns."""
+        steps = ["Applying word problem rule"]
+        numbers = self._extract_numbers(text)
+        text_lower = text.lower()
+        
+        # Pattern: "had X, gave away Y, how many left?"
+        if "gave away" in text_lower or "sold" in text_lower:
+            if len(numbers) >= 2:
+                result = numbers[0] - numbers[1]
+                steps.append(f"Had {numbers[0]}, gave away {numbers[1]}, left: {result}")
+                return str(result), 0.7, steps
+        
+        # Pattern: "bought X, each costs Y, total cost?"
+        if "each" in text_lower and "cost" in text_lower:
+            if len(numbers) >= 2:
+                result = numbers[0] * numbers[1]
+                steps.append(f"{numbers[0]} items × {numbers[1]} each = {result}")
+                return str(result), 0.7, steps
+        
+        return "", 0.1, steps
+    
+    def _rule_percentage(self, text: str) -> Tuple[str, float, List[str]]:
+        """Rule for percentage problems."""
+        steps = ["Applying percentage rule"]
+        
+        # Look for percentage symbol or word
+        if "%" in text or "percent" in text.lower():
+            numbers = self._extract_numbers(text)
+            if len(numbers) >= 2:
+                # Assume first number is percentage, second is base
+                percentage = numbers[0] / 100
+                base = numbers[1]
+                result = percentage * base
+                steps.append(f"{numbers[0]}% of {base} = {result}")
+                return str(result), 0.6, steps
+        
+        return "", 0.1, steps
+    
+    def _rule_ratio_proportion(self, text: str) -> Tuple[str, float, List[str]]:
+        """Rule for ratio and proportion problems."""
+        steps = ["Applying ratio/proportion rule"]
+        
+        if "ratio" in text.lower() or ":" in text:
+            numbers = self._extract_numbers(text)
+            if len(numbers) >= 3:
+                # Simple proportion: a:b = c:x, solve for x
+                a, b, c = numbers[0], numbers[1], numbers[2]
+                x = (b * c) / a
+                steps.append(f"Proportion {a}:{b} = {c}:x, x = {x}")
+                return str(x), 0.6, steps
+        
+        return "", 0.1, steps
+    
+    def _rule_age_problems(self, text: str) -> Tuple[str, float, List[str]]:
+        """Rule for age-related problems."""
+        steps = ["Applying age problem rule"]
+        
+        if "age" in text.lower() or "years" in text.lower():
+            numbers = self._extract_numbers(text)
+            if len(numbers) >= 2:
+                # Simple age calculation
+                if "older" in text.lower():
+                    result = numbers[0] + numbers[1]
+                    steps.append(f"Age: {numbers[0]} + {numbers[1]} = {result}")
+                    return str(result), 0.5, steps
+                elif "younger" in text.lower():
+                    result = numbers[0] - numbers[1]
+                    steps.append(f"Age: {numbers[0]} - {numbers[1]} = {result}")
+                    return str(result), 0.5, steps
+        
+        return "", 0.1, steps
+    
+    def _extract_numbers(self, text: str) -> List[float]:
+        """Extract numerical values from text."""
+        pattern = r'\d+(?:\.\d+)?'
+        matches = re.findall(pattern, text)
+        return [float(match) for match in matches]
+
+
+# Register baseline models with factory
+from .base_model import ModelFactory
+
+ModelFactory.register_model(TemplateBasedModel, "template_baseline")
+ModelFactory.register_model(EquationBasedModel, "equation_baseline") 
+ModelFactory.register_model(RuleBasedModel, "rule_baseline") 

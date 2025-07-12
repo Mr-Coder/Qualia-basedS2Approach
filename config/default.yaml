@@ -1,0 +1,138 @@
+# COT-DIR 默认配置文件
+# ===================
+
+# 系统基础设置
+system:
+  name: "COT-DIR"
+  version: "1.0.0"
+  debug: false
+  log_level: "INFO"
+
+# 推理引擎配置
+reasoning_engine:
+  # 元知识增强
+  enable_meta_knowledge: true
+  meta_knowledge_threshold: 0.7
+  
+  # 策略推荐
+  enable_strategy_recommendation: true
+  strategy_threshold: 0.8
+  max_strategies: 5
+  
+  # 推理参数
+  max_reasoning_steps: 15
+  confidence_threshold: 0.6
+  enable_step_validation: true
+  
+  # 性能设置
+  timeout_seconds: 30
+  enable_caching: true
+  cache_size: 1000
+
+# 数据处理配置
+data_processing:
+  # 数据加载
+  default_data_dir: "Data"
+  max_samples_per_load: 1000
+  
+  # 预处理
+  enable_text_cleaning: true
+  enable_complexity_analysis: true
+  enable_concept_extraction: true
+  
+  # 数据格式
+  input_encoding: "utf-8"
+  output_format: "json"
+
+# 元知识系统配置
+meta_knowledge:
+  # 概念识别
+  concept_threshold: 0.6
+  max_concepts_per_problem: 5
+  
+  # 策略推荐
+  strategy_priority_weight: 0.8
+  success_rate_weight: 0.2
+  
+  # 知识库
+  concepts_count: 10
+  strategies_count: 18
+  enable_concept_relationships: true
+
+# 评估系统配置
+evaluation:
+  # 性能测试
+  enable_performance_tracking: true
+  benchmark_problems_count: 50
+  
+  # 准确率评估
+  accuracy_test_problems: 20
+  acceptance_accuracy_threshold: 0.8
+  
+  # 报告生成
+  generate_detailed_report: true
+  save_intermediate_results: true
+
+# 数据集配置
+datasets:
+  # 支持的数据集
+  supported:
+    - "Math23K"
+    - "GSM8K"
+    - "MATH"
+    - "ASDiv"
+    - "SVAMP"
+    - "MathQA"
+    - "MAWPS"
+    - "AddSub"
+    - "MultiArith"
+    - "SingleEq"
+    - "AQuA"
+    - "GSM-hard"
+    - "DIR-MWP"
+  
+  # 默认采样
+  default_max_samples: 100
+  test_sample_size: 10
+
+# 日志配置
+logging:
+  # 文件日志
+  enable_file_logging: true
+  log_file: "logs/cotdir.log"
+  max_file_size: "10MB"
+  backup_count: 5
+  
+  # 控制台日志
+  enable_console_logging: true
+  console_level: "INFO"
+  
+  # 日志格式
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  date_format: "%Y-%m-%d %H:%M:%S"
+
+# 测试配置
+testing:
+  # 单元测试
+  unit_test_coverage_threshold: 0.8
+  
+  # 集成测试
+  integration_test_timeout: 60
+  
+  # 性能测试
+  performance_test_iterations: 5
+  acceptable_response_time_ms: 500
+
+# 高级功能配置
+advanced:
+  # 并发处理
+  enable_parallel_processing: false
+  max_workers: 4
+  
+  # 优化设置
+  enable_result_caching: true
+  enable_lazy_loading: true
+  
+  # 实验功能
+  enable_experimental_features: false
+  experimental_timeout: 10 

@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COT-DIR - 测试控制台</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        
+        .nav {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .nav a {
+            padding: 10px 20px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        
+        .nav a:hover {
+            background: #2980b9;
+        }
+        
+        .nav a.active {
+            background: #e74c3c;
+        }
+        
+        .test-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .test-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .test-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+        }
+        
+        .test-button {
+            background: #27ae60;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.3s;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        
+        .test-button:hover {
+            background: #219a52;
+        }
+        
+        .test-button:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+        }
+        
+        .test-results {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        
+        .test-results h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+        }
+        
+        .result-item {
+            background: #f8f9fa;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .result-item.success {
+            border-left-color: #27ae60;
+            background: #d5f4e6;
+        }
+        
+        .result-item.error {
+            border-left-color: #e74c3c;
+            background: #fdf2f2;
+        }
+        
+        .result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .result-status {
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        
+        .result-status.success {
+            background: #27ae60;
+            color: white;
+        }
+        
+        .result-status.error {
+            background: #e74c3c;
+            color: white;
+        }
+        
+        .result-details {
+            color: #555;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #7f8c8d;
+        }
+        
+        .loading::after {
+            content: "...";
+            animation: loading 1s infinite;
+        }
+        
+        @keyframes loading {
+            0% { content: "..."; }
+            33% { content: "..."; }
+            66% { content: "..."; }
+            100% { content: "..."; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧪 测试控制台</h1>
+            <p>运行系统测试和验证功能</p>
+            <div class="nav">
+                <a href="/">概览</a>
+                <a href="/strategies">推理策略</a>
+                <a href="/docs">文档</a>
+                <a href="/system">系统状态</a>
+                <a href="/test" class="active">测试</a>
+            </div>
+        </div>
+        
+        <div class="test-controls">
+            <div class="test-card">
+                <h3>🔧 基础测试</h3>
+                <p>验证项目结构、配置和基础功能</p>
+                <button class="test-button" onclick="runTest('basic')">运行基础测试</button>
+            </div>
+            
+            <div class="test-card">
+                <h3>🧠 推理系统测试</h3>
+                <p>测试COT、GOT、TOT推理策略</p>
+                <button class="test-button" onclick="runTest('reasoning')">运行推理测试</button>
+            </div>
+            
+            <div class="test-card">
+                <h3>📚 文档系统测试</h3>
+                <p>验证文档生成和配置管理</p>
+                <button class="test-button" onclick="runTest('documentation')">运行文档测试</button>
+            </div>
+            
+            <div class="test-card">
+                <h3>🔄 集成测试</h3>
+                <p>完整的端到端系统测试</p>
+                <button class="test-button" onclick="runTest('integration')">运行集成测试</button>
+            </div>
+        </div>
+        
+        <div class="test-results" id="testResults" style="display: none;">
+            <h3>📊 测试结果</h3>
+            <div id="resultsContent"></div>
+        </div>
+    </div>
+    
+    <script>
+        let testHistory = [];
+        
+        async function runTest(testType) {
+            const testNames = {
+                'basic': '基础测试',
+                'reasoning': '推理系统测试',
+                'documentation': '文档系统测试',
+                'integration': '集成测试'
+            };
+            
+            const testName = testNames[testType] || testType;
+            const resultsDiv = document.getElementById('testResults');
+            const contentDiv = document.getElementById('resultsContent');
+            
+            // 显示测试结果区域
+            resultsDiv.style.display = 'block';
+            
+            // 添加加载状态
+            const loadingItem = document.createElement('div');
+            loadingItem.className = 'result-item';
+            loadingItem.innerHTML = `
+                <div class="result-header">
+                    <strong>${testName}</strong>
+                    <span class="result-status">🔄 运行中</span>
+                </div>
+                <div class="loading">正在运行测试</div>
+            `;
+            contentDiv.appendChild(loadingItem);
+            
+            try {
+                const response = await fetch('/api/test/run', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        test_type: testType
+                    })
+                });
+                
+                const result = await response.json();
+                
+                // 移除加载状态
+                contentDiv.removeChild(loadingItem);
+                
+                // 添加测试结果
+                const resultItem = document.createElement('div');
+                resultItem.className = `result-item ${result.status}`;
+                
+                let detailsHtml = '';
+                if (result.details) {
+                    detailsHtml = '<div class="result-details">';
+                    for (const [key, value] of Object.entries(result.details)) {
+                        detailsHtml += `<div><strong>${key}:</strong> ${value}</div>`;
+                    }
+                    detailsHtml += '</div>';
+                }
+                
+                resultItem.innerHTML = `
+                    <div class="result-header">
+                        <strong>${testName}</strong>
+                        <span class="result-status ${result.status}">
+                            ${result.status === 'success' ? '✅ 通过' : '❌ 失败'}
+                        </span>
+                    </div>
+                    <div>${result.message}</div>
+                    ${detailsHtml}
+                    <div style="margin-top: 10px; font-size: 0.8em; color: #7f8c8d;">
+                        ${new Date().toLocaleString()}
+                    </div>
+                `;
+                
+                contentDiv.appendChild(resultItem);
+                
+                // 记录测试历史
+                testHistory.push({
+                    type: testType,
+                    name: testName,
+                    result: result,
+                    timestamp: new Date().toISOString()
+                });
+                
+                // 滚动到结果
+                resultItem.scrollIntoView({ behavior: 'smooth' });
+                
+            } catch (error) {
+                // 移除加载状态
+                contentDiv.removeChild(loadingItem);
+                
+                // 添加错误结果
+                const errorItem = document.createElement('div');
+                errorItem.className = 'result-item error';
+                errorItem.innerHTML = `
+                    <div class="result-header">
+                        <strong>${testName}</strong>
+                        <span class="result-status error">❌ 错误</span>
+                    </div>
+                    <div>测试执行失败: ${error.message}</div>
+                    <div style="margin-top: 10px; font-size: 0.8em; color: #7f8c8d;">
+                        ${new Date().toLocaleString()}
+                    </div>
+                `;
+                contentDiv.appendChild(errorItem);
+            }
+        }
+        
+        // 清空测试结果
+        function clearResults() {
+            const contentDiv = document.getElementById('resultsContent');
+            contentDiv.innerHTML = '';
+            testHistory = [];
+        }
+        
+        // 导出测试结果
+        function exportResults() {
+            const blob = new Blob([JSON.stringify(testHistory, null, 2)], {
+                type: 'application/json'
+            });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `cot-dir-test-results-${new Date().toISOString().split('T')[0]}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+        
+        // 添加工具栏
+        document.addEventListener('DOMContentLoaded', function() {
+            const resultsDiv = document.getElementById('testResults');
+            const toolbar = document.createElement('div');
+            toolbar.style.marginBottom = '15px';
+            toolbar.innerHTML = `
+                <button onclick="clearResults()" style="background: #e74c3c; color: white; padding: 8px 16px; border: none; border-radius: 4px; margin-right: 10px; cursor: pointer;">清空结果</button>
+                <button onclick="exportResults()" style="background: #3498db; color: white; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer;">导出结果</button>
+            `;
+            resultsDiv.insertBefore(toolbar, resultsDiv.firstChild.nextSibling);
+        });
+    </script>
+</body>
+</html>

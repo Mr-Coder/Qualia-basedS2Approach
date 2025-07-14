@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COT-DIR 解题测试</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; max-width: 800px; margin: 0 auto; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        textarea { width: 100%; height: 80px; padding: 10px; border: 1px solid #ddd; border-radius: 4px; }
+        button { padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; margin-right: 10px; }
+        button:hover { background: #0056b3; }
+        .result { margin-top: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 4px; }
+        .loading { color: #666; font-style: italic; }
+        .error { color: #d32f2f; }
+        .success { color: #2e7d32; }
+        .debug { background: #f5f5f5; padding: 10px; margin-top: 10px; font-family: monospace; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <h1>COT-DIR 解题系统测试</h1>
+    
+    <div class="form-group">
+        <label for="problem">数学问题:</label>
+        <textarea id="problem" placeholder="输入数学问题，例如：小明有5个苹果，小红有3个苹果，他们一共有多少个苹果？"></textarea>
+    </div>
+    
+    <div class="form-group">
+        <label>推理策略:</label>
+        <button type="button" onclick="solve('auto')">自动选择</button>
+        <button type="button" onclick="solve('cot')">COT策略</button>
+        <button type="button" onclick="solve('got')">GOT策略</button>
+        <button type="button" onclick="solve('tot')">TOT策略</button>
+    </div>
+    
+    <div class="form-group">
+        <button type="button" onclick="testBasic()">测试基础问题</button>
+        <button type="button" onclick="clearResult()">清空结果</button>
+    </div>
+    
+    <div id="result"></div>
+    
+    <script>
+        function log(message) {
+            console.log(message);
+            const debugDiv = document.getElementById('debug') || createDebugDiv();
+            debugDiv.innerHTML += new Date().toLocaleTimeString() + ': ' + message + '<br>';
+        }
+        
+        function createDebugDiv() {
+            const div = document.createElement('div');
+            div.id = 'debug';
+            div.className = 'debug';
+            div.innerHTML = '<strong>调试信息:</strong><br>';
+            document.body.appendChild(div);
+            return div;
+        }
+        
+        function solve(strategy) {
+            const problem = document.getElementById('problem').value.trim();
+            if (!problem) {
+                alert('请输入数学问题');
+                return;
+            }
+            
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '<div class="loading">🤖 正在思考中...</div>';
+            
+            log(`开始解题: ${problem}, 策略: ${strategy}`);
+            
+            fetch('/api/solve', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    problem: problem,
+                    strategy: strategy
+                })
+            })
+            .then(response => {
+                log(`收到响应状态: ${response.status}`);
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                log(`解析数据: ${JSON.stringify(data, null, 2)}`);
+                
+                if (data.success) {
+                    displaySuccess(data);
+                } else {
+                    displayError(data.error || '未知错误');
+                }
+            })
+            .catch(error => {
+                log(`请求失败: ${error.message}`);
+                displayError(`请求失败: ${error.message}`);
+            });
+        }
+        
+        function displaySuccess(result) {
+            const resultDiv = document.getElementById('result');
+            const steps = result.reasoning_steps || [];
+            
+            let stepsHtml = '';
+            if (steps.length > 0) {
+                stepsHtml = '<h4>推理步骤:</h4><ol>';
+                steps.forEach(step => {
+                    stepsHtml += `<li>${step.description || '无描述'}</li>`;
+                });
+                stepsHtml += '</ol>';
+            }
+            
+            resultDiv.innerHTML = `
+                <div class="success">
+                    <h3>✅ 解题成功</h3>
+                    <p><strong>答案:</strong> ${result.answer}</p>
+                    <p><strong>置信度:</strong> ${(result.confidence * 100).toFixed(1)}%</p>
+                    <p><strong>策略:</strong> ${result.strategy_used}</p>
+                    <p><strong>执行时间:</strong> ${result.execution_time}秒</p>
+                    ${stepsHtml}
+                </div>
+            `;
+        }
+        
+        function displayError(message) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `<div class="error"><h3>❌ 解题失败</h3><p>${message}</p></div>`;
+        }
+        
+        function testBasic() {
+            document.getElementById('problem').value = '小明有5个苹果，小红有3个苹果，他们一共有多少个苹果？';
+            solve('auto');
+        }
+        
+        function clearResult() {
+            document.getElementById('result').innerHTML = '';
+            const debugDiv = document.getElementById('debug');
+            if (debugDiv) {
+                debugDiv.remove();
+            }
+        }
+        
+        // 页面加载完成后的初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            log('页面加载完成');
+        });
+    </script>
+</body>
+</html>

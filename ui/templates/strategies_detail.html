@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COT-DIR 推理策略详解</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 2.8em;
+            font-weight: 700;
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .nav a {
+            padding: 12px 25px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .nav a:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .nav a.active {
+            background: #e74c3c;
+        }
+        
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .strategy-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .strategy-header {
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .strategy-header h2 {
+            color: #2c3e50;
+            font-size: 1.5em;
+            margin-bottom: 5px;
+        }
+        
+        .strategy-header .english-name {
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        
+        .strategy-description {
+            color: #34495e;
+            font-weight: 500;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .section {
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            color: #2c3e50;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            border-left: 4px solid #3498db;
+            padding-left: 10px;
+        }
+        
+        .characteristics-list, .entity-modeling-list, .example-steps-list, .teaching-applications {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .characteristics-list li, .entity-modeling-list li, .example-steps-list li, .teaching-applications li {
+            background: #ecf0f1;
+            margin-bottom: 8px;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .teaching-applications li {
+            background: #f0f8ff;
+            border-left-color: #27ae60;
+        }
+        
+        .learning-stages {
+            background: #fdf6e3;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #f39c12;
+        }
+        
+        .stage {
+            background: rgba(243, 156, 18, 0.1);
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+            font-weight: 500;
+            color: #2c3e50;
+        }
+        
+        .best-for {
+            background: #e8f5e8;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #27ae60;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        
+        .comparison-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        .comparison-table th, .comparison-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .comparison-table th {
+            background: #3498db;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .comparison-table tr:hover {
+            background: #f5f5f5;
+        }
+        
+        .diagram-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .diagram-placeholder {
+            background: #f8f9fa;
+            border: 2px dashed #bdc3c7;
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 1.1em;
+        }
+        
+        @media (max-width: 768px) {
+            .strategy-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧠 COT-DIR 推理策略详解</h1>
+            <p>深层实体物性关系建模与推理策略的完美结合</p>
+            <div class="nav">
+                <a href="/">智能解题</a>
+                <a href="/strategies" class="active">推理策略</a>
+                <a href="/learning-guide">学习指导</a>
+                <a href="/knowledge-map">知识图谱</a>
+                <a href="/error-analysis">错题分析</a>
+            </div>
+        </div>
+        
+        <div class="strategy-grid">
+            {% for key, strategy in strategies.items() %}
+            <div class="strategy-card">
+                <div class="strategy-header">
+                    <h2>{{ strategy.name }}</h2>
+                    <div class="english-name">{{ strategy.english_name }}</div>
+                    <div class="strategy-description">{{ strategy.description }}</div>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">🔧 核心特征</div>
+                    <ul class="characteristics-list">
+                        {% for characteristic in strategy.characteristics %}
+                        <li>{{ characteristic }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">🏗️ 实体关系建模</div>
+                    <ul class="entity-modeling-list">
+                        {% for modeling in strategy.entity_modeling %}
+                        <li>{{ modeling }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">📋 推理步骤示例</div>
+                    <ul class="example-steps-list">
+                        {% for step in strategy.example_steps %}
+                        <li>{{ step }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">🎓 教学应用</div>
+                    <ul class="teaching-applications">
+                        {% if key == 'cot' %}
+                        <li><strong>初学者友好</strong>：适合刚接触数学推理的学生，步骤清晰易懂</li>
+                        <li><strong>培养逻辑思维</strong>：通过链式推理训练学生的顺序思考能力</li>
+                        <li><strong>错误追踪容易</strong>：每步都有验证，便于发现和纠正错误</li>
+                        <li><strong>建立数学信心</strong>：循序渐进的方式帮助学生建立解题信心</li>
+                        {% elif key == 'got' %}
+                        <li><strong>提升系统思维</strong>：帮助学生理解复杂问题中的多重关系</li>
+                        <li><strong>培养关联能力</strong>：训练学生发现表面问题下的深层联系</li>
+                        <li><strong>适合进阶学习</strong>：在掌握基础后进行更深层的思维训练</li>
+                        <li><strong>现实问题解决</strong>：模拟真实世界中的复杂关系网络</li>
+                        {% elif key == 'tot' %}
+                        <li><strong>培养创新思维</strong>：鼓励学生探索多种解决方案</li>
+                        <li><strong>决策能力训练</strong>：教会学生如何在多个选项中选择最优解</li>
+                        <li><strong>批判性思维</strong>：通过比较不同路径培养分析评估能力</li>
+                        <li><strong>适合天才教育</strong>：挑战有能力的学生进行深度探索</li>
+                        {% endif %}
+                    </ul>
+                </div>
+                
+                <div class="section">
+                    <div class="section-title">📖 学习阶段</div>
+                    <div class="learning-stages">
+                        {% if key == 'cot' %}
+                        <div class="stage">阶段1: 问题理解 → 实体识别 → 关系分析</div>
+                        <div class="stage">阶段2: 逐步推理 → 状态跟踪 → 结果验证</div>
+                        <div class="stage">阶段3: 反思总结 → 方法内化 → 应用拓展</div>
+                        {% elif key == 'got' %}
+                        <div class="stage">阶段1: 整体观察 → 关系发现 → 网络构建</div>
+                        <div class="stage">阶段2: 局部分析 → 全局整合 → 模式识别</div>
+                        <div class="stage">阶段3: 网络优化 → 洞察提炼 → 迁移应用</div>
+                        {% elif key == 'tot' %}
+                        <div class="stage">阶段1: 多角度思考 → 方案生成 → 路径规划</div>
+                        <div class="stage">阶段2: 方案评估 → 优劣比较 → 最优选择</div>
+                        <div class="stage">阶段3: 方案整合 → 创新突破 → 智慧升华</div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="comparison-section">
+            <h2>📊 策略对比分析</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>策略</th>
+                        <th>推理方式</th>
+                        <th>实体关系处理</th>
+                        <th>复杂度适应</th>
+                        <th>推理步骤数</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>COT</strong></td>
+                        <td>链式顺序推理</td>
+                        <td>链式实体状态转移</td>
+                        <td>中等复杂度</td>
+                        <td>5-6步</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GOT</strong></td>
+                        <td>图网络推理</td>
+                        <td>多层网络关系建模</td>
+                        <td>高复杂关系</td>
+                        <td>4-5步</td>
+                    </tr>
+                    <tr>
+                        <td><strong>TOT</strong></td>
+                        <td>树状多路径探索</td>
+                        <td>分层实体关系探索</td>
+                        <td>最高复杂度</td>
+                        <td>6-7步</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="diagram-section">
+            <h2>🎨 实体关系图可视化</h2>
+            <div class="diagram-placeholder">
+                📈 实体物性关系图将在解题过程中动态生成
+                <br><br>
+                包含实体节点、关系边、隐含约束等多层信息
+                <br>
+                帮助学生直观理解每道题的深层关系结构
+            </div>
+        </div>
+    </div>
+</body>
+</html>

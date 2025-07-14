@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COT-DIR 知识图谱</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        
+        .header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 2.8em;
+            font-weight: 700;
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .nav a {
+            padding: 12px 25px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .nav a:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+        
+        .nav a.active {
+            background: #e74c3c;
+        }
+        
+        .knowledge-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .section-title {
+            color: #2c3e50;
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        .knowledge-map {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .knowledge-domain {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #dee2e6;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .knowledge-domain::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db, #2ecc71, #f39c12, #e74c3c);
+        }
+        
+        .knowledge-domain:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .knowledge-domain h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.4em;
+            text-align: center;
+        }
+        
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+        }
+        
+        .concept-node {
+            background: white;
+            padding: 15px 10px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #dee2e6;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .concept-node:hover {
+            background: #3498db;
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .concept-node.core {
+            background: #3498db;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .concept-node.strategy {
+            background: #2ecc71;
+            color: white;
+        }
+        
+        .concept-node.domain {
+            background: #f39c12;
+            color: white;
+        }
+        
+        .concept-node.skill {
+            background: #e74c3c;
+            color: white;
+        }
+        
+        .relationship-view {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border: 2px solid #e9ecef;
+        }
+        
+        .relationship-view h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            text-align: center;
+        }
+        
+        .relationship-network {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .relationship-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #dee2e6;
+            text-align: center;
+            position: relative;
+        }
+        
+        .relationship-card::after {
+            content: '→';
+            position: absolute;
+            right: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5em;
+            color: #3498db;
+            background: white;
+            padding: 0 5px;
+        }
+        
+        .relationship-card:last-child::after {
+            display: none;
+        }
+        
+        .relationship-card h4 {
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+        
+        .relationship-card p {
+            color: #495057;
+            font-size: 0.9em;
+        }
+        
+        .interactive-map {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            min-height: 400px;
+            border: 2px solid #e9ecef;
+            position: relative;
+        }
+        
+        .interactive-map h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .map-canvas {
+            width: 100%;
+            height: 350px;
+            background: linear-gradient(45deg, #f8f9fa 25%, transparent 25%, transparent 75%, #f8f9fa 75%, #f8f9fa),
+                        linear-gradient(45deg, #f8f9fa 25%, transparent 25%, transparent 75%, #f8f9fa 75%, #f8f9fa);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .knowledge-node {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: #3498db;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 3px solid white;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .knowledge-node:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .knowledge-node.core { background: #3498db; }
+        .knowledge-node.strategy { background: #2ecc71; }
+        .knowledge-node.domain { background: #f39c12; }
+        .knowledge-node.skill { background: #e74c3c; }
+        
+        .connection-line {
+            position: absolute;
+            height: 2px;
+            background: #bdc3c7;
+            transform-origin: left center;
+            z-index: 1;
+        }
+        
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        
+        .legend-color.core { background: #3498db; }
+        .legend-color.strategy { background: #2ecc71; }
+        .legend-color.domain { background: #f39c12; }
+        .legend-color.skill { background: #e74c3c; }
+        
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+            }
+            
+            .knowledge-map {
+                grid-template-columns: 1fr;
+            }
+            
+            .relationship-network {
+                grid-template-columns: 1fr;
+            }
+            
+            .relationship-card::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🗺️ COT-DIR 知识图谱</h1>
+            <p>智能推理系统的知识结构可视化</p>
+            <div class="nav">
+                <a href="/">智能解题</a>
+                <a href="/strategies">推理策略</a>
+                <a href="/learning-guide">学习指导</a>
+                <a href="/knowledge-map" class="active">知识图谱</a>
+                <a href="/error-analysis">错题分析</a>
+            </div>
+        </div>
+        
+        <div class="knowledge-section">
+            <h2 class="section-title">🧠 核心知识域</h2>
+            
+            <div class="knowledge-map">
+                <div class="knowledge-domain">
+                    <h3>🔧 核心概念</h3>
+                    <div class="concept-grid">
+                        {% for concept in knowledge.core_concepts %}
+                        <div class="concept-node core">{{ concept }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+                <div class="knowledge-domain">
+                    <h3>🧮 推理策略</h3>
+                    <div class="concept-grid">
+                        {% for strategy in knowledge.reasoning_strategies %}
+                        <div class="concept-node strategy">{{ strategy }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+                <div class="knowledge-domain">
+                    <h3>📊 问题领域</h3>
+                    <div class="concept-grid">
+                        {% for domain in knowledge.problem_domains %}
+                        <div class="concept-node domain">{{ domain }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+                <div class="knowledge-domain">
+                    <h3>🎯 思维技能</h3>
+                    <div class="concept-grid">
+                        {% for skill in knowledge.thinking_skills %}
+                        <div class="concept-node skill">{{ skill }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="knowledge-section">
+            <h2 class="section-title">🔗 知识关系网络</h2>
+            
+            <div class="relationship-view">
+                <h3>智能推理过程</h3>
+                <div class="relationship-network">
+                    <div class="relationship-card">
+                        <h4>问题理解</h4>
+                        <p>实体识别<br>关系发现<br>约束分析</p>
+                    </div>
+                    <div class="relationship-card">
+                        <h4>策略选择</h4>
+                        <p>复杂度评估<br>策略匹配<br>路径规划</p>
+                    </div>
+                    <div class="relationship-card">
+                        <h4>推理执行</h4>
+                        <p>深度推理<br>关系建模<br>状态跟踪</p>
+                    </div>
+                    <div class="relationship-card">
+                        <h4>结果验证</h4>
+                        <p>多层验证<br>约束检查<br>结果输出</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="knowledge-section">
+            <h2 class="section-title">🎨 交互式知识图谱</h2>
+            
+            <div class="interactive-map">
+                <h3>点击节点查看详细信息</h3>
+                <div class="map-canvas">
+                    <!-- 连接线 -->
+                    <div class="connection-line" style="top: 100px; left: 80px; width: 120px; transform: rotate(30deg);"></div>
+                    <div class="connection-line" style="top: 180px; left: 200px; width: 100px; transform: rotate(-30deg);"></div>
+                    <div class="connection-line" style="top: 200px; left: 300px; width: 120px; transform: rotate(45deg);"></div>
+                    <div class="connection-line" style="top: 120px; left: 420px; width: 80px; transform: rotate(-45deg);"></div>
+                    <div class="connection-line" style="top: 260px; left: 100px; width: 150px; transform: rotate(15deg);"></div>
+                    <div class="connection-line" style="top: 80px; left: 250px; width: 100px; transform: rotate(60deg);"></div>
+                    
+                    <!-- 知识节点 -->
+                    <div class="knowledge-node core" style="top: 80px; left: 50px;" title="实体：问题中的核心对象">实体</div>
+                    <div class="knowledge-node core" style="top: 160px; left: 180px;" title="关系：实体间的相互作用">关系</div>
+                    <div class="knowledge-node core" style="top: 200px; left: 320px;" title="约束：问题的限制条件">约束</div>
+                    
+                    <div class="knowledge-node strategy" style="top: 60px; left: 450px;" title="COT：思维链推理">COT</div>
+                    <div class="knowledge-node strategy" style="top: 120px; left: 520px;" title="GOT：思维图推理">GOT</div>
+                    <div class="knowledge-node strategy" style="top: 180px; left: 480px;" title="TOT：思维树推理">TOT</div>
+                    
+                    <div class="knowledge-node domain" style="top: 250px; left: 80px;" title="算术：基础运算问题">算术</div>
+                    <div class="knowledge-node domain" style="top: 280px; left: 200px;" title="几何：空间形状问题">几何</div>
+                    <div class="knowledge-node domain" style="top: 240px; left: 350px;" title="应用：实际生活问题">应用</div>
+                    
+                    <div class="knowledge-node skill" style="top: 40px; left: 200px;" title="分解：问题分解能力">分解</div>
+                    <div class="knowledge-node skill" style="top: 90px; left: 350px;" title="建模：关系建模能力">建模</div>
+                    <div class="knowledge-node skill" style="top: 140px; left: 120px;" title="推理：逻辑推理能力">推理</div>
+                    <div class="knowledge-node skill" style="top: 300px; left: 450px;" title="验证：结果验证能力">验证</div>
+                </div>
+                
+                <div class="legend">
+                    <div class="legend-item">
+                        <div class="legend-color core"></div>
+                        <span>核心概念</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color strategy"></div>
+                        <span>推理策略</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color domain"></div>
+                        <span>问题领域</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color skill"></div>
+                        <span>思维技能</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="knowledge-section">
+            <h2 class="section-title">📈 策略知识整合</h2>
+            
+            <div class="relationship-view">
+                <h3>基于智能推理策略的知识整合</h3>
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                    <h4 style="color: #2c3e50; margin-bottom: 15px;">🔬 策略驱动的知识构建</h4>
+                    <p style="color: #495057; line-height: 1.6; margin-bottom: 15px;">
+                        每种推理策略都有其独特的知识组织方式：
+                    </p>
+                    <ul style="margin-left: 20px; color: #495057;">
+                        <li><strong>COT策略</strong>：线性知识链接，强调顺序推理和步骤验证</li>
+                        <li><strong>GOT策略</strong>：网络知识结构，重视关系发现和模式识别</li>
+                        <li><strong>TOT策略</strong>：树状知识分层，注重多路径探索和决策优化</li>
+                    </ul>
+                </div>
+                
+                <div style="background: #e8f5e8; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                    <h4 style="color: #2e7d32; margin-bottom: 15px;">🎯 自适应知识应用</h4>
+                    <p style="color: #424242; line-height: 1.6;">
+                        系统根据问题特征自动选择最适合的策略，并调用相应的知识库和推理模式，实现智能化的知识应用和问题解决。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 知识节点交互
+        document.querySelectorAll('.knowledge-node').forEach(node => {
+            node.addEventListener('click', function() {
+                const title = this.getAttribute('title') || this.textContent;
+                alert(`知识点详情：\n${title}`);
+            });
+        });
+        
+        // 概念节点悬停效果
+        document.querySelectorAll('.concept-node').forEach(node => {
+            node.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.1) translateY(-2px)';
+            });
+            
+            node.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1) translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -149,6 +149,9 @@ class IValidator(ABC):
         """获取验证规则"""
         pass
 
+# 别名保持向后兼容
+BaseValidator = IValidator
+
 class IReasoningEngine(ABC):
     """推理引擎接口"""
     

@@ -24,6 +24,21 @@ class ReasoningValidator(BaseValidator):
     
     def __init__(self):
         self._logger = logging.getLogger(__name__)
+    
+    def get_validation_rules(self) -> Dict[str, Any]:
+        """获取验证规则"""
+        return {
+            "required_fields": ["final_answer", "confidence", "reasoning_steps"],
+            "answer_constraints": {
+                "max_length": 100,
+                "min_confidence": 0.1,
+                "numeric_range": [-1000000, 1000000]
+            },
+            "step_constraints": {
+                "required_step_fields": ["step", "action", "description"],
+                "max_steps": 50
+            }
+        }
         
     def validate(self, data: Any) -> Dict[str, Any]:
         """验证推理结果"""

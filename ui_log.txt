@@ -1,0 +1,810 @@
+🚀 启动COT-DIR本地Web UI
+📁 项目根目录: /Users/menghao/Documents/GitHub/cot-dir1
+🌐 访问地址: http://localhost:8082
+==================================================
+ * Serving Flask app 'app'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8082
+ * Running on http://192.168.0.134:8082
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 107-368-565
+127.0.0.1 - - [15/Jul/2025 02:35:41] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:35:41] "GET /strategies HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:35:41] "GET /docs HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:35:41] "GET /system HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:35:41] "GET /test HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:35:41] "GET /api/stats HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:35:41] "GET /api/strategies HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:35:41] "GET /api/system HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:35:54] "GET /api/strategies HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:36:53] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:36:53] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+127.0.0.1 - - [15/Jul/2025 02:36:58] "GET /strategies HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:36:58] "GET /api/strategies HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:37:02] "GET /docs HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:37:05] "GET /docs/Examples.md HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:37:15] "GET /docs HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:37:18] "GET /docs/Examples.md HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:37:21] "GET /system HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:37:25] "GET /test HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:37:26] "POST /api/test/run HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:37:29] "POST /api/test/run HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:38:20] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:38:50] "GET /api/stats HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:39:20] "GET /api/stats HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:39:50] "GET /api/stats HTTP/1.1" 200 -
+ * Detected change in '/Users/menghao/Documents/GitHub/cot-dir1/ui/app.py', reloading
+🚀 启动COT-DIR本地Web UI
+📁 项目根目录: /Users/menghao/Documents/GitHub/cot-dir1
+🌐 访问地址: http://localhost:8082
+==================================================
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 107-368-565
+127.0.0.1 - - [15/Jul/2025 02:40:21] "GET /api/stats HTTP/1.1" 200 -
+ * Detected change in '/Users/menghao/Documents/GitHub/cot-dir1/ui/app.py', reloading
+🚀 启动COT-DIR本地Web UI
+📁 项目根目录: /Users/menghao/Documents/GitHub/cot-dir1
+🌐 访问地址: http://localhost:8082
+==================================================
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 107-368-565
+127.0.0.1 - - [15/Jul/2025 02:40:50] "GET /api/stats HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:41:20] "GET /api/stats HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:42:47] "GET /api/stats HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:43:47] "GET /api/stats HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:44:47] "GET /api/stats HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:45:47] "GET /api/stats HTTP/1.1" 200 -
+统一协调器策略初始化失败: __init__() takes 1 positional argument but 2 were given
+[ORCHESTRATION_ERROR] 统一策略初始化失败: __init__() takes 1 positional argument but 2 were given
+协调器策略初始化失败: 统一策略初始化失败: __init__() takes 1 positional argument but 2 were given
+[ORCHESTRATION_ERROR] 策略初始化失败: 统一策略初始化失败: __init__() takes 1 positional argument but 2 were given
+127.0.0.1 - - [15/Jul/2025 02:45:53] "POST /api/solve HTTP/1.1" 200 -
+统一协调器策略初始化失败: __init__() takes 1 positional argument but 2 were given
+[ORCHESTRATION_ERROR] 统一策略初始化失败: __init__() takes 1 positional argument but 2 were given
+协调器策略初始化失败: 统一策略初始化失败: __init__() takes 1 positional argument but 2 were given
+[ORCHESTRATION_ERROR] 策略初始化失败: 统一策略初始化失败: __init__() takes 1 positional argument but 2 were given
+127.0.0.1 - - [15/Jul/2025 02:46:07] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:46:47] "GET /api/stats HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:47:47] "GET /api/stats HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:48:47] "GET /api/stats HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:49:19] "GET /api/stats HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:49:21] "GET /api/stats HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:49:51] "GET /api/stats HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:50:47] "GET /api/stats HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:51:47] "GET /api/stats HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:52:47] "GET /api/stats HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:53:47] "GET /api/stats HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:54:47] "GET /api/stats HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:55:27] "GET /api/stats HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:55:28] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:55:38] "GET /strategies HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:55:38] "GET /api/strategies HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:55:39] "GET /docs HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:55:42] "GET /system HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:55:45] "GET /test HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:55:46] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:56:18] "GET /strategies HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:56:18] "GET /api/strategies HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:56:24] "GET /docs HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:56:26] "GET /system HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:56:29] "GET /test HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 02:57:26] "POST /api/solve HTTP/1.1" 200 -
+ * Detected change in '/Users/menghao/Documents/GitHub/cot-dir1/ui/app.py', reloading
+🚀 启动COT-DIR本地Web UI
+📁 项目根目录: /Users/menghao/Documents/GitHub/cot-dir1
+🌐 访问地址: http://localhost:8082
+==================================================
+推理引擎错误: 策略初始化失败: 统一策略初始化失败: __init__() takes 1 positional argument but 2 were given
+推理引擎错误: 策略初始化失败: 统一策略初始化失败: __init__() takes 1 positional argument but 2 were given
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 107-368-565
+127.0.0.1 - - [15/Jul/2025 03:00:25] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:00:28] "GET / HTTP/1.1" 200 -
+统一协调器策略初始化失败: __init__() takes 1 positional argument but 2 were given
+[ORCHESTRATION_ERROR] 统一策略初始化失败: __init__() takes 1 positional argument but 2 were given
+协调器策略初始化失败: 统一策略初始化失败: __init__() takes 1 positional argument but 2 were given
+[ORCHESTRATION_ERROR] 策略初始化失败: 统一策略初始化失败: __init__() takes 1 positional argument but 2 were given
+127.0.0.1 - - [15/Jul/2025 03:00:31] "POST /api/solve HTTP/1.1" 200 -
+统一协调器策略初始化失败: __init__() takes 1 positional argument but 2 were given
+[ORCHESTRATION_ERROR] 统一策略初始化失败: __init__() takes 1 positional argument but 2 were given
+协调器策略初始化失败: 统一策略初始化失败: __init__() takes 1 positional argument but 2 were given
+[ORCHESTRATION_ERROR] 策略初始化失败: 统一策略初始化失败: __init__() takes 1 positional argument but 2 were given
+127.0.0.1 - - [15/Jul/2025 03:00:42] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:00:45] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:00:49] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:00:57] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:01:07] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:01:30] "GET /test-solve HTTP/1.1" 200 -
+ * Detected change in '/Users/menghao/Documents/GitHub/cot-dir1/ui/app.py', reloading
+🚀 启动COT-DIR本地Web UI
+📁 项目根目录: /Users/menghao/Documents/GitHub/cot-dir1
+🌐 访问地址: http://localhost:8082
+==================================================
+推理引擎错误: 策略初始化失败: 统一策略初始化失败: __init__() takes 1 positional argument but 2 were given
+推理引擎错误: 策略初始化失败: 统一策略初始化失败: __init__() takes 1 positional argument but 2 were given
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 107-368-565
+ * Detected change in '/Users/menghao/Documents/GitHub/cot-dir1/ui/app.py', reloading
+🚀 启动COT-DIR本地Web UI
+📁 项目根目录: /Users/menghao/Documents/GitHub/cot-dir1
+🌐 访问地址: http://localhost:8082
+==================================================
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 107-368-565
+127.0.0.1 - - [15/Jul/2025 03:07:51] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:08:41] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:09:25] "GET /test-solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:09:27] "GET /test-solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:09:33] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:09:38] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:09:44] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:09:48] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:09:52] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:09:55] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:09:58] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:10:03] "POST /api/solve HTTP/1.1" 200 -
+ * Detected change in '/Users/menghao/Documents/GitHub/cot-dir1/ui/app.py', reloading
+🚀 启动COT-DIR本地Web UI
+📁 项目根目录: /Users/menghao/Documents/GitHub/cot-dir1
+🌐 访问地址: http://localhost:8082
+==================================================
+收到解题请求: 小明有5个苹果，小红有3个苹果，他们一共有多少个苹果？, 策略: auto
+返回结果: 成功
+收到解题请求: 一个长方形的长是8米，宽是5米，求它的面积。, 策略: auto
+返回结果: 成功
+收到解题请求: 小明有5个苹果，小红有3个苹果，他们一共有多少个苹果？, 策略: auto
+返回结果: 成功
+收到解题请求: 小明有5个苹果，小红有3个苹果，他们一共有多少个苹果？, 策略: cot
+返回结果: 成功
+收到解题请求: 一个长方形的长是8米，宽是5米，求它的面积和周长。, 策略: cot
+返回结果: 成功
+收到解题请求: 小张买了3支笔，每支笔5元，给了店主20元，应该找回多少钱？, 策略: cot
+返回结果: 成功
+收到解题请求: 小张买了3支笔，每支笔5元，给了店主20元，应该找回多少钱？, 策略: got
+返回结果: 成功
+收到解题请求: 小张买了3支笔，每支笔5元，给了店主20元，应该找回多少钱？, 策略: got
+返回结果: 成功
+收到解题请求: 小张买了3支笔，每支笔5元，给了店主20元，应该找回多少钱？, 策略: tot
+返回结果: 成功
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 107-368-565
+127.0.0.1 - - [15/Jul/2025 03:12:51] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:15:07] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:16:27] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:16:30] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:16:41] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:16:46] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:16:50] "GET /strategies HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:16:50] "GET /api/strategies HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:16:52] "GET /docs HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:16:56] "GET /docs HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:16:59] "GET /system HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:17:11] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:17:31] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:17:56] "[35m[1mPOST /api/solve HTTP/1.1[0m" 500 -
+127.0.0.1 - - [15/Jul/2025 03:18:01] "[35m[1mPOST /api/solve HTTP/1.1[0m" 500 -
+127.0.0.1 - - [15/Jul/2025 03:18:06] "[35m[1mPOST /api/solve HTTP/1.1[0m" 500 -
+127.0.0.1 - - [15/Jul/2025 03:18:13] "[35m[1mPOST /api/solve HTTP/1.1[0m" 500 -
+127.0.0.1 - - [15/Jul/2025 03:25:15] "[35m[1mPOST /api/solve HTTP/1.1[0m" 500 -
+127.0.0.1 - - [15/Jul/2025 03:25:38] "GET /strategies HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:25:38] "GET /api/strategies HTTP/1.1" 200 -
+ * Detected change in '/Users/menghao/Documents/GitHub/cot-dir1/ui/app.py', reloading
+🚀 启动COT-DIR本地Web UI
+📁 项目根目录: /Users/menghao/Documents/GitHub/cot-dir1
+🌐 访问地址: http://localhost:8082
+==================================================
+收到解题请求: 小张买了3支笔，每支笔5元，给了店主20元，应该找回多少钱？, 策略: auto
+返回结果: 成功
+收到解题请求: 一个长方形的长是8米，宽是5米，求它的面积。, 策略: cot
+返回结果: 成功
+收到解题请求: 小明有5个苹果，小红有3个苹果，他们一共有多少个苹果？, 策略: auto
+返回结果: 成功
+收到解题请求: 小明有5个苹果，小红有3个苹果，他们一共有多少个苹果？, 策略: cot
+返回结果: 成功
+收到解题请求: 小明有5个苹果，小红有3个苹果，他们一共有多少个苹果？, 策略: tot
+返回结果: 成功
+收到解题请求: 一个长方形的长是8米，宽是5米，求它的面积和周长。, 策略: tot
+返回结果: 成功
+收到解题请求: 小张买了3支笔，每支笔5元，给了店主20元，应该找回多少钱？, 策略: tot
+返回结果: 成功
+收到解题请求: 一个班级有40名学生，其中男生占60%，女生有多少人？, 策略: tot
+API处理错误: name 'generate_percentage_reasoning' is not defined
+收到解题请求: 一个班级有40名学生，其中男生占60%，女生有多少人？, 策略: tot
+API处理错误: name 'generate_percentage_reasoning' is not defined
+收到解题请求: 一个班级有40名学生，其中男生占60%，女生有多少人？, 策略: auto
+API处理错误: name 'generate_percentage_reasoning' is not defined
+收到解题请求: 一个班级有40名学生，其中男生占60%，女生有多少人？, 策略: auto
+API处理错误: name 'generate_percentage_reasoning' is not defined
+收到解题请求: 一个班级有40名学生，其中男生占60%，女生有多少人？, 策略: auto
+API处理错误: name 'generate_percentage_reasoning' is not defined
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 107-368-565
+127.0.0.1 - - [15/Jul/2025 03:25:43] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:26:23] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:28:40] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:28:45] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:28:49] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:30:34] "GET /strategies HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:30:34] "GET /api/strategies HTTP/1.1" 200 -
+ * Detected change in '/Users/menghao/Documents/GitHub/cot-dir1/ui/app.py', reloading
+🚀 启动COT-DIR本地Web UI
+📁 项目根目录: /Users/menghao/Documents/GitHub/cot-dir1
+🌐 访问地址: http://localhost:8082
+==================================================
+收到解题请求: 一个班级有40名学生，其中男生占60%，女生有多少人？, 策略: auto
+返回结果: 成功
+收到解题请求: 小明有5个苹果，小红有3个苹果，他们一共有多少个苹果？, 策略: auto
+返回结果: 成功
+收到解题请求: 一个长方形的长是8米，宽是5米，求它的面积和周长。, 策略: auto
+返回结果: 成功
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 107-368-565
+127.0.0.1 - - [15/Jul/2025 03:30:39] "GET /docs HTTP/1.1" 200 -
+ * Detected change in '/Users/menghao/Documents/GitHub/cot-dir1/ui/app.py', reloading
+🚀 启动COT-DIR本地Web UI
+📁 项目根目录: /Users/menghao/Documents/GitHub/cot-dir1
+🌐 访问地址: http://localhost:8082
+==================================================
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 107-368-565
+ * Detected change in '/Users/menghao/Documents/GitHub/cot-dir1/ui/app.py', reloading
+🚀 启动COT-DIR本地Web UI
+📁 项目根目录: /Users/menghao/Documents/GitHub/cot-dir1
+🌐 访问地址: http://localhost:8082
+==================================================
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 107-368-565
+ * Detected change in '/Users/menghao/Documents/GitHub/cot-dir1/ui/app.py', reloading
+🚀 启动COT-DIR本地Web UI
+📁 项目根目录: /Users/menghao/Documents/GitHub/cot-dir1
+🌐 访问地址: http://localhost:8082
+==================================================
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 107-368-565
+ * Detected change in '/Users/menghao/Documents/GitHub/cot-dir1/ui/app.py', reloading
+🚀 启动COT-DIR本地Web UI
+📁 项目根目录: /Users/menghao/Documents/GitHub/cot-dir1
+🌐 访问地址: http://localhost:8082
+==================================================
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 107-368-565
+127.0.0.1 - - [15/Jul/2025 03:37:47] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:37:49] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:38:04] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:38:09] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:38:11] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:38:16] "GET /strategies HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:38:17] "GET /api/strategies HTTP/1.1" 200 -
+ * Detected change in '/Users/menghao/Documents/GitHub/cot-dir1/ui/app.py', reloading
+🚀 启动COT-DIR本地Web UI
+📁 项目根目录: /Users/menghao/Documents/GitHub/cot-dir1
+🌐 访问地址: http://localhost:8082
+==================================================
+收到解题请求: 小明有5个苹果，小红有3个苹果，他们一共有多少个苹果？, 策略: auto
+返回结果: 成功
+收到解题请求: 小明有5个苹果，小红有3个苹果，他们一共有多少个苹果？, 策略: cot
+返回结果: 成功
+收到解题请求: 小明有5个苹果，小红有3个苹果，他们一共有多少个苹果？, 策略: got
+返回结果: 成功
+收到解题请求: 小明有5个苹果，小红有3个苹果，他们一共有多少个苹果？, 策略: tot
+返回结果: 成功
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 107-368-565
+ * Detected change in '/Users/menghao/Documents/GitHub/cot-dir1/ui/app.py', reloading
+🚀 启动COT-DIR本地Web UI
+📁 项目根目录: /Users/menghao/Documents/GitHub/cot-dir1
+🌐 访问地址: http://localhost:8082
+==================================================
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 107-368-565
+ * Detected change in '/Users/menghao/Documents/GitHub/cot-dir1/ui/app.py', reloading
+🚀 启动COT-DIR本地Web UI
+📁 项目根目录: /Users/menghao/Documents/GitHub/cot-dir1
+🌐 访问地址: http://localhost:8082
+==================================================
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 107-368-565
+127.0.0.1 - - [15/Jul/2025 03:46:52] "GET /strategies HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:46:52] "GET /api/strategies HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:46:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:46:59] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:47:05] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:47:08] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:47:17] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:47:19] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:47:22] "GET /strategies HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:47:22] "GET /api/strategies HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:47:24] "GET /docs HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:47:29] "GET /docs HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:47:32] "GET /system HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:47:34] "GET /test HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:47:35] "GET /docs HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:47:38] "GET /strategies HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:47:38] "GET /api/strategies HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:47:40] "GET / HTTP/1.1" 200 -
+ * Detected change in '/Users/menghao/Documents/GitHub/cot-dir1/ui/app.py', reloading
+🚀 启动COT-DIR本地Web UI
+📁 项目根目录: /Users/menghao/Documents/GitHub/cot-dir1
+🌐 访问地址: http://localhost:8082
+==================================================
+收到解题请求: 一个长方形的长是8米，宽是5米，求它的面积和周长。, 策略: auto
+返回结果: 成功
+收到解题请求: 小明有5个苹果，小红有3个苹果，他们一共有多少个苹果？, 策略: got
+返回结果: 成功
+收到解题请求: 小明有5个苹果，小红有3个苹果，他们一共有多少个苹果？, 策略: tot
+返回结果: 成功
+收到解题请求: 小明有5个苹果，小红有3个苹果，他们一共有多少个苹果？, 策略: cot
+返回结果: 成功
+收到解题请求: 小明有5个苹果，小红有3个苹果，他们一共有多少个苹果？, 策略: auto
+返回结果: 成功
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 107-368-565
+ * Detected change in '/Users/menghao/Documents/GitHub/cot-dir1/ui/app.py', reloading
+🚀 启动COT-DIR本地Web UI
+📁 项目根目录: /Users/menghao/Documents/GitHub/cot-dir1
+🌐 访问地址: http://localhost:8082
+==================================================
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 107-368-565
+ * Detected change in '/Users/menghao/Documents/GitHub/cot-dir1/ui/app.py', reloading
+🚀 启动COT-DIR本地Web UI
+📁 项目根目录: /Users/menghao/Documents/GitHub/cot-dir1
+🌐 访问地址: http://localhost:8082
+==================================================
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 107-368-565
+127.0.0.1 - - [15/Jul/2025 03:57:37] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:57:38] "GET /strategies HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:57:52] "[35m[1mGET /learning-guide HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/menghao/Documents/GitHub/cot-dir1/ui/app.py", line 293, in learning_guide
+    return render_template('learning_guide.html', content=learning_content)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/opt/homebrew/lib/python3.9/site-packages/jinja2/environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/opt/homebrew/lib/python3.9/site-packages/jinja2/environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "/opt/homebrew/lib/python3.9/site-packages/jinja2/environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/opt/homebrew/lib/python3.9/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: learning_guide.html
+127.0.0.1 - - [15/Jul/2025 03:57:52] "GET /learning-guide?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:57:52] "GET /learning-guide?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:57:52] "GET /learning-guide?__debugger__=yes&cmd=resource&f=console.png&s=B2TkBpGBV1lI3FmSotpl HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:57:52] "GET /learning-guide?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:57:55] "[35m[1mGET /knowledge-map HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/menghao/Documents/GitHub/cot-dir1/ui/app.py", line 304, in knowledge_map
+    return render_template('knowledge_map.html', knowledge=knowledge_structure)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/opt/homebrew/lib/python3.9/site-packages/jinja2/environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/opt/homebrew/lib/python3.9/site-packages/jinja2/environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "/opt/homebrew/lib/python3.9/site-packages/jinja2/environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/opt/homebrew/lib/python3.9/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: knowledge_map.html
+127.0.0.1 - - [15/Jul/2025 03:57:55] "GET /knowledge-map?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:57:55] "GET /knowledge-map?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:57:55] "GET /knowledge-map?__debugger__=yes&cmd=resource&f=console.png&s=B2TkBpGBV1lI3FmSotpl HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:57:55] "GET /knowledge-map?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:57:57] "[35m[1mGET /error-analysis HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/menghao/Documents/GitHub/cot-dir1/ui/app.py", line 315, in error_analysis
+    return render_template('error_analysis.html', errors=common_errors)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/opt/homebrew/lib/python3.9/site-packages/jinja2/environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/opt/homebrew/lib/python3.9/site-packages/jinja2/environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "/opt/homebrew/lib/python3.9/site-packages/jinja2/environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/opt/homebrew/lib/python3.9/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: error_analysis.html
+127.0.0.1 - - [15/Jul/2025 03:57:57] "GET /error-analysis?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:57:57] "GET /error-analysis?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:57:57] "GET /error-analysis?__debugger__=yes&cmd=resource&f=console.png&s=B2TkBpGBV1lI3FmSotpl HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:57:57] "GET /error-analysis?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:57:58] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:58:03] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:58:25] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:58:32] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:58:39] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:58:45] "GET /strategies HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:59:27] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:59:30] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:59:36] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 03:59:45] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:04:57] "GET /docs HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:04:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:05:03] "GET /strategies HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:05:26] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:05:37] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:05:42] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:05:46] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:05:56] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:06:00] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:06:07] "GET /strategies HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:06:09] "[35m[1mGET /learning-guide HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/menghao/Documents/GitHub/cot-dir1/ui/app.py", line 293, in learning_guide
+    return render_template('learning_guide.html', content=learning_content)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/opt/homebrew/lib/python3.9/site-packages/jinja2/environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/opt/homebrew/lib/python3.9/site-packages/jinja2/environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "/opt/homebrew/lib/python3.9/site-packages/jinja2/environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/opt/homebrew/lib/python3.9/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: learning_guide.html
+127.0.0.1 - - [15/Jul/2025 04:06:09] "[36mGET /learning-guide?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [15/Jul/2025 04:06:09] "[36mGET /learning-guide?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [15/Jul/2025 04:06:09] "[36mGET /learning-guide?__debugger__=yes&cmd=resource&f=console.png&s=B2TkBpGBV1lI3FmSotpl HTTP/1.1[0m" 304 -
+127.0.0.1 - - [15/Jul/2025 04:06:11] "[35m[1mGET /knowledge-map HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/menghao/Documents/GitHub/cot-dir1/ui/app.py", line 304, in knowledge_map
+    return render_template('knowledge_map.html', knowledge=knowledge_structure)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/opt/homebrew/lib/python3.9/site-packages/jinja2/environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/opt/homebrew/lib/python3.9/site-packages/jinja2/environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "/opt/homebrew/lib/python3.9/site-packages/jinja2/environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/opt/homebrew/lib/python3.9/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: knowledge_map.html
+127.0.0.1 - - [15/Jul/2025 04:06:11] "[36mGET /knowledge-map?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [15/Jul/2025 04:06:11] "[36mGET /knowledge-map?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [15/Jul/2025 04:06:11] "[36mGET /knowledge-map?__debugger__=yes&cmd=resource&f=console.png&s=B2TkBpGBV1lI3FmSotpl HTTP/1.1[0m" 304 -
+127.0.0.1 - - [15/Jul/2025 04:06:13] "[35m[1mGET /error-analysis HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/menghao/Documents/GitHub/cot-dir1/ui/app.py", line 315, in error_analysis
+    return render_template('error_analysis.html', errors=common_errors)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/opt/homebrew/lib/python3.9/site-packages/jinja2/environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/opt/homebrew/lib/python3.9/site-packages/jinja2/environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "/opt/homebrew/lib/python3.9/site-packages/jinja2/environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/opt/homebrew/lib/python3.9/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: error_analysis.html
+127.0.0.1 - - [15/Jul/2025 04:06:13] "[36mGET /error-analysis?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [15/Jul/2025 04:06:13] "[36mGET /error-analysis?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [15/Jul/2025 04:06:13] "[36mGET /error-analysis?__debugger__=yes&cmd=resource&f=console.png&s=B2TkBpGBV1lI3FmSotpl HTTP/1.1[0m" 304 -
+127.0.0.1 - - [15/Jul/2025 04:06:28] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:06:31] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:06:35] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:06:38] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:06:42] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:07:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:11:33] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:11:38] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:11:42] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:11:46] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:11:51] "GET /strategies HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:12:04] "[35m[1mGET /learning-guide HTTP/1.1[0m" 500 -
+Traceback (most recent call last):
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 1536, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 1514, in wsgi_app
+    response = self.handle_exception(e)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/menghao/Documents/GitHub/cot-dir1/ui/app.py", line 293, in learning_guide
+    return render_template('learning_guide.html', content=learning_content)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/templating.py", line 149, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/opt/homebrew/lib/python3.9/site-packages/jinja2/environment.py", line 1087, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/opt/homebrew/lib/python3.9/site-packages/jinja2/environment.py", line 1016, in get_template
+    return self._load_template(name, globals)
+  File "/opt/homebrew/lib/python3.9/site-packages/jinja2/environment.py", line 975, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/opt/homebrew/lib/python3.9/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/templating.py", line 65, in get_source
+    return self._get_source_fast(environment, template)
+  File "/opt/homebrew/lib/python3.9/site-packages/flask/templating.py", line 99, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: learning_guide.html
+127.0.0.1 - - [15/Jul/2025 04:12:04] "[36mGET /learning-guide?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+127.0.0.1 - - [15/Jul/2025 04:12:04] "[36mGET /learning-guide?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [15/Jul/2025 04:12:04] "[36mGET /learning-guide?__debugger__=yes&cmd=resource&f=console.png&s=B2TkBpGBV1lI3FmSotpl HTTP/1.1[0m" 304 -
+127.0.0.1 - - [15/Jul/2025 04:12:20] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:12:21] "GET /strategies HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:12:23] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:15:03] "POST /api/solve HTTP/1.1" 200 -
+ * Detected change in '/Users/menghao/Documents/GitHub/cot-dir1/ui/app.py', reloading
+🚀 启动COT-DIR本地Web UI
+📁 项目根目录: /Users/menghao/Documents/GitHub/cot-dir1
+🌐 访问地址: http://localhost:8082
+==================================================
+收到解题请求: 小明有5个苹果，小红有3个苹果，他们一共有多少个苹果？, 策略: cot
+返回结果: 成功
+收到解题请求: 小明有5个苹果，小红有3个苹果，他们一共有多少个苹果？, 策略: tot
+返回结果: 成功
+收到解题请求: 小明有5个苹果，小红有3个苹果，他们一共有多少个苹果？, 策略: cot
+返回结果: 成功
+收到解题请求: 小明有5个苹果，小红有3个苹果，他们一共有多少个苹果？, 策略: auto
+返回结果: 成功
+收到解题请求: 一个长方形的长是8米，宽是5米，求它的面积和周长。, 策略: auto
+返回结果: 成功
+收到解题请求: 小明有5个苹果，小红有3个苹果，他们一共有多少个苹果？, 策略: auto
+返回结果: 成功
+收到解题请求: 一个长方形的长是8米，宽是5米，求它的面积和周长。, 策略: got
+返回结果: 成功
+收到解题请求: 小明有5个苹果，小红有3个苹果，他们一共有多少个苹果？, 策略: auto
+返回结果: 成功
+收到解题请求: 一个长方形的长是8米，宽是5米，求它的面积和周长。, 策略: auto
+返回结果: 成功
+收到解题请求: 小张买了3支笔，每支笔5元，给了店主20元，应该找回多少钱？, 策略: auto
+返回结果: 成功
+收到解题请求: 一个班级有40名学生，其中男生占60%，女生有多少人？, 策略: auto
+返回结果: 成功
+收到解题请求: 一个长方形的长是8米，宽是5米，求它的面积和周长。, 策略: auto
+返回结果: 成功
+收到解题请求: 小张买了3支笔，每支笔5元，给了店主20元，应该找回多少钱？, 策略: auto
+返回结果: 成功
+收到解题请求: 一个长方形的长是8米，宽是5米，求它的面积和周长。, 策略: tot
+返回结果: 成功
+收到解题请求: 一个长方形的长是8米，宽是5米，求它的面积和周长。, 策略: got
+返回结果: 成功
+收到解题请求: 一个长方形的长是8米，宽是5米，求它的面积和周长。, 策略: cot
+返回结果: 成功
+收到解题请求: 小明有5个苹果，小红有3个苹果，他们一共有多少个苹果？, 策略: cot
+返回结果: 成功
+收到解题请求: 小明有5个苹果，小红有3个苹果，他们一共有多少个苹果？, 策略: auto
+返回结果: 成功
+收到解题请求: 小明有5个苹果，小红有3个苹果，他们一共有多少个苹果？, 策略: got
+返回结果: 成功
+收到解题请求: 小明有5个苹果，小红有3个苹果，他们一共有多少个苹果？, 策略: tot
+返回结果: 成功
+收到解题请求: 小明有5个苹果，小红有3个苹果，他们一共有多少个苹果？, 策略: auto
+返回结果: 成功
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 107-368-565
+ * Detected change in '/Users/menghao/Documents/GitHub/cot-dir1/ui/app.py', reloading
+🚀 启动COT-DIR本地Web UI
+📁 项目根目录: /Users/menghao/Documents/GitHub/cot-dir1
+🌐 访问地址: http://localhost:8082
+==================================================
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 107-368-565
+ * Detected change in '/Users/menghao/Documents/GitHub/cot-dir1/ui/app.py', reloading
+🚀 启动COT-DIR本地Web UI
+📁 项目根目录: /Users/menghao/Documents/GitHub/cot-dir1
+🌐 访问地址: http://localhost:8082
+==================================================
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 107-368-565
+ * Detected change in '/Users/menghao/Documents/GitHub/cot-dir1/ui/app.py', reloading
+🚀 启动COT-DIR本地Web UI
+📁 项目根目录: /Users/menghao/Documents/GitHub/cot-dir1
+🌐 访问地址: http://localhost:8082
+==================================================
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 107-368-565
+ * Detected change in '/Users/menghao/Documents/GitHub/cot-dir1/ui/app.py', reloading
+🚀 启动COT-DIR本地Web UI
+📁 项目根目录: /Users/menghao/Documents/GitHub/cot-dir1
+🌐 访问地址: http://localhost:8082
+==================================================
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 107-368-565
+ * Detected change in '/Users/menghao/Documents/GitHub/cot-dir1/ui/app.py', reloading
+🚀 启动COT-DIR本地Web UI
+📁 项目根目录: /Users/menghao/Documents/GitHub/cot-dir1
+🌐 访问地址: http://localhost:8082
+==================================================
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 107-368-565
+127.0.0.1 - - [15/Jul/2025 04:42:39] "[35m[1mPOST /api/solve HTTP/1.1[0m" 500 -
+ * Detected change in '/Users/menghao/Documents/GitHub/cot-dir1/ui/app.py', reloading
+🚀 启动COT-DIR本地Web UI
+📁 项目根目录: /Users/menghao/Documents/GitHub/cot-dir1
+🌐 访问地址: http://localhost:8082
+==================================================
+收到解题请求: 小明有5个苹果，小红有3个苹果，他们一共有多少个苹果？, 策略: auto
+API处理错误: name 're' is not defined
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 107-368-565
+ * Detected change in '/Users/menghao/Documents/GitHub/cot-dir1/ui/app.py', reloading
+🚀 启动COT-DIR本地Web UI
+📁 项目根目录: /Users/menghao/Documents/GitHub/cot-dir1
+🌐 访问地址: http://localhost:8082
+==================================================
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 107-368-565
+127.0.0.1 - - [15/Jul/2025 04:43:42] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:44:44] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:44:56] "GET /learning-guide HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:45:05] "GET /knowledge-map HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:45:13] "GET /error-analysis HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:46:59] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:47:02] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:47:12] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:47:18] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:47:24] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:47:31] "GET /strategies HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:47:34] "GET /learning-guide HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:47:47] "GET /knowledge-map HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:48:04] "GET /error-analysis HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:48:35] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:48:38] "POST /api/solve HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:48:43] "GET /strategies HTTP/1.1" 200 -
+127.0.0.1 - - [15/Jul/2025 04:48:43] "GET /learning-guide HTTP/1.1" 200 -

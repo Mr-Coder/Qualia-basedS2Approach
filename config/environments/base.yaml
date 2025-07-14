@@ -1,0 +1,145 @@
+# COT-DIR1 基础配置文件
+# 所有环境共用的配置项
+
+# 应用信息
+app:
+  name: "COT-DIR1"
+  version: "2.0.0"
+  description: "Chain of Thought - Direction 1 Mathematical Reasoning System"
+
+# 推理配置
+reasoning:
+  max_steps: 15
+  confidence_threshold: 0.7
+  timeout_seconds: 30.0
+  enable_multi_path: true
+  enable_verification: true
+  
+  # 模板配置
+  templates:
+    max_templates: 50
+    template_timeout: 5.0
+    enable_custom_templates: true
+
+# 验证配置
+validation:
+  max_input_length: 10000
+  enable_security_check: true
+  enable_content_check: true
+  sanitize_input: true
+  
+  # 数值验证
+  numeric:
+    max_value: 1000000000000000  # 1e15
+    min_value: -1000000000000000
+    decimal_places: 10
+
+# 性能配置
+performance:
+  enable_monitoring: true
+  enable_caching: true
+  cache_size: 1000
+  enable_parallel_processing: false
+  max_concurrent_tasks: 4
+  
+  # 超时设置
+  timeouts:
+    total_processing: 60.0
+    step_processing: 10.0
+    template_matching: 5.0
+
+# 日志配置
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file_rotation: true
+  max_file_size: "10MB"
+  backup_count: 5
+  
+  # 日志类别
+  loggers:
+    reasoning: "DEBUG"
+    validation: "INFO"
+    performance: "INFO"
+    security: "WARNING"
+
+# 安全配置
+security:
+  enable_input_sanitization: true
+  enable_output_filtering: true
+  max_execution_time: 120.0
+  allowed_operations:
+    - "arithmetic"
+    - "algebraic"
+    - "geometric"
+    - "statistical"
+  
+  # 限制配置
+  limits:
+    max_memory_mb: 512
+    max_cpu_percent: 80
+    max_file_size_mb: 10
+
+# GNN增强配置
+gnn:
+  enable_gnn: true
+  gpu_acceleration: false
+  batch_size: 32
+  
+  # 模型配置
+  models:
+    concept_gnn:
+      hidden_dim: 128
+      num_layers: 3
+      dropout: 0.1
+    
+    reasoning_gnn:
+      hidden_dim: 256
+      num_layers: 4
+      dropout: 0.15
+    
+    verification_gnn:
+      hidden_dim: 192
+      num_layers: 3
+      dropout: 0.1
+
+# 数据配置
+data:
+  input_encoding: "utf-8"
+  output_encoding: "utf-8"
+  enable_data_validation: true
+  
+  # 缓存配置
+  cache:
+    type: "memory"  # memory, redis, file
+    ttl_seconds: 3600
+    max_size: 1000
+
+# API配置
+api:
+  enable_rest_api: false
+  enable_grpc_api: false
+  rate_limiting:
+    enabled: false
+    requests_per_minute: 100
+    
+# 监控配置
+monitoring:
+  enable_metrics: true
+  enable_health_check: true
+  metrics_interval: 60
+  
+  # 监控指标
+  metrics:
+    - "processing_time"
+    - "memory_usage"
+    - "success_rate"
+    - "error_rate"
+    - "confidence_scores"
+
+# 特性开关
+features:
+  enable_experimental: false
+  enable_debug_mode: false
+  enable_profiling: false
+  enable_detailed_logging: false 

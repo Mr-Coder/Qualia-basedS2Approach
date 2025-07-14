@@ -1,4 +1,14 @@
 #!/usr/bin/env python3
+
+# 安全改进：导入安全计算器
+import sys
+import os
+sys.path.append(os.path.dirname(__file__))
+from secure_components import SecureMathEvaluator, SecurityError
+
+# 初始化安全计算器
+_secure_evaluator = SecureMathEvaluator()
+
 """
 Proposed COT-DIR Model Implementation
 
@@ -462,7 +472,7 @@ class COTDIRModel(ProposedModel):
                 "round": round
             }
             
-            return eval(expr, allowed_names)
+            return _secure_evaluator.safe__secure_evaluator.safe_eval(expr, allowed_names)
         except Exception:
             return 0.0
     

@@ -1,0 +1,98 @@
+# COT-DIR1 开发环境配置
+# 继承 base.yaml 并覆盖开发环境特定设置
+
+# 日志配置 - 开发环境启用详细日志
+logging:
+  level: "DEBUG"
+  loggers:
+    reasoning: "DEBUG"
+    validation: "DEBUG"
+    performance: "DEBUG"
+    security: "DEBUG"
+
+# 性能配置 - 开发环境启用更多调试功能
+performance:
+  enable_monitoring: true
+  enable_caching: false  # 开发时禁用缓存以确保最新代码生效
+  enable_parallel_processing: false
+  timeouts:
+    total_processing: 120.0  # 开发时允许更长的超时
+    step_processing: 20.0
+    template_matching: 10.0
+
+# 安全配置 - 开发环境相对宽松
+security:
+  enable_input_sanitization: true
+  enable_output_filtering: false  # 开发时可以看到原始输出
+  max_execution_time: 300.0  # 允许更长的执行时间
+  
+  limits:
+    max_memory_mb: 1024  # 开发环境允许更多内存
+    max_cpu_percent: 90
+    max_file_size_mb: 50
+
+# 验证配置 - 开发环境更宽松的验证
+validation:
+  max_input_length: 50000  # 允许更长的输入用于测试
+  enable_security_check: true
+  enable_content_check: false  # 开发时允许非标准内容
+
+# GNN配置 - 开发环境使用较小的模型
+gnn:
+  enable_gnn: true
+  gpu_acceleration: false  # 开发环境通常不使用GPU
+  batch_size: 8  # 较小的批次大小
+  
+  models:
+    concept_gnn:
+      hidden_dim: 64  # 较小的模型便于调试
+      num_layers: 2
+      dropout: 0.2
+    
+    reasoning_gnn:
+      hidden_dim: 128
+      num_layers: 2
+      dropout: 0.2
+    
+    verification_gnn:
+      hidden_dim: 96
+      num_layers: 2
+      dropout: 0.2
+
+# 特性开关 - 开发环境启用调试功能
+features:
+  enable_experimental: true
+  enable_debug_mode: true
+  enable_profiling: true
+  enable_detailed_logging: true
+
+# 数据配置
+data:
+  cache:
+    type: "memory"
+    ttl_seconds: 300  # 短期缓存便于开发调试
+    max_size: 100
+
+# 监控配置
+monitoring:
+  enable_metrics: true
+  enable_health_check: true
+  metrics_interval: 30  # 更频繁的监控
+
+# 开发环境特有配置
+development:
+  # 自动重载
+  auto_reload: true
+  
+  # 测试配置
+  testing:
+    enable_unit_tests: true
+    enable_integration_tests: true
+    test_data_path: "tests/data"
+    
+  # 调试配置
+  debugging:
+    enable_step_by_step: true
+    save_intermediate_results: true
+    log_reasoning_steps: true
+    enable_visualization: true 

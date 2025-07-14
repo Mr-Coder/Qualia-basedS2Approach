@@ -1,3 +1,13 @@
+
+# 安全改进：导入安全计算器
+import sys
+import os
+sys.path.append(os.path.dirname(__file__))
+from secure_components import SecureMathEvaluator, SecurityError
+
+# 初始化安全计算器
+_secure_evaluator = SecureMathEvaluator()
+
 """
 📊 Batch Processor - 批量处理和质量评估
 标准化流程，智能质量控制和评估系统
@@ -635,7 +645,7 @@ def demo_batch_processor():
         
         if isinstance(problem, dict) and 'expression' in problem:
             try:
-                result = eval(problem['expression'])
+                result = _secure_evaluator.safe__secure_evaluator.safe_eval(problem['expression'])
                 return {
                     'problem': problem,
                     'result': result,

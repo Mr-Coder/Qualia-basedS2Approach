@@ -1,4 +1,14 @@
 #!/usr/bin/env python3
+
+# 安全改进：导入安全计算器
+import sys
+import os
+sys.path.append(os.path.dirname(__file__))
+from secure_components import SecureMathEvaluator, SecurityError
+
+# 初始化安全计算器
+_secure_evaluator = SecureMathEvaluator()
+
 """
 Baseline Models Implementation
 
@@ -141,7 +151,7 @@ class TemplateBasedModel(BaselineModel):
                 # Simple evaluation for basic equations
                 if "=" in eq:
                     _, expression = eq.split("=", 1)
-                    result = eval(expression.strip())
+                    result = _secure_evaluator.safe__secure_evaluator.safe_eval(expression.strip())
                     results[f"equation_{i}"] = result
             except Exception as e:
                 results[f"equation_{i}"] = f"Error: {e}"
@@ -335,7 +345,7 @@ class EquationBasedModel(BaselineModel):
                 except SympifyError:
                     # Fallback to simple evaluation
                     try:
-                        result = eval(right.replace('^', '**'))
+                        result = _secure_evaluator.safe__secure_evaluator.safe_eval(right.replace('^', '**'))
                         solutions[f"equation_{i}"] = result
                     except:
                         solutions[f"equation_{i}"] = "Could not solve"
@@ -472,7 +482,7 @@ class RuleBasedModel(BaselineModel):
                     if len(parts) == 2:
                         right_side = parts[1].strip()
                         # Simple evaluation
-                        result = eval(right_side.replace("×", "*").replace("÷", "/"))
+                        result = _secure_evaluator.safe__secure_evaluator.safe_eval(right_side.replace("×", "*").replace("÷", "/"))
                         results[f"equation_{i}"] = result
             except Exception as e:
                 results[f"equation_{i}"] = f"Error: {e}"

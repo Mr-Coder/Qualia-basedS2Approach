@@ -10,7 +10,7 @@ from typing import Any, Dict, List, Optional
 
 from ..core.exceptions import APIError, handle_module_error
 from ..core.interfaces import ModuleInfo, ModuleType, PublicAPI
-from .private.ird_engine import ImplicitRelationDiscoveryEngine, IRDResult
+from .qs2_enhancement.enhanced_ird_engine import EnhancedIRDEngine, DiscoveryResult as IRDResult
 from .private.mlr_processor import MultiLevelReasoningProcessor, MLRResult, ComplexityLevel
 from .private.cv_validator import ChainVerificationValidator, ValidationResult
 
@@ -48,7 +48,7 @@ class ReasoningAPI(PublicAPI):
             
             # 初始化IRD引擎
             ird_config = self.config.get("ird", {})
-            self.ird_engine = ImplicitRelationDiscoveryEngine(ird_config)
+            self.ird_engine = EnhancedIRDEngine(ird_config)
             
             # 初始化MLR处理器
             mlr_config = self.config.get("mlr", {})
@@ -94,7 +94,7 @@ class ReasoningAPI(PublicAPI):
             if self._initialized:
                 # 检查各组件统计信息
                 status["component_stats"] = {
-                    "ird": self.ird_engine.get_stats() if self.ird_engine else {},
+                    "ird": self.ird_engine.get_global_stats() if self.ird_engine else {},
                     "mlr": self.mlr_processor.get_stats() if self.mlr_processor else {},
                     "cv": self.cv_validator.get_stats() if self.cv_validator else {}
                 }
@@ -191,7 +191,7 @@ class ReasoningAPI(PublicAPI):
             ird_result = self.ird_engine.discover_relations(problem_text, context)
             
             self._logger.debug(f"IRD完成: 发现{len(ird_result.relations)}个关系, "
-                             f"置信度{ird_result.confidence_score:.3f}")
+                             f"置信度{ird_result.statistics.get('average_confidence', 0.0):.3f}")
             
             return ird_result
             
@@ -200,9 +200,11 @@ class ReasoningAPI(PublicAPI):
             # 返回空结果继续流程
             return IRDResult(
                 relations=[],
-                confidence_score=0.0,
                 processing_time=0.0,
-                metadata={"error": str(e)}
+                entity_count=0,
+                total_pairs_evaluated=0,
+                high_strength_relations=0,
+                statistics={"error": str(e)}
             )
     
     def _execute_mlr_phase(
@@ -297,7 +299,7 @@ class ReasoningAPI(PublicAPI):
         cv_weight = 0.2
         
         overall_confidence = (
-            ird_result.confidence_score * ird_weight +
+            ird_result.statistics.get("average_confidence", 0.0) * ird_weight +
             mlr_result.confidence_score * mlr_weight +
             validation_result.consistency_score * cv_weight
         )
@@ -337,14 +339,14 @@ class ReasoningAPI(PublicAPI):
                 "total_relations": len(ird_result.relations),
                 "total_steps": len(mlr_result.reasoning_steps),
                 "component_versions": {
-                    "ird": "1.0.0",
+                    "ird": "2.0.0",  # Enhanced version
                     "mlr": "1.0.0", 
                     "cv": "1.0.0"
                 }
             },
             "metadata": {
                 "problem_text": problem_text,
-                "ird_metadata": ird_result.metadata,
+                "ird_metadata": ird_result.statistics,
                 "mlr_metadata": mlr_result.metadata,
                 "cv_metadata": validation_result.metadata
             }
@@ -500,7 +502,7 @@ class ReasoningAPI(PublicAPI):
             
             # 组件统计
             stats["component_stats"] = {
-                "ird": self.ird_engine.get_stats(),
+                "ird": self.ird_engine.get_global_stats(),
                 "mlr": self.mlr_processor.get_stats(),
                 "cv": self.cv_validator.get_stats()
             }

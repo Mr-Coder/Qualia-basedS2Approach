@@ -13,7 +13,15 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 import numpy as np
 
-from .ird_engine import ImplicitRelation, RelationType
+from ..qs2_enhancement.enhanced_ird_engine import EnhancedRelation, RelationType
+from .deep_implicit_engine import (
+    DeepImplicitEngine, 
+    DeepImplicitRelation, 
+    ImplicitConstraint,
+    SemanticRelationType,
+    ConstraintType,
+    RelationDepth
+)
 
 
 class ComplexityLevel(Enum):
@@ -95,6 +103,9 @@ class MultiLevelReasoningProcessor:
         self.confidence_threshold = self.config.get("confidence_threshold", 0.7)
         self.enable_verification = self.config.get("enable_verification", True)
         
+        # 初始化深度隐含关系引擎
+        self.deep_engine = DeepImplicitEngine(self.config.get("deep_engine", {}))
+        
         # 推理策略配置
         self.complexity_thresholds = {
             ComplexityLevel.L0_EXPLICIT: 0.2,
@@ -109,15 +120,17 @@ class MultiLevelReasoningProcessor:
             "complexity_distribution": {level.value: 0 for level in ComplexityLevel},
             "average_steps": 0.0,
             "average_confidence": 0.0,
-            "success_rate": 0.0
+            "success_rate": 0.0,
+            "deep_relations_discovered": 0,
+            "implicit_constraints_found": 0
         }
         
-        self.logger.info("多层级推理处理器初始化完成")
+        self.logger.info("多层级推理处理器初始化完成，已集成深度隐含关系引擎")
     
     def execute_reasoning(
         self, 
         problem_text: str, 
-        relations: List[ImplicitRelation], 
+        relations: List[Any] = None, 
         context: Optional[Dict[str, Any]] = None
     ) -> MLRResult:
         """
@@ -125,43 +138,68 @@ class MultiLevelReasoningProcessor:
         
         Args:
             problem_text: 问题文本
-            relations: 隐式关系列表
+            relations: 输入关系列表（可选）
             context: 可选的上下文信息
             
         Returns:
-            MLRResult: 推理结果
+            MLRResult: 增强的推理结果，包含深度隐含关系和约束
         """
         start_time = time.time()
+        relations = relations or []
         
         try:
-            self.logger.info(f"开始多层级推理: {problem_text[:50]}...")
+            self.logger.info(f"开始增强多层级推理: {problem_text[:50]}...")
             
-            # 第一步：确定复杂度级别
-            complexity_level = self._determine_complexity_level(problem_text, relations)
+            # 第零步：提取基础实体信息
+            entities = self._extract_basic_entities(problem_text)
             
-            # 第二步：初始化推理上下文
-            reasoning_context = self._initialize_reasoning_context(
-                problem_text, relations, complexity_level, context
+            # 第一步：深度隐含关系发现
+            deep_relations, implicit_constraints = self.deep_engine.discover_deep_relations(
+                problem_text, entities, []
             )
             
-            # 第三步：执行分层推理
-            reasoning_steps = self._execute_layered_reasoning(
+            # 更新统计
+            self.stats["deep_relations_discovered"] += len(deep_relations)
+            self.stats["implicit_constraints_found"] += len(implicit_constraints)
+            
+            # 第二步：确定复杂度级别（考虑深度关系）
+            complexity_level = self._determine_enhanced_complexity_level(
+                problem_text, relations, deep_relations, implicit_constraints
+            )
+            
+            # 第三步：初始化增强推理上下文
+            reasoning_context = self._initialize_enhanced_reasoning_context(
+                problem_text, relations, complexity_level, context, 
+                deep_relations, implicit_constraints, entities
+            )
+            
+            # 第四步：执行增强分层推理
+            reasoning_steps = self._execute_enhanced_layered_reasoning(
                 reasoning_context, complexity_level
             )
             
-            # 第四步：验证推理结果
+            # 第五步：验证推理结果
             if self.enable_verification:
-                verification_steps = self._verify_reasoning_chain(reasoning_steps)
+                verification_steps = self._verify_enhanced_reasoning_chain(
+                    reasoning_steps, deep_relations, implicit_constraints
+                )
                 reasoning_steps.extend(verification_steps)
             
-            # 第五步：生成最终答案
-            final_answer, answer_confidence = self._generate_final_answer(reasoning_steps)
+            # 第六步：生成最终答案
+            final_answer, answer_confidence = self._generate_enhanced_final_answer(
+                reasoning_steps, deep_relations
+            )
             
             # 计算整体置信度
-            overall_confidence = self._calculate_overall_confidence(reasoning_steps)
+            overall_confidence = self._calculate_enhanced_overall_confidence(
+                reasoning_steps, deep_relations, implicit_constraints
+            )
             
             # 更新统计信息
-            self._update_stats(complexity_level, reasoning_steps, overall_confidence >= self.confidence_threshold)
+            self._update_enhanced_stats(
+                complexity_level, reasoning_steps, overall_confidence >= self.confidence_threshold,
+                deep_relations, implicit_constraints
+            )
             
             processing_time = time.time() - start_time
             
@@ -173,18 +211,25 @@ class MultiLevelReasoningProcessor:
                 confidence_score=overall_confidence,
                 processing_time=processing_time,
                 metadata={
-                    "relations_used": len([r for r in relations if r.confidence >= 0.5]),
+                    "relations_used": len([r for r in relations if hasattr(r, 'confidence') and r.confidence >= 0.5]),
+                    "deep_relations_discovered": len(deep_relations),
+                    "implicit_constraints_found": len(implicit_constraints),
                     "step_count": len(reasoning_steps),
                     "verification_enabled": self.enable_verification,
-                    "context": context or {}
+                    "entities_extracted": len(entities),
+                    "context": context or {},
+                    "frontend_visualization_data": self._prepare_frontend_data(
+                        entities, deep_relations, implicit_constraints, reasoning_steps
+                    )
                 }
             )
             
-            self.logger.info(f"MLR完成: 复杂度{complexity_level.value}, {len(reasoning_steps)}步, 置信度{overall_confidence:.3f}")
+            self.logger.info(f"增强MLR完成: 复杂度{complexity_level.value}, {len(reasoning_steps)}步, "
+                           f"置信度{overall_confidence:.3f}, 发现{len(deep_relations)}个深度关系")
             return result
             
         except Exception as e:
-            self.logger.error(f"多层级推理失败: {str(e)}")
+            self.logger.error(f"增强多层级推理失败: {str(e)}")
             # 返回失败结果
             return MLRResult(
                 success=False,
@@ -193,7 +238,7 @@ class MultiLevelReasoningProcessor:
                 final_answer=None,
                 confidence_score=0.0,
                 processing_time=time.time() - start_time,
-                metadata={"error": str(e)}
+                metadata={"error": str(e), "deep_relations_discovered": 0}
             )
     
     def _determine_complexity_level(self, problem_text: str, relations: List[ImplicitRelation]) -> ComplexityLevel:
@@ -635,3 +680,568 @@ class MultiLevelReasoningProcessor:
             "success_rate": 0.0
         }
         self.logger.info("MLR处理器统计信息已重置")
+    
+    # ==================== 新增：深度隐含关系增强方法 ====================
+    
+    def _extract_basic_entities(self, problem_text: str) -> List[Dict[str, Any]]:
+        """提取基础实体信息"""
+        entities = []
+        
+        # 数字实体
+        import re
+        numbers = re.findall(r'\d+(?:\.\d+)?', problem_text)
+        for num in numbers:
+            entities.append({
+                "name": num,
+                "type": "number",
+                "properties": ["quantitative", "measurable"]
+            })
+        
+        # 人物实体
+        people = ['小明', '小红', '小张', '小李', '学生', '老师']
+        for person in people:
+            if person in problem_text:
+                entities.append({
+                    "name": person,
+                    "type": "person", 
+                    "properties": ["agent", "possessor"]
+                })
+        
+        # 物品实体
+        objects = ['苹果', '书', '笔', '车', '钱', '元']
+        for obj in objects:
+            if obj in problem_text:
+                entities.append({
+                    "name": obj,
+                    "type": "object" if obj != "元" and obj != "钱" else "money",
+                    "properties": ["countable", "possessed"]
+                })
+        
+        # 概念实体
+        concepts = ['面积', '周长', '速度', '时间', '距离', '总共', '一共']
+        for concept in concepts:
+            if concept in problem_text:
+                entities.append({
+                    "name": concept,
+                    "type": "concept",
+                    "properties": ["abstract", "calculable"]
+                })
+        
+        return entities
+    
+    def _determine_enhanced_complexity_level(
+        self, 
+        problem_text: str, 
+        relations: List[Any], 
+        deep_relations: List[DeepImplicitRelation],
+        implicit_constraints: List[ImplicitConstraint]
+    ) -> ComplexityLevel:
+        """确定增强的问题复杂度级别"""
+        complexity_score = 0.0
+        
+        # 基于传统关系数量
+        if relations:
+            relation_factor = min(len(relations) / 5, 1.0) * 0.2
+            complexity_score += relation_factor
+        
+        # 基于深度关系数量和深度
+        if deep_relations:
+            deep_factor = 0.0
+            for relation in deep_relations:
+                depth_weight = {
+                    RelationDepth.SURFACE: 0.1,
+                    RelationDepth.SHALLOW: 0.2,
+                    RelationDepth.MEDIUM: 0.4,
+                    RelationDepth.DEEP: 0.6
+                }
+                deep_factor += depth_weight.get(relation.depth, 0.1) * relation.confidence
+            
+            deep_factor = min(deep_factor / len(deep_relations), 1.0) * 0.4
+            complexity_score += deep_factor
+        
+        # 基于隐含约束复杂度
+        if implicit_constraints:
+            constraint_factor = 0.0
+            for constraint in implicit_constraints:
+                type_weight = {
+                    ConstraintType.NON_NEGATIVITY: 0.1,
+                    ConstraintType.CONSERVATION_LAW: 0.4,
+                    ConstraintType.CONSISTENCY: 0.3,
+                    ConstraintType.TYPE_COMPATIBILITY: 0.2
+                }
+                constraint_factor += type_weight.get(constraint.constraint_type, 0.1) * constraint.confidence
+            
+            constraint_factor = min(constraint_factor / len(implicit_constraints), 1.0) * 0.3
+            complexity_score += constraint_factor
+        
+        # 基于文本特征
+        text_features = self._analyze_text_complexity(problem_text)
+        complexity_score += text_features * 0.1
+        
+        # 确定级别
+        for level in [ComplexityLevel.L3_DEEP, ComplexityLevel.L2_MEDIUM, 
+                     ComplexityLevel.L1_SHALLOW, ComplexityLevel.L0_EXPLICIT]:
+            if complexity_score >= self.complexity_thresholds[level]:
+                return level
+        
+        return ComplexityLevel.L0_EXPLICIT
+    
+    def _initialize_enhanced_reasoning_context(
+        self, 
+        problem_text: str, 
+        relations: List[Any], 
+        complexity_level: ComplexityLevel,
+        context: Optional[Dict[str, Any]],
+        deep_relations: List[DeepImplicitRelation],
+        implicit_constraints: List[ImplicitConstraint],
+        entities: List[Dict[str, Any]]
+    ) -> Dict[str, Any]:
+        """初始化增强推理上下文"""
+        return {
+            "problem_text": problem_text,
+            "relations": relations,
+            "deep_relations": deep_relations,
+            "implicit_constraints": implicit_constraints,
+            "entities": entities,
+            "complexity_level": complexity_level,
+            "external_context": context or {},
+            "variables": {},
+            "constraints": [],
+            "intermediate_results": {},
+            "step_counter": 0,
+            "semantic_evidence": [],
+            "constraint_violations": []
+        }
+    
+    def _execute_enhanced_layered_reasoning(
+        self, 
+        reasoning_context: Dict[str, Any], 
+        complexity_level: ComplexityLevel
+    ) -> List[ReasoningStep]:
+        """执行增强分层推理"""
+        steps = []
+        
+        # L0: 显式推理 + 基础深度关系
+        if complexity_level == ComplexityLevel.L0_EXPLICIT:
+            steps.extend(self._execute_enhanced_l0_reasoning(reasoning_context))
+        
+        # L1: 浅层推理 + 语义蕴含推理
+        elif complexity_level == ComplexityLevel.L1_SHALLOW:
+            steps.extend(self._execute_enhanced_l1_reasoning(reasoning_context))
+        
+        # L2: 中等推理 + 隐含约束推理
+        elif complexity_level == ComplexityLevel.L2_MEDIUM:
+            steps.extend(self._execute_enhanced_l2_reasoning(reasoning_context))
+        
+        # L3: 深层推理 + 多层关系建模
+        elif complexity_level == ComplexityLevel.L3_DEEP:
+            steps.extend(self._execute_enhanced_l3_reasoning(reasoning_context))
+        
+        return steps
+    
+    def _execute_enhanced_l0_reasoning(self, context: Dict[str, Any]) -> List[ReasoningStep]:
+        """执行增强L0级别推理"""
+        steps = []
+        
+        # 基础数值提取和计算
+        steps.extend(self._execute_l0_reasoning(context))
+        
+        # 添加基础深度关系分析
+        deep_relations = context["deep_relations"]
+        surface_relations = [r for r in deep_relations if r.depth == RelationDepth.SURFACE]
+        
+        for relation in surface_relations[:2]:  # 限制处理数量
+            step_id = len(steps)
+            
+            deep_analysis_step = ReasoningStep(
+                step_id=step_id,
+                step_type=ReasoningStepType.RELATION_ANALYSIS,
+                description=f"深度关系分析: {relation._generate_display_label()}",
+                operation="deep_relation_analysis",
+                input_values=[relation.source_entity, relation.target_entity],
+                output_value=relation.logical_basis,
+                confidence=relation.confidence,
+                depends_on=list(range(len(steps))),
+                metadata={
+                    "relation_type": relation.relation_type.value,
+                    "semantic_evidence": relation.semantic_evidence,
+                    "depth": relation.depth.value,
+                    "frontend_data": relation.frontend_display_data
+                }
+            )
+            steps.append(deep_analysis_step)
+        
+        return steps
+    
+    def _execute_enhanced_l1_reasoning(self, context: Dict[str, Any]) -> List[ReasoningStep]:
+        """执行增强L1级别推理（语义蕴含推理）"""
+        steps = []
+        
+        # 先执行L0推理
+        steps.extend(self._execute_enhanced_l0_reasoning(context))
+        
+        # 添加语义蕴含推理
+        deep_relations = context["deep_relations"]
+        semantic_relations = [r for r in deep_relations 
+                            if r.relation_type in [SemanticRelationType.IMPLICIT_DEPENDENCY, 
+                                                 SemanticRelationType.IMPLICIT_EQUIVALENCE]]
+        
+        for relation in semantic_relations:
+            step_id = len(steps)
+            
+            semantic_step = ReasoningStep(
+                step_id=step_id,
+                step_type=ReasoningStepType.RELATION_ANALYSIS,
+                description=f"语义蕴含推理: {relation.logical_basis}",
+                operation="semantic_implication",
+                input_values=relation.semantic_evidence,
+                output_value=relation.mathematical_expression or relation.logical_basis,
+                confidence=relation.confidence * 0.9,
+                depends_on=list(range(max(0, len(steps)-2), len(steps))),
+                metadata={
+                    "semantic_type": relation.relation_type.value,
+                    "evidence": relation.semantic_evidence,
+                    "implications": relation.constraint_implications,
+                    "frontend_data": relation.frontend_display_data
+                }
+            )
+            steps.append(semantic_step)
+        
+        return steps
+    
+    def _execute_enhanced_l2_reasoning(self, context: Dict[str, Any]) -> List[ReasoningStep]:
+        """执行增强L2级别推理（隐含约束推理）"""
+        steps = []
+        
+        # 先执行L1推理
+        steps.extend(self._execute_enhanced_l1_reasoning(context))
+        
+        # 添加隐含约束分析
+        implicit_constraints = context["implicit_constraints"]
+        
+        for constraint in implicit_constraints:
+            step_id = len(steps)
+            
+            constraint_step = ReasoningStep(
+                step_id=step_id,
+                step_type=ReasoningStepType.RELATION_ANALYSIS,
+                description=f"隐含约束分析: {constraint.description}",
+                operation="constraint_analysis",
+                input_values=constraint.affected_entities,
+                output_value=constraint.constraint_expression,
+                confidence=constraint.confidence,
+                depends_on=list(range(max(0, len(steps)-3), len(steps))),
+                metadata={
+                    "constraint_type": constraint.constraint_type.value,
+                    "discovery_method": constraint.discovery_method,
+                    "affected_entities": constraint.affected_entities,
+                    "frontend_data": constraint.frontend_visualization
+                }
+            )
+            steps.append(constraint_step)
+        
+        # 约束验证步骤
+        if implicit_constraints:
+            step_id = len(steps)
+            
+            validation_step = ReasoningStep(
+                step_id=step_id,
+                step_type=ReasoningStepType.VERIFICATION,
+                description="隐含约束一致性验证",
+                operation="constraint_validation",
+                input_values=[c.constraint_expression for c in implicit_constraints],
+                output_value=self._validate_constraints(implicit_constraints),
+                confidence=0.8,
+                depends_on=[s.step_id for s in steps[-len(implicit_constraints):] if s.step_type == ReasoningStepType.RELATION_ANALYSIS],
+                metadata={"constraint_count": len(implicit_constraints)}
+            )
+            steps.append(validation_step)
+        
+        return steps
+    
+    def _execute_enhanced_l3_reasoning(self, context: Dict[str, Any]) -> List[ReasoningStep]:
+        """执行增强L3级别推理（多层关系建模）"""
+        steps = []
+        
+        # 先执行L2推理
+        steps.extend(self._execute_enhanced_l2_reasoning(context))
+        
+        # 添加多层关系建模
+        deep_relations = context["deep_relations"]
+        deep_level_relations = [r for r in deep_relations if r.depth == RelationDepth.DEEP]
+        
+        # 构建关系层次图
+        relation_layers = self._build_relation_hierarchy(deep_level_relations)
+        
+        for layer_name, layer_relations in relation_layers.items():
+            step_id = len(steps)
+            
+            layer_step = ReasoningStep(
+                step_id=step_id,
+                step_type=ReasoningStepType.CALCULATION,
+                description=f"多层关系建模 - {layer_name}层",
+                operation="multilayer_modeling",
+                input_values=[r.source_entity for r in layer_relations],
+                output_value=f"{layer_name}层包含{len(layer_relations)}个关系",
+                confidence=np.mean([r.confidence for r in layer_relations]) if layer_relations else 0.0,
+                depends_on=list(range(max(0, len(steps)-5), len(steps))),
+                metadata={
+                    "layer_name": layer_name,
+                    "relation_count": len(layer_relations),
+                    "relations": [r.to_frontend_format() for r in layer_relations]
+                }
+            )
+            steps.append(layer_step)
+        
+        # 整体性推理步骤
+        step_id = len(steps)
+        
+        holistic_step = ReasoningStep(
+            step_id=step_id,
+            step_type=ReasoningStepType.CALCULATION,
+            description="整体性关系推理与综合",
+            operation="holistic_reasoning",
+            input_values=[f"{k}层" for k in relation_layers.keys()],
+            output_value=self._synthesize_holistic_understanding(deep_relations, context["implicit_constraints"]),
+            confidence=0.7,
+            depends_on=[s.step_id for s in steps[-len(relation_layers):] if s.operation == "multilayer_modeling"],
+            metadata={
+                "total_deep_relations": len(deep_relations),
+                "layer_count": len(relation_layers),
+                "synthesis_method": "holistic_integration"
+            }
+        )
+        steps.append(holistic_step)
+        
+        return steps
+    
+    def _verify_enhanced_reasoning_chain(
+        self, 
+        steps: List[ReasoningStep], 
+        deep_relations: List[DeepImplicitRelation],
+        implicit_constraints: List[ImplicitConstraint]
+    ) -> List[ReasoningStep]:
+        """验证增强推理链"""
+        verification_steps = []
+        
+        # 原有验证
+        verification_steps.extend(self._verify_reasoning_chain(steps))
+        
+        # 深度关系一致性验证
+        if deep_relations:
+            step_id = len(steps) + len(verification_steps)
+            
+            relation_verification = ReasoningStep(
+                step_id=step_id,
+                step_type=ReasoningStepType.VERIFICATION,
+                description="深度关系一致性验证",
+                operation="deep_relation_verification",
+                input_values=[r.id for r in deep_relations],
+                output_value=self._verify_deep_relations_consistency(deep_relations),
+                confidence=0.85,
+                depends_on=[s.step_id for s in steps if "deep_relation" in s.operation],
+                metadata={"verified_relations": len(deep_relations)}
+            )
+            verification_steps.append(relation_verification)
+        
+        # 约束满足性验证
+        if implicit_constraints:
+            step_id = len(steps) + len(verification_steps)
+            
+            constraint_verification = ReasoningStep(
+                step_id=step_id,
+                step_type=ReasoningStepType.VERIFICATION,
+                description="隐含约束满足性验证",
+                operation="constraint_satisfaction_verification",
+                input_values=[c.id for c in implicit_constraints],
+                output_value=self._verify_constraint_satisfaction(implicit_constraints, steps),
+                confidence=0.8,
+                depends_on=[s.step_id for s in steps if "constraint" in s.operation],
+                metadata={"verified_constraints": len(implicit_constraints)}
+            )
+            verification_steps.append(constraint_verification)
+        
+        return verification_steps
+    
+    def _generate_enhanced_final_answer(
+        self, 
+        steps: List[ReasoningStep], 
+        deep_relations: List[DeepImplicitRelation]
+    ) -> Tuple[Union[float, str, None], float]:
+        """生成增强的最终答案"""
+        # 首先尝试基础方法
+        base_answer, base_confidence = self._generate_final_answer(steps)
+        
+        # 如果有深度关系，尝试提升答案质量
+        if deep_relations and base_answer is not None:
+            # 基于深度关系调整置信度
+            relation_confidence_boost = 0.0
+            high_confidence_relations = [r for r in deep_relations if r.confidence > 0.8]
+            
+            if high_confidence_relations:
+                relation_confidence_boost = min(0.1, len(high_confidence_relations) * 0.02)
+            
+            enhanced_confidence = min(1.0, base_confidence + relation_confidence_boost)
+            
+            return base_answer, enhanced_confidence
+        
+        return base_answer, base_confidence
+    
+    def _calculate_enhanced_overall_confidence(
+        self, 
+        steps: List[ReasoningStep], 
+        deep_relations: List[DeepImplicitRelation],
+        implicit_constraints: List[ImplicitConstraint]
+    ) -> float:
+        """计算增强的整体置信度"""
+        # 基础置信度
+        base_confidence = self._calculate_overall_confidence(steps)
+        
+        # 深度关系贡献
+        if deep_relations:
+            relation_factor = sum(r.confidence for r in deep_relations) / len(deep_relations)
+            relation_weight = min(0.2, len(deep_relations) * 0.05)
+            base_confidence = (base_confidence + relation_factor * relation_weight) / (1 + relation_weight)
+        
+        # 约束一致性贡献
+        if implicit_constraints:
+            constraint_factor = sum(c.confidence for c in implicit_constraints) / len(implicit_constraints)
+            constraint_weight = min(0.1, len(implicit_constraints) * 0.02)
+            base_confidence = (base_confidence + constraint_factor * constraint_weight) / (1 + constraint_weight)
+        
+        return min(1.0, base_confidence)
+    
+    def _update_enhanced_stats(
+        self, 
+        complexity_level: ComplexityLevel, 
+        steps: List[ReasoningStep], 
+        success: bool,
+        deep_relations: List[DeepImplicitRelation],
+        implicit_constraints: List[ImplicitConstraint]
+    ):
+        """更新增强统计信息"""
+        # 调用原有统计更新
+        self._update_stats(complexity_level, steps, success)
+        
+        # 更新深度关系统计
+        self.stats["deep_relations_discovered"] += len(deep_relations)
+        self.stats["implicit_constraints_found"] += len(implicit_constraints)
+    
+    def _prepare_frontend_data(
+        self, 
+        entities: List[Dict[str, Any]], 
+        deep_relations: List[DeepImplicitRelation],
+        implicit_constraints: List[ImplicitConstraint],
+        reasoning_steps: List[ReasoningStep]
+    ) -> Dict[str, Any]:
+        """准备前端可视化数据"""
+        return {
+            "entities": entities,
+            "deep_relations": [r.to_frontend_format() for r in deep_relations],
+            "implicit_constraints": [c.to_frontend_format() for c in implicit_constraints],
+            "reasoning_layers": self._extract_reasoning_layers(reasoning_steps),
+            "visualization_config": {
+                "show_depth_indicators": True,
+                "show_constraint_panels": True,
+                "enable_interactive_exploration": True,
+                "animation_sequence": True
+            }
+        }
+    
+    # 辅助方法
+    def _validate_constraints(self, constraints: List[ImplicitConstraint]) -> bool:
+        """验证约束一致性"""
+        # 简化的约束验证逻辑
+        for constraint in constraints:
+            if constraint.confidence < 0.3:
+                return False
+        return True
+    
+    def _build_relation_hierarchy(self, relations: List[DeepImplicitRelation]) -> Dict[str, List[DeepImplicitRelation]]:
+        """构建关系层次结构"""
+        hierarchy = {
+            "causality": [],
+            "conservation": [],
+            "dependency": [],
+            "equivalence": []
+        }
+        
+        for relation in relations:
+            if relation.relation_type == SemanticRelationType.DEEP_CAUSALITY:
+                hierarchy["causality"].append(relation)
+            elif relation.relation_type == SemanticRelationType.DEEP_CONSERVATION:
+                hierarchy["conservation"].append(relation)
+            elif relation.relation_type == SemanticRelationType.IMPLICIT_DEPENDENCY:
+                hierarchy["dependency"].append(relation)
+            elif relation.relation_type == SemanticRelationType.IMPLICIT_EQUIVALENCE:
+                hierarchy["equivalence"].append(relation)
+        
+        return hierarchy
+    
+    def _synthesize_holistic_understanding(
+        self, 
+        deep_relations: List[DeepImplicitRelation], 
+        constraints: List[ImplicitConstraint]
+    ) -> str:
+        """综合整体性理解"""
+        relation_count = len(deep_relations)
+        constraint_count = len(constraints)
+        
+        if relation_count > 5 and constraint_count > 3:
+            return f"复杂整体性系统：{relation_count}个深度关系与{constraint_count}个约束形成完整推理网络"
+        elif relation_count > 2:
+            return f"中等复杂度系统：{relation_count}个深度关系构成推理基础"
+        else:
+            return f"简单系统：{relation_count}个关系，{constraint_count}个约束"
+    
+    def _verify_deep_relations_consistency(self, relations: List[DeepImplicitRelation]) -> bool:
+        """验证深度关系一致性"""
+        # 检查关系间的逻辑一致性
+        for i, rel1 in enumerate(relations):
+            for rel2 in relations[i+1:]:
+                if rel1.source_entity == rel2.target_entity and rel1.target_entity == rel2.source_entity:
+                    # 双向关系检查
+                    if abs(rel1.confidence - rel2.confidence) > 0.5:
+                        return False
+        return True
+    
+    def _verify_constraint_satisfaction(
+        self, 
+        constraints: List[ImplicitConstraint], 
+        steps: List[ReasoningStep]
+    ) -> bool:
+        """验证约束满足性"""
+        # 检查推理步骤是否违反约束
+        for constraint in constraints:
+            constraint_type = constraint.constraint_type
+            
+            if constraint_type == ConstraintType.NON_NEGATIVITY:
+                # 检查非负性约束
+                for step in steps:
+                    if step.output_value is not None and isinstance(step.output_value, (int, float)):
+                        if step.output_value < 0:
+                            return False
+        
+        return True
+    
+    def _extract_reasoning_layers(self, steps: List[ReasoningStep]) -> Dict[str, List[Dict[str, Any]]]:
+        """提取推理层次"""
+        layers = {
+            "initialization": [],
+            "relation_analysis": [],
+            "calculation": [],
+            "verification": [],
+            "conclusion": []
+        }
+        
+        for step in steps:
+            layer_key = step.step_type.value
+            if layer_key in layers:
+                layers[layer_key].append({
+                    "step_id": step.step_id,
+                    "description": step.description,
+                    "confidence": step.confidence,
+                    "metadata": step.metadata
+                })
+        
+        return layers

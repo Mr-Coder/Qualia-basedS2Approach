@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COT-DIR 现代化前端 - 完整系统</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        },
+                        secondary: {
+                            50: '#faf5ff',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.90);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(to right, #2563eb, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .animate-pulse-slow {
+            animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-slide-up {
+            animation: slideUp 0.5s ease-out;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hover-lift {
+            transition: all 0.2s ease;
+        }
+        
+        .tab-button {
+            @apply px-4 py-2 rounded-lg font-medium transition-all duration-200;
+        }
+        
+        .tab-button.active {
+            @apply bg-purple-500 text-white;
+        }
+        
+        .tab-button:not(.active) {
+            @apply text-gray-600 hover:text-gray-800 hover:bg-gray-100;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .status-indicator {
+            @apply inline-flex items-center px-2 py-1 rounded-full text-xs font-medium;
+        }
+        
+        .status-online {
+            @apply bg-green-100 text-green-800;
+        }
+        
+        .status-offline {
+            @apply bg-red-100 text-red-800;
+        }
+        
+        .status-simulated {
+            @apply bg-yellow-100 text-yellow-800;
+        }
+        
+        .loading-spinner {
+            @apply inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 min-h-screen">
+    <!-- 背景装饰 -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute -top-40 -right-40 w-80 h-80 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse-slow"></div>
+        <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse-slow"></div>
+    </div>
+
+    <!-- 头部 -->
+    <header class="glass-card border-b border-gray-200 sticky top-0 z-50 animate-slide-up">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">🧠</span>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold gradient-text">COT-DIR</h1>
+                        <p class="text-xs text-gray-600">现代化智能推理系统</p>
+                    </div>
+                </div>
+                
+                <!-- 系统状态指示器 -->
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center space-x-2">
+                        <span class="text-sm text-gray-600">系统状态:</span>
+                        <span id="systemStatus" class="status-indicator status-offline">
+                            <span class="w-1.5 h-1.5 bg-current rounded-full mr-1"></span>
+                            检查中...
+                        </span>
+                    </div>
+                    
+                    <!-- 导航菜单 -->
+                    <nav class="flex items-center space-x-2">
+                        <button onclick="showTab('solver')" class="tab-button active" id="solver-tab">
+                            🧠 智能解题
+                        </button>
+                        <button onclick="showTab('strategies')" class="tab-button" id="strategies-tab">
+                            🎯 推理策略
+                        </button>
+                        <button onclick="showTab('learning')" class="tab-button" id="learning-tab">
+                            📚 学习指导
+                        </button>
+                        <button onclick="showTab('knowledge')" class="tab-button" id="knowledge-tab">
+                            🗺️ 知识图谱
+                        </button>
+                        <button onclick="showTab('error')" class="tab-button" id="error-tab">
+                            🔍 错题分析
+                        </button>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要内容 -->
+    <main class="container mx-auto px-4 py-8 relative z-10">
+        <!-- 智能解题 -->
+        <div id="solver-content" class="tab-content active">
+            <div class="max-w-4xl mx-auto space-y-6">
+                <!-- 问题解决器 -->
+                <div class="glass-card rounded-2xl p-6 shadow-xl animate-slide-up">
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h2 class="text-2xl font-bold gradient-text">🧠 智能数学解题系统</h2>
+                            <p class="text-gray-600">基于COT-DIR算法的智能推理系统，支持多种推理策略</p>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-sm text-gray-500">算法状态</div>
+                            <div id="algorithmStatus" class="status-indicator status-offline">
+                                <span class="w-1.5 h-1.5 bg-current rounded-full mr-1"></span>
+                                检查中...
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <!-- 示例问题 -->
+                        <div class="space-y-3">
+                            <h3 class="text-lg font-semibold text-gray-700">📚 示例问题</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <button onclick="selectExample(this)" class="text-left p-4 rounded-lg border-2 border-gray-200 hover:border-purple-300 hover:bg-purple-50 transition-colors hover-lift">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <span class="text-xs px-2 py-1 bg-blue-100 text-blue-600 rounded-full">算术问题</span>
+                                        <span class="text-xs px-2 py-1 bg-green-100 text-green-600 rounded-full">简单</span>
+                                    </div>
+                                    <p class="text-sm text-gray-700">小明有10个苹果，他给了小红3个，又买了5个，请问小明现在有多少个苹果？</p>
+                                </button>
+                                
+                                <button onclick="selectExample(this)" class="text-left p-4 rounded-lg border-2 border-gray-200 hover:border-purple-300 hover:bg-purple-50 transition-colors hover-lift">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <span class="text-xs px-2 py-1 bg-blue-100 text-blue-600 rounded-full">几何问题</span>
+                                        <span class="text-xs px-2 py-1 bg-green-100 text-green-600 rounded-full">简单</span>
+                                    </div>
+                                    <p class="text-sm text-gray-700">一个长方形的长是12厘米，宽是8厘米，求这个长方形的面积。</p>
+                                </button>
+                                
+                                <button onclick="selectExample(this)" class="text-left p-4 rounded-lg border-2 border-gray-200 hover:border-purple-300 hover:bg-purple-50 transition-colors hover-lift">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <span class="text-xs px-2 py-1 bg-blue-100 text-blue-600 rounded-full">应用题</span>
+                                        <span class="text-xs px-2 py-1 bg-yellow-100 text-yellow-600 rounded-full">中等</span>
+                                    </div>
+                                    <p class="text-sm text-gray-700">班级里有30名学生，其中男生比女生多4人，请问男生和女生各有多少人？</p>
+                                </button>
+                                
+                                <button onclick="selectExample(this)" class="text-left p-4 rounded-lg border-2 border-gray-200 hover:border-purple-300 hover:bg-purple-50 transition-colors hover-lift">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <span class="text-xs px-2 py-1 bg-blue-100 text-blue-600 rounded-full">百分比问题</span>
+                                        <span class="text-xs px-2 py-1 bg-yellow-100 text-yellow-600 rounded-full">中等</span>
+                                    </div>
+                                    <p class="text-sm text-gray-700">一件商品原价100元，打8折后又减10元，最终价格是多少？这相当于原价的几折？</p>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- 问题输入 -->
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium text-gray-700">💭 输入数学问题</label>
+                            <textarea 
+                                id="problemInput"
+                                placeholder="请输入您要解决的数学问题，系统将进行智能分析..."
+                                class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-purple-500 focus:outline-none transition-colors resize-none min-h-[120px] text-base"
+                            ></textarea>
+                            <div id="inputError" class="text-red-500 text-sm hidden"></div>
+                        </div>
+
+                        <!-- 策略选择 -->
+                        <div class="space-y-3">
+                            <label class="text-sm font-medium text-gray-700">🎯 选择推理策略</label>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                <button onclick="selectStrategy('auto')" class="strategy-btn p-4 rounded-lg border-2 border-purple-500 bg-purple-50 text-left transition-all" data-strategy="auto">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-4 h-4 rounded-full bg-purple-500"></div>
+                                        <div class="flex-1">
+                                            <div class="font-medium text-gray-900 mb-1">🤖 自动选择</div>
+                                            <div class="text-xs text-gray-600">系统根据问题特征自动选择最适合的推理策略</div>
+                                        </div>
+                                        <div class="text-purple-500">✓</div>
+                                    </div>
+                                </button>
+                                
+                                <button onclick="selectStrategy('cot')" class="strategy-btn p-4 rounded-lg border-2 border-gray-200 hover:border-gray-300 text-left transition-all" data-strategy="cot">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-4 h-4 rounded-full bg-blue-500"></div>
+                                        <div class="flex-1">
+                                            <div class="font-medium text-gray-900 mb-1">🔗 思维链推理 (COT)</div>
+                                            <div class="text-xs text-gray-600">逐步分解问题，建立清晰的推理链条</div>
+                                        </div>
+                                    </div>
+                                </button>
+                                
+                                <button onclick="selectStrategy('got')" class="strategy-btn p-4 rounded-lg border-2 border-gray-200 hover:border-gray-300 text-left transition-all" data-strategy="got">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-4 h-4 rounded-full bg-green-500"></div>
+                                        <div class="flex-1">
+                                            <div class="font-medium text-gray-900 mb-1">🕸️ 思维图推理 (GOT)</div>
+                                            <div class="text-xs text-gray-600">构建网络拓扑，发现隐含连接关系</div>
+                                        </div>
+                                    </div>
+                                </button>
+                                
+                                <button onclick="selectStrategy('tot')" class="strategy-btn p-4 rounded-lg border-2 border-gray-200 hover:border-gray-300 text-left transition-all" data-strategy="tot">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-4 h-4 rounded-full bg-orange-500"></div>
+                                        <div class="flex-1">
+                                            <div class="font-medium text-gray-900 mb-1">🌳 思维树推理 (TOT)</div>
+                                            <div class="text-xs text-gray-600">多路径探索，层次化分析问题</div>
+                                        </div>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- 控制按钮 -->
+                        <div class="flex gap-4 justify-center">
+                            <button 
+                                id="solveButton"
+                                onclick="solveProblem()"
+                                class="px-8 h-12 text-lg bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl font-medium hover:from-blue-600 hover:to-purple-700 shadow-lg hover-lift transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
+                            >
+                                🚀 开始解题
+                            </button>
+                            <button 
+                                onclick="clearProblem()"
+                                class="px-8 h-12 text-lg border-2 border-gray-300 text-gray-700 rounded-xl font-medium hover:border-gray-400 hover:bg-gray-50 transition-all duration-200"
+                            >
+                                🗑️ 清空
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 结果展示区域 -->
+                <div id="resultArea" class="space-y-6" style="display: none;">
+                    <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+                        <!-- 答案和基本信息 -->
+                        <div class="glass-card rounded-2xl p-6 shadow-xl animate-slide-up">
+                            <div class="flex flex-col space-y-1.5 pb-6">
+                                <h3 class="text-2xl font-bold gradient-text">✅ 解答结果</h3>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                                    <div class="text-2xl font-bold text-green-800 mb-2" id="answerDisplay">
+                                        计算中...
+                                    </div>
+                                    <div class="text-sm text-green-600" id="confidenceDisplay">
+                                        置信度：计算中...
+                                    </div>
+                                </div>
+                                
+                                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                                    <div class="text-sm text-blue-600 mb-2" id="strategyDisplay">
+                                        <strong>推理策略：</strong>分析中...
+                                    </div>
+                                    <div class="text-xs text-blue-500" id="executionTimeDisplay">
+                                        执行时间：计算中...
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 解题步骤 -->
+                        <div class="xl:col-span-2 glass-card rounded-2xl p-6 shadow-xl animate-slide-up">
+                            <div class="flex flex-col space-y-1.5 pb-6">
+                                <h3 class="text-2xl font-bold gradient-text">📋 详细推理步骤</h3>
+                            </div>
+                            <div class="space-y-4" id="stepsDisplay">
+                                <div class="flex items-center justify-center py-8">
+                                    <div class="loading-spinner mr-3"></div>
+                                    <span class="text-gray-600">正在生成推理步骤...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 实体关系图 -->
+                    <div class="glass-card rounded-2xl p-6 shadow-xl animate-slide-up">
+                        <div class="flex flex-col space-y-1.5 pb-6">
+                            <h3 class="text-2xl font-bold gradient-text">🕸️ 实体关系图</h3>
+                            <p class="text-sm text-gray-600">基于COT-DIR算法自动生成的实体关系可视化</p>
+                        </div>
+                        <div class="relative">
+                            <div id="diagramLoading" class="flex items-center justify-center h-96">
+                                <div class="loading-spinner mr-3"></div>
+                                <span class="text-gray-600">正在生成实体关系图...</span>
+                            </div>
+                            <svg id="relationshipDiagram" width="100%" height="400" class="border border-gray-200 rounded-lg bg-gray-50" style="display: none;">
+                                <!-- SVG内容将通过JavaScript动态生成 -->
+                            </svg>
+                            <div class="mt-4 flex flex-wrap gap-4 text-sm" id="diagramLegend" style="display: none;">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-4 h-4 rounded-full bg-red-500"></div>
+                                    <span>👤 人物</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-4 h-4 rounded-full bg-green-500"></div>
+                                    <span>📦 物品</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-4 h-4 rounded-full bg-orange-500"></div>
+                                    <span>💰 货币</span>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-4 h-4 rounded-full bg-purple-500"></div>
+                                    <span>💡 概念</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 隐含约束条件 -->
+                    <div id="constraintsArea" class="glass-card rounded-2xl p-6 shadow-xl animate-slide-up" style="display: none;">
+                        <div class="flex flex-col space-y-1.5 pb-6">
+                            <h3 class="text-2xl font-bold gradient-text">⚠️ 隐含约束条件</h3>
+                            <p class="text-sm text-gray-600">算法自动推理出的约束条件</p>
+                        </div>
+                        <div id="constraintsDisplay" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- 约束条件将通过JavaScript动态生成 -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 其他标签页内容保持不变 -->
+        <div id="strategies-content" class="tab-content">
+            <div class="max-w-6xl mx-auto space-y-6">
+                <div class="glass-card rounded-2xl p-6 shadow-xl">
+                    <h2 class="text-2xl font-bold gradient-text mb-4">🎯 推理策略详解</h2>
+                    <p class="text-gray-600 mb-6">深入了解COT-DIR系统的核心推理策略</p>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                        <!-- COT策略 -->
+                        <div class="bg-white rounded-xl p-6 border border-gray-200 hover-lift">
+                            <div class="border-b-2 border-blue-500 pb-4 mb-4">
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">🔗 思维链推理 (COT)</h3>
+                                <p class="text-sm text-gray-500 italic mb-2">Chain-of-Thought Reasoning</p>
+                                <p class="text-gray-700">逐步分解问题，建立清晰的推理链条，是培养逻辑思维的最佳选择。</p>
+                            </div>
+                            
+                            <div class="space-y-4">
+                                <div>
+                                    <h4 class="text-blue-600 font-semibold mb-2 border-l-4 border-blue-500 pl-2">🔧 核心特征</h4>
+                                    <ul class="space-y-2">
+                                        <li class="bg-gray-50 p-2 rounded border-l-4 border-blue-500">链式顺序推理，每步逻辑清晰</li>
+                                        <li class="bg-gray-50 p-2 rounded border-l-4 border-blue-500">实体状态逐步转移</li>
+                                        <li class="bg-gray-50 p-2 rounded border-l-4 border-blue-500">易于验证和纠错</li>
+                                        <li class="bg-gray-50 p-2 rounded border-l-4 border-blue-500">适合初学者掌握</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                                    <h4 class="text-blue-600 font-semibold mb-2">🎓 教学应用</h4>
+                                    <ul class="text-blue-700 text-sm space-y-1">
+                                        <li>• 初学者友好：适合刚接触数学推理的学生</li>
+                                        <li>• 培养逻辑思维：通过链式推理训练顺序思考</li>
+                                        <li>• 错误追踪容易：每步都有验证</li>
+                                        <li>• 建立数学信心：循序渐进的方式</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- GOT策略 -->
+                        <div class="bg-white rounded-xl p-6 border border-gray-200 hover-lift">
+                            <div class="border-b-2 border-green-500 pb-4 mb-4">
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">🕸️ 思维图推理 (GOT)</h3>
+                                <p class="text-sm text-gray-500 italic mb-2">Graph-of-Thought Reasoning</p>
+                                <p class="text-gray-700">构建网络拓扑，发现隐含连接关系，提升系统思维能力。</p>
+                            </div>
+                            
+                            <div class="space-y-4">
+                                <div>
+                                    <h4 class="text-green-600 font-semibold mb-2 border-l-4 border-green-500 pl-2">🔧 核心特征</h4>
+                                    <ul class="space-y-2">
+                                        <li class="bg-gray-50 p-2 rounded border-l-4 border-green-500">网络图状推理结构</li>
+                                        <li class="bg-gray-50 p-2 rounded border-l-4 border-green-500">多实体关系并行处理</li>
+                                        <li class="bg-gray-50 p-2 rounded border-l-4 border-green-500">隐含关系自动发现</li>
+                                        <li class="bg-gray-50 p-2 rounded border-l-4 border-green-500">复杂关系网络建模</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
+                                    <h4 class="text-green-600 font-semibold mb-2">🎓 教学应用</h4>
+                                    <ul class="text-green-700 text-sm space-y-1">
+                                        <li>• 提升系统思维：理解复杂问题中的多重关系</li>
+                                        <li>• 培养关联能力：发现表面问题下的深层联系</li>
+                                        <li>• 适合进阶学习：在掌握基础后进行深层训练</li>
+                                        <li>• 现实问题解决：模拟真实世界的复杂网络</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- TOT策略 -->
+                        <div class="bg-white rounded-xl p-6 border border-gray-200 hover-lift">
+                            <div class="border-b-2 border-orange-500 pb-4 mb-4">
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">🌳 思维树推理 (TOT)</h3>
+                                <p class="text-sm text-gray-500 italic mb-2">Tree-of-Thought Reasoning</p>
+                                <p class="text-gray-700">多路径探索，层次化分析问题，培养创新思维和决策能力。</p>
+                            </div>
+                            
+                            <div class="space-y-4">
+                                <div>
+                                    <h4 class="text-orange-600 font-semibold mb-2 border-l-4 border-orange-500 pl-2">🔧 核心特征</h4>
+                                    <ul class="space-y-2">
+                                        <li class="bg-gray-50 p-2 rounded border-l-4 border-orange-500">树状多路径探索</li>
+                                        <li class="bg-gray-50 p-2 rounded border-l-4 border-orange-500">分支方案并行评估</li>
+                                        <li class="bg-gray-50 p-2 rounded border-l-4 border-orange-500">最优路径智能选择</li>
+                                        <li class="bg-gray-50 p-2 rounded border-l-4 border-orange-500">创新方案生成能力</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
+                                    <h4 class="text-orange-600 font-semibold mb-2">🎓 教学应用</h4>
+                                    <ul class="text-orange-700 text-sm space-y-1">
+                                        <li>• 培养创新思维：鼓励探索多种解决方案</li>
+                                        <li>• 决策能力训练：在多个选项中选择最优解</li>
+                                        <li>• 批判性思维：通过比较不同路径培养分析能力</li>
+                                        <li>• 适合天才教育：挑战有能力的学生深度探索</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- AUTO策略 -->
+                        <div class="bg-white rounded-xl p-6 border border-gray-200 hover-lift">
+                            <div class="border-b-2 border-purple-500 pb-4 mb-4">
+                                <h3 class="text-xl font-bold text-gray-800 mb-2">🤖 自动选择 (AUTO)</h3>
+                                <p class="text-sm text-gray-500 italic mb-2">Automatic Strategy Selection</p>
+                                <p class="text-gray-700">智能分析问题特征，自动选择最适合的推理策略。</p>
+                            </div>
+                            
+                            <div class="space-y-4">
+                                <div>
+                                    <h4 class="text-purple-600 font-semibold mb-2 border-l-4 border-purple-500 pl-2">🔧 核心特征</h4>
+                                    <ul class="space-y-2">
+                                        <li class="bg-gray-50 p-2 rounded border-l-4 border-purple-500">问题特征自动识别</li>
+                                        <li class="bg-gray-50 p-2 rounded border-l-4 border-purple-500">策略智能匹配</li>
+                                        <li class="bg-gray-50 p-2 rounded border-l-4 border-purple-500">复杂度自适应评估</li>
+                                        <li class="bg-gray-50 p-2 rounded border-l-4 border-purple-500">最优策略动态选择</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-500">
+                                    <h4 class="text-purple-600 font-semibold mb-2">🎓 教学应用</h4>
+                                    <ul class="text-purple-700 text-sm space-y-1">
+                                        <li>• 初学者和专家皆宜</li>
+                                        <li>• 适合不确定策略选择的情况</li>
+                                        <li>• 智能化学习辅助</li>
+                                        <li>• 策略学习的最佳起点</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 策略对比表 -->
+                    <div class="bg-white rounded-xl p-6 border border-gray-200">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">📊 策略对比分析</h3>
+                        <div class="overflow-x-auto">
+                            <table class="w-full border-collapse">
+                                <thead>
+                                    <tr class="bg-blue-500 text-white">
+                                        <th class="p-3 text-left font-semibold">策略</th>
+                                        <th class="p-3 text-left font-semibold">推理方式</th>
+                                        <th class="p-3 text-left font-semibold">实体关系处理</th>
+                                        <th class="p-3 text-left font-semibold">复杂度适应</th>
+                                        <th class="p-3 text-left font-semibold">推理步骤数</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b hover:bg-gray-50">
+                                        <td class="p-3 font-semibold text-blue-600">COT</td>
+                                        <td class="p-3">链式顺序推理</td>
+                                        <td class="p-3">链式实体状态转移</td>
+                                        <td class="p-3">中等复杂度</td>
+                                        <td class="p-3">5-6步</td>
+                                    </tr>
+                                    <tr class="border-b hover:bg-gray-50">
+                                        <td class="p-3 font-semibold text-green-600">GOT</td>
+                                        <td class="p-3">图网络推理</td>
+                                        <td class="p-3">多层网络关系建模</td>
+                                        <td class="p-3">高复杂关系</td>
+                                        <td class="p-3">4-5步</td>
+                                    </tr>
+                                    <tr class="border-b hover:bg-gray-50">
+                                        <td class="p-3 font-semibold text-orange-600">TOT</td>
+                                        <td class="p-3">树状多路径探索</td>
+                                        <td class="p-3">分层实体关系探索</td>
+                                        <td class="p-3">最高复杂度</td>
+                                        <td class="p-3">6-7步</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="learning-content" class="tab-content">
+            <div class="max-w-6xl mx-auto space-y-6">
+                <div class="glass-card rounded-2xl p-6 shadow-xl">
+                    <h2 class="text-2xl font-bold gradient-text mb-4">📚 学习指导</h2>
+                    <p class="text-gray-600 mb-6">系统化的学习路径和实用技巧</p>
+                    
+                    <!-- 智能学习路径 -->
+                    <div class="bg-green-50 rounded-xl p-6 border-2 border-green-500 mb-6">
+                        <h3 class="text-xl font-bold text-green-700 mb-4">🎓 智能学习路径</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <div class="bg-white rounded-lg p-4 border border-green-200 relative">
+                                <div class="absolute -top-3 -left-3 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-sm">1</div>
+                                <h4 class="text-green-700 font-semibold mb-2">实体识别阶段</h4>
+                                <p class="text-gray-600 text-sm">学会识别数学问题中的核心实体（人物、物品、概念等）及其基本属性，这是所有推理的基础。</p>
+                            </div>
+                            
+                            <div class="bg-white rounded-lg p-4 border border-green-200 relative">
+                                <div class="absolute -top-3 -left-3 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-sm">2</div>
+                                <h4 class="text-green-700 font-semibold mb-2">关系理解阶段</h4>
+                                <p class="text-gray-600 text-sm">掌握实体间的各种关系类型（拥有、交易、聚合等），理解关系的物理含义和数学表达。</p>
+                            </div>
+                            
+                            <div class="bg-white rounded-lg p-4 border border-green-200 relative">
+                                <div class="absolute -top-3 -left-3 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-sm">3</div>
+                                <h4 class="text-green-700 font-semibold mb-2">策略选择阶段</h4>
+                                <p class="text-gray-600 text-sm">根据问题复杂度和关系类型，选择合适的推理策略（COT、GOT、TOT），提高解题效率。</p>
+                            </div>
+                            
+                            <div class="bg-white rounded-lg p-4 border border-green-200 relative">
+                                <div class="absolute -top-3 -left-3 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-sm">4</div>
+                                <h4 class="text-green-700 font-semibold mb-2">深度推理阶段</h4>
+                                <p class="text-gray-600 text-sm">运用选定的推理策略，进行深度的实体关系分析，发现隐含约束和推理路径。</p>
+                            </div>
+                            
+                            <div class="bg-white rounded-lg p-4 border border-green-200 relative">
+                                <div class="absolute -top-3 -left-3 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-sm">5</div>
+                                <h4 class="text-green-700 font-semibold mb-2">结果验证阶段</h4>
+                                <p class="text-gray-600 text-sm">通过多层次验证（数值、逻辑、物理）确保答案的正确性和合理性。</p>
+                            </div>
+                            
+                            <div class="bg-white rounded-lg p-4 border border-green-200 relative">
+                                <div class="absolute -top-3 -left-3 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-sm">6</div>
+                                <h4 class="text-green-700 font-semibold mb-2">反思改进阶段</h4>
+                                <p class="text-gray-600 text-sm">总结解题过程，反思策略选择，不断完善推理能力和问题解决技巧。</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 策略学习指导 -->
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+                        <div class="bg-white rounded-xl p-6 border border-gray-200 hover-lift">
+                            <h3 class="text-xl font-bold text-blue-600 mb-4">🔗 COT - 思维链推理策略</h3>
+                            <p class="text-gray-700 mb-4">适合初学者的链式推理方法，通过逐步分解问题，建立清晰的思维链条，是培养逻辑思维的最佳选择。</p>
+                            <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                                <h4 class="text-blue-600 font-semibold mb-2">💡 学习建议</h4>
+                                <ul class="text-blue-700 text-sm space-y-1">
+                                    <li>• 先理解问题中的每个实体及其属性</li>
+                                    <li>• 按照逻辑顺序一步步推理</li>
+                                    <li>• 每一步都要验证合理性</li>
+                                    <li>• 建立完整的推理链条</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl p-6 border border-gray-200 hover-lift">
+                            <h3 class="text-xl font-bold text-green-600 mb-4">🕸️ GOT - 思维图推理策略</h3>
+                            <p class="text-gray-700 mb-4">适合处理复杂关系的图状推理方法，通过构建实体关系网络，发现隐含连接，提升系统思维能力。</p>
+                            <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
+                                <h4 class="text-green-600 font-semibold mb-2">💡 学习建议</h4>
+                                <ul class="text-green-700 text-sm space-y-1">
+                                    <li>• 识别问题中的所有实体和关系</li>
+                                    <li>• 构建完整的关系网络图</li>
+                                    <li>• 分析实体间的相互影响</li>
+                                    <li>• 通过网络结构发现解题路径</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl p-6 border border-gray-200 hover-lift">
+                            <h3 class="text-xl font-bold text-orange-600 mb-4">🌳 TOT - 思维树推理策略</h3>
+                            <p class="text-gray-700 mb-4">适合复杂问题的多路径探索方法，通过构建推理树结构，探索多种可能性，培养创新思维和决策能力。</p>
+                            <div class="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500">
+                                <h4 class="text-orange-600 font-semibold mb-2">💡 学习建议</h4>
+                                <ul class="text-orange-700 text-sm space-y-1">
+                                    <li>• 分析问题的多种解决方案</li>
+                                    <li>• 构建层次化的推理树结构</li>
+                                    <li>• 评估不同路径的优劣</li>
+                                    <li>• 选择最优解决方案</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 问题类型指导 -->
+                    <div class="bg-white rounded-xl p-6 border border-gray-200 mb-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">📊 数学问题类型指导</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                            <div class="bg-orange-50 p-4 rounded-lg border border-orange-200 border-l-4 border-l-orange-500">
+                                <h4 class="text-orange-600 font-semibold mb-2">算术运算</h4>
+                                <p class="text-gray-700 text-sm mb-2">基础的加减乘除运算问题，注重数值计算和运算顺序。</p>
+                                <div class="flex flex-wrap gap-1">
+                                    <span class="bg-orange-500 text-white px-2 py-1 text-xs rounded">加减法</span>
+                                    <span class="bg-orange-500 text-white px-2 py-1 text-xs rounded">乘除法</span>
+                                    <span class="bg-orange-500 text-white px-2 py-1 text-xs rounded">混合运算</span>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-orange-50 p-4 rounded-lg border border-orange-200 border-l-4 border-l-orange-500">
+                                <h4 class="text-orange-600 font-semibold mb-2">几何图形</h4>
+                                <p class="text-gray-700 text-sm mb-2">平面和立体几何问题，涉及面积、体积、周长等计算。</p>
+                                <div class="flex flex-wrap gap-1">
+                                    <span class="bg-orange-500 text-white px-2 py-1 text-xs rounded">面积</span>
+                                    <span class="bg-orange-500 text-white px-2 py-1 text-xs rounded">周长</span>
+                                    <span class="bg-orange-500 text-white px-2 py-1 text-xs rounded">体积</span>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-orange-50 p-4 rounded-lg border border-orange-200 border-l-4 border-l-orange-500">
+                                <h4 class="text-orange-600 font-semibold mb-2">应用题</h4>
+                                <p class="text-gray-700 text-sm mb-2">结合实际生活场景的数学问题，需要建立数学模型。</p>
+                                <div class="flex flex-wrap gap-1">
+                                    <span class="bg-orange-500 text-white px-2 py-1 text-xs rounded">比例</span>
+                                    <span class="bg-orange-500 text-white px-2 py-1 text-xs rounded">分配</span>
+                                    <span class="bg-orange-500 text-white px-2 py-1 text-xs rounded">时间</span>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-orange-50 p-4 rounded-lg border border-orange-200 border-l-4 border-l-orange-500">
+                                <h4 class="text-orange-600 font-semibold mb-2">百分比问题</h4>
+                                <p class="text-gray-700 text-sm mb-2">涉及百分比、折扣、利率等概念的计算问题。</p>
+                                <div class="flex flex-wrap gap-1">
+                                    <span class="bg-orange-500 text-white px-2 py-1 text-xs rounded">折扣</span>
+                                    <span class="bg-orange-500 text-white px-2 py-1 text-xs rounded">利率</span>
+                                    <span class="bg-orange-500 text-white px-2 py-1 text-xs rounded">增长率</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 学习技巧与建议 -->
+                    <div class="bg-yellow-50 rounded-xl p-6 border-2 border-yellow-400">
+                        <h3 class="text-xl font-bold text-yellow-700 mb-4">💡 学习技巧与建议</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-white rounded-lg p-4 border border-yellow-200 border-l-4 border-l-yellow-500">
+                                <h4 class="text-yellow-700 font-semibold mb-2">练习建议</h4>
+                                <p class="text-gray-700 text-sm">从简单问题开始，逐步增加复杂度，每种策略都要充分练习，形成自然的思维习惯。</p>
+                            </div>
+                            
+                            <div class="bg-white rounded-lg p-4 border border-yellow-200 border-l-4 border-l-yellow-500">
+                                <h4 class="text-yellow-700 font-semibold mb-2">错误分析</h4>
+                                <p class="text-gray-700 text-sm">定期回顾解题过程，分析错误原因，建立错题集，避免重复犯错。</p>
+                            </div>
+                            
+                            <div class="bg-white rounded-lg p-4 border border-yellow-200 border-l-4 border-l-yellow-500">
+                                <h4 class="text-yellow-700 font-semibold mb-2">能力提升</h4>
+                                <p class="text-gray-700 text-sm">通过大量练习培养直觉，提高实体识别和关系发现的速度和准确性。</p>
+                            </div>
+                            
+                            <div class="bg-white rounded-lg p-4 border border-yellow-200 border-l-4 border-l-yellow-500">
+                                <h4 class="text-yellow-700 font-semibold mb-2">学习要点</h4>
+                                <p class="text-gray-700 text-sm">重视基础概念的理解，掌握实体关系建模的核心技能，培养系统性思维能力。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="knowledge-content" class="tab-content">
+            <div class="max-w-6xl mx-auto space-y-6">
+                <div class="glass-card rounded-2xl p-6 shadow-xl">
+                    <h2 class="text-2xl font-bold gradient-text mb-4">🗺️ 知识图谱</h2>
+                    <p class="text-gray-600 mb-6">可视化展示COT-DIR系统的知识结构</p>
+                    
+                    <!-- 核心知识域 -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 gap-6 mb-8">
+                        <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl border-2 border-blue-200 hover-lift">
+                            <h3 class="text-blue-700 font-bold text-lg mb-4 text-center">🔧 核心概念</h3>
+                            <div class="grid grid-cols-2 gap-2">
+                                <div class="bg-blue-500 text-white p-2 rounded text-center text-sm font-medium hover:bg-blue-600 transition-colors cursor-pointer">实体</div>
+                                <div class="bg-blue-500 text-white p-2 rounded text-center text-sm font-medium hover:bg-blue-600 transition-colors cursor-pointer">关系</div>
+                                <div class="bg-blue-500 text-white p-2 rounded text-center text-sm font-medium hover:bg-blue-600 transition-colors cursor-pointer">约束</div>
+                                <div class="bg-blue-500 text-white p-2 rounded text-center text-sm font-medium hover:bg-blue-600 transition-colors cursor-pointer">推理</div>
+                                <div class="bg-blue-500 text-white p-2 rounded text-center text-sm font-medium hover:bg-blue-600 transition-colors cursor-pointer">建模</div>
+                                <div class="bg-blue-500 text-white p-2 rounded text-center text-sm font-medium hover:bg-blue-600 transition-colors cursor-pointer">验证</div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl border-2 border-green-200 hover-lift">
+                            <h3 class="text-green-700 font-bold text-lg mb-4 text-center">🧮 推理策略</h3>
+                            <div class="grid grid-cols-2 gap-2">
+                                <div class="bg-green-500 text-white p-2 rounded text-center text-sm font-medium hover:bg-green-600 transition-colors cursor-pointer">COT</div>
+                                <div class="bg-green-500 text-white p-2 rounded text-center text-sm font-medium hover:bg-green-600 transition-colors cursor-pointer">GOT</div>
+                                <div class="bg-green-500 text-white p-2 rounded text-center text-sm font-medium hover:bg-green-600 transition-colors cursor-pointer">TOT</div>
+                                <div class="bg-green-500 text-white p-2 rounded text-center text-sm font-medium hover:bg-green-600 transition-colors cursor-pointer">AUTO</div>
+                                <div class="bg-green-500 text-white p-2 rounded text-center text-sm font-medium hover:bg-green-600 transition-colors cursor-pointer">链式</div>
+                                <div class="bg-green-500 text-white p-2 rounded text-center text-sm font-medium hover:bg-green-600 transition-colors cursor-pointer">图式</div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gradient-to-br from-orange-50 to-orange-100 p-6 rounded-xl border-2 border-orange-200 hover-lift">
+                            <h3 class="text-orange-700 font-bold text-lg mb-4 text-center">📊 问题领域</h3>
+                            <div class="grid grid-cols-2 gap-2">
+                                <div class="bg-orange-500 text-white p-2 rounded text-center text-sm font-medium hover:bg-orange-600 transition-colors cursor-pointer">算术</div>
+                                <div class="bg-orange-500 text-white p-2 rounded text-center text-sm font-medium hover:bg-orange-600 transition-colors cursor-pointer">几何</div>
+                                <div class="bg-orange-500 text-white p-2 rounded text-center text-sm font-medium hover:bg-orange-600 transition-colors cursor-pointer">应用</div>
+                                <div class="bg-orange-500 text-white p-2 rounded text-center text-sm font-medium hover:bg-orange-600 transition-colors cursor-pointer">代数</div>
+                                <div class="bg-orange-500 text-white p-2 rounded text-center text-sm font-medium hover:bg-orange-600 transition-colors cursor-pointer">概率</div>
+                                <div class="bg-orange-500 text-white p-2 rounded text-center text-sm font-medium hover:bg-orange-600 transition-colors cursor-pointer">统计</div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-xl border-2 border-red-200 hover-lift">
+                            <h3 class="text-red-700 font-bold text-lg mb-4 text-center">🎯 思维技能</h3>
+                            <div class="grid grid-cols-2 gap-2">
+                                <div class="bg-red-500 text-white p-2 rounded text-center text-sm font-medium hover:bg-red-600 transition-colors cursor-pointer">分解</div>
+                                <div class="bg-red-500 text-white p-2 rounded text-center text-sm font-medium hover:bg-red-600 transition-colors cursor-pointer">建模</div>
+                                <div class="bg-red-500 text-white p-2 rounded text-center text-sm font-medium hover:bg-red-600 transition-colors cursor-pointer">推理</div>
+                                <div class="bg-red-500 text-white p-2 rounded text-center text-sm font-medium hover:bg-red-600 transition-colors cursor-pointer">验证</div>
+                                <div class="bg-red-500 text-white p-2 rounded text-center text-sm font-medium hover:bg-red-600 transition-colors cursor-pointer">抽象</div>
+                                <div class="bg-red-500 text-white p-2 rounded text-center text-sm font-medium hover:bg-red-600 transition-colors cursor-pointer">综合</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 知识关系网络 -->
+                    <div class="bg-white rounded-xl p-6 border border-gray-200 mb-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">🔗 知识关系网络</h3>
+                        <p class="text-gray-600 mb-6 text-center">智能推理过程的关键环节</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                            <div class="bg-blue-50 rounded-lg p-4 border border-blue-200 text-center relative">
+                                <h4 class="text-blue-600 font-semibold mb-2">问题理解</h4>
+                                <p class="text-gray-700 text-sm">实体识别<br>关系发现<br>约束分析</p>
+                                <div class="absolute -right-2 top-1/2 transform -translate-y-1/2 text-blue-500 text-xl hidden md:block">→</div>
+                            </div>
+                            
+                            <div class="bg-green-50 rounded-lg p-4 border border-green-200 text-center relative">
+                                <h4 class="text-green-600 font-semibold mb-2">策略选择</h4>
+                                <p class="text-gray-700 text-sm">复杂度评估<br>策略匹配<br>路径规划</p>
+                                <div class="absolute -right-2 top-1/2 transform -translate-y-1/2 text-green-500 text-xl hidden lg:block">→</div>
+                            </div>
+                            
+                            <div class="bg-orange-50 rounded-lg p-4 border border-orange-200 text-center relative">
+                                <h4 class="text-orange-600 font-semibold mb-2">推理执行</h4>
+                                <p class="text-gray-700 text-sm">深度推理<br>关系建模<br>状态跟踪</p>
+                                <div class="absolute -right-2 top-1/2 transform -translate-y-1/2 text-orange-500 text-xl hidden lg:block">→</div>
+                            </div>
+                            
+                            <div class="bg-red-50 rounded-lg p-4 border border-red-200 text-center">
+                                <h4 class="text-red-600 font-semibold mb-2">结果验证</h4>
+                                <p class="text-gray-700 text-sm">多层验证<br>约束检查<br>结果输出</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 交互式知识图谱 -->
+                    <div class="bg-white rounded-xl p-6 border border-gray-200">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">🎨 交互式知识图谱</h3>
+                        <p class="text-gray-600 mb-6 text-center">点击节点查看详细信息</p>
+                        
+                        <div class="relative bg-gray-50 rounded-lg border border-gray-200 h-96 overflow-hidden" style="background-image: radial-gradient(circle, #e5e7eb 1px, transparent 1px); background-size: 20px 20px;">
+                            <!-- 连接线 -->
+                            <svg class="absolute inset-0 w-full h-full pointer-events-none">
+                                <!-- 核心概念连接 -->
+                                <line x1="80" y1="100" x2="200" y2="180" stroke="#bdc3c7" stroke-width="2"/>
+                                <line x1="200" y1="180" x2="320" y2="200" stroke="#bdc3c7" stroke-width="2"/>
+                                <line x1="320" y1="200" x2="450" y2="120" stroke="#bdc3c7" stroke-width="2"/>
+                                <line x1="450" y1="120" x2="520" y2="180" stroke="#bdc3c7" stroke-width="2"/>
+                                <line x1="100" y1="260" x2="250" y2="200" stroke="#bdc3c7" stroke-width="2"/>
+                                <line x1="250" y1="80" x2="350" y2="120" stroke="#bdc3c7" stroke-width="2"/>
+                                <line x1="120" y1="180" x2="480" y2="300" stroke="#bdc3c7" stroke-width="2"/>
+                            </svg>
+                            
+                            <!-- 知识节点 -->
+                            <div class="absolute top-20 left-12 w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center text-white font-semibold text-xs cursor-pointer hover:scale-110 transition-transform" title="实体：问题中的核心对象">实体</div>
+                            <div class="absolute top-40 left-36 w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center text-white font-semibold text-xs cursor-pointer hover:scale-110 transition-transform" title="关系：实体间的相互作用">关系</div>
+                            <div class="absolute top-48 left-72 w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center text-white font-semibold text-xs cursor-pointer hover:scale-110 transition-transform" title="约束：问题的限制条件">约束</div>
+                            
+                            <div class="absolute top-12 left-96 w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-white font-semibold text-xs cursor-pointer hover:scale-110 transition-transform" title="COT：思维链推理">COT</div>
+                            <div class="absolute top-28 left-128 w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-white font-semibold text-xs cursor-pointer hover:scale-110 transition-transform" title="GOT：思维图推理">GOT</div>
+                            <div class="absolute top-44 left-132 w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-white font-semibold text-xs cursor-pointer hover:scale-110 transition-transform" title="TOT：思维树推理">TOT</div>
+                            
+                            <div class="absolute top-60 left-20 w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center text-white font-semibold text-xs cursor-pointer hover:scale-110 transition-transform" title="算术：基础运算问题">算术</div>
+                            <div class="absolute top-68 left-52 w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center text-white font-semibold text-xs cursor-pointer hover:scale-110 transition-transform" title="几何：空间形状问题">几何</div>
+                            <div class="absolute top-56 left-88 w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center text-white font-semibold text-xs cursor-pointer hover:scale-110 transition-transform" title="应用：实际生活问题">应用</div>
+                            
+                            <div class="absolute top-8 left-52 w-16 h-16 bg-red-500 rounded-full flex items-center justify-center text-white font-semibold text-xs cursor-pointer hover:scale-110 transition-transform" title="分解：问题分解能力">分解</div>
+                            <div class="absolute top-20 left-88 w-16 h-16 bg-red-500 rounded-full flex items-center justify-center text-white font-semibold text-xs cursor-pointer hover:scale-110 transition-transform" title="建模：关系建模能力">建模</div>
+                            <div class="absolute top-32 left-32 w-16 h-16 bg-red-500 rounded-full flex items-center justify-center text-white font-semibold text-xs cursor-pointer hover:scale-110 transition-transform" title="推理：逻辑推理能力">推理</div>
+                            <div class="absolute top-72 left-120 w-16 h-16 bg-red-500 rounded-full flex items-center justify-center text-white font-semibold text-xs cursor-pointer hover:scale-110 transition-transform" title="验证：结果验证能力">验证</div>
+                        </div>
+                        
+                        <!-- 图例 -->
+                        <div class="flex justify-center gap-6 mt-6 flex-wrap">
+                            <div class="flex items-center gap-2">
+                                <div class="w-4 h-4 bg-blue-500 rounded-full border-2 border-white shadow"></div>
+                                <span class="text-sm text-gray-700">核心概念</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-4 h-4 bg-green-500 rounded-full border-2 border-white shadow"></div>
+                                <span class="text-sm text-gray-700">推理策略</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-4 h-4 bg-orange-500 rounded-full border-2 border-white shadow"></div>
+                                <span class="text-sm text-gray-700">问题领域</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-4 h-4 bg-red-500 rounded-full border-2 border-white shadow"></div>
+                                <span class="text-sm text-gray-700">思维技能</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 策略知识整合 -->
+                    <div class="bg-gray-50 rounded-xl p-6 border border-gray-200">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">📈 策略知识整合</h3>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="bg-white rounded-lg p-4 border border-gray-200">
+                                <h4 class="text-gray-800 font-semibold mb-3 flex items-center">
+                                    <span class="text-blue-500 mr-2">🔬</span>
+                                    策略驱动的知识构建
+                                </h4>
+                                <p class="text-gray-700 text-sm mb-3">每种推理策略都有其独特的知识组织方式：</p>
+                                <ul class="text-gray-600 text-sm space-y-1">
+                                    <li>• <strong>COT策略</strong>：线性知识链接，强调顺序推理和步骤验证</li>
+                                    <li>• <strong>GOT策略</strong>：网络知识结构，重视关系发现和模式识别</li>
+                                    <li>• <strong>TOT策略</strong>：树状知识分层，注重多路径探索和决策优化</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-white rounded-lg p-4 border border-gray-200">
+                                <h4 class="text-gray-800 font-semibold mb-3 flex items-center">
+                                    <span class="text-green-500 mr-2">🎯</span>
+                                    自适应知识应用
+                                </h4>
+                                <p class="text-gray-700 text-sm">系统根据问题特征自动选择最适合的策略，并调用相应的知识库和推理模式，实现智能化的知识应用和问题解决。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="error-content" class="tab-content">
+            <div class="max-w-6xl mx-auto space-y-6">
+                <div class="glass-card rounded-2xl p-6 shadow-xl">
+                    <h2 class="text-2xl font-bold gradient-text mb-4">🔍 错题分析</h2>
+                    <p class="text-gray-600 mb-6">智能分析常见错误类型，提供个性化改进建议</p>
+                    
+                    <!-- 常见错误类型 -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                        <div class="bg-white rounded-xl p-6 border-2 border-red-200 border-l-4 border-l-red-500 hover-lift relative">
+                            <div class="absolute -top-2 -right-2 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center text-white text-xs">⚠️</div>
+                            <h3 class="text-red-600 font-bold text-lg mb-3">实体识别错误</h3>
+                            <p class="text-gray-700 text-sm mb-4">未能正确识别问题中的关键实体，导致建模不完整或错误。</p>
+                            <div class="bg-green-50 p-3 rounded-lg border-l-4 border-green-500">
+                                <h4 class="text-green-600 font-semibold text-sm mb-2">💡 解决方案</h4>
+                                <p class="text-gray-700 text-xs">仔细阅读问题，标记所有名词和数量词，建立完整的实体清单。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl p-6 border-2 border-red-200 border-l-4 border-l-red-500 hover-lift relative">
+                            <div class="absolute -top-2 -right-2 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center text-white text-xs">⚠️</div>
+                            <h3 class="text-red-600 font-bold text-lg mb-3">关系理解偏差</h3>
+                            <p class="text-gray-700 text-sm mb-4">误解实体间的关系类型，建立了错误的数学模型。</p>
+                            <div class="bg-green-50 p-3 rounded-lg border-l-4 border-green-500">
+                                <h4 class="text-green-600 font-semibold text-sm mb-2">💡 解决方案</h4>
+                                <p class="text-gray-700 text-xs">分析动词和介词，理解实体间的作用关系，验证关系的合理性。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl p-6 border-2 border-red-200 border-l-4 border-l-red-500 hover-lift relative">
+                            <div class="absolute -top-2 -right-2 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center text-white text-xs">⚠️</div>
+                            <h3 class="text-red-600 font-bold text-lg mb-3">计算过程错误</h3>
+                            <p class="text-gray-700 text-sm mb-4">数值计算或运算顺序错误，导致最终结果不正确。</p>
+                            <div class="bg-green-50 p-3 rounded-lg border-l-4 border-green-500">
+                                <h4 class="text-green-600 font-semibold text-sm mb-2">💡 解决方案</h4>
+                                <p class="text-gray-700 text-xs">遵循运算法则，每步计算都要验证，使用多种方法检查结果。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl p-6 border-2 border-red-200 border-l-4 border-l-red-500 hover-lift relative">
+                            <div class="absolute -top-2 -right-2 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center text-white text-xs">⚠️</div>
+                            <h3 class="text-red-600 font-bold text-lg mb-3">单位转换错误</h3>
+                            <p class="text-gray-700 text-sm mb-4">忽略单位转换或转换错误，影响计算结果的准确性。</p>
+                            <div class="bg-green-50 p-3 rounded-lg border-l-4 border-green-500">
+                                <h4 class="text-green-600 font-semibold text-sm mb-2">💡 解决方案</h4>
+                                <p class="text-gray-700 text-xs">统一所有单位，建立单位转换表，验证结果单位的合理性。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl p-6 border-2 border-red-200 border-l-4 border-l-red-500 hover-lift relative">
+                            <div class="absolute -top-2 -right-2 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center text-white text-xs">⚠️</div>
+                            <h3 class="text-red-600 font-bold text-lg mb-3">约束条件遗漏</h3>
+                            <p class="text-gray-700 text-sm mb-4">忽略隐含的约束条件，得出不符合实际的答案。</p>
+                            <div class="bg-green-50 p-3 rounded-lg border-l-4 border-green-500">
+                                <h4 class="text-green-600 font-semibold text-sm mb-2">💡 解决方案</h4>
+                                <p class="text-gray-700 text-xs">分析问题背景，识别隐含约束，验证答案的现实合理性。</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl p-6 border-2 border-red-200 border-l-4 border-l-red-500 hover-lift relative">
+                            <div class="absolute -top-2 -right-2 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center text-white text-xs">⚠️</div>
+                            <h3 class="text-red-600 font-bold text-lg mb-3">逻辑推理断链</h3>
+                            <p class="text-gray-700 text-sm mb-4">推理过程中出现逻辑跳跃，缺少必要的中间步骤。</p>
+                            <div class="bg-green-50 p-3 rounded-lg border-l-4 border-green-500">
+                                <h4 class="text-green-600 font-semibold text-sm mb-2">💡 解决方案</h4>
+                                <p class="text-gray-700 text-xs">建立完整推理链，每步都有明确依据，避免逻辑跳跃。</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 基于推理策略的错题分析 -->
+                    <div class="bg-yellow-50 rounded-xl p-6 border-2 border-yellow-400 mb-8">
+                        <h3 class="text-yellow-700 font-bold text-xl mb-4 text-center">🎯 基于推理策略的错题分析</h3>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="bg-white rounded-lg p-4 border border-yellow-200">
+                                <h4 class="flex items-center gap-2 mb-3">
+                                    <span class="bg-blue-500 text-white px-2 py-1 rounded text-xs font-semibold">COT</span>
+                                    <span class="text-red-600 font-semibold">链式推理断点错误</span>
+                                </h4>
+                                <p class="text-gray-600 text-sm mb-3">在COT推理过程中，推理链条出现断点，导致逻辑跳跃或遗漏关键步骤。</p>
+                                <div class="bg-green-50 p-3 rounded border-l-3 border-green-500">
+                                    <h5 class="text-green-600 font-semibold text-sm mb-2">🔧 修复策略</h5>
+                                    <ul class="text-green-700 text-xs space-y-1">
+                                        <li>• 建立完整的实体状态转移链</li>
+                                        <li>• 验证每一步的逻辑连接</li>
+                                        <li>• 补充缺失的推理环节</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white rounded-lg p-4 border border-yellow-200">
+                                <h4 class="flex items-center gap-2 mb-3">
+                                    <span class="bg-green-500 text-white px-2 py-1 rounded text-xs font-semibold">GOT</span>
+                                    <span class="text-red-600 font-semibold">关系网络构建错误</span>
+                                </h4>
+                                <p class="text-gray-600 text-sm mb-3">在GOT推理中，未能正确识别实体间的隐含关系，导致网络结构不完整。</p>
+                                <div class="bg-green-50 p-3 rounded border-l-3 border-green-500">
+                                    <h5 class="text-green-600 font-semibold text-sm mb-2">🔧 修复策略</h5>
+                                    <ul class="text-green-700 text-xs space-y-1">
+                                        <li>• 全面识别实体关系</li>
+                                        <li>• 发现隐含连接边</li>
+                                        <li>• 验证网络拓扑结构</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white rounded-lg p-4 border border-yellow-200">
+                                <h4 class="flex items-center gap-2 mb-3">
+                                    <span class="bg-orange-500 text-white px-2 py-1 rounded text-xs font-semibold">TOT</span>
+                                    <span class="text-red-600 font-semibold">路径选择偏差错误</span>
+                                </h4>
+                                <p class="text-gray-600 text-sm mb-3">在TOT推理中，未能正确评估不同路径的优劣，选择了次优解决方案。</p>
+                                <div class="bg-green-50 p-3 rounded border-l-3 border-green-500">
+                                    <h5 class="text-green-600 font-semibold text-sm mb-2">🔧 修复策略</h5>
+                                    <ul class="text-green-700 text-xs space-y-1">
+                                        <li>• 建立完整的评估标准</li>
+                                        <li>• 比较各路径的优劣</li>
+                                        <li>• 选择最优解决方案</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white rounded-lg p-4 border border-yellow-200">
+                                <h4 class="flex items-center gap-2 mb-3">
+                                    <span class="bg-purple-500 text-white px-2 py-1 rounded text-xs font-semibold">AUTO</span>
+                                    <span class="text-red-600 font-semibold">策略选择不当错误</span>
+                                </h4>
+                                <p class="text-gray-600 text-sm mb-3">自动策略选择时，未能根据问题特征选择最适合的推理策略。</p>
+                                <div class="bg-green-50 p-3 rounded border-l-3 border-green-500">
+                                    <h5 class="text-green-600 font-semibold text-sm mb-2">🔧 修复策略</h5>
+                                    <ul class="text-green-700 text-xs space-y-1">
+                                        <li>• 分析问题复杂度</li>
+                                        <li>• 匹配最适合的策略</li>
+                                        <li>• 验证策略选择效果</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 智能错题诊断工具 -->
+                    <div class="bg-blue-50 rounded-xl p-6 border-2 border-blue-500 mb-8">
+                        <h3 class="text-blue-700 font-bold text-xl mb-4 text-center">🩺 智能错题诊断工具</h3>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-blue-700 font-semibold mb-2">输入错题内容</label>
+                                <textarea id="errorProblemInput" placeholder="请输入出错的数学问题..." class="w-full p-3 border border-blue-300 rounded-lg resize-none h-20 focus:border-blue-500 focus:outline-none"></textarea>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-blue-700 font-semibold mb-2">错误答案</label>
+                                    <input type="text" id="wrongAnswerInput" placeholder="请输入错误的答案..." class="w-full p-3 border border-blue-300 rounded-lg focus:border-blue-500 focus:outline-none">
+                                </div>
+                                
+                                <div>
+                                    <label class="block text-blue-700 font-semibold mb-2">使用的推理策略</label>
+                                    <select id="usedStrategySelect" class="w-full p-3 border border-blue-300 rounded-lg focus:border-blue-500 focus:outline-none">
+                                        <option value="">选择策略...</option>
+                                        <option value="cot">COT - 思维链推理</option>
+                                        <option value="got">GOT - 思维图推理</option>
+                                        <option value="tot">TOT - 思维树推理</option>
+                                        <option value="auto">AUTO - 自动选择</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-blue-700 font-semibold mb-2">错误描述</label>
+                                <textarea id="errorDescriptionInput" placeholder="请描述遇到的问题或困难..." class="w-full p-3 border border-blue-300 rounded-lg resize-none h-16 focus:border-blue-500 focus:outline-none"></textarea>
+                            </div>
+                            
+                            <div class="text-center">
+                                <button onclick="analyzeError()" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-8 py-3 rounded-lg transition-colors hover-lift">
+                                    🔍 开始智能诊断
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 个性化改进建议 -->
+                    <div class="bg-purple-50 rounded-xl p-6 border-2 border-purple-500 mb-8">
+                        <h3 class="text-purple-700 font-bold text-xl mb-4 text-center">💡 个性化改进建议</h3>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="bg-white rounded-lg p-4 border border-purple-200 border-l-4 border-l-purple-500">
+                                <h4 class="text-purple-600 font-semibold mb-3">🔧 实体识别训练</h4>
+                                <p class="text-gray-700 text-sm mb-3">加强对数学问题中实体的识别能力，特别是隐含实体和抽象概念的识别。</p>
+                                <div class="bg-gray-50 p-2 rounded text-xs text-gray-600">
+                                    <strong>练习建议：</strong>每天分析5个不同类型的问题，标记所有实体及其属性。
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white rounded-lg p-4 border border-purple-200 border-l-4 border-l-purple-500">
+                                <h4 class="text-purple-600 font-semibold mb-3">🕸️ 关系建模强化</h4>
+                                <p class="text-gray-700 text-sm mb-3">提升实体间关系的识别和建模能力，重点关注物理约束和隐含关系。</p>
+                                <div class="bg-gray-50 p-2 rounded text-xs text-gray-600">
+                                    <strong>练习建议：</strong>绘制实体关系图，标注关系类型和权重。
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white rounded-lg p-4 border border-purple-200 border-l-4 border-l-purple-500">
+                                <h4 class="text-purple-600 font-semibold mb-3">🧠 策略选择优化</h4>
+                                <p class="text-gray-700 text-sm mb-3">根据问题特征选择最适合的推理策略，避免策略选择偏差。</p>
+                                <div class="bg-gray-50 p-2 rounded text-xs text-gray-600">
+                                    <strong>练习建议：</strong>对比不同策略在同一问题上的表现，总结选择规律。
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white rounded-lg p-4 border border-purple-200 border-l-4 border-l-purple-500">
+                                <h4 class="text-purple-600 font-semibold mb-3">✅ 验证能力提升</h4>
+                                <p class="text-gray-700 text-sm mb-3">加强多层次结果验证，包括数值验证、逻辑验证和物理验证。</p>
+                                <div class="bg-gray-50 p-2 rounded text-xs text-gray-600">
+                                    <strong>练习建议：</strong>每次解题后都要进行三重验证，形成习惯。
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 学习进度跟踪 -->
+                    <div class="bg-green-50 rounded-xl p-6 border-2 border-green-500">
+                        <h3 class="text-green-700 font-bold text-xl mb-4 text-center">📈 学习进度跟踪</h3>
+                        
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                            <div class="bg-white rounded-lg p-4 text-center border border-green-200 hover-lift">
+                                <div class="text-2xl font-bold text-green-600 mb-1">85%</div>
+                                <div class="text-sm text-gray-600">实体识别准确率</div>
+                            </div>
+                            
+                            <div class="bg-white rounded-lg p-4 text-center border border-green-200 hover-lift">
+                                <div class="text-2xl font-bold text-green-600 mb-1">78%</div>
+                                <div class="text-sm text-gray-600">关系建模正确率</div>
+                            </div>
+                            
+                            <div class="bg-white rounded-lg p-4 text-center border border-green-200 hover-lift">
+                                <div class="text-2xl font-bold text-green-600 mb-1">92%</div>
+                                <div class="text-sm text-gray-600">策略选择准确率</div>
+                            </div>
+                            
+                            <div class="bg-white rounded-lg p-4 text-center border border-green-200 hover-lift">
+                                <div class="text-2xl font-bold text-green-600 mb-1">88%</div>
+                                <div class="text-sm text-gray-600">整体解题成功率</div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg p-4 border border-green-200">
+                            <h4 class="text-green-700 font-semibold mb-3">📊 基于推理策略的改进轨迹</h4>
+                            <p class="text-gray-700 text-sm mb-3">通过分析你在不同推理策略下的表现，系统发现：</p>
+                            <ul class="text-gray-600 text-sm space-y-1 ml-4">
+                                <li>• <strong>COT策略</strong>：在简单问题上表现优秀，建议继续保持</li>
+                                <li>• <strong>GOT策略</strong>：关系发现能力有待提升，建议多练习复杂关系题</li>
+                                <li>• <strong>TOT策略</strong>：路径选择偏于保守，建议尝试更多创新方案</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // 全局变量
+        let currentStrategy = 'auto';
+        let isSystemOnline = false;
+        let isAlgorithmAvailable = false;
+        
+        // API配置
+        const API_BASE_URL = 'http://localhost:3001';
+        
+        // 页面加载时初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            showTab('solver');
+            checkSystemStatus();
+            setInterval(checkSystemStatus, 30000); // 每30秒检查一次系统状态
+        });
+        
+        // 检查系统状态
+        async function checkSystemStatus() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/health`);
+                const data = await response.json();
+                
+                if (response.ok) {
+                    isSystemOnline = true;
+                    isAlgorithmAvailable = data.reasoning_system === 'available';
+                    
+                    updateSystemStatus('online', `在线 (${data.reasoning_system})`);
+                    updateAlgorithmStatus(
+                        isAlgorithmAvailable ? 'online' : 'simulated',
+                        isAlgorithmAvailable ? '真实算法' : '模拟模式'
+                    );
+                } else {
+                    throw new Error('Health check failed');
+                }
+            } catch (error) {
+                console.error('系统状态检查失败:', error);
+                isSystemOnline = false;
+                isAlgorithmAvailable = false;
+                updateSystemStatus('offline', '离线');
+                updateAlgorithmStatus('offline', '不可用');
+            }
+        }
+        
+        // 更新系统状态显示
+        function updateSystemStatus(status, text) {
+            const statusEl = document.getElementById('systemStatus');
+            statusEl.className = `status-indicator status-${status}`;
+            statusEl.innerHTML = `
+                <span class="w-1.5 h-1.5 bg-current rounded-full mr-1"></span>
+                ${text}
+            `;
+        }
+        
+        // 更新算法状态显示
+        function updateAlgorithmStatus(status, text) {
+            const statusEl = document.getElementById('algorithmStatus');
+            statusEl.className = `status-indicator status-${status}`;
+            statusEl.innerHTML = `
+                <span class="w-1.5 h-1.5 bg-current rounded-full mr-1"></span>
+                ${text}
+            `;
+        }
+        
+        // 标签页切换功能
+        function showTab(tabName) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            const tabs = document.querySelectorAll('.tab-button');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            document.getElementById(tabName + '-content').classList.add('active');
+            document.getElementById(tabName + '-tab').classList.add('active');
+        }
+        
+        // 示例选择函数
+        function selectExample(button) {
+            const problemText = button.querySelector('p').textContent;
+            document.getElementById('problemInput').value = problemText;
+            
+            // 添加视觉反馈
+            button.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+                button.style.transform = 'scale(1)';
+            }, 100);
+        }
+        
+        // 策略选择函数
+        function selectStrategy(strategy) {
+            currentStrategy = strategy;
+            
+            // 更新按钮状态
+            const buttons = document.querySelectorAll('.strategy-btn');
+            buttons.forEach(btn => {
+                const btnStrategy = btn.getAttribute('data-strategy');
+                if (btnStrategy === strategy) {
+                    btn.classList.add('border-purple-500', 'bg-purple-50');
+                    btn.classList.remove('border-gray-200', 'hover:border-gray-300');
+                    const checkmark = btn.querySelector('.text-purple-500');
+                    if (checkmark) checkmark.textContent = '✓';
+                } else {
+                    btn.classList.remove('border-purple-500', 'bg-purple-50');
+                    btn.classList.add('border-gray-200', 'hover:border-gray-300');
+                    const checkmark = btn.querySelector('.text-purple-500');
+                    if (checkmark) checkmark.textContent = '';
+                }
+            });
+        }
+        
+        // 解题函数 - 连接真实API
+        async function solveProblem() {
+            const problem = document.getElementById('problemInput').value.trim();
+            const errorEl = document.getElementById('inputError');
+            const solveButton = document.getElementById('solveButton');
+            
+            // 清除之前的错误
+            errorEl.classList.add('hidden');
+            
+            if (!problem) {
+                errorEl.textContent = '请输入问题';
+                errorEl.classList.remove('hidden');
+                return;
+            }
+            
+            // 显示加载状态
+            const originalText = solveButton.textContent;
+            solveButton.innerHTML = '<span class="loading-spinner mr-2"></span>正在解题...';
+            solveButton.disabled = true;
+            
+            // 显示结果区域和加载状态
+            showResultLoadingState();
+            
+            try {
+                console.log('🚀 发送解题请求:', problem);
+                console.log('📊 使用策略:', currentStrategy);
+                
+                const response = await fetch(`${API_BASE_URL}/api/solve`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        problem: problem,
+                        strategy: currentStrategy
+                    })
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    console.log('✅ 解题成功:', result);
+                    displayResult(result);
+                } else {
+                    throw new Error(result.error || '解题失败');
+                }
+                
+            } catch (error) {
+                console.error('❌ 解题失败:', error);
+                errorEl.textContent = `解题失败: ${error.message}`;
+                errorEl.classList.remove('hidden');
+                hideResultArea();
+            } finally {
+                solveButton.textContent = originalText;
+                solveButton.disabled = false;
+            }
+        }
+        
+        // 显示结果加载状态
+        function showResultLoadingState() {
+            const resultArea = document.getElementById('resultArea');
+            resultArea.style.display = 'block';
+            
+            // 重置所有显示元素
+            document.getElementById('answerDisplay').textContent = '正在计算...';
+            document.getElementById('confidenceDisplay').textContent = '置信度：分析中...';
+            document.getElementById('strategyDisplay').innerHTML = '<strong>推理策略：</strong>分析中...';
+            document.getElementById('executionTimeDisplay').textContent = '执行时间：计算中...';
+            
+            // 显示加载状态
+            document.getElementById('stepsDisplay').innerHTML = `
+                <div class="flex items-center justify-center py-8">
+                    <div class="loading-spinner mr-3"></div>
+                    <span class="text-gray-600">正在生成推理步骤...</span>
+                </div>
+            `;
+            
+            document.getElementById('diagramLoading').style.display = 'flex';
+            document.getElementById('relationshipDiagram').style.display = 'none';
+            document.getElementById('diagramLegend').style.display = 'none';
+            document.getElementById('constraintsArea').style.display = 'none';
+            
+            // 平滑滚动到结果区域
+            resultArea.scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // 清空函数
+        function clearProblem() {
+            document.getElementById('problemInput').value = '';
+            document.getElementById('inputError').classList.add('hidden');
+            hideResultArea();
+        }
+        
+        // 隐藏结果区域
+        function hideResultArea() {
+            document.getElementById('resultArea').style.display = 'none';
+        }
+        
+        // 显示结果
+        function displayResult(result) {
+            // 更新答案显示
+            document.getElementById('answerDisplay').textContent = result.answer;
+            document.getElementById('confidenceDisplay').textContent = `置信度：${(result.confidence * 100).toFixed(1)}%`;
+            
+            // 更新策略显示
+            const strategyNames = {
+                'auto': '自动选择',
+                'cot': '思维链推理 (COT)',
+                'got': '思维图推理 (GOT)',
+                'tot': '思维树推理 (TOT)'
+            };
+            document.getElementById('strategyDisplay').innerHTML = `<strong>推理策略：</strong>${strategyNames[result.strategy_used] || result.strategy_used}`;
+            document.getElementById('executionTimeDisplay').textContent = `执行时间：${result.execution_time}秒`;
+
+            // 更新步骤显示
+            if (result.reasoning_steps && result.reasoning_steps.length > 0) {
+                const stepsHtml = result.reasoning_steps.map((step, index) => `
+                    <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-lg animate-slide-up" style="animation-delay: ${index * 0.1}s">
+                        <div class="w-8 h-8 bg-purple-500 text-white rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0">
+                            ${index + 1}
+                        </div>
+                        <div class="flex-1">
+                            <div class="text-sm text-gray-800 leading-relaxed">${step}</div>
+                        </div>
+                    </div>
+                `).join('');
+                document.getElementById('stepsDisplay').innerHTML = stepsHtml;
+            }
+
+            // 生成实体关系图
+            if (result.entity_relationship_diagram) {
+                const diagram = result.entity_relationship_diagram;
+                generateRelationshipDiagram(diagram.entities, diagram.relationships);
+                
+                // 显示隐含约束
+                if (diagram.implicit_constraints && diagram.implicit_constraints.length > 0) {
+                    displayConstraints(diagram.implicit_constraints);
+                }
+            }
+        }
+        
+        // 生成实体关系图
+        function generateRelationshipDiagram(entities, relationships) {
+            const svg = document.getElementById('relationshipDiagram');
+            const diagramLoading = document.getElementById('diagramLoading');
+            const diagramLegend = document.getElementById('diagramLegend');
+            
+            svg.innerHTML = '';
+            
+            const width = svg.clientWidth || 800;
+            const height = 400;
+            
+            // 计算节点位置
+            const centerX = width / 2;
+            const centerY = height / 2;
+            const radius = Math.min(width, height) / 4;
+            
+            const positions = entities.map((entity, index) => {
+                if (entities.length === 1) {
+                    return { x: centerX, y: centerY };
+                }
+                if (entities.length === 2) {
+                    return {
+                        x: centerX + (index === 0 ? -radius/2 : radius/2),
+                        y: centerY
+                    };
+                }
+                const angle = (index * 2 * Math.PI) / entities.length;
+                return {
+                    x: centerX + radius * Math.cos(angle),
+                    y: centerY + radius * Math.sin(angle)
+                };
+            });
+
+            // 绘制连接线
+            relationships.forEach(rel => {
+                const sourceIndex = entities.findIndex(e => e.id === rel.source);
+                const targetIndex = entities.findIndex(e => e.id === rel.target);
+                
+                if (sourceIndex !== -1 && targetIndex !== -1) {
+                    const source = positions[sourceIndex];
+                    const target = positions[targetIndex];
+                    
+                    // 创建连接线
+                    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                    line.setAttribute('x1', source.x);
+                    line.setAttribute('y1', source.y);
+                    line.setAttribute('x2', target.x);
+                    line.setAttribute('y2', target.y);
+                    line.setAttribute('stroke', '#94a3b8');
+                    line.setAttribute('stroke-width', '2');
+                    svg.appendChild(line);
+                    
+                    // 添加标签
+                    const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                    text.setAttribute('x', (source.x + target.x) / 2);
+                    text.setAttribute('y', (source.y + target.y) / 2 - 5);
+                    text.setAttribute('text-anchor', 'middle');
+                    text.setAttribute('class', 'text-xs fill-gray-600');
+                    text.textContent = rel.label;
+                    svg.appendChild(text);
+                }
+            });
+
+            // 绘制节点
+            entities.forEach((entity, index) => {
+                const position = positions[index];
+                const colors = {
+                    person: '#ef4444',
+                    object: '#22c55e',
+                    money: '#f97316',
+                    concept: '#8b5cf6'
+                };
+                const icons = {
+                    person: '👤',
+                    object: '📦',
+                    money: '💰',
+                    concept: '💡'
+                };
+                
+                // 创建圆形
+                const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                circle.setAttribute('cx', position.x);
+                circle.setAttribute('cy', position.y);
+                circle.setAttribute('r', '35');
+                circle.setAttribute('fill', colors[entity.type] || '#6b7280');
+                circle.setAttribute('stroke', '#fff');
+                circle.setAttribute('stroke-width', '3');
+                circle.setAttribute('class', 'cursor-pointer drop-shadow-lg');
+                svg.appendChild(circle);
+                
+                // 添加图标
+                const iconText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                iconText.setAttribute('x', position.x);
+                iconText.setAttribute('y', position.y - 5);
+                iconText.setAttribute('text-anchor', 'middle');
+                iconText.setAttribute('class', 'text-xs fill-white font-medium pointer-events-none');
+                iconText.textContent = icons[entity.type] || '🔷';
+                svg.appendChild(iconText);
+                
+                // 添加名称
+                const nameText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                nameText.setAttribute('x', position.x);
+                nameText.setAttribute('y', position.y + 8);
+                nameText.setAttribute('text-anchor', 'middle');
+                nameText.setAttribute('class', 'text-xs fill-white font-medium pointer-events-none');
+                nameText.textContent = entity.name;
+                svg.appendChild(nameText);
+            });
+            
+            // 显示图表
+            diagramLoading.style.display = 'none';
+            svg.style.display = 'block';
+            diagramLegend.style.display = 'flex';
+        }
+        
+        // 显示约束条件
+        function displayConstraints(constraints) {
+            const constraintsArea = document.getElementById('constraintsArea');
+            const constraintsDisplay = document.getElementById('constraintsDisplay');
+            
+            const constraintsHtml = constraints.map((constraint, index) => `
+                <div class="flex items-start gap-3 p-3 bg-orange-50 border border-orange-200 rounded-lg animate-slide-up" style="animation-delay: ${index * 0.1}s">
+                    <div class="w-6 h-6 bg-orange-500 text-white rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">
+                        !
+                    </div>
+                    <div class="flex-1 text-sm text-gray-700">
+                        ${constraint}
+                    </div>
+                </div>
+            `).join('');
+            
+            constraintsDisplay.innerHTML = constraintsHtml;
+            constraintsArea.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

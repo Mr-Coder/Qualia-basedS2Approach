@@ -32,7 +32,7 @@ def test_ird_engine():
         import sys
         sys.path.append('/Users/menghao/Documents/GitHub/cot-dir1/src')
         
-        from reasoning.private.ird_engine import ImplicitRelationDiscoveryEngine
+        from reasoning.qs2_enhancement.enhanced_ird_engine import EnhancedIRDEngine
         
         # 初始化IRD引擎
         ird_config = {
@@ -41,7 +41,7 @@ def test_ird_engine():
             "enable_advanced_patterns": True
         }
         
-        ird_engine = ImplicitRelationDiscoveryEngine(ird_config)
+        ird_engine = EnhancedIRDEngine(ird_config)
         
         # 测试问题
         test_problems = [
@@ -59,17 +59,17 @@ def test_ird_engine():
             
             print(f"  处理时间: {end_time - start_time:.3f}秒")
             print(f"  发现关系: {len(result.relations)}个")
-            print(f"  置信度: {result.confidence_score:.3f}")
+            print(f"  置信度: {result.statistics.get('average_confidence', 0.0):.3f}")
             
             for j, relation in enumerate(result.relations, 1):
                 print(f"    关系{j}: {relation.description} (置信度: {relation.confidence:.2f})")
         
         # 显示统计信息
-        stats = ird_engine.get_stats()
+        stats = ird_engine.get_global_stats()
         print(f"\nIRD引擎统计:")
-        print(f"  总处理数: {stats['total_processed']}")
-        print(f"  总关系数: {stats['relations_found']}")
-        print(f"  平均置信度: {stats['average_confidence']:.3f}")
+        print(f"  总处理数: {stats['total_discoveries']}")
+        print(f"  总关系数: {stats['total_relations_found']}")
+        print(f"  平均置信度: {stats['average_processing_time']:.3f}")
         
         return True
         
@@ -84,11 +84,11 @@ def test_mlr_processor():
     print("=" * 50)
     
     try:
-        from src.reasoning.private.ird_engine import ImplicitRelationDiscoveryEngine
+        from src.reasoning.qs2_enhancement.enhanced_ird_engine import EnhancedIRDEngine
         from src.reasoning.private.mlr_processor import MultiLevelReasoningProcessor
         
         # 初始化组件
-        ird_engine = ImplicitRelationDiscoveryEngine()
+        ird_engine = EnhancedIRDEngine()
         mlr_processor = MultiLevelReasoningProcessor({
             "max_reasoning_depth": 8,
             "confidence_threshold": 0.6
@@ -144,12 +144,12 @@ def test_cv_validator():
     print("=" * 50)
     
     try:
-        from src.reasoning.private.ird_engine import ImplicitRelationDiscoveryEngine
+        from src.reasoning.qs2_enhancement.enhanced_ird_engine import EnhancedIRDEngine
         from src.reasoning.private.mlr_processor import MultiLevelReasoningProcessor
         from src.reasoning.private.cv_validator import ChainVerificationValidator
         
         # 初始化组件
-        ird_engine = ImplicitRelationDiscoveryEngine()
+        ird_engine = EnhancedIRDEngine()
         mlr_processor = MultiLevelReasoningProcessor()
         cv_validator = ChainVerificationValidator({
             "validation_level": "comprehensive",

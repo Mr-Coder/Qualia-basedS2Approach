@@ -8,7 +8,7 @@ import logging
 import time
 from typing import Any, Dict, List, Optional
 
-from .private.ird_engine import ImplicitRelationDiscoveryEngine, IRDResult
+from .qs2_enhancement.enhanced_ird_engine import EnhancedIRDEngine, DiscoveryResult as IRDResult
 from .private.mlr_processor import MultiLevelReasoningProcessor, MLRResult
 from .private.cv_validator import ChainVerificationValidator, ValidationResult
 
@@ -59,7 +59,7 @@ class COTDIROrchestrator:
             
             # 初始化IRD引擎
             if self.enable_ird:
-                self.ird_engine = ImplicitRelationDiscoveryEngine(self.ird_config)
+                self.ird_engine = EnhancedIRDEngine(self.ird_config)
                 self.logger.info("IRD引擎初始化完成")
             
             # 初始化MLR处理器
@@ -298,7 +298,7 @@ class COTDIROrchestrator:
             integrated_result["relations_found"] = [rel.to_dict() for rel in ird_result.relations]
             integrated_result["processing_summary"]["ird"] = {
                 "relations_count": len(ird_result.relations),
-                "confidence": ird_result.confidence_score,
+                "confidence": ird_result.statistics.get("average_confidence", 0.0),
                 "processing_time": ird_result.processing_time
             }
         
@@ -361,7 +361,8 @@ class COTDIROrchestrator:
         
         # IRD置信度
         if ird_result:
-            confidences.append(ird_result.confidence_score)
+            avg_confidence = ird_result.statistics.get("average_confidence", 0.0)
+            confidences.append(avg_confidence)
             weights.append(0.2)  # IRD权重20%
         
         # MLR置信度  
@@ -506,7 +507,7 @@ class COTDIROrchestrator:
                 "ird_engine": {
                     "enabled": self.enable_ird,
                     "available": self.ird_engine is not None,
-                    "stats": self.ird_engine.get_stats() if self.ird_engine else {}
+                    "stats": self.ird_engine.get_global_stats() if self.ird_engine else {}
                 },
                 "mlr_processor": {
                     "enabled": self.enable_mlr,

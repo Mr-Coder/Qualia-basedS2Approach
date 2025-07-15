@@ -12,7 +12,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 from ..core.exceptions import APIError, handle_module_error
 from ..core.interfaces import ModuleInfo, ModuleType, PublicAPI
-from .private.ird_engine import ImplicitRelationDiscoveryEngine, IRDResult
+from .qs2_enhancement.enhanced_ird_engine import EnhancedIRDEngine, DiscoveryResult as IRDResult
 from .private.mlr_processor import MultiLevelReasoningProcessor, MLRResult, ComplexityLevel
 from .private.cv_validator import ChainVerificationValidator, ValidationResult
 
@@ -70,7 +70,7 @@ class AsyncReasoningAPI(PublicAPI):
             ird_config = self.config.get("ird", {})
             self.ird_engine = await loop.run_in_executor(
                 self.executor, 
-                lambda: ImplicitRelationDiscoveryEngine(ird_config)
+                lambda: EnhancedIRDEngine(ird_config)
             )
             
             # 初始化MLR处理器
@@ -237,7 +237,7 @@ class AsyncReasoningAPI(PublicAPI):
             )
             
             self._logger.debug(f"异步IRD完成: 发现{len(ird_result.relations)}个关系, "
-                             f"置信度{ird_result.confidence_score:.3f}")
+                             f"置信度{ird_result.statistics.get('average_confidence', 0.0):.3f}")
             
             return ird_result
             
@@ -246,9 +246,11 @@ class AsyncReasoningAPI(PublicAPI):
             # 返回空结果继续流程
             return IRDResult(
                 relations=[],
-                confidence_score=0.0,
                 processing_time=0.0,
-                metadata={"error": str(e)}
+                entity_count=0,
+                total_pairs_evaluated=0,
+                high_strength_relations=0,
+                statistics={"error": str(e)}
             )
     
     async def _execute_mlr_phase_async(
@@ -424,7 +426,7 @@ class AsyncReasoningAPI(PublicAPI):
         cv_weight = 0.2
         
         overall_confidence = (
-            ird_result.confidence_score * ird_weight +
+            ird_result.statistics.get("average_confidence", 0.0) * ird_weight +
             mlr_result.confidence_score * mlr_weight +
             validation_result.consistency_score * cv_weight
         )
@@ -465,14 +467,14 @@ class AsyncReasoningAPI(PublicAPI):
                 "total_steps": len(mlr_result.reasoning_steps),
                 "async_mode": True,
                 "component_versions": {
-                    "ird": "1.0.0",
+                    "ird": "2.0.0",  # Enhanced version
                     "mlr": "1.0.0", 
                     "cv": "1.0.0"
                 }
             },
             "metadata": {
                 "problem_text": problem_text,
-                "ird_metadata": ird_result.metadata,
+                "ird_metadata": ird_result.statistics,
                 "mlr_metadata": mlr_result.metadata,
                 "cv_metadata": validation_result.metadata
             }
@@ -567,7 +569,7 @@ class AsyncReasoningAPI(PublicAPI):
             if self._initialized:
                 # 检查各组件统计信息
                 status["component_stats"] = {
-                    "ird": self.ird_engine.get_stats() if self.ird_engine else {},
+                    "ird": self.ird_engine.get_global_stats() if self.ird_engine else {},
                     "mlr": self.mlr_processor.get_stats() if self.mlr_processor else {},
                     "cv": self.cv_validator.get_stats() if self.cv_validator else {}
                 }
@@ -600,7 +602,7 @@ class AsyncReasoningAPI(PublicAPI):
             component_stats = await loop.run_in_executor(
                 self.executor,
                 lambda: {
-                    "ird": self.ird_engine.get_stats(),
+                    "ird": self.ird_engine.get_global_stats(),
                     "mlr": self.mlr_processor.get_stats(),
                     "cv": self.cv_validator.get_stats()
                 }

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实体关系模块完整修复方案</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f5f7fa;
+            line-height: 1.6;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+        }
+        h1 {
+            color: #1a202c;
+            border-bottom: 3px solid #3b82f6;
+            padding-bottom: 10px;
+        }
+        .solution-section {
+            margin: 30px 0;
+            padding: 25px;
+            background: #f8fafc;
+            border-radius: 12px;
+            border-left: 5px solid #3b82f6;
+        }
+        .fix-complete {
+            background: #ecfdf5;
+            border-left-color: #10b981;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Fira Code', 'Monaco', monospace;
+            font-size: 13px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .feature-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s;
+        }
+        .feature-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #eff6ff;
+            color: #3b82f6;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+        .badge.success {
+            background: #ecfdf5;
+            color: #10b981;
+        }
+        .step-list {
+            counter-reset: step-counter;
+            list-style: none;
+            padding: 0;
+        }
+        .step-list li {
+            counter-increment: step-counter;
+            margin: 15px 0;
+            padding-left: 40px;
+            position: relative;
+        }
+        .step-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #3b82f6;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 实体关系模块完整修复方案</h1>
+        
+        <div class="fix-complete">
+            <h2>✅ 所有修复已完成</h2>
+            <p>我们已经实施了多层防护措施来解决 "Cannot read properties of undefined (reading 'map')" 错误。</p>
+        </div>
+
+        <div class="solution-section">
+            <h2>🛡️ 实施的防护措施</h2>
+            
+            <div class="feature-list">
+                <div class="feature-card">
+                    <h3>1. 数据验证层</h3>
+                    <ul>
+                        <li>所有数组使用前进行 <code>Array.isArray()</code> 检查</li>
+                        <li>所有 <code>.map()</code> 调用添加了空值保护</li>
+                        <li>Props 接收时立即进行安全转换</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>2. 缓存数据保护</h3>
+                    <ul>
+                        <li>Zustand store 添加了 <code>onRehydrateStorage</code> 验证</li>
+                        <li>历史记录数据自动过滤无效项</li>
+                        <li>选择器确保返回有效数组</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>3. 错误边界</h3>
+                    <ul>
+                        <li>创建了 <code>ErrorBoundary</code> 组件</li>
+                        <li>包装了问题组件</li>
+                        <li>提供清除缓存选项</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>4. 简化版组件</h3>
+                    <ul>
+                        <li>创建了 <code>SimpleEntityDiagram</code></li>
+                        <li>不使用 framer-motion</li>
+                        <li>可切换调试模式</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>5. 异步数据保护</h3>
+                    <ul>
+                        <li>useEffect 中添加数组检查</li>
+                        <li>异步回调前验证组件挂载状态</li>
+                        <li>数据获取失败时的默认值</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>6. 调试增强</h3>
+                    <ul>
+                        <li>组件 props 详细日志</li>
+                        <li>数据流追踪</li>
+                        <li>错误堆栈捕获</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="solution-section">
+            <h2>📋 修复的具体位置</h2>
+            
+            <h3>EntityRelationshipDiagram.tsx</h3>
+            <div class="code-block">
+// 添加的安全检查示例：
+(safeImplicitConstraints || []).map(...)
+(safePhysicalConstraints || []).map(...)
+(physicalProperties?.conservationLaws || []).map(...)
+(extractedEntities || []).map(...)
+(extractedRelationships || []).map(...)
+visualizationConfig.show_depth_indicators && (safeDeepRelations || []).map(...)
+
+// Props 验证：
+const safeEntities = Array.isArray(entities) ? entities : []
+const safeRelationships = Array.isArray(relationships) ? relationships : []
+
+// useEffect 保护：
+if (Array.isArray(allEntities)) {
+  const positioned = calculatePositions(allEntities)
+  setEntitiesWithPositions(positioned)
+} else {
+  setEntitiesWithPositions([])
+}
+            </div>
+        </div>
+
+        <div class="solution-section">
+            <h2>🚀 测试步骤</h2>
+            
+            <ol class="step-list">
+                <li>
+                    <strong>清理环境</strong>
+                    <div>关闭所有浏览器标签，清除 localStorage 和缓存</div>
+                </li>
+                <li>
+                    <strong>重启服务</strong>
+                    <div><code>npm run dev</code></div>
+                </li>
+                <li>
+                    <strong>测试简化版</strong>
+                    <div>点击"实体关系"标签，然后点击"使用简化版（调试）"按钮</div>
+                </li>
+                <li>
+                    <strong>观察控制台</strong>
+                    <div>查看 EntityRelationshipDiagram Props 日志，确认数据结构</div>
+                </li>
+                <li>
+                    <strong>测试完整版</strong>
+                    <div>如果简化版正常，尝试切换到完整版</div>
+                </li>
+            </ol>
+        </div>
+
+        <div class="solution-section">
+            <h2>🔍 如果问题仍然存在</h2>
+            
+            <p>请执行以下操作：</p>
+            
+            <div class="code-block">
+// 1. 在浏览器控制台执行：
+localStorage.clear()
+sessionStorage.clear()
+location.reload()
+
+// 2. 查看错误的具体行号和文件
+// 错误信息会显示类似：at P2 (index-xxx.js:68:155998)
+
+// 3. 使用 React Developer Tools 检查组件树
+// 查看哪个组件的 props 可能有问题
+
+// 4. 临时禁用 framer-motion
+// 使用简化版组件测试
+            </div>
+            
+            <h3>可能的其他原因：</h3>
+            <ul>
+                <li><span class="badge">浏览器扩展</span> 某些浏览器扩展可能干扰 React 应用</li>
+                <li><span class="badge">构建缓存</span> 删除 node_modules/.vite 文件夹</li>
+                <li><span class="badge">依赖版本</span> 检查 framer-motion 版本兼容性</li>
+                <li><span class="badge">环境变量</span> 确认所有必要的环境变量已设置</li>
+            </ul>
+        </div>
+
+        <div class="solution-section">
+            <h2>📊 监控建议</h2>
+            
+            <p>为了长期稳定性，建议：</p>
+            <ol>
+                <li>添加 Sentry 或类似的错误监控服务</li>
+                <li>在生产环境使用更严格的 TypeScript 配置</li>
+                <li>添加单元测试覆盖所有 map 操作</li>
+                <li>考虑使用 Lodash 的安全方法如 <code>_.get()</code> 和 <code>_.map()</code></li>
+            </ol>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px; color: #6b7280;">
+            <p>构建成功 ✅ | 所有安全检查已添加 ✅ | 调试工具已就绪 ✅</p>
+        </div>
+    </div>
+
+    <script>
+        console.log('📋 实体关系模块完整修复方案');
+        console.log('✅ 已实施的防护措施:');
+        console.log('  1. 数据验证层 - Array.isArray() 检查');
+        console.log('  2. 缓存数据保护 - onRehydrateStorage');
+        console.log('  3. 错误边界 - ErrorBoundary 组件');
+        console.log('  4. 简化版组件 - SimpleEntityDiagram');
+        console.log('  5. 异步数据保护 - useEffect 安全检查');
+        console.log('  6. 调试增强 - 详细日志输出');
+        console.log('');
+        console.log('🚀 下一步: 清理缓存并重启服务');
+    </script>
+</body>
+</html>

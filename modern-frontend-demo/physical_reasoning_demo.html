@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>基于物性关系的推理演示</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+            line-height: 1.6;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2d3436;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+        .algorithm-flow {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+        }
+        .flow-step {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+        .flow-step:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateX(10px);
+        }
+        .step-number {
+            background: white;
+            color: #667eea;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+        .example-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            border: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        .example-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 5px 15px rgba(102,126,234,0.1);
+        }
+        .graph-viz {
+            background: #f1f3f5;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .entity {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 25px;
+            font-weight: 600;
+            color: white;
+        }
+        .entity.known {
+            background: #10b981;
+        }
+        .entity.unknown {
+            background: #ef4444;
+        }
+        .entity.concept {
+            background: #3b82f6;
+        }
+        .relation {
+            color: #6b7280;
+            margin: 0 10px;
+            font-style: italic;
+        }
+        .insight-box {
+            background: #fef3c7;
+            border-left: 5px solid #f59e0b;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 5px;
+        }
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Fira Code', monospace;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .feature-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+            border-top: 4px solid #667eea;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #667eea;
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin: 10px 5px;
+        }
+        .btn:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102,126,234,0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧩 基于物性关系的推理算法</h1>
+        
+        <div class="algorithm-flow">
+            <h2 style="text-align: center; margin-bottom: 30px;">算法流程</h2>
+            
+            <div class="flow-step">
+                <div class="step-number">1</div>
+                <div>
+                    <strong>题目解析</strong> → 分解出 phrase 和 entity → 识别直陈关系
+                </div>
+            </div>
+            
+            <div class="flow-step">
+                <div class="step-number">2</div>
+                <div>
+                    <strong>物性增强</strong> → 加入物性关系（守恒、因果、时空等）→ 构建物性 Graph
+                </div>
+            </div>
+            
+            <div class="flow-step">
+                <div class="step-number">3</div>
+                <div>
+                    <strong>关系推理</strong> → 通过物性关系扩展 → 找到隐含的连接
+                </div>
+            </div>
+            
+            <div class="flow-step">
+                <div class="step-number">4</div>
+                <div>
+                    <strong>路径发现</strong> → 寻找已知到未知的通路 → 确定求解路径
+                </div>
+            </div>
+            
+            <div class="flow-step">
+                <div class="step-number">5</div>
+                <div>
+                    <strong>推理执行</strong> → 沿路径推理 → 忽略无关推理 → 得出答案
+                </div>
+            </div>
+        </div>
+
+        <h2 style="text-align: center; color: #2d3436;">📋 示例演示</h2>
+
+        <div class="example-card">
+            <h3>例题 1：苹果数量问题</h3>
+            <p><strong>题目：</strong>小明有5个苹果，妈妈又给了他3个苹果，现在小明一共有几个苹果？</p>
+            
+            <div class="graph-viz">
+                <div style="margin-bottom: 15px;">
+                    <span class="entity known">初始苹果(5个)</span>
+                    <span class="relation">→</span>
+                    <span class="entity concept">加法运算</span>
+                    <span class="relation">→</span>
+                    <span class="entity unknown">总苹果数(?)</span>
+                </div>
+                <div>
+                    <span class="entity known">购买苹果(3个)</span>
+                    <span class="relation">↗</span>
+                </div>
+                <div style="margin-top: 15px; color: #f59e0b;">
+                    <strong>物性关系：</strong>守恒定律（部分之和等于整体）
+                </div>
+            </div>
+            
+            <p><strong>推理路径：</strong>初始苹果 → [守恒] → 总苹果数 ← [守恒] ← 购买苹果</p>
+            <p><strong>答案：</strong>5 + 3 = 8个苹果</p>
+        </div>
+
+        <div class="example-card">
+            <h3>例题 2：水池排水问题</h3>
+            <p><strong>题目：</strong>水池有水100升，每小时流出20升，几小时后水池为空？</p>
+            
+            <div class="graph-viz">
+                <div style="margin-bottom: 15px;">
+                    <span class="entity known">初始水量(100升)</span>
+                    <span class="relation">→</span>
+                    <span class="entity known">流出速率(20升/时)</span>
+                    <span class="relation">→</span>
+                    <span class="entity unknown">时间(?小时)</span>
+                </div>
+                <div style="margin-top: 15px; color: #06b6d4;">
+                    <strong>物性关系：</strong>时间流逝（线性变化）
+                </div>
+            </div>
+            
+            <p><strong>推理路径：</strong>初始水量 → [时间关系] → 流出速率 → [因果] → 时间</p>
+            <p><strong>答案：</strong>100 ÷ 20 = 5小时</p>
+        </div>
+
+        <div class="example-card">
+            <h3>例题 3：购物价格问题</h3>
+            <p><strong>题目：</strong>小红买了3支笔，每支笔5元，她一共花了多少钱？</p>
+            
+            <div class="graph-viz">
+                <div style="margin-bottom: 15px;">
+                    <span class="entity known">数量(3支)</span>
+                    <span class="relation">→</span>
+                    <span class="entity concept">乘法运算</span>
+                    <span class="relation">→</span>
+                    <span class="entity unknown">总价(?元)</span>
+                </div>
+                <div>
+                    <span class="entity known">单价(5元/支)</span>
+                    <span class="relation">↗</span>
+                </div>
+                <div style="margin-top: 15px; color: #f59e0b;">
+                    <strong>物性关系：</strong>价值守恒（价值交换）
+                </div>
+            </div>
+            
+            <p><strong>推理路径：</strong>数量 → [因果] → 总价 ← [因果] ← 单价</p>
+            <p><strong>答案：</strong>3 × 5 = 15元</p>
+        </div>
+
+        <div class="insight-box">
+            <h3>💡 核心洞察</h3>
+            <p>
+                <strong>物性关系的力量：</strong>通过引入物理世界的基本规律（守恒、因果、时空连续性等），
+                我们能够在看似断开的已知和未知之间建立桥梁。这种方法不仅模拟了人类的直觉推理，
+                还提供了可解释的推理路径。
+            </p>
+        </div>
+
+        <h2 style="text-align: center; color: #2d3436;">🔬 物性关系类型</h2>
+        
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>🔄 守恒关系</h3>
+                <p>物质、能量、价值的守恒定律</p>
+                <ul>
+                    <li>质量守恒</li>
+                    <li>数量守恒</li>
+                    <li>价值守恒</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <h3>⚡ 因果关系</h3>
+                <p>原因与结果的必然联系</p>
+                <ul>
+                    <li>动作导致状态改变</li>
+                    <li>条件决定结果</li>
+                    <li>输入影响输出</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <h3>⏰ 时空关系</h3>
+                <p>时间和空间的连续性</p>
+                <ul>
+                    <li>时间流逝</li>
+                    <li>空间位置</li>
+                    <li>运动轨迹</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <h3>🔀 转换关系</h3>
+                <p>形态和状态的转换</p>
+                <ul>
+                    <li>物理变化</li>
+                    <li>化学反应</li>
+                    <li>能量转换</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="code-block">
+// 算法伪代码
+function physicalReasoning(problem) {
+    // 1. 解析题目
+    const entities = extractEntities(problem)
+    const directRelations = extractRelations(problem)
+    
+    // 2. 构建物性图
+    const physicalGraph = buildPhysicalGraph(entities, directRelations)
+    
+    // 3. 扩展关系
+    const expandedGraph = expandWithPhysicalRelations(physicalGraph)
+    
+    // 4. 寻找路径
+    const paths = findPathsFromKnownToUnknown(expandedGraph)
+    
+    // 5. 选择最优路径并推理
+    const bestPath = selectBestPath(paths)
+    const answer = executeReasoning(bestPath)
+    
+    return answer
+}
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="index.html" class="btn">在线体验</a>
+            <a href="#" class="btn" style="background: #10b981;">查看更多示例</a>
+        </div>
+    </div>
+
+    <script>
+        console.log('🧩 基于物性关系的推理算法演示');
+        console.log('📊 核心思想：通过物性关系连接已知和未知');
+        console.log('🔬 关键步骤：');
+        console.log('  1. 题目解析 - 提取实体和关系');
+        console.log('  2. 物性增强 - 加入物理规律');
+        console.log('  3. 关系推理 - 扩展隐含连接');
+        console.log('  4. 路径发现 - 找到求解通路');
+        console.log('  5. 推理执行 - 得出最终答案');
+    </script>
+</body>
+</html>

@@ -114,6 +114,23 @@
         .loading-spinner {
             @apply inline-block w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin;
         }
+        
+        .entity-node {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .entity-node:hover {
+            transform: scale(1.1);
+        }
+        
+        .relation-line {
+            transition: all 0.3s ease;
+        }
+        
+        .relation-line:hover {
+            stroke-width: 3;
+        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 min-h-screen">
@@ -350,37 +367,74 @@
                         </div>
                     </div>
 
-                    <!-- 实体关系图 -->
+                    <!-- 物性关系图 -->
                     <div class="glass-card rounded-2xl p-6 shadow-xl animate-slide-up">
                         <div class="flex flex-col space-y-1.5 pb-6">
-                            <h3 class="text-2xl font-bold gradient-text">🕸️ 实体关系图</h3>
-                            <p class="text-sm text-gray-600">基于COT-DIR算法自动生成的实体关系可视化</p>
+                            <h3 class="text-2xl font-bold gradient-text">🌐 物性关系图</h3>
+                            <p class="text-sm text-gray-600">智能识别问题中的物体属性和相互关系</p>
                         </div>
                         <div class="relative">
                             <div id="diagramLoading" class="flex items-center justify-center h-96">
                                 <div class="loading-spinner mr-3"></div>
-                                <span class="text-gray-600">正在生成实体关系图...</span>
+                                <span class="text-gray-600">正在生成物性关系图...</span>
                             </div>
-                            <svg id="relationshipDiagram" width="100%" height="400" class="border border-gray-200 rounded-lg bg-gray-50" style="display: none;">
-                                <!-- SVG内容将通过JavaScript动态生成 -->
+                            <svg id="relationshipDiagram" width="100%" height="500" class="border-2 border-gray-200 rounded-lg bg-gradient-to-br from-blue-50 to-purple-50" style="display: none;">
+                                <defs>
+                                    <marker id="arrowhead" markerWidth="10" markerHeight="7" 
+                                            refX="9" refY="3.5" orient="auto">
+                                        <polygon points="0 0, 10 3.5, 0 7" fill="#6b7280" />
+                                    </marker>
+                                    <filter id="shadow">
+                                        <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.3"/>
+                                    </filter>
+                                </defs>
                             </svg>
-                            <div class="mt-4 flex flex-wrap gap-4 text-sm" id="diagramLegend" style="display: none;">
+                            <div class="mt-4 flex flex-wrap gap-4 text-sm justify-center" id="diagramLegend" style="display: none;">
                                 <div class="flex items-center space-x-2">
-                                    <div class="w-4 h-4 rounded-full bg-red-500"></div>
-                                    <span>👤 人物</span>
+                                    <div class="w-4 h-4 rounded-full bg-blue-500"></div>
+                                    <span>数量实体</span>
                                 </div>
                                 <div class="flex items-center space-x-2">
                                     <div class="w-4 h-4 rounded-full bg-green-500"></div>
-                                    <span>📦 物品</span>
-                                </div>
-                                <div class="flex items-center space-x-2">
-                                    <div class="w-4 h-4 rounded-full bg-orange-500"></div>
-                                    <span>💰 货币</span>
+                                    <span>人物实体</span>
                                 </div>
                                 <div class="flex items-center space-x-2">
                                     <div class="w-4 h-4 rounded-full bg-purple-500"></div>
-                                    <span>💡 概念</span>
+                                    <span>结果实体</span>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 物性关系详情 -->
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <!-- 实体列表 -->
+                        <div class="glass-card rounded-2xl p-6 shadow-xl animate-slide-up">
+                            <h4 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
+                                <span class="text-2xl mr-2">📦</span> 实体列表
+                            </h4>
+                            <div id="entitiesList" class="space-y-2 max-h-64 overflow-y-auto">
+                                <p class="text-gray-500 text-center text-sm">等待分析...</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 关系列表 -->
+                        <div class="glass-card rounded-2xl p-6 shadow-xl animate-slide-up">
+                            <h4 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
+                                <span class="text-2xl mr-2">🔗</span> 关系列表
+                            </h4>
+                            <div id="relationsList" class="space-y-2 max-h-64 overflow-y-auto">
+                                <p class="text-gray-500 text-center text-sm">等待分析...</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 问题元数据 -->
+                        <div class="glass-card rounded-2xl p-6 shadow-xl animate-slide-up">
+                            <h4 class="text-lg font-bold text-gray-800 mb-4 flex items-center">
+                                <span class="text-2xl mr-2">📊</span> 问题元数据
+                            </h4>
+                            <div id="metadata" class="space-y-2">
+                                <p class="text-gray-500 text-center text-sm">等待分析...</p>
                             </div>
                         </div>
                     </div>
@@ -1189,7 +1243,7 @@
         let isAlgorithmAvailable = false;
         
         // API配置
-        const API_BASE_URL = 'http://localhost:3001';
+        const API_BASE_URL = 'http://127.0.0.1:3003';
         
         // 页面加载时初始化
         document.addEventListener('DOMContentLoaded', function() {
@@ -1381,6 +1435,11 @@
             resultArea.scrollIntoView({ behavior: 'smooth' });
         }
         
+        // 显示实体详情
+        function showEntityDetails(entity) {
+            alert(`实体详情：\n\n类型: ${entity.type}\n值: ${entity.value}\n物体: ${entity.object || '无'}\n类别: ${entity.category || '无'}\n\n属性:\n${JSON.stringify(entity.properties || {}, null, 2)}`);
+        }
+        
         // 清空函数
         function clearProblem() {
             document.getElementById('problemInput').value = '';
@@ -1424,10 +1483,64 @@
                 document.getElementById('stepsDisplay').innerHTML = stepsHtml;
             }
 
-            // 生成实体关系图
+            // 生成物性关系图
             if (result.entity_relationship_diagram) {
                 const diagram = result.entity_relationship_diagram;
                 generateRelationshipDiagram(diagram.entities, diagram.relationships);
+                
+                // 更新实体列表
+                const entitiesHtml = diagram.entities.map(entity => `
+                    <div class="p-3 bg-gray-50 rounded-lg border border-gray-200">
+                        <div class="flex items-center justify-between">
+                            <span class="font-semibold text-gray-700">${entity.type}</span>
+                            <span class="text-sm text-gray-500">${entity.id}</span>
+                        </div>
+                        <div class="text-sm text-gray-600 mt-1">
+                            值: ${entity.value} ${entity.object ? `(${entity.object})` : ''}
+                        </div>
+                        ${entity.category ? `<div class="text-xs text-gray-500">类别: ${entity.category}</div>` : ''}
+                    </div>
+                `).join('');
+                document.getElementById('entitiesList').innerHTML = entitiesHtml || '<p class="text-gray-500 text-center text-sm">暂无实体数据</p>';
+                
+                // 更新关系列表
+                const relationsHtml = diagram.relationships.map(rel => `
+                    <div class="p-3 bg-gray-50 rounded-lg border border-gray-200">
+                        <div class="flex items-center gap-2">
+                            <span class="text-sm text-gray-600">${rel.from}</span>
+                            <span class="text-sm font-bold text-gray-700">→ ${rel.type} →</span>
+                            <span class="text-sm text-gray-600">${rel.to}</span>
+                        </div>
+                        <div class="text-xs text-gray-500 mt-1">
+                            强度: ${((rel.strength || 1) * 100).toFixed(0)}% | 类别: ${rel.category || '默认'}
+                        </div>
+                    </div>
+                `).join('');
+                document.getElementById('relationsList').innerHTML = relationsHtml || '<p class="text-gray-500 text-center text-sm">暂无关系数据</p>';
+                
+                // 更新元数据
+                const metadata = diagram.metadata || {};
+                const metadataHtml = `
+                    <div class="space-y-2">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">问题类型:</span>
+                            <span class="font-semibold text-gray-800">${metadata.problem_type || '未知'}</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">复杂度:</span>
+                            <span class="font-semibold text-gray-800">${metadata.complexity || '未知'}</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">关键物体:</span>
+                            <span class="font-semibold text-gray-800">${metadata.key_objects ? metadata.key_objects.join(', ') : '无'}</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">关键动作:</span>
+                            <span class="font-semibold text-gray-800">${metadata.key_actions ? metadata.key_actions.length : 0}个</span>
+                        </div>
+                    </div>
+                `;
+                document.getElementById('metadata').innerHTML = metadataHtml;
                 
                 // 显示隐含约束
                 if (diagram.implicit_constraints && diagram.implicit_constraints.length > 0) {
@@ -1436,113 +1549,105 @@
             }
         }
         
-        // 生成实体关系图
+        // 生成物性关系图
         function generateRelationshipDiagram(entities, relationships) {
             const svg = document.getElementById('relationshipDiagram');
             const diagramLoading = document.getElementById('diagramLoading');
             const diagramLegend = document.getElementById('diagramLegend');
             
-            svg.innerHTML = '';
+            // 清空SVG内容，但保留defs
+            while (svg.lastChild && svg.lastChild.nodeName !== 'defs') {
+                svg.removeChild(svg.lastChild);
+            }
             
-            const width = svg.clientWidth || 800;
-            const height = 400;
+            // 实体颜色映射
+            const entityColors = {
+                '数量': '#3b82f6',
+                '人物': '#10b981',
+                '结果': '#8b5cf6',
+                '输入': '#f59e0b',
+                '操作': '#ef4444'
+            };
             
-            // 计算节点位置
-            const centerX = width / 2;
-            const centerY = height / 2;
-            const radius = Math.min(width, height) / 4;
-            
-            const positions = entities.map((entity, index) => {
-                if (entities.length === 1) {
-                    return { x: centerX, y: centerY };
-                }
-                if (entities.length === 2) {
-                    return {
-                        x: centerX + (index === 0 ? -radius/2 : radius/2),
-                        y: centerY
-                    };
-                }
-                const angle = (index * 2 * Math.PI) / entities.length;
-                return {
-                    x: centerX + radius * Math.cos(angle),
-                    y: centerY + radius * Math.sin(angle)
-                };
-            });
-
-            // 绘制连接线
+            // 绘制关系线
             relationships.forEach(rel => {
-                const sourceIndex = entities.findIndex(e => e.id === rel.source);
-                const targetIndex = entities.findIndex(e => e.id === rel.target);
+                const source = entities.find(e => e.id === (rel.source || rel.from));
+                const target = entities.find(e => e.id === (rel.target || rel.to));
                 
-                if (sourceIndex !== -1 && targetIndex !== -1) {
-                    const source = positions[sourceIndex];
-                    const target = positions[targetIndex];
+                if (source && target) {
+                    // 创建曲线路径
+                    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                    const midX = (source.x + target.x) / 2;
+                    const midY = (source.y + target.y) / 2 - 30;
                     
-                    // 创建连接线
-                    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-                    line.setAttribute('x1', source.x);
-                    line.setAttribute('y1', source.y);
-                    line.setAttribute('x2', target.x);
-                    line.setAttribute('y2', target.y);
-                    line.setAttribute('stroke', '#94a3b8');
-                    line.setAttribute('stroke-width', '2');
-                    svg.appendChild(line);
+                    const d = `M ${source.x} ${source.y} Q ${midX} ${midY}, ${target.x} ${target.y}`;
+                    path.setAttribute('d', d);
+                    path.setAttribute('fill', 'none');
+                    path.setAttribute('stroke', '#6b7280');
+                    path.setAttribute('stroke-width', '2');
+                    path.setAttribute('marker-end', 'url(#arrowhead)');
+                    path.setAttribute('class', 'relation-line');
+                    path.setAttribute('opacity', rel.strength || 0.8);
+                    svg.appendChild(path);
                     
-                    // 添加标签
+                    // 添加关系标签
                     const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-                    text.setAttribute('x', (source.x + target.x) / 2);
-                    text.setAttribute('y', (source.y + target.y) / 2 - 5);
+                    text.setAttribute('x', midX);
+                    text.setAttribute('y', midY);
                     text.setAttribute('text-anchor', 'middle');
-                    text.setAttribute('class', 'text-xs fill-gray-600');
-                    text.textContent = rel.label;
+                    text.setAttribute('class', 'text-xs fill-gray-600 font-medium');
+                    text.textContent = rel.type || rel.label || '';
                     svg.appendChild(text);
                 }
             });
-
-            // 绘制节点
+            
+            // 绘制实体节点
             entities.forEach((entity, index) => {
-                const position = positions[index];
-                const colors = {
-                    person: '#ef4444',
-                    object: '#22c55e',
-                    money: '#f97316',
-                    concept: '#8b5cf6'
-                };
-                const icons = {
-                    person: '👤',
-                    object: '📦',
-                    money: '💰',
-                    concept: '💡'
-                };
+                const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+                g.setAttribute('class', 'entity-node');
                 
-                // 创建圆形
+                // 实体圆形
                 const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                circle.setAttribute('cx', position.x);
-                circle.setAttribute('cy', position.y);
-                circle.setAttribute('r', '35');
-                circle.setAttribute('fill', colors[entity.type] || '#6b7280');
-                circle.setAttribute('stroke', '#fff');
-                circle.setAttribute('stroke-width', '3');
-                circle.setAttribute('class', 'cursor-pointer drop-shadow-lg');
-                svg.appendChild(circle);
+                circle.setAttribute('cx', entity.x);
+                circle.setAttribute('cy', entity.y);
+                circle.setAttribute('r', '40');
+                circle.setAttribute('fill', entityColors[entity.type] || '#6b7280');
+                circle.setAttribute('filter', 'url(#shadow)');
+                g.appendChild(circle);
                 
-                // 添加图标
-                const iconText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-                iconText.setAttribute('x', position.x);
-                iconText.setAttribute('y', position.y - 5);
-                iconText.setAttribute('text-anchor', 'middle');
-                iconText.setAttribute('class', 'text-xs fill-white font-medium pointer-events-none');
-                iconText.textContent = icons[entity.type] || '🔷';
-                svg.appendChild(iconText);
+                // 实体类型
+                const typeText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                typeText.setAttribute('x', entity.x);
+                typeText.setAttribute('y', entity.y - 5);
+                typeText.setAttribute('text-anchor', 'middle');
+                typeText.setAttribute('class', 'text-sm fill-white font-bold');
+                typeText.textContent = entity.type || '';
+                g.appendChild(typeText);
                 
-                // 添加名称
-                const nameText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-                nameText.setAttribute('x', position.x);
-                nameText.setAttribute('y', position.y + 8);
-                nameText.setAttribute('text-anchor', 'middle');
-                nameText.setAttribute('class', 'text-xs fill-white font-medium pointer-events-none');
-                nameText.textContent = entity.name;
-                svg.appendChild(nameText);
+                // 实体值
+                const valueText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                valueText.setAttribute('x', entity.x);
+                valueText.setAttribute('y', entity.y + 10);
+                valueText.setAttribute('text-anchor', 'middle');
+                valueText.setAttribute('class', 'text-xs fill-white');
+                valueText.textContent = entity.value || entity.label || entity.name || '';
+                g.appendChild(valueText);
+                
+                // 物体标签
+                if (entity.object) {
+                    const objectText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                    objectText.setAttribute('x', entity.x);
+                    objectText.setAttribute('y', entity.y + 55);
+                    objectText.setAttribute('text-anchor', 'middle');
+                    objectText.setAttribute('class', 'text-sm fill-gray-700 font-medium');
+                    objectText.textContent = entity.object;
+                    g.appendChild(objectText);
+                }
+                
+                // 添加点击事件
+                g.addEventListener('click', () => showEntityDetails(entity));
+                
+                svg.appendChild(g);
             });
             
             // 显示图表
@@ -1562,7 +1667,7 @@
                         !
                     </div>
                     <div class="flex-1 text-sm text-gray-700">
-                        ${constraint}
+                        <strong>${constraint.type || '约束'}:</strong> ${constraint.description || constraint}
                     </div>
                 </div>
             `).join('');

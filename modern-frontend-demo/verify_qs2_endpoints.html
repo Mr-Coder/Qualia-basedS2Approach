@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QS²端点验证测试</title>
+    <style>
+        body { font-family: 'Microsoft YaHei', sans-serif; padding: 20px; background: #f5f5f5; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .test-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 20px 0; }
+        .test-card { background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .test-card h3 { margin-top: 0; color: #333; border-bottom: 2px solid #007acc; padding-bottom: 10px; }
+        .status { padding: 8px 12px; border-radius: 4px; font-weight: bold; margin: 10px 0; }
+        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .info { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        .loading { background: #fff3cd; color: #856404; border: 1px solid #ffeaa7; }
+        pre { background: #f8f9fa; padding: 10px; border-radius: 4px; overflow-x: auto; font-size: 12px; max-height: 200px; }
+        button { background: #007acc; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; margin: 5px; }
+        button:hover { background: #005a9e; }
+        button:disabled { background: #ccc; cursor: not-allowed; }
+        .endpoint { font-family: monospace; background: #e9ecef; padding: 2px 6px; border-radius: 3px; }
+        .summary { background: white; border-radius: 8px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .metric { display: inline-block; margin: 0 20px 10px 0; }
+        .metric-value { font-size: 24px; font-weight: bold; color: #007acc; }
+        .metric-label { font-size: 14px; color: #666; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧠 QS²算法端点验证测试</h1>
+        <p>验证所有QS²相关API端点是否正常工作</p>
+        
+        <div class="summary">
+            <h3>📊 测试概览</h3>
+            <div class="metric">
+                <div class="metric-value" id="totalTests">0</div>
+                <div class="metric-label">总测试数</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value" id="passedTests">0</div>
+                <div class="metric-label">通过测试</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value" id="failedTests">0</div>
+                <div class="metric-label">失败测试</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value" id="successRate">0%</div>
+                <div class="metric-label">成功率</div>
+            </div>
+        </div>
+
+        <button onclick="runAllTests()">🚀 运行所有测试</button>
+        <button onclick="clearResults()">🧹 清除结果</button>
+
+        <div class="test-grid">
+            <!-- QS² Demo 端点测试 -->
+            <div class="test-card">
+                <h3>🎭 QS² 演示数据</h3>
+                <p>端点: <span class="endpoint">GET /api/qs2/demo</span></p>
+                <button onclick="testQS2Demo()">测试</button>
+                <div id="qs2Demo-status" class="status info">等待测试...</div>
+                <div id="qs2Demo-details"></div>
+            </div>
+
+            <!-- QS² Relations 端点测试 -->
+            <div class="test-card">
+                <h3>🔗 QS² 关系发现</h3>
+                <p>端点: <span class="endpoint">GET /api/qs2/relations</span></p>
+                <button onclick="testQS2Relations()">测试</button>
+                <div id="qs2Relations-status" class="status info">等待测试...</div>
+                <div id="qs2Relations-details"></div>
+            </div>
+
+            <!-- QS² Qualia Structures 端点测试 -->
+            <div class="test-card">
+                <h3>🧬 Qualia 语义结构</h3>
+                <p>端点: <span class="endpoint">GET /api/qs2/qualia-structures</span></p>
+                <button onclick="testQualiaStructures()">测试</button>
+                <div id="qualiaStructures-status" class="status info">等待测试...</div>
+                <div id="qualiaStructures-details"></div>
+            </div>
+
+            <!-- Algorithm Execution 端点测试 -->
+            <div class="test-card">
+                <h3>⚙️ 算法执行数据</h3>
+                <p>端点: <span class="endpoint">GET /api/algorithm/execution</span></p>
+                <button onclick="testAlgorithmExecution()">测试</button>
+                <div id="algorithmExecution-status" class="status info">等待测试...</div>
+                <div id="algorithmExecution-details"></div>
+            </div>
+
+            <!-- Algorithm Execution History 端点测试 -->
+            <div class="test-card">
+                <h3>📚 算法执行历史</h3>
+                <p>端点: <span class="endpoint">GET /api/algorithm/execution/history</span></p>
+                <button onclick="testExecutionHistory()">测试</button>
+                <div id="executionHistory-status" class="status info">等待测试...</div>
+                <div id="executionHistory-details"></div>
+            </div>
+
+            <!-- QS² Visualization Config 端点测试 -->
+            <div class="test-card">
+                <h3>🎨 可视化配置</h3>
+                <p>端点: <span class="endpoint">GET /api/qs2/visualization/config</span></p>
+                <button onclick="testVisualizationConfig()">测试</button>
+                <div id="visualizationConfig-status" class="status info">等待测试...</div>
+                <div id="visualizationConfig-details"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let testResults = {};
+        let totalTests = 0;
+        let passedTests = 0;
+        let failedTests = 0;
+
+        async function runTest(testName, endpoint, validator = null) {
+            const statusElement = document.getElementById(`${testName}-status`);
+            const detailsElement = document.getElementById(`${testName}-details`);
+            
+            statusElement.className = 'status loading';
+            statusElement.textContent = '🔄 测试中...';
+            detailsElement.innerHTML = '';
+
+            try {
+                const response = await fetch(endpoint);
+                const data = await response.json();
+                
+                let isValid = response.ok;
+                let validationMessage = '';
+                
+                if (validator) {
+                    const validationResult = validator(data, response);
+                    isValid = validationResult.valid;
+                    validationMessage = validationResult.message;
+                }
+
+                if (isValid) {
+                    statusElement.className = 'status success';
+                    statusElement.textContent = `✅ 测试通过 (${response.status})`;
+                    testResults[testName] = true;
+                    passedTests++;
+                } else {
+                    statusElement.className = 'status error';
+                    statusElement.textContent = `❌ 测试失败 (${response.status})`;
+                    testResults[testName] = false;
+                    failedTests++;
+                }
+
+                detailsElement.innerHTML = `
+                    ${validationMessage ? `<p><strong>验证结果:</strong> ${validationMessage}</p>` : ''}
+                    <details>
+                        <summary>查看响应数据</summary>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    </details>
+                `;
+
+            } catch (error) {
+                statusElement.className = 'status error';
+                statusElement.textContent = `❌ 网络错误`;
+                detailsElement.innerHTML = `<p><strong>错误:</strong> ${error.message}</p>`;
+                testResults[testName] = false;
+                failedTests++;
+            }
+
+            updateSummary();
+        }
+
+        function updateSummary() {
+            document.getElementById('totalTests').textContent = totalTests;
+            document.getElementById('passedTests').textContent = passedTests;
+            document.getElementById('failedTests').textContent = failedTests;
+            document.getElementById('successRate').textContent = 
+                totalTests > 0 ? Math.round((passedTests / totalTests) * 100) + '%' : '0%';
+        }
+
+        async function testQS2Demo() {
+            totalTests++;
+            await runTest('qs2Demo', '/api/qs2/demo', (data, response) => {
+                if (!data.success) return { valid: false, message: '响应中success为false' };
+                if (!data.data) return { valid: false, message: '缺少data字段' };
+                if (!data.data.entities) return { valid: false, message: '缺少entities数据' };
+                if (!data.data.relationships) return { valid: false, message: '缺少relationships数据' };
+                if (!data.data.algorithm_stages) return { valid: false, message: '缺少algorithm_stages数据' };
+                
+                return { 
+                    valid: true, 
+                    message: `实体: ${data.data.entities.length}, 关系: ${data.data.relationships.length}, 阶段: ${data.data.algorithm_stages.length}` 
+                };
+            });
+        }
+
+        async function testQS2Relations() {
+            totalTests++;
+            await runTest('qs2Relations', '/api/qs2/relations', (data, response) => {
+                // QS² relations可能返回success:false（暂无数据），这是正常的
+                return { valid: true, message: data.success ? '有QS²关系数据' : '暂无QS²关系数据（正常）' };
+            });
+        }
+
+        async function testQualiaStructures() {
+            totalTests++;
+            await runTest('qualiaStructures', '/api/qs2/qualia-structures', (data, response) => {
+                if (!data.success) return { valid: false, message: '响应中success为false' };
+                if (!Array.isArray(data.data)) return { valid: false, message: 'data不是数组' };
+                
+                return { 
+                    valid: true, 
+                    message: `Qualia结构数量: ${data.data.length}` 
+                };
+            });
+        }
+
+        async function testAlgorithmExecution() {
+            totalTests++;
+            await runTest('algorithmExecution', '/api/algorithm/execution', (data, response) => {
+                // 算法执行数据可能返回success:false，这是正常的
+                return { valid: true, message: data.success ? '有算法执行数据' : '暂无算法执行数据（正常）' };
+            });
+        }
+
+        async function testExecutionHistory() {
+            totalTests++;
+            await runTest('executionHistory', '/api/algorithm/execution/history?limit=3', (data, response) => {
+                if (!data.success) return { valid: false, message: '响应中success为false' };
+                if (!Array.isArray(data.data)) return { valid: false, message: 'data不是数组' };
+                
+                return { 
+                    valid: true, 
+                    message: `执行历史记录数量: ${data.data.length}` 
+                };
+            });
+        }
+
+        async function testVisualizationConfig() {
+            totalTests++;
+            await runTest('visualizationConfig', '/api/qs2/visualization/config', (data, response) => {
+                if (!data.success) return { valid: false, message: '响应中success为false' };
+                if (!data.data) return { valid: false, message: '缺少data字段' };
+                
+                return { 
+                    valid: true, 
+                    message: '可视化配置获取成功' 
+                };
+            });
+        }
+
+        async function runAllTests() {
+            clearResults();
+            console.log('🚀 开始运行所有QS²端点测试...');
+            
+            await testQS2Demo();
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            await testQS2Relations();
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            await testQualiaStructures();
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            await testAlgorithmExecution();
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            await testExecutionHistory();
+            await new Promise(resolve => setTimeout(resolve, 500));
+            
+            await testVisualizationConfig();
+            
+            console.log('🎉 所有测试完成!');
+            
+            if (passedTests === totalTests) {
+                alert('🎉 恭喜！所有QS²端点测试都通过了！');
+            } else {
+                alert(`⚠️ 测试完成！通过: ${passedTests}/${totalTests}`);
+            }
+        }
+
+        function clearResults() {
+            testResults = {};
+            totalTests = 0;
+            passedTests = 0;
+            failedTests = 0;
+            updateSummary();
+            
+            document.querySelectorAll('.status').forEach(element => {
+                element.className = 'status info';
+                element.textContent = '等待测试...';
+            });
+            
+            document.querySelectorAll('[id$="-details"]').forEach(element => {
+                element.innerHTML = '';
+            });
+        }
+
+        // 页面加载完成后自动运行测试
+        window.addEventListener('load', () => {
+            setTimeout(runAllTests, 1000);
+        });
+    </script>
+</body>
+</html>

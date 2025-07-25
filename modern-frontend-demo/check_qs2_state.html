@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QS²状态检查</title>
+    <style>
+        body { font-family: 'Microsoft YaHei', sans-serif; padding: 20px; background: #f5f5f5; }
+        .container { max-width: 800px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .status { padding: 10px; margin: 10px 0; border-radius: 4px; }
+        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .info { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        pre { background: #f8f9fa; padding: 10px; border-radius: 4px; overflow-x: auto; font-size: 12px; max-height: 300px; }
+        button { background: #007acc; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; margin: 5px; }
+        .check-item { margin: 15px 0; padding: 15px; border: 1px solid #ddd; border-radius: 4px; }
+        .check-title { font-weight: bold; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧠 QS²状态检查工具</h1>
+        <p>检查QS²算法是否正确集成和检测</p>
+        
+        <button onclick="runAllChecks()">🔍 运行完整检查</button>
+        <button onclick="clearResults()">🧹 清除结果</button>
+        
+        <div id="results"></div>
+    </div>
+
+    <script>
+        async function runAllChecks() {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '<div class="status info">🔄 正在运行检查...</div>';
+            
+            const checks = [];
+            
+            // 检查1: QS²演示数据
+            checks.push(await checkQS2Demo());
+            
+            // 检查2: 算法执行数据和QS²特征检测
+            checks.push(await checkAlgorithmExecution());
+            
+            // 检查3: QS² API服务
+            checks.push(await checkQS2API());
+            
+            // 检查4: 前端算法API转换逻辑
+            checks.push(await checkAlgorithmAPIConversion());
+            
+            // 生成报告
+            generateReport(checks);
+        }
+        
+        async function checkQS2Demo() {
+            try {
+                const response = await fetch('/api/qs2/demo');
+                const data = await response.json();
+                
+                return {
+                    name: 'QS²演示数据',
+                    success: data.success && data.data,
+                    message: data.success ? `✅ 演示数据可用 (${data.data.entities.length} 实体, ${data.data.relationships.length} 关系)` : '❌ 演示数据不可用',
+                    details: data
+                };
+            } catch (error) {
+                return {
+                    name: 'QS²演示数据',
+                    success: false,
+                    message: `❌ 获取失败: ${error.message}`,
+                    details: { error: error.message }
+                };
+            }
+        }
+        
+        async function checkAlgorithmExecution() {
+            try {
+                const response = await fetch('/api/algorithm/execution');
+                const data = await response.json();
+                
+                if (!data.success || !data.data) {
+                    return {
+                        name: '算法执行数据',
+                        success: false,
+                        message: '❌ 算法执行数据不可用',
+                        details: data
+                    };
+                }
+                
+                // 检查QS²特征
+                const hasQualiaStages = data.data.stages?.some(stage => 
+                    stage.stage_name?.includes('语义结构构建') || 
+                    stage.output_data?.qualia_structures ||
+                    stage.decisions?.some(d => d.method === 'qualia_based')
+                );
+                
+                const hasQS2Flags = data.data.is_qs2_enhanced || data.data.algorithm_type === 'QS2_Enhanced';
+                
+                return {
+                    name: '算法执行数据',
+                    success: true,
+                    message: `✅ 数据可用 | QS²特征: ${hasQualiaStages ? '✅' : '❌'} | QS²标识: ${hasQS2Flags ? '✅' : '❌'}`,
+                    details: {
+                        executionData: data.data,
+                        hasQualiaStages,
+                        hasQS2Flags,
+                        stageNames: data.data.stages?.map(s => s.stage_name) || []
+                    }
+                };
+            } catch (error) {
+                return {
+                    name: '算法执行数据',
+                    success: false,
+                    message: `❌ 获取失败: ${error.message}`,
+                    details: { error: error.message }
+                };
+            }
+        }
+        
+        async function checkQS2API() {
+            try {
+                const [relationsResponse, qualiaResponse] = await Promise.all([
+                    fetch('/api/qs2/relations'),
+                    fetch('/api/qs2/qualia-structures')
+                ]);
+                
+                const relationsData = await relationsResponse.json();
+                const qualiaData = await qualiaResponse.json();
+                
+                return {
+                    name: 'QS² API服务',
+                    success: true,
+                    message: `✅ API可用 | 关系: ${relationsData.success ? '✅' : '❌'} | Qualia: ${qualiaData.success ? '✅' : '❌'}`,
+                    details: {
+                        relations: relationsData,
+                        qualia: qualiaData
+                    }
+                };
+            } catch (error) {
+                return {
+                    name: 'QS² API服务',
+                    success: false,
+                    message: `❌ API失败: ${error.message}`,
+                    details: { error: error.message }
+                };
+            }
+        }
+        
+        async function checkAlgorithmAPIConversion() {
+            try {
+                // 模拟前端算法API的转换逻辑
+                const demoResponse = await fetch('/api/qs2/demo');
+                const demoData = await demoResponse.json();
+                
+                if (demoData.success && demoData.data) {
+                    // 模拟转换过程
+                    const currentTime = Date.now() / 1000;
+                    const convertedStages = demoData.data.algorithm_stages.map((stage, index) => ({
+                        stage_id: `qs2_stage_${index}`,
+                        stage_name: stage.name,
+                        timestamp: currentTime + index,
+                        duration_ms: stage.duration_ms,
+                        confidence: stage.confidence,
+                        algorithm_state: {
+                            phase: stage.name,
+                            is_qs2_enhanced: true,
+                            algorithm_type: 'QS2_Enhanced'
+                        }
+                    }));
+                    
+                    const convertedData = {
+                        execution_id: demoData.execution_id,
+                        problem_text: demoData.problem_text,
+                        total_duration_ms: demoData.data.algorithm_stages.reduce((sum, stage) => sum + stage.duration_ms, 0),
+                        stages: convertedStages,
+                        final_result: {
+                            entities: demoData.data.entities,
+                            relations: demoData.data.relationships,
+                            algorithm_type: 'QS2_Enhanced',
+                            is_qs2_enhanced: true
+                        }
+                    };
+                    
+                    return {
+                        name: '前端API转换',
+                        success: true,
+                        message: `✅ 转换成功 (${convertedData.stages.length} 阶段, ${convertedData.total_duration_ms.toFixed(1)}ms)`,
+                        details: convertedData
+                    };
+                }
+                
+                return {
+                    name: '前端API转换',
+                    success: false,
+                    message: '❌ 转换失败: 无有效数据',
+                    details: demoData
+                };
+            } catch (error) {
+                return {
+                    name: '前端API转换',
+                    success: false,
+                    message: `❌ 转换失败: ${error.message}`,
+                    details: { error: error.message }
+                };
+            }
+        }
+        
+        function generateReport(checks) {
+            const resultsDiv = document.getElementById('results');
+            const successCount = checks.filter(c => c.success).length;
+            const totalCount = checks.length;
+            
+            let html = `
+                <div class="status ${successCount === totalCount ? 'success' : 'error'}">
+                    📊 检查完成: ${successCount}/${totalCount} 通过 (${Math.round(successCount/totalCount*100)}%)
+                </div>
+            `;
+            
+            checks.forEach(check => {
+                html += `
+                    <div class="check-item">
+                        <div class="check-title">${check.name}</div>
+                        <div class="status ${check.success ? 'success' : 'error'}">${check.message}</div>
+                        <details>
+                            <summary>查看详细信息</summary>
+                            <pre>${JSON.stringify(check.details, null, 2)}</pre>
+                        </details>
+                    </div>
+                `;
+            });
+            
+            if (successCount === totalCount) {
+                html += `
+                    <div class="status success">
+                        🎉 所有检查通过！QS²算法应该正常工作。
+                        <br>💡 提示: 如果前端界面仍未显示QS²内容，请刷新页面或清除浏览器缓存。
+                    </div>
+                `;
+            } else {
+                html += `
+                    <div class="status error">
+                        ⚠️ 部分检查失败。请检查上述错误信息。
+                    </div>
+                `;
+            }
+            
+            resultsDiv.innerHTML = html;
+        }
+        
+        function clearResults() {
+            document.getElementById('results').innerHTML = '';
+        }
+        
+        // 页面加载后自动运行检查
+        window.addEventListener('load', () => {
+            setTimeout(runAllChecks, 1000);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试算法讲解组件</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .status {
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        .button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+        }
+        .button:hover {
+            background: #0056b3;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 14px;
+        }
+        .component-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 测试物性推理算法讲解组件</h1>
+        
+        <div class="status info">
+            <h3>组件信息</h3>
+            <ul>
+                <li><strong>组件1:</strong> PhysicalReasoningAlgorithmExplanation（算法讲解）</li>
+                <li><strong>组件2:</strong> StepByStepPhysicalReasoning（分步演示）</li>
+                <li><strong>位置:</strong> "物性推理"标签页</li>
+            </ul>
+        </div>
+        
+        <div class="component-info">
+            <h3>应该看到的内容：</h3>
+            <ol>
+                <li><strong>算法讲解部分（新增）:</strong>
+                    <ul>
+                        <li>标题：基于物性关系的推理算法讲解</li>
+                        <li>5个可折叠的部分：核心概念、算法步骤、推理规则、算法示例、关键洞察</li>
+                        <li>算法总结公式</li>
+                    </ul>
+                </li>
+                <li><strong>分步演示部分:</strong>
+                    <ul>
+                        <li>标题：基于物性关系的推理 - 分步演示</li>
+                        <li>3个示例问题选择</li>
+                        <li>开始分步推理按钮</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+        
+        <div id="test-results"></div>
+        
+        <div style="text-align: center; margin-top: 30px;">
+            <button class="button" onclick="openApp()">打开应用</button>
+            <button class="button" onclick="clearCacheAndReload()">清除缓存并重载</button>
+            <button class="button" onclick="showCommands()">显示重启命令</button>
+        </div>
+    </div>
+    
+    <script>
+        const resultsEl = document.getElementById('test-results');
+        
+        async function checkComponents() {
+            resultsEl.innerHTML = '<div class="status info">正在检查组件状态...</div>';
+            
+            try {
+                // 检查服务器
+                const response = await fetch('http://localhost:3000/', { mode: 'no-cors' });
+                resultsEl.innerHTML += '<div class="status success">✅ 开发服务器运行正常</div>';
+            } catch (error) {
+                resultsEl.innerHTML += '<div class="status error">❌ 开发服务器未运行</div>';
+            }
+            
+            // 显示调试信息
+            resultsEl.innerHTML += `
+                <div class="status info">
+                    <h4>调试步骤：</h4>
+                    <ol>
+                        <li>确保两个终端都在运行：
+                            <pre>终端1: python demo_frontend.py
+终端2: npm run dev</pre>
+                        </li>
+                        <li>硬刷新浏览器（Ctrl/Cmd + Shift + R）</li>
+                        <li>检查浏览器控制台错误（F12）</li>
+                        <li>如果仍有问题，重启服务器</li>
+                    </ol>
+                </div>
+            `;
+        }
+        
+        function openApp() {
+            window.open('http://localhost:3000', '_blank');
+        }
+        
+        function clearCacheAndReload() {
+            localStorage.clear();
+            sessionStorage.clear();
+            alert('缓存已清除！请重新访问应用并点击"物性推理"标签页。');
+            window.open('http://localhost:3000', '_blank');
+        }
+        
+        function showCommands() {
+            resultsEl.innerHTML = `
+                <div class="component-info">
+                    <h3>重启服务器命令：</h3>
+                    <pre># 1. 停止所有服务（Ctrl+C）
+
+# 2. 清除缓存
+rm -rf node_modules/.vite
+rm -rf dist
+
+# 3. 启动API服务器（终端1）
+python demo_frontend.py
+
+# 4. 启动前端开发服务器（终端2）
+npm run dev
+
+# 5. 访问 http://localhost:3000
+# 6. 点击"🧩 物性推理"标签页</pre>
+                </div>
+            `;
+        }
+        
+        // 初始化检查
+        checkComponents();
+        
+        console.log('=== 算法讲解组件调试信息 ===');
+        console.log('新增组件：PhysicalReasoningAlgorithmExplanation.tsx');
+        console.log('位置：src/components/features/');
+        console.log('在App.tsx第23行导入');
+        console.log('在App.tsx第425行使用');
+    </script>
+</body>
+</html>

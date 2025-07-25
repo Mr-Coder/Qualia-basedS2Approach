@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QS²算法前端测试</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+        body { font-family: 'Microsoft YaHei', sans-serif; padding: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 8px; }
+        .success { background-color: #d4edda; color: #155724; }
+        .error { background-color: #f8d7da; color: #721c24; }
+        .info { background-color: #d1ecf1; color: #0c5460; }
+        pre { background: #f8f9fa; padding: 10px; border-radius: 4px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>🧠 QS²算法前端连接测试</h1>
+    
+    <div id="demo-test" class="test-section">
+        <h3>测试 QS² 演示数据获取</h3>
+        <button onclick="testQS2Demo()">测试 QS² Demo API</button>
+        <div id="demo-result"></div>
+    </div>
+
+    <div id="conversion-test" class="test-section">
+        <h3>测试 QS² 数据转换</h3>
+        <button onclick="testQS2Conversion()">测试数据转换</button>
+        <div id="conversion-result"></div>
+    </div>
+
+    <div id="algorithm-test" class="test-section">
+        <h3>测试算法执行数据获取</h3>
+        <button onclick="testAlgorithmExecution()">测试算法执行 API</button>
+        <div id="algorithm-result"></div>
+    </div>
+
+    <script>
+        async function testQS2Demo() {
+            const resultDiv = document.getElementById('demo-result');
+            resultDiv.innerHTML = '<p class="info">正在测试...</p>';
+            
+            try {
+                const response = await axios.get('/api/qs2/demo');
+                const data = response.data;
+                
+                if (data.success) {
+                    resultDiv.innerHTML = `
+                        <div class="success">
+                            <p>✅ QS² 演示数据获取成功!</p>
+                            <p>🔢 实体数量: ${data.data.entities.length}</p>
+                            <p>🔗 关系数量: ${data.data.relationships.length}</p>
+                            <p>📊 算法阶段: ${data.data.algorithm_stages.length}</p>
+                            <p>🆔 执行ID: ${data.execution_id}</p>
+                        </div>
+                        <details>
+                            <summary>查看完整数据</summary>
+                            <pre>${JSON.stringify(data, null, 2)}</pre>
+                        </details>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `<div class="error">❌ 获取失败: ${data.error}</div>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="error">❌ 网络错误: ${error.message}</div>`;
+            }
+        }
+
+        async function testQS2Conversion() {
+            const resultDiv = document.getElementById('conversion-result');
+            resultDiv.innerHTML = '<p class="info">正在测试...</p>';
+            
+            try {
+                const response = await axios.get('/api/qs2/demo');
+                const qs2Data = response.data;
+                
+                if (qs2Data.success) {
+                    // 模拟前端转换逻辑
+                    const currentTime = Date.now() / 1000;
+                    const qs2Stages = qs2Data.data.algorithm_stages.map((stage, index) => ({
+                        stage_id: `qs2_stage_${index}`,
+                        stage_name: stage.name,
+                        timestamp: currentTime + index,
+                        duration_ms: stage.duration_ms,
+                        confidence: stage.confidence,
+                        algorithm_state: {
+                            phase: stage.name,
+                            is_qs2_enhanced: true,
+                            algorithm_type: 'QS2_Enhanced'
+                        }
+                    }));
+                    
+                    const convertedData = {
+                        execution_id: qs2Data.execution_id,
+                        problem_text: qs2Data.problem_text,
+                        total_duration_ms: qs2Data.data.algorithm_stages.reduce((sum, stage) => sum + stage.duration_ms, 0),
+                        stages: qs2Stages,
+                        final_result: {
+                            entities: qs2Data.data.entities,
+                            relations: qs2Data.data.relationships,
+                            algorithm_type: 'QS2_Enhanced',
+                            is_qs2_enhanced: true
+                        }
+                    };
+                    
+                    resultDiv.innerHTML = `
+                        <div class="success">
+                            <p>✅ QS² 数据转换成功!</p>
+                            <p>⏱️ 总耗时: ${convertedData.total_duration_ms.toFixed(1)}ms</p>
+                            <p>📋 阶段数: ${convertedData.stages.length}</p>
+                            <p>🧠 算法类型: ${convertedData.final_result.algorithm_type}</p>
+                            <p>🔮 QS² 增强: ${convertedData.final_result.is_qs2_enhanced ? '是' : '否'}</p>
+                        </div>
+                        <details>
+                            <summary>查看转换后数据</summary>
+                            <pre>${JSON.stringify(convertedData, null, 2)}</pre>
+                        </details>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `<div class="error">❌ 转换失败: ${qs2Data.error}</div>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="error">❌ 转换错误: ${error.message}</div>`;
+            }
+        }
+
+        async function testAlgorithmExecution() {
+            const resultDiv = document.getElementById('algorithm-result');
+            resultDiv.innerHTML = '<p class="info">正在测试...</p>';
+            
+            try {
+                const response = await axios.get('/api/algorithm/execution');
+                const data = response.data;
+                
+                if (data.success) {
+                    resultDiv.innerHTML = `
+                        <div class="success">
+                            <p>✅ 算法执行数据获取成功!</p>
+                            <p>🔢 执行ID: ${data.data?.execution_id || '未知'}</p>
+                            <p>📊 阶段数: ${data.data?.stages?.length || 0}</p>
+                        </div>
+                        <details>
+                            <summary>查看执行数据</summary>
+                            <pre>${JSON.stringify(data, null, 2)}</pre>
+                        </details>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `<div class="error">❌ 获取失败: ${data.error || '未知错误'}</div>`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="error">❌ 网络错误: ${error.message}</div>`;
+            }
+        }
+
+        // 自动运行测试
+        window.onload = () => {
+            setTimeout(() => {
+                testQS2Demo();
+                setTimeout(() => {
+                    testQS2Conversion();
+                    setTimeout(() => {
+                        testAlgorithmExecution();
+                    }, 1000);
+                }, 1000);
+            }, 500);
+        };
+    </script>
+</body>
+</html>

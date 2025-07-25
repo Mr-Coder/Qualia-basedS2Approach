@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>物性推理算法演示</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+            line-height: 1.6;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2d3436;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+        .algorithm-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+        }
+        .step {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+        }
+        .step-number {
+            background: white;
+            color: #667eea;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 20px;
+            font-size: 18px;
+        }
+        .rule-box {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .rule-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 10px;
+        }
+        .example-section {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+        .example {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #28a745;
+        }
+        .problem {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2d3436;
+            margin-bottom: 15px;
+        }
+        .solution {
+            color: #495057;
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        .insight-box {
+            background: #d1ecf1;
+            border-left: 5px solid #17a2b8;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 5px;
+        }
+        .formula-box {
+            background: #e2e3e5;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            margin: 20px 0;
+            text-align: center;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧩 基于物性关系的推理算法</h1>
+        
+        <div class="algorithm-section">
+            <h2 style="text-align: center; margin-bottom: 30px;">算法核心思想</h2>
+            <p style="font-size: 18px; text-align: center; margin-bottom: 30px;">
+                通过引入物性关系，在断开的已知和未知之间建立连接通路，
+                然后沿着找到的路径进行推理，忽略无关的推理分支。
+            </p>
+            
+            <h3 style="margin-bottom: 20px;">算法五步骤：</h3>
+            
+            <div class="step">
+                <div class="step-number">1</div>
+                <div>
+                    <strong>题目分解</strong> → 提取phrase和entity，获得直陈关系
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <div>
+                    <strong>构建物性Graph</strong> → 直陈关系 + 物性entity
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <div>
+                    <strong>物性关系推理</strong> → 通过物性规律扩展Graph
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">4</div>
+                <div>
+                    <strong>寻找通路</strong> → 找到已知到未知的路径
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">5</div>
+                <div>
+                    <strong>精简推理</strong> → 只保留路径，忽略无关推理
+                </div>
+            </div>
+        </div>
+
+        <h2 style="color: #2d3436; text-align: center;">三条核心推理规则</h2>
+        
+        <div class="rule-box">
+            <div class="rule-title">规则1：守恒扩展</div>
+            <p><strong>什么时候用：</strong>看到"一共"、"总共"、"全部"等关键词</p>
+            <p><strong>怎么用：</strong>建立部分与整体的守恒关系</p>
+            <p><strong>示例：</strong>5个苹果 + 3个苹果 = 总数（守恒定律）</p>
+        </div>
+        
+        <div class="rule-box">
+            <div class="rule-title">规则2：因果链接</div>
+            <p><strong>什么时候用：</strong>存在动作或变化时</p>
+            <p><strong>怎么用：</strong>建立原因→结果的因果关系</p>
+            <p><strong>示例：</strong>数量×单价 → 因果关系 → 总价</p>
+        </div>
+        
+        <div class="rule-box">
+            <div class="rule-title">规则3：时空连续</div>
+            <p><strong>什么时候用：</strong>涉及时间或空间变化时</p>
+            <p><strong>怎么用：</strong>建立连续性关系</p>
+            <p><strong>示例：</strong>100升 ÷ 20升/时 → 时间关系 → 5小时</p>
+        </div>
+
+        <div class="example-section">
+            <h2 style="color: #2d3436; text-align: center; margin-bottom: 30px;">算法应用示例</h2>
+            
+            <div class="example">
+                <div class="problem">
+                    例题1：小明有5个苹果，妈妈又给了他3个苹果，现在小明一共有几个苹果？
+                </div>
+                <p><strong>应用规则：</strong>规则1（守恒扩展）- 识别"一共"关键词</p>
+                <p><strong>推理过程：</strong></p>
+                <ol>
+                    <li>提取实体：小明、苹果、5个、3个</li>
+                    <li>识别"一共"→ 应用守恒扩展规则</li>
+                    <li>建立关系：5个 + 3个 → 守恒 → 总数</li>
+                    <li>沿路径推理：5 + 3 = 8</li>
+                    <li>忽略无关信息（小明、妈妈等）</li>
+                </ol>
+                <div class="solution"><strong>答案：</strong>8个苹果</div>
+            </div>
+            
+            <div class="example">
+                <div class="problem">
+                    例题2：水池有水100升，每小时流出20升，几小时后水池为空？
+                </div>
+                <p><strong>应用规则：</strong>规则3（时空连续）- 涉及时间变化</p>
+                <p><strong>推理过程：</strong></p>
+                <ol>
+                    <li>提取实体：水池、100升、20升/时</li>
+                    <li>识别时间变化 → 应用时空连续规则</li>
+                    <li>建立关系：总量 ÷ 速率 → 时间关系 → 时间</li>
+                    <li>沿路径推理：100 ÷ 20 = 5</li>
+                    <li>忽略无关信息（水池等）</li>
+                </ol>
+                <div class="solution"><strong>答案：</strong>5小时</div>
+            </div>
+            
+            <div class="example">
+                <div class="problem">
+                    例题3：小红买了3支笔，每支笔5元，她一共花了多少钱？
+                </div>
+                <p><strong>应用规则：</strong>规则2（因果链接）- 数量和单价决定总价</p>
+                <p><strong>推理过程：</strong></p>
+                <ol>
+                    <li>提取实体：小红、笔、3支、5元/支</li>
+                    <li>识别因果关系 → 应用因果链接规则</li>
+                    <li>建立关系：数量×单价 → 因果 → 总价</li>
+                    <li>沿路径推理：3 × 5 = 15</li>
+                    <li>忽略无关信息（小红、买等）</li>
+                </ol>
+                <div class="solution"><strong>答案：</strong>15元</div>
+            </div>
+        </div>
+
+        <div class="insight-box">
+            <h3 style="color: #0c5460; margin-top: 0;">💡 核心洞察</h3>
+            <p style="font-size: 18px; font-weight: 500;">
+                <strong>记住：</strong>我们要的不是所有可能的推理，而是找到<strong>一条</strong>从已知到未知的通路，
+                然后沿着这条路径推理即可。其余的推理都可以"忘掉"。
+            </p>
+        </div>
+
+        <div class="formula-box">
+            <h3 style="margin-top: 0;">算法总结公式</h3>
+            <p>题目 → Phrase + Entity → 直陈关系 → +物性Entity → 物性Graph</p>
+            <p>↓</p>
+            <p>物性推理扩展 → 找通路(已知→未知) → 沿路径推理 → 答案</p>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+            <h3 style="color: #28a745;">🎉 算法特点</h3>
+            <ul style="list-style: none; padding: 0;">
+                <li style="margin: 10px 0;">✅ <strong>清晰的推理规则</strong> - 知道什么时候用哪条规则</li>
+                <li style="margin: 10px 0;">✅ <strong>明确的应用时机</strong> - 通过关键词识别应用场景</li>
+                <li style="margin: 10px 0;">✅ <strong>可解释的推理过程</strong> - 每一步都有明确的依据</li>
+                <li style="margin: 10px 0;">✅ <strong>高效的求解路径</strong> - 忽略无关信息，专注核心推理</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        console.log('🧩 基于物性关系的推理算法演示');
+        console.log('📚 核心思想：通过物性关系连接已知和未知');
+        console.log('🔧 三条规则：');
+        console.log('  1. 守恒扩展 - 识别总量概念时应用');
+        console.log('  2. 因果链接 - 存在变化时应用');
+        console.log('  3. 时空连续 - 涉及时空变化时应用');
+        console.log('💡 关键：找到一条通路，沿路径推理，忽略其他');
+    </script>
+</body>
+</html>

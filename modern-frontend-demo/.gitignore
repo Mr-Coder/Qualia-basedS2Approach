@@ -1,0 +1,117 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+.env
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+logs/
+*.log
+ui_log.txt
+
+# Data files
+Data/
+results/
+models/
+*.pkl
+*.h5
+*.pt
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Build outputs
+dist/
+build/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Cache
+.cache/
+.parcel-cache/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+tmp/
+
+# Backup files
+backup_*/
+*.backup
+*.bak
+
+# Security
+*.key
+*.pem
+*.crt
+config/secrets/
+
+# Large files
+*.tar.gz
+*.zip
+*.rar
+
+# IDE-specific
+.vscode/
+.idea/
+*.sublime-*
+
+# Testing
+.coverage
+.pytest_cache/
+htmlcov/
+
+# Documentation build
+docs/_build/
+site/
+EOF < /dev/null

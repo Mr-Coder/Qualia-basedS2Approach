@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card'
 import { Button } from '@/components/ui/Button'
@@ -282,6 +282,135 @@ export const ErrorAnalysis: React.FC = () => {
     description: ''
   })
   const [diagnosisResult, setDiagnosisResult] = useState<DiagnosisResult | null>(null)
+  const [executionHistory, setExecutionHistory] = useState<any[]>([])
+  const [errorPatterns, setErrorPatterns] = useState<any>(null)
+
+  // 获取算法执行历史分析错误模式
+  useEffect(() => {
+    const fetchExecutionHistory = async () => {
+      try {
+        const response = await fetch('/api/algorithm/execution/history?limit=20')
+        const data = await response.json()
+        if (data.success && data.data) {
+          setExecutionHistory(data.data)
+          
+          // 分析错误模式
+          const patterns = analyzeErrorPatterns(data.data)
+          setErrorPatterns(patterns)
+        }
+      } catch (error) {
+        console.error('获取执行历史失败:', error)
+      }
+    }
+
+    fetchExecutionHistory()
+  }, [])
+
+  // 分析错误模式
+  const analyzeErrorPatterns = (history: any[]) => {
+    const lowConfidenceExecutions = history.filter(exec => 
+      exec.execution_metrics?.average_confidence < 0.7
+    )
+    
+    const slowExecutions = history.filter(exec => 
+      exec.total_duration_ms > 5
+    )
+
+    const errorStages = history.flatMap(exec => 
+      exec.stages?.filter((stage: any) => stage.confidence < 0.6) || []
+    )
+
+    // 统计最常见的问题阶段
+    const stageErrors = errorStages.reduce((acc, stage) => {
+      acc[stage.stage_name] = (acc[stage.stage_name] || 0) + 1
+      return acc
+    }, {} as Record<string, number>)
+
+    const mostProblematicStage = Object.entries(stageErrors)
+      .sort((a, b) => b[1] - a[1])[0]
+
+    return {
+      totalExecutions: history.length,
+      lowConfidenceCount: lowConfidenceExecutions.length,
+      slowExecutionsCount: slowExecutions.length,
+      avgConfidence: (history.reduce((sum, exec) => 
+        sum + (exec.execution_metrics?.average_confidence || 0), 0) / history.length * 100).toFixed(1),
+      mostProblematicStage: mostProblematicStage ? {
+        name: mostProblematicStage[0],
+        count: mostProblematicStage[1]
+      } : null,
+      commonErrors: identifyCommonErrors(lowConfidenceExecutions),
+      recommendations: generateErrorRecommendations(lowConfidenceExecutions, slowExecutions, stageErrors)
+    }
+  }
+
+  // 识别常见错误
+  const identifyCommonErrors = (lowConfidenceExecs: any[]) => {
+    const errors = []
+    
+    if (lowConfidenceExecs.length > 0) {
+      // 分析问题文本中的模式
+      const geometryProblems = lowConfidenceExecs.filter(exec => 
+        exec.problem_text.includes('面积') || exec.problem_text.includes('长方形')
+      ).length
+
+      const arithmeticProblems = lowConfidenceExecs.filter(exec => 
+        /\d+.*[给买拿]+.*\d+/.test(exec.problem_text)
+      ).length
+
+      if (geometryProblems > 0) {
+        errors.push({
+          type: '几何计算错误',
+          count: geometryProblems,
+          description: '在几何问题中出现计算或公式应用错误'
+        })
+      }
+
+      if (arithmeticProblems > 0) {
+        errors.push({
+          type: '数量关系理解错误', 
+          count: arithmeticProblems,
+          description: '在算术问题中未能正确理解数量变化关系'
+        })
+      }
+    }
+
+    return errors
+  }
+
+  // 生成错误改进建议
+  const generateErrorRecommendations = (lowConf: any[], slow: any[], stageErrors: Record<string, number>) => {
+    const recommendations = []
+
+    if (lowConf.length > 0) {
+      recommendations.push({
+        title: '🎯 提升置信度',
+        description: `有${lowConf.length}次执行置信度较低，建议重点练习基础概念`,
+        priority: 'high',
+        actions: ['复习基础概念', '练习相似问题', '检查计算步骤']
+      })
+    }
+
+    if (slow.length > 0) {
+      recommendations.push({
+        title: '⚡ 提升执行速度',
+        description: `有${slow.length}次执行耗时较长，可能存在理解困难`,
+        priority: 'medium', 
+        actions: ['练习问题识别', '熟悉常见模式', '提高阅读理解']
+      })
+    }
+
+    if (stageErrors['实体提取'] > 0) {
+      recommendations.push({
+        title: '🔍 实体识别训练',
+        description: '实体提取阶段经常出错，需要加强实体识别能力',
+        priority: 'high',
+        actions: ['练习关键词识别', '学习实体分类', '提高文本理解']
+      })
+    }
+
+    return recommendations
+  }
   const [isAnalyzing, setIsAnalyzing] = useState(false)
 
   const handleDiagnosis = async () => {
@@ -327,6 +456,91 @@ export const ErrorAnalysis: React.FC = () => {
           </p>
         </CardHeader>
       </Card>
+
+      {/* 实际错误模式分析 */}
+      {errorPatterns && (
+        <Card>
+          <CardHeader>
+            <CardTitle>📊 实际错误模式分析</CardTitle>
+            <p className="text-gray-600">
+              基于最近{errorPatterns.totalExecutions}次算法执行的错误分析
+            </p>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+              <div className="bg-red-50 rounded-lg p-4">
+                <div className="text-2xl font-bold text-red-700">{errorPatterns.lowConfidenceCount}</div>
+                <div className="text-sm text-red-600">低置信度执行</div>
+              </div>
+              <div className="bg-orange-50 rounded-lg p-4">
+                <div className="text-2xl font-bold text-orange-700">{errorPatterns.slowExecutionsCount}</div>
+                <div className="text-sm text-orange-600">耗时过长执行</div>
+              </div>
+              <div className="bg-blue-50 rounded-lg p-4">
+                <div className="text-2xl font-bold text-blue-700">{errorPatterns.avgConfidence}%</div>
+                <div className="text-sm text-blue-600">平均置信度</div>
+              </div>
+              <div className="bg-purple-50 rounded-lg p-4">
+                <div className="text-2xl font-bold text-purple-700">
+                  {errorPatterns.mostProblematicStage?.name || 'N/A'}
+                </div>
+                <div className="text-sm text-purple-600">最频繁错误阶段</div>
+              </div>
+            </div>
+
+            {errorPatterns.commonErrors.length > 0 && (
+              <div className="mb-6">
+                <h4 className="font-semibold text-gray-800 mb-3">🔍 发现的常见错误</h4>
+                <div className="space-y-2">
+                  {errorPatterns.commonErrors.map((error: any, index: number) => (
+                    <div key={index} className="flex items-center justify-between bg-red-50 rounded-lg p-3">
+                      <div>
+                        <div className="font-medium text-red-800">{error.type}</div>
+                        <div className="text-sm text-red-600">{error.description}</div>
+                      </div>
+                      <div className="text-red-700 font-bold">{error.count}次</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {errorPatterns.recommendations.length > 0 && (
+              <div>
+                <h4 className="font-semibold text-gray-800 mb-3">💡 改进建议</h4>
+                <div className="space-y-3">
+                  {errorPatterns.recommendations.map((rec: any, index: number) => (
+                    <div key={index} className={`p-4 rounded-lg border-l-4 ${
+                      rec.priority === 'high' ? 'border-red-400 bg-red-50' :
+                      rec.priority === 'medium' ? 'border-yellow-400 bg-yellow-50' :
+                      'border-blue-400 bg-blue-50'
+                    }`}>
+                      <div className="flex items-center justify-between mb-2">
+                        <h5 className="font-medium text-gray-800">{rec.title}</h5>
+                        <span className={`text-xs px-2 py-1 rounded-full ${
+                          rec.priority === 'high' ? 'bg-red-200 text-red-700' :
+                          rec.priority === 'medium' ? 'bg-yellow-200 text-yellow-700' :
+                          'bg-blue-200 text-blue-700'
+                        }`}>
+                          {rec.priority === 'high' ? '高优先级' : rec.priority === 'medium' ? '中优先级' : '低优先级'}
+                        </span>
+                      </div>
+                      <p className="text-sm text-gray-600 mb-3">{rec.description}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {rec.actions.map((action: string, actionIndex: number) => (
+                          <span key={actionIndex} className="text-xs px-2 py-1 bg-gray-100 text-gray-700 rounded">
+                            {action}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </CardContent>
+        </Card>
+      )}
 
       {/* 常见错误类型 */}
       <Card>

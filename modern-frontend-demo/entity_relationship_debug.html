@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实体关系模块调试页面</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f0f4f8;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        }
+        .error-info {
+            background: #fef2f2;
+            border-left: 5px solid #ef4444;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .fix-info {
+            background: #ecfdf5;
+            border-left: 5px solid #10b981;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 13px;
+            overflow-x: auto;
+            margin: 15px 0;
+            line-height: 1.6;
+        }
+        .highlight {
+            background: #3b82f6;
+            color: white;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        .debug-section {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .fix-list {
+            background: #eff6ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .fix-item {
+            margin: 10px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 6px;
+            border-left: 4px solid #3b82f6;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #3b82f6;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #2563eb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 实体关系模块调试报告</h1>
+        
+        <div class="error-info">
+            <h2>❌ 错误信息</h2>
+            <div class="code-block">
+TypeError: Cannot read properties of undefined (reading 'map')
+    at P2 (index-5560e701.js:68:155998)
+    at zc (index-5560e701.js:38:16997)
+    ...
+            </div>
+            <p><strong>错误分析：</strong>某个数组或对象在调用 .map() 方法时是 undefined。</p>
+        </div>
+
+        <h2>🛠️ 已完成的修复</h2>
+        <div class="fix-list">
+            <div class="fix-item">
+                <strong>1. 全局 .map() 安全检查</strong>
+                <p>在以下位置添加了空值保护：</p>
+                <ul>
+                    <li>InteractivePropertySmartSolver.tsx - 5处修复</li>
+                    <li>HistoryPanel.tsx - 添加数组类型检查</li>
+                    <li>problemStore.ts - useHistory 选择器安全返回</li>
+                </ul>
+            </div>
+            
+            <div class="fix-item">
+                <strong>2. EntityRelationshipDiagram.tsx 增强保护</strong>
+                <p>添加了额外的空值检查：</p>
+                <ul>
+                    <li>safeImplicitConstraints.map() → (safeImplicitConstraints || []).map()</li>
+                    <li>safePhysicalConstraints.map() → (safePhysicalConstraints || []).map()</li>
+                    <li>physicalProperties.xxx.map() → physicalProperties?.xxx || []).map()</li>
+                    <li>extractedEntities.map() → (extractedEntities || []).map()</li>
+                    <li>extractedRelationships.map() → (extractedRelationships || []).map()</li>
+                    <li>safeDeepRelations.map() → (safeDeepRelations || []).map()</li>
+                </ul>
+            </div>
+            
+            <div class="fix-item">
+                <strong>3. 数据优先级调整</strong>
+                <p>修改了 allEntities 的计算逻辑，优先使用传入的实体数据。</p>
+            </div>
+            
+            <div class="fix-item">
+                <strong>4. 提供默认数据</strong>
+                <p>在 App.tsx 中为 EntityRelationshipDiagram 提供了默认示例数据。</p>
+            </div>
+        </div>
+
+        <h2>🔧 调试建议</h2>
+        <div class="debug-section">
+            <h3>可能的其他原因</h3>
+            <ol>
+                <li><strong>第三方库问题：</strong>framer-motion 或其他库可能在内部调用 .map()</li>
+                <li><strong>异步数据加载：</strong>某些数据可能在组件挂载时还未准备好</li>
+                <li><strong>状态管理问题：</strong>Zustand store 可能在某些情况下返回 undefined</li>
+                <li><strong>缓存数据损坏：</strong>localStorage 中的持久化数据可能已损坏</li>
+            </ol>
+
+            <h3>排查步骤</h3>
+            <div class="code-block">
+1. 清除浏览器缓存和 localStorage
+   - 打开开发者工具 (F12)
+   - Application → Storage → Clear site data
+
+2. 检查浏览器控制台
+   - 查看完整的错误堆栈
+   - 查找错误发生的具体文件和行号
+
+3. 启用 React 开发模式
+   - 使用 npm run dev 而不是生产构建
+   - 开发模式会提供更详细的错误信息
+
+4. 添加临时调试代码
+   - 在 EntityRelationshipDiagram 开头添加：
+   console.log('EntityRelationshipDiagram props:', {
+     entities, relationships, physicalConstraints
+   })
+            </div>
+        </div>
+
+        <h2>🧪 验证步骤</h2>
+        <div class="fix-info">
+            <ol>
+                <li>清除所有浏览器数据</li>
+                <li>重新启动开发服务器: <code>npm run dev</code></li>
+                <li>打开新的隐身窗口访问应用</li>
+                <li>直接点击"实体关系"标签</li>
+                <li>观察是否显示示例数据而不是错误</li>
+            </ol>
+        </div>
+
+        <h2>📋 下一步行动</h2>
+        <div class="debug-section">
+            <p>如果错误仍然存在，请尝试：</p>
+            <ol>
+                <li><strong>创建最小复现案例：</strong>创建一个只包含 EntityRelationshipDiagram 的简单页面</li>
+                <li><strong>逐步调试：</strong>在组件的每个 map 调用前添加 console.log</li>
+                <li><strong>检查构建输出：</strong>查看 dist 文件夹中的构建文件</li>
+                <li><strong>回退测试：</strong>暂时注释掉某些复杂功能，逐步恢复</li>
+            </ol>
+        </div>
+
+        <div style="margin-top: 40px; text-align: center;">
+            <a href="index.html" class="btn">返回主应用</a>
+        </div>
+    </div>
+
+    <script>
+        console.log('🔍 实体关系模块调试页面已加载');
+        console.log('✅ 已应用的修复：');
+        console.log('  - 全局 .map() 安全检查');
+        console.log('  - EntityRelationshipDiagram 增强保护');
+        console.log('  - 数据优先级调整');
+        console.log('  - 提供默认数据');
+        console.log('');
+        console.log('⚠️ 如果错误仍然存在，请查看上述调试建议');
+        
+        // 检查 localStorage
+        console.log('📦 localStorage 内容:');
+        for (let key in localStorage) {
+            console.log(`  ${key}: ${localStorage[key].substring(0, 100)}...`);
+        }
+    </script>
+</body>
+</html>

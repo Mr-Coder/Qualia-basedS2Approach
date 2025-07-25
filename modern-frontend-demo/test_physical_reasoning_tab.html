@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试物性推理标签页</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .status {
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        .warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+        .step-list {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .step-list h3 {
+            margin-top: 0;
+            color: #495057;
+        }
+        .step-list ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .step-list li {
+            margin: 5px 0;
+            color: #6c757d;
+        }
+        .button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+        .button:hover {
+            background: #0056b3;
+        }
+        .button:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧩 物性推理功能检查</h1>
+        
+        <div id="status" class="status info">
+            正在检查物性推理标签页状态...
+        </div>
+        
+        <div class="step-list">
+            <h3>应该看到的功能：</h3>
+            <ul>
+                <li>✅ 标题：基于物性关系的推理 - 分步演示</li>
+                <li>✅ 3个示例问题选择按钮（苹果数量、水池排水、购物问题）</li>
+                <li>✅ "开始分步推理"按钮</li>
+                <li>✅ 5个步骤的分步展示：
+                    <ul>
+                        <li>步骤1：提取实体</li>
+                        <li>步骤2：构建graph</li>
+                        <li>步骤3：扩展物性关系</li>
+                        <li>步骤4：寻找求解路径</li>
+                        <li>步骤5：沿路径推理</li>
+                    </ul>
+                </li>
+                <li>✅ 步骤导航（上一步/下一步按钮）</li>
+                <li>✅ 每个步骤都有独立的关系图</li>
+            </ul>
+        </div>
+        
+        <div id="test-results"></div>
+        
+        <div style="text-align: center; margin-top: 30px;">
+            <button class="button" onclick="checkConsole()">检查控制台错误</button>
+            <button class="button" onclick="openApp()">打开应用</button>
+            <button class="button" onclick="reloadWithCacheClear()">清除缓存并刷新</button>
+        </div>
+    </div>
+
+    <script>
+        const statusEl = document.getElementById('status');
+        const resultsEl = document.getElementById('test-results');
+        
+        async function checkPhysicalReasoningTab() {
+            try {
+                // 检查组件文件是否存在
+                statusEl.className = 'status info';
+                statusEl.innerHTML = '检查组件文件...';
+                
+                const fileChecks = [
+                    '/src/components/features/StepByStepPhysicalReasoning.tsx',
+                    '/src/services/physicalReasoningAPI.ts',
+                    '/src/App.tsx'
+                ];
+                
+                resultsEl.innerHTML = '<h3>文件检查结果：</h3>';
+                
+                // 检查开发服务器
+                try {
+                    const response = await fetch('http://localhost:3000/', { mode: 'no-cors' });
+                    resultsEl.innerHTML += '<div class="status success">✅ 开发服务器运行在端口 3000</div>';
+                } catch (error) {
+                    resultsEl.innerHTML += '<div class="status error">❌ 开发服务器未运行</div>';
+                    resultsEl.innerHTML += '<pre>请运行: npm run dev</pre>';
+                }
+                
+                // 检查API服务器
+                try {
+                    const apiResponse = await fetch('http://localhost:5000/api/test');
+                    if (apiResponse.ok) {
+                        resultsEl.innerHTML += '<div class="status success">✅ API服务器运行在端口 5000</div>';
+                    } else {
+                        throw new Error('API响应错误');
+                    }
+                } catch (error) {
+                    resultsEl.innerHTML += '<div class="status warning">⚠️ API服务器未运行</div>';
+                    resultsEl.innerHTML += '<pre>请运行: python demo_frontend.py</pre>';
+                }
+                
+                statusEl.className = 'status success';
+                statusEl.innerHTML = '✅ 检查完成！点击"打开应用"查看物性推理功能';
+                
+                // 显示可能的问题和解决方案
+                resultsEl.innerHTML += `
+                    <div class="status info" style="margin-top: 20px;">
+                        <h4>如果看不到分步推理功能：</h4>
+                        <ol>
+                            <li>确保开发服务器正在运行: <code>npm run dev</code></li>
+                            <li>清除浏览器缓存（Ctrl/Cmd + Shift + R）</li>
+                            <li>检查浏览器控制台是否有错误（F12）</li>
+                            <li>确保点击的是"🧩 物性推理"标签页</li>
+                            <li>如果仍有问题，尝试重启开发服务器</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="status warning" style="margin-top: 20px;">
+                        <h4>注意事项：</h4>
+                        <ul>
+                            <li>组件名称：StepByStepPhysicalReasoning</li>
+                            <li>位置：src/components/features/StepByStepPhysicalReasoning.tsx</li>
+                            <li>在App.tsx的'reasoning'标签页中使用</li>
+                            <li>需要physicalReasoningAPI.ts支持</li>
+                        </ul>
+                    </div>
+                `;
+                
+            } catch (error) {
+                statusEl.className = 'status error';
+                statusEl.innerHTML = '❌ 检查失败：' + error.message;
+            }
+        }
+        
+        function checkConsole() {
+            console.log('=== 物性推理组件检查 ===');
+            console.log('1. 组件路径: src/components/features/StepByStepPhysicalReasoning.tsx');
+            console.log('2. API路径: src/services/physicalReasoningAPI.ts');
+            console.log('3. 在App.tsx中的使用:');
+            console.log('   - import StepByStepPhysicalReasoning from "@/components/features/StepByStepPhysicalReasoning"');
+            console.log('   - case "reasoning": return <StepByStepPhysicalReasoning />');
+            console.log('4. 请在浏览器控制台查看是否有红色错误信息');
+            alert('请打开浏览器控制台（F12）查看详细信息');
+        }
+        
+        function openApp() {
+            window.open('http://localhost:3000', '_blank');
+        }
+        
+        function reloadWithCacheClear() {
+            if (confirm('这将清除所有缓存并重新加载应用。继续吗？')) {
+                localStorage.clear();
+                sessionStorage.clear();
+                window.open('http://localhost:3000', '_blank');
+            }
+        }
+        
+        // 自动运行检查
+        checkPhysicalReasoningTab();
+    </script>
+</body>
+</html>

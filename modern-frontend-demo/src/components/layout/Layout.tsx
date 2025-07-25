@@ -1,7 +1,8 @@
 import React from 'react'
 import { motion } from 'framer-motion'
+import { useProblemStore } from '@/stores/problemStore'
 
-type TabType = 'solver' | 'knowledge' | 'learning' | 'error' | 'strategy' | 'diagram'
+type TabType = 'smart' | 'knowledge' | 'learning' | 'error' | 'strategy' | 'algorithm' | 'diagram' | 'physics' | 'reasoning'
 
 interface LayoutProps {
   children: React.ReactNode
@@ -35,14 +36,25 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
+  const { clearAllCache } = useProblemStore()
+  
   const tabs = [
-    { id: 'solver' as TabType, name: '🧮 解题器', description: '智能数学问题求解' },
-    { id: 'knowledge' as TabType, name: '🗺️ 知识图谱', description: '知识结构可视化' },
-    { id: 'learning' as TabType, name: '📚 学习指导', description: '系统学习路径' },
-    { id: 'error' as TabType, name: '🔍 错题分析', description: '智能错误诊断' },
-    { id: 'strategy' as TabType, name: '🎯 策略分析', description: '推理策略详解' },
-    { id: 'diagram' as TabType, name: '🔬 物性关系图', description: '物性关系情景可视化' }
+    { id: 'smart' as TabType, name: '🚀 智能求解', description: '交互式物性图谱智能推理' },
+    { id: 'reasoning' as TabType, name: '🧩 物性推理', description: '基于物性关系的推理演示' },
+    { id: 'knowledge' as TabType, name: '🗺️ 物性图谱', description: '知识概念激活扩散网络' },
+    { id: 'algorithm' as TabType, name: '🔬 推理过程', description: '算法执行步骤可视化' },
+    { id: 'diagram' as TabType, name: '📊 实体关系', description: '问题结构图解分析' },
+    { id: 'strategy' as TabType, name: '🎯 策略选择', description: '多策略对比与优化' },
+    { id: 'learning' as TabType, name: '📚 学习路径', description: '个性化知识提升' },
+    { id: 'error' as TabType, name: '🔍 错误诊断', description: '智能纠错与改进' },
+    { id: 'physics' as TabType, name: '⚛️ 深度分析', description: '物理约束与验证' }
   ]
+
+  const handleClearCache = () => {
+    clearAllCache()
+    // 强制刷新页面
+    window.location.reload()
+  }
 
   return (
     <header className="bg-white/80 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50">
@@ -64,14 +76,27 @@ const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
             </div>
           </motion.div>
 
-          <motion.div 
-            className="text-sm text-gray-500"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            现代化前端框架 • React + TypeScript
-          </motion.div>
+          <div className="flex items-center space-x-4">
+            <motion.div 
+              className="text-sm text-gray-500"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              现代化前端框架 • React + TypeScript
+            </motion.div>
+            
+            <motion.button
+              onClick={handleClearCache}
+              className="px-3 py-1 bg-red-100 text-red-600 text-xs rounded-md hover:bg-red-200 transition-colors"
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.3, delay: 0.4 }}
+              title="清除缓存并刷新页面"
+            >
+              🗑️ 清除缓存
+            </motion.button>
+          </div>
         </div>
 
         {/* 导航标签页 */}

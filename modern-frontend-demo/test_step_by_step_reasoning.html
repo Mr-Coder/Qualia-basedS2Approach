@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>测试分步物性推理</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .status {
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧩 分步物性推理测试</h1>
+        
+        <div class="status info">
+            <p>正在测试新的 StepByStepPhysicalReasoning 组件...</p>
+        </div>
+        
+        <div id="test-results"></div>
+    </div>
+
+    <script>
+        async function testStepByStepReasoning() {
+            const resultsDiv = document.getElementById('test-results');
+            
+            try {
+                // 测试API连接
+                const apiUrl = 'http://localhost:5000/api';
+                resultsDiv.innerHTML = '<div class="status info">测试API连接...</div>';
+                
+                const testResponse = await fetch(`${apiUrl}/test`);
+                if (!testResponse.ok) {
+                    throw new Error('API服务器未运行');
+                }
+                
+                resultsDiv.innerHTML += '<div class="status success">✅ API连接成功</div>';
+                
+                // 测试物性推理功能
+                resultsDiv.innerHTML += '<div class="status info">测试物性推理算法...</div>';
+                
+                const testProblems = [
+                    {
+                        title: "苹果数量问题",
+                        problem: "小明有5个苹果，妈妈又给了他3个苹果，现在小明一共有几个苹果？"
+                    },
+                    {
+                        title: "水池排水问题",
+                        problem: "水池有水100升，每小时流出20升，几小时后水池为空？"
+                    },
+                    {
+                        title: "购物问题",
+                        problem: "小红买了3支笔，每支笔5元，她一共花了多少钱？"
+                    }
+                ];
+                
+                for (const test of testProblems) {
+                    resultsDiv.innerHTML += `<h3>${test.title}</h3>`;
+                    resultsDiv.innerHTML += `<p><strong>题目：</strong>${test.problem}</p>`;
+                    
+                    try {
+                        const response = await fetch(`${apiUrl}/solve`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({ problem: test.problem })
+                        });
+                        
+                        if (response.ok) {
+                            const data = await response.json();
+                            resultsDiv.innerHTML += `<div class="status success">✅ 推理成功</div>`;
+                            resultsDiv.innerHTML += `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+                        } else {
+                            resultsDiv.innerHTML += `<div class="status error">❌ 推理失败：${response.statusText}</div>`;
+                        }
+                    } catch (error) {
+                        resultsDiv.innerHTML += `<div class="status error">❌ 错误：${error.message}</div>`;
+                    }
+                }
+                
+                // 测试完成
+                resultsDiv.innerHTML += '<div class="status success">✅ 所有测试完成！现在可以在主应用中使用"物性推理"模块了。</div>';
+                resultsDiv.innerHTML += '<p><strong>下一步：</strong></p>';
+                resultsDiv.innerHTML += '<ol>';
+                resultsDiv.innerHTML += '<li>确保 API 服务器在运行：<code>cd modern-frontend-demo && python demo_frontend.py</code></li>';
+                resultsDiv.innerHTML += '<li>在另一个终端运行前端：<code>cd modern-frontend-demo && npm run dev</code></li>';
+                resultsDiv.innerHTML += '<li>访问 <a href="http://localhost:5173">http://localhost:5173</a></li>';
+                resultsDiv.innerHTML += '<li>点击"物性推理"标签页查看分步演示</li>';
+                resultsDiv.innerHTML += '</ol>';
+                
+            } catch (error) {
+                resultsDiv.innerHTML = `<div class="status error">❌ 测试失败：${error.message}</div>`;
+                resultsDiv.innerHTML += '<p><strong>请确保：</strong></p>';
+                resultsDiv.innerHTML += '<ol>';
+                resultsDiv.innerHTML += '<li>API服务器正在运行：<code>cd modern-frontend-demo && python demo_frontend.py</code></li>';
+                resultsDiv.innerHTML += '<li>服务器运行在 http://localhost:5000</li>';
+                resultsDiv.innerHTML += '</ol>';
+            }
+        }
+        
+        // 运行测试
+        testStepByStepReasoning();
+    </script>
+</body>
+</html>

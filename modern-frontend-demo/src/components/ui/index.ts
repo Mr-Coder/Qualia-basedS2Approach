@@ -3,3 +3,7 @@ export { Card, CardHeader, CardTitle, CardContent, type CardProps } from './Card
 export { Input, type InputProps } from './Input'
 export { Textarea, type TextareaProps } from './Textarea'
 export { Select, type SelectProps, type SelectOption } from './Select'
+export { Badge, type BadgeProps } from './Badge'
+export { Alert, AlertDescription, type AlertProps, type AlertDescriptionProps } from './Alert'
+export { Progress, type ProgressProps } from './Progress'
+export { Tabs, TabsList, TabsTrigger, TabsContent, type TabsProps, type TabsListProps, type TabsTriggerProps, type TabsContentProps } from './Tabs'

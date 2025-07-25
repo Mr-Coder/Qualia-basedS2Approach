@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>验证分步物性推理组件</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .status {
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+        .success {
+            background: #d4edda;
+            color: #155724;
+        }
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+        .button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px;
+        }
+        .button:hover {
+            background: #0056b3;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧩 验证分步物性推理组件</h1>
+        
+        <div class="status info">
+            <p>此页面将验证 StepByStepPhysicalReasoning 组件是否正确集成</p>
+        </div>
+        
+        <h2>请按照以下步骤操作：</h2>
+        
+        <ol>
+            <li>
+                <h3>确保服务器正在运行</h3>
+                <pre>
+# 终端 1
+cd modern-frontend-demo
+python demo_frontend.py
+
+# 终端 2
+cd modern-frontend-demo
+npm run dev
+                </pre>
+            </li>
+            
+            <li>
+                <h3>访问应用</h3>
+                <button class="button" onclick="window.open('http://localhost:3000', '_blank')">
+                    打开应用 (http://localhost:3000)
+                </button>
+            </li>
+            
+            <li>
+                <h3>导航到物性推理页面</h3>
+                <p>点击顶部导航栏的 <strong>"🧩 物性推理"</strong> 标签</p>
+            </li>
+            
+            <li>
+                <h3>验证组件显示</h3>
+                <p>您应该看到：</p>
+                <ul>
+                    <li>✅ 标题："基于物性关系的推理 - 分步演示"</li>
+                    <li>✅ 3个示例问题选择按钮</li>
+                    <li>✅ "开始分步推理"按钮（紫色）</li>
+                </ul>
+            </li>
+        </ol>
+        
+        <div class="status info" style="margin-top: 30px;">
+            <h3>如果看不到组件：</h3>
+            <ol>
+                <li>硬刷新页面：Ctrl/Cmd + Shift + R</li>
+                <li>清除浏览器缓存</li>
+                <li>打开控制台 (F12) 查看错误信息</li>
+                <li>尝试重启开发服务器</li>
+            </ol>
+        </div>
+        
+        <h2>组件文件位置确认：</h2>
+        <pre>
+✅ 组件文件：src/components/features/StepByStepPhysicalReasoning.tsx
+✅ API文件：src/services/physicalReasoningAPI.ts
+✅ 集成位置：src/App.tsx (case 'reasoning')
+        </pre>
+        
+        <div style="text-align: center; margin-top: 30px;">
+            <button class="button" onclick="clearCache()">
+                清除缓存并重试
+            </button>
+        </div>
+    </div>
+    
+    <script>
+        function clearCache() {
+            localStorage.clear();
+            sessionStorage.clear();
+            alert('缓存已清除！请重新访问应用。');
+            window.open('http://localhost:3000', '_blank');
+        }
+        
+        console.log('=== 分步物性推理组件信息 ===');
+        console.log('组件名：StepByStepPhysicalReasoning');
+        console.log('位置：src/components/features/StepByStepPhysicalReasoning.tsx');
+        console.log('功能：5步骤分步展示物性推理过程');
+        console.log('特点：每个步骤有独立的图形可视化');
+    </script>
+</body>
+</html>

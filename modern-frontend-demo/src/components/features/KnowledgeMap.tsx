@@ -302,28 +302,80 @@ const knowledgeNodes: KnowledgeNode[] = [
 ]
 
 const connections: KnowledgeConnection[] = [
-  { from: 'entity', to: 'relation', label: '组成', type: 'dependency' },
+  // 核心概念链：认知的基础流程
+  { from: 'entity', to: 'relation', label: '建立', type: 'dependency' },
   { from: 'relation', to: 'property', label: '体现', type: 'dependency' },
-  { from: 'property', to: 'constraint', label: '限制', type: 'dependency' },
+  { from: 'property', to: 'constraint', label: '约束', type: 'dependency' },
   { from: 'constraint', to: 'reasoning', label: '指导', type: 'dependency' },
-  { from: 'reasoning', to: 'cot', label: '实现', type: 'application' },
-  { from: 'reasoning', to: 'got', label: '实现', type: 'application' },
-  { from: 'reasoning', to: 'tot', label: '实现', type: 'application' },
-  { from: 'cot', to: 'arithmetic', label: '适用', type: 'application' },
-  { from: 'got', to: 'application', label: '适用', type: 'application' },
-  { from: 'tot', to: 'percentage', label: '适用', type: 'application' },
-  { from: 'cot', to: 'decomposition', label: '需要', type: 'dependency' },
-  { from: 'got', to: 'modeling', label: '需要', type: 'dependency' },
-  { from: 'tot', to: 'exploration', label: '需要', type: 'dependency' },
-  { from: 'decomposition', to: 'verification', label: '配合', type: 'enhancement' },
-  { from: 'modeling', to: 'analysis', label: '配合', type: 'enhancement' },
-  { from: 'exploration', to: 'evaluation', label: '配合', type: 'enhancement' }
+  
+  // 推理策略实现：从理论到实践
+  { from: 'reasoning', to: 'cot', label: '线性推理', type: 'application' },
+  { from: 'reasoning', to: 'got', label: '网络推理', type: 'application' },
+  { from: 'reasoning', to: 'tot', label: '树形推理', type: 'application' },
+  
+  // 策略与领域应用：不同策略适用不同问题
+  { from: 'cot', to: 'arithmetic', label: '最佳适用', type: 'application' },
+  { from: 'cot', to: 'geometry', label: '步骤计算', type: 'application' },
+  { from: 'got', to: 'application', label: '复杂关系', type: 'application' },
+  { from: 'got', to: 'geometry', label: '空间关系', type: 'application' },
+  { from: 'tot', to: 'percentage', label: '多路径', type: 'application' },
+  { from: 'tot', to: 'application', label: '方案比较', type: 'application' },
+  
+  // 策略技能依赖：每种策略需要的核心技能
+  { from: 'cot', to: 'decomposition', label: '核心技能', type: 'dependency' },
+  { from: 'cot', to: 'verification', label: '验证步骤', type: 'dependency' },
+  { from: 'got', to: 'modeling', label: '关系建模', type: 'dependency' },
+  { from: 'got', to: 'analysis', label: '关系分析', type: 'dependency' },
+  { from: 'tot', to: 'exploration', label: '路径探索', type: 'dependency' },
+  { from: 'tot', to: 'evaluation', label: '方案评估', type: 'dependency' },
+  
+  // 技能间协作关系：技能之间的互补增强
+  { from: 'decomposition', to: 'verification', label: '相互验证', type: 'enhancement' },
+  { from: 'modeling', to: 'analysis', label: '模型分析', type: 'enhancement' },
+  { from: 'exploration', to: 'evaluation', label: '探索评估', type: 'enhancement' },
+  { from: 'analysis', to: 'verification', label: '分析验证', type: 'enhancement' },
+  { from: 'decomposition', to: 'modeling', label: '分解建模', type: 'enhancement' },
+  
+  // 概念与技能的关系：概念如何指导技能应用
+  { from: 'entity', to: 'decomposition', label: '识别分解', type: 'example' },
+  { from: 'relation', to: 'modeling', label: '关系建模', type: 'example' },
+  { from: 'property', to: 'analysis', label: '属性分析', type: 'example' },
+  { from: 'constraint', to: 'verification', label: '约束验证', type: 'example' },
+  
+  // 跨领域应用：不同问题领域的相互关系
+  { from: 'arithmetic', to: 'geometry', label: '计算基础', type: 'dependency' },
+  { from: 'arithmetic', to: 'percentage', label: '数值基础', type: 'dependency' },
+  { from: 'geometry', to: 'application', label: '实际应用', type: 'application' },
+  { from: 'percentage', to: 'application', label: '比例应用', type: 'application' }
 ]
 
 export const KnowledgeMap: React.FC = () => {
   const [selectedNode, setSelectedNode] = useState<string | null>(null)
   const [hoveredNode, setHoveredNode] = useState<string | null>(null)
+  const [showRealData, setShowRealData] = useState(false)
+  const [realTimeData, setRealTimeData] = useState<any>(null)
   const svgRef = useRef<SVGSVGElement>(null)
+
+  // 获取实时算法执行数据
+  useEffect(() => {
+    const fetchRealTimeData = async () => {
+      try {
+        const response = await fetch('/api/algorithm/execution')
+        const data = await response.json()
+        if (data.success && data.data) {
+          setRealTimeData(data.data)
+        }
+      } catch (error) {
+        console.error('获取实时数据失败:', error)
+      }
+    }
+
+    if (showRealData) {
+      fetchRealTimeData()
+      const interval = setInterval(fetchRealTimeData, 5000) // 每5秒更新一次
+      return () => clearInterval(interval)
+    }
+  }, [showRealData])
 
   const getNodeColor = (category: string) => {
     const colors = {
@@ -345,6 +397,22 @@ export const KnowledgeMap: React.FC = () => {
     return icons[category] || '📦'
   }
 
+  // 🔗 获取与节点直接相关的节点（基于明确的连接关系）
+  const getDirectlyRelatedNodes = (nodeId: string): string[] => {
+    const relatedNodeIds = new Set<string>()
+    
+    // 查找所有直接连接的节点
+    connections.forEach(conn => {
+      if (conn.from === nodeId) {
+        relatedNodeIds.add(conn.to)
+      } else if (conn.to === nodeId) {
+        relatedNodeIds.add(conn.from)
+      }
+    })
+    
+    return Array.from(relatedNodeIds)
+  }
+
   const renderConnections = () => {
     return connections.map((conn, index) => {
       const fromNode = knowledgeNodes.find(n => n.id === conn.from)
@@ -352,6 +420,9 @@ export const KnowledgeMap: React.FC = () => {
       
       if (!fromNode || !toNode) return null
 
+      // 判断连接线是否应该高亮（当其中一个节点被选中时）
+      const isRelated = selectedNode && (conn.from === selectedNode || conn.to === selectedNode)
+      
       const strokeColor = {
         dependency: '#94a3b8',
         application: '#10b981',
@@ -367,16 +438,19 @@ export const KnowledgeMap: React.FC = () => {
             x2={toNode.x}
             y2={toNode.y}
             stroke={strokeColor}
-            strokeWidth="2"
+            strokeWidth={isRelated ? 4 : 2}
             strokeDasharray={conn.type === 'dependency' ? '0' : '5,5'}
-            opacity="0.6"
+            opacity={!selectedNode || isRelated ? 0.8 : 0.3}
+            className="transition-all duration-300"
           />
+          
           <text
             x={(fromNode.x + toNode.x) / 2}
             y={(fromNode.y + toNode.y) / 2 - 5}
             textAnchor="middle"
             className="text-xs fill-gray-600"
             fontSize="10"
+            opacity={!selectedNode || isRelated ? 0.8 : 0.4}
           >
             {conn.label}
           </text>
@@ -389,23 +463,31 @@ export const KnowledgeMap: React.FC = () => {
     return knowledgeNodes.map((node) => {
       const isSelected = selectedNode === node.id
       const isHovered = hoveredNode === node.id
-      const isConnected = selectedNode && node.connections.includes(selectedNode)
+      
+      // 判断当前节点是否与选中节点直接相关
+      const directlyRelatedNodes = selectedNode ? getDirectlyRelatedNodes(selectedNode) : []
+      const isDirectlyRelated = directlyRelatedNodes.includes(node.id)
+      
+      const radius = isSelected ? 35 : (isHovered ? 33 : 30)
+      const baseColor = getNodeColor(node.category)
       
       return (
         <g key={node.id}>
           <circle
             cx={node.x}
             cy={node.y}
-            r={isSelected || isHovered ? 35 : 30}
-            fill={getNodeColor(node.category)}
+            r={radius}
+            fill={baseColor}
             stroke="#fff"
             strokeWidth="3"
-            className="cursor-pointer drop-shadow-lg"
-            opacity={!selectedNode || isSelected || isConnected ? 1 : 0.3}
+            className="cursor-pointer drop-shadow-lg transition-all duration-300"
+            opacity={!selectedNode || isSelected || isDirectlyRelated ? 1 : 0.3}
             onClick={() => setSelectedNode(isSelected ? null : node.id)}
             onMouseEnter={() => setHoveredNode(node.id)}
             onMouseLeave={() => setHoveredNode(null)}
           />
+          
+          {/* 节点图标 */}
           <text
             x={node.x}
             y={node.y - 5}
@@ -415,6 +497,8 @@ export const KnowledgeMap: React.FC = () => {
           >
             {getNodeIcon(node.category)}
           </text>
+          
+          {/* 节点名称 */}
           <text
             x={node.x}
             y={node.y + 8}
@@ -434,7 +518,7 @@ export const KnowledgeMap: React.FC = () => {
       {/* 页面标题 */}
       <Card>
         <CardHeader>
-          <CardTitle>🗺️ 知识图谱</CardTitle>
+          <CardTitle>🗺️ 物性图谱</CardTitle>
           <p className="text-gray-600">
             可视化展示COT-DIR系统的知识结构，了解各概念间的关系和应用
           </p>
@@ -474,12 +558,159 @@ export const KnowledgeMap: React.FC = () => {
         ))}
       </div>
 
+      {/* 实时算法数据面板 */}
+      <Card>
+        <CardHeader>
+          <div className="flex items-center justify-between">
+            <CardTitle>📊 实时算法关系数据</CardTitle>
+            <Button
+              onClick={() => setShowRealData(!showRealData)}
+              variant={showRealData ? 'default' : 'outline'}
+              size="sm"
+            >
+              {showRealData ? '🔄 实时同步中' : '🔗 连接实时数据'}
+            </Button>
+          </div>
+          <p className="text-gray-600">
+            展示来自真实IRD算法执行的实体关系发现数据
+          </p>
+        </CardHeader>
+        {showRealData && (
+          <CardContent>
+            {realTimeData ? (
+              <div className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="bg-blue-50 rounded-lg p-3">
+                    <div className="text-sm text-blue-600 font-medium">执行ID</div>
+                    <div className="text-xs text-blue-700 font-mono">
+                      {realTimeData.execution_id.split('-')[0]}...
+                    </div>
+                  </div>
+                  <div className="bg-green-50 rounded-lg p-3">
+                    <div className="text-sm text-green-600 font-medium">发现关系</div>
+                    <div className="text-lg font-bold text-green-700">
+                      {realTimeData.execution_metrics?.total_relations_discovered || 0}
+                    </div>
+                  </div>
+                  <div className="bg-purple-50 rounded-lg p-3">
+                    <div className="text-sm text-purple-600 font-medium">平均置信度</div>
+                    <div className="text-lg font-bold text-purple-700">
+                      {((realTimeData.execution_metrics?.average_confidence || 0) * 100).toFixed(1)}%
+                    </div>
+                  </div>
+                </div>
+
+                <div className="border rounded-lg p-4">
+                  <h4 className="font-medium text-gray-800 mb-3">🔍 最新执行阶段</h4>
+                  <div className="space-y-2">
+                    {realTimeData.stages?.map((stage: any, index: number) => (
+                      <div key={index} className="flex items-center justify-between bg-gray-50 rounded p-2">
+                        <div className="flex items-center gap-2">
+                          <div className="w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs">
+                            {index + 1}
+                          </div>
+                          <span className="text-sm font-medium">{stage.stage_name}</span>
+                        </div>
+                        <div className="flex items-center gap-3 text-xs text-gray-600">
+                          <span>耗时: {stage.duration_ms.toFixed(2)}ms</span>
+                          <span>置信度: {(stage.confidence * 100).toFixed(1)}%</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="text-xs text-gray-500 text-center">
+                  问题: {realTimeData.problem_text?.substring(0, 50)}...
+                  <br />
+                  执行时间: {new Date(realTimeData.start_time * 1000).toLocaleString()}
+                </div>
+              </div>
+            ) : (
+              <div className="text-center py-8 text-gray-500">
+                <div className="animate-spin w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full mx-auto mb-2"></div>
+                正在获取实时算法执行数据...
+              </div>
+            )}
+          </CardContent>
+        )}
+      </Card>
+
+      {/* 关联关系说明面板 */}
+      {selectedNode && (
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-4 border"
+        >
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="font-semibold text-gray-800">🔗 直接关联关系</h3>
+            <div className="text-sm text-gray-600">
+              选中节点: {knowledgeNodes.find(n => n.id === selectedNode)?.name}
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {connections
+              .filter(conn => conn.from === selectedNode || conn.to === selectedNode)
+              .map((conn, index) => {
+                const relatedNodeId = conn.from === selectedNode ? conn.to : conn.from
+                const relatedNode = knowledgeNodes.find(n => n.id === relatedNodeId)
+                if (!relatedNode) return null
+                
+                const relationshipColor = {
+                  'dependency': 'text-slate-600 bg-slate-100',
+                  'application': 'text-green-600 bg-green-100', 
+                  'enhancement': 'text-orange-600 bg-orange-100',
+                  'example': 'text-purple-600 bg-purple-100'
+                }[conn.type]
+                
+                const relationshipDesc = {
+                  'dependency': '依赖关系 - 基础概念支撑',
+                  'application': '应用关系 - 实际运用场景',
+                  'enhancement': '增强关系 - 相互促进提升',
+                  'example': '示例关系 - 具体案例展示'
+                }[conn.type]
+                
+                return (
+                  <div 
+                    key={index}
+                    className="bg-white rounded-lg p-3 border hover:shadow-md transition-shadow cursor-pointer"
+                    onClick={() => setSelectedNode(relatedNodeId)}
+                  >
+                    <div className="flex items-center gap-3 mb-2">
+                      <div className="text-xl">{getNodeIcon(relatedNode.category)}</div>
+                      <div>
+                        <div className="font-medium text-gray-800">{relatedNode.name}</div>
+                        <div className="text-xs text-gray-500">{relatedNode.category === 'concept' ? '核心概念' : relatedNode.category === 'strategy' ? '推理策略' : relatedNode.category === 'domain' ? '问题领域' : '思维技能'}</div>
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-1">
+                      <div className={`inline-block px-2 py-1 rounded text-xs font-medium ${relationshipColor}`}>
+                        {conn.label}
+                      </div>
+                      <div className="text-xs text-gray-600">
+                        {relationshipDesc}
+                      </div>
+                    </div>
+                  </div>
+                )
+              })}
+          </div>
+          
+          <div className="mt-3 text-xs text-gray-500">
+            💡 点击相关节点可以切换查看，所有关联基于明确的知识结构设计
+          </div>
+        </motion.div>
+      )}
+
       {/* 交互式知识图谱 */}
       <Card>
         <CardHeader>
-          <CardTitle>🕸️ 交互式知识图谱</CardTitle>
+          <CardTitle>🕸️ 交互式物性图谱</CardTitle>
           <p className="text-sm text-gray-600">
-            点击节点查看详细信息，了解知识点之间的关系
+            点击节点查看详细信息，体验基于激活扩散理论的智能关联激活
           </p>
         </CardHeader>
         <CardContent>

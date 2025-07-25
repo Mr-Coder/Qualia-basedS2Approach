@@ -11,7 +11,6 @@ export interface Relationship {
   source: string
   target: string
   type: string
-  label: string
   weight?: number
 }
 
@@ -45,6 +44,10 @@ export interface SolveResult {
   implicitConstraints?: ImplicitConstraint[]
   reasoningLayers?: ReasoningLayer[]
   visualizationConfig?: VisualizationConfig
+  
+  // 新增：物性图谱相关数据
+  physicalGraph?: PhysicalGraph
+  physicalAnalysis?: PhysicalAnalysis
 }
 
 // 新增：深度关系接口
@@ -112,12 +115,67 @@ export interface VisualizationConfig {
   animation_sequence: boolean
 }
 
+// 新增：物性图谱接口
+export interface PhysicalGraph {
+  entities: Entity[]
+  properties: PhysicalProperty[]
+  constraints: PhysicalConstraint[]
+  relations: PhysicalRelation[]
+  graph_metrics: Record<string, number>
+  consistency_score: number
+}
+
+// 新增：物理属性接口
+export interface PhysicalProperty {
+  id: string
+  type: 'conservation' | 'discreteness' | 'continuity' | 'additivity' | 'measurability' | 'locality' | 'temporality' | 'causality'
+  entity: string
+  value: any
+  unit: string
+  certainty: number
+  constraints: string[]
+}
+
+// 新增：物理约束接口
+export interface PhysicalConstraint {
+  id: string
+  type: 'conservation_law' | 'non_negative' | 'integer_constraint' | 'upper_bound' | 'lower_bound' | 'equivalence' | 'ordering' | 'exclusivity'
+  description: string
+  expression: string
+  strength: number
+  entities: string[]
+}
+
+// 新增：物理关系接口
+export interface PhysicalRelation {
+  id: string
+  source: string
+  target: string
+  type: string
+  physical_basis: string
+  strength: number
+  causal_direction?: string
+}
+
+// 新增：物性分析接口
+export interface PhysicalAnalysis {
+  problem: string
+  physical_properties: PhysicalProperty[]
+  physical_constraints: PhysicalConstraint[]
+  physical_relations: PhysicalRelation[]
+  graph_metrics: Record<string, number>
+  consistency_score: number
+  backend_driven_features?: Record<string, string>
+  frontend_optimization?: Record<string, string>
+}
+
 export interface SolveHistory {
   id: string
   problem: string
+  answer: string
   strategy: string
-  result: SolveResult
   timestamp: Date
+  confidence: number
 }
 
 export type Strategy = 'auto' | 'cot' | 'got' | 'tot'
@@ -147,6 +205,7 @@ interface ProblemActions {
   
   // 实用方法
   reset: () => void
+  clearAllCache: () => void
   getHistoryByStrategy: (strategy: Strategy) => SolveHistory[]
 }
 
@@ -191,6 +250,23 @@ export const useProblemStore = create<ProblemStore>()(
           error: null
         }),
 
+        // 清除所有缓存和存储
+        clearAllCache: () => {
+          // 清除localStorage
+          localStorage.removeItem('problem-store')
+          // 清除sessionStorage
+          sessionStorage.clear()
+          // 重置状态
+          set({
+            currentProblem: '',
+            selectedStrategy: 'auto',
+            solveResult: null,
+            history: [],
+            isLoading: false,
+            error: null
+          })
+        },
+
         getHistoryByStrategy: (strategy) => {
           const state = get()
           return state.history.filter(item => item.strategy === strategy)
@@ -201,7 +277,20 @@ export const useProblemStore = create<ProblemStore>()(
         partialize: (state) => ({
           history: state.history,
           selectedStrategy: state.selectedStrategy
-        })
+        }),
+        // 添加数据验证
+        onRehydrateStorage: () => (state) => {
+          if (state) {
+            // 确保 history 是数组
+            if (!Array.isArray(state.history)) {
+              state.history = []
+            }
+            // 验证每个历史记录项
+            state.history = state.history.filter(item => 
+              item && typeof item === 'object' && item.id && item.problem
+            )
+          }
+        }
       }
     ),
     {
@@ -216,4 +305,4 @@ export const useSelectedStrategy = () => useProblemStore(state => state.selected
 export const useSolveResult = () => useProblemStore(state => state.solveResult)
 export const useIsLoading = () => useProblemStore(state => state.isLoading)
 export const useError = () => useProblemStore(state => state.error)
-export const useHistory = () => useProblemStore(state => state.history)
+export const useHistory = () => useProblemStore(state => state.history || [])

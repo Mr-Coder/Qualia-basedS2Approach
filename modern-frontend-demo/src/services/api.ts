@@ -1,7 +1,10 @@
+// 统一API客户端
+import { apiClient, testAPIConnection } from './unifiedAPI'
+
 import { Strategy, SolveResult, DeepRelation, ImplicitConstraint, ReasoningLayer, VisualizationConfig } from '@/stores/problemStore'
 
-// 更新为增强引擎后端端口
-const API_BASE_URL = 'http://localhost:8083'
+// 使用Vite代理路径，避免CORS问题
+const API_BASE_URL = ''  // 使用相对路径，通过Vite代理到后端
 
 export interface ApiResponse<T> {
   success: boolean
@@ -169,10 +172,19 @@ const transformEnhancedResponse = (enhancedResponse: EnhancedSolveResponse): Sol
     })
   }
   
-  // 转换推理步骤
-  const steps = (enhancedResponse.reasoning_steps || []).map(step => 
-    `步骤${step.step}: ${step.description}`
-  )
+  // 转换推理步骤 - FastAPI返回字符串数组
+  const steps = Array.isArray(enhancedResponse.reasoning_steps) 
+    ? enhancedResponse.reasoning_steps.map((step, index) => {
+        // 如果是对象格式，提取描述；如果是字符串，直接使用
+        if (typeof step === 'string') {
+          return step
+        } else if (step.description) {
+          return `步骤${step.step || index + 1}: ${step.description}`
+        } else {
+          return `步骤${index + 1}: ${JSON.stringify(step)}`
+        }
+      })
+    : []
   
   // 组合约束条件
   const constraints = [
@@ -208,6 +220,10 @@ const transformEnhancedResponse = (enhancedResponse: EnhancedSolveResponse): Sol
     enable_interactive_exploration: true,
     animation_sequence: true
   }
+
+  // 新增：处理物性图谱数据（从后端获取）
+  const physicalGraph = enhancedResponse.physicalGraph || enhancedResponse.physical_graph
+  const physicalAnalysis = enhancedResponse.physicalAnalysis || enhancedResponse.physical_analysis
   
   return {
     answer: enhancedResponse.answer,
@@ -230,7 +246,10 @@ const transformEnhancedResponse = (enhancedResponse: EnhancedSolveResponse): Sol
     deepRelations,
     implicitConstraints,
     reasoningLayers,
-    visualizationConfig
+    visualizationConfig,
+    // 新增：物性图谱数据
+    physicalGraph,
+    physicalAnalysis
   }
 }
 
@@ -238,6 +257,10 @@ const transformEnhancedResponse = (enhancedResponse: EnhancedSolveResponse): Sol
 export const solveProblem = async (request: SolveProblemRequest): Promise<SolveResult> => {
   try {
     console.log('调用增强引擎API:', request)
+    
+    // 创建超时控制器
+    const controller = new AbortController()
+    const timeoutId = setTimeout(() => controller.abort(), 45000) // 45秒超时
     
     const response = await fetch(`${API_BASE_URL}/api/solve`, {
       method: 'POST',
@@ -248,7 +271,10 @@ export const solveProblem = async (request: SolveProblemRequest): Promise<SolveR
         problem: request.problem,
         strategy: request.strategy
       }),
+      signal: controller.signal
     })
+    
+    clearTimeout(timeoutId)
     
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`)
@@ -266,12 +292,20 @@ export const solveProblem = async (request: SolveProblemRequest): Promise<SolveR
   } catch (error) {
     console.error('增强引擎调用失败:', error)
     
-    // 如果增强引擎不可用，返回基础错误信息
-    throw new Error(
-      error instanceof Error 
-        ? `增强引擎错误: ${error.message}` 
-        : '增强引擎不可用'
-    )
+    // 根据错误类型给出更友好的提示
+    if (error instanceof Error) {
+      if (error.name === 'AbortError') {
+        throw new Error('请求超时，COT-DIR算法处理时间较长，请稍后重试')
+      } else if (error.message.includes('Failed to fetch')) {
+        throw new Error('网络连接失败，请检查后端服务是否启动')
+      } else if (error.message.includes('500')) {
+        throw new Error('服务器内部错误，推理引擎可能遇到问题')
+      } else {
+        throw new Error(`增强引擎错误: ${error.message}`)
+      }
+    }
+    
+    throw new Error('增强引擎不可用')
   }
 }
 
@@ -312,4 +346,279 @@ export const getStrategiesInfo = async () => {
     console.warn('无法获取策略信息:', error)
   }
   return null
+}
+// 添加API连接测试功能
+export { testAPIConnection } from './unifiedAPI'
+
+// 学习指导相关API
+export interface LearningPathRequest {
+  user_level: 'beginner' | 'intermediate' | 'advanced'
+  learning_goal: string
+  preferences?: Record<string, any>
+}
+
+export interface LearningInsightsRequest {
+  problem: string
+  mode?: string
+  preferences?: Record<string, any>
+}
+
+export interface ActivationLearningResponse {
+  recommended_paths: Array<{
+    id: string
+    title: string
+    description: string
+    estimatedTime: string
+    difficulty: string
+    stages: number
+    icon: string
+    activation_pattern: string
+    recommended_for: string
+  }>
+  personalized_stages: Array<{
+    id: number
+    title: string
+    difficulty: string
+    estimatedTime: string
+    status: string
+  }>
+  activation_based_techniques: Array<{
+    category: string
+    icon: string
+    color: string
+    techniques: string[]
+    activation_methods?: string[]
+  }>
+  learning_network_state: {
+    activated_concepts: string[]
+    user_level: string
+    activation_strength: number
+    recommended_focus: string
+  }
+}
+
+// 获取个性化学习路径
+export const getPersonalizedLearningPaths = async (request: LearningPathRequest): Promise<ActivationLearningResponse> => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/learning/paths`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(request)
+    })
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+    
+    return await response.json()
+  } catch (error) {
+    console.error('获取学习路径失败:', error)
+    throw new Error('获取学习路径失败')
+  }
+}
+
+// 获取学习技巧
+export const getLearningTechniques = async () => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/learning/techniques`)
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+    
+    return await response.json()
+  } catch (error) {
+    console.error('获取学习技巧失败:', error)
+    throw new Error('获取学习技巧失败')
+  }
+}
+
+// 生成学习洞察
+export const generateLearningInsights = async (request: LearningInsightsRequest) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/learning/insights`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(request)
+    })
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+    
+    return await response.json()
+  } catch (error) {
+    console.error('生成学习洞察失败:', error)
+    throw new Error('生成学习洞察失败')
+  }
+}
+
+// 获取学习网络状态
+export const getLearningNetworkState = async () => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/learning/network-state`)
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+    
+    return await response.json()
+  } catch (error) {
+    console.error('获取学习网络状态失败:', error)
+    throw new Error('获取学习网络状态失败')
+  }
+}
+
+// 错题分析相关API
+export interface ErrorAnalysisRequest {
+  problem: string
+  student_answer?: string
+  correct_answer?: string
+  error_type?: string
+}
+
+export interface ErrorAnalysisResponse {
+  error_types: Array<{
+    id: string
+    name: string
+    description: string
+    confidence: number
+    examples: string[]
+    correction_methods: string[]
+  }>
+  strategy_errors: Array<{
+    id: string
+    strategy: 'COT' | 'GOT' | 'TOT' | 'AUTO'
+    name: string
+    description: string
+    common_issues: string[]
+    improvements: string[]
+    confidence: number
+  }>
+  detailed_analysis: {
+    error_pattern: string
+    root_cause: string
+    cognitive_process: string
+    solution_steps: string[]
+    related_concepts: string[]
+  }
+  personalized_feedback: {
+    error_severity: 'low' | 'medium' | 'high'
+    improvement_priority: string[]
+    practice_suggestions: string[]
+    learning_path_adjustment: string[]
+  }
+}
+
+// 分析学生错误
+export const analyzeStudentErrors = async (request: ErrorAnalysisRequest): Promise<ErrorAnalysisResponse> => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/error-analysis/analyze`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(request)
+    })
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+    
+    return await response.json()
+  } catch (error) {
+    console.error('错误分析失败:', error)
+    throw new Error('错误分析失败')
+  }
+}
+
+// 获取常见错误类型
+export const getCommonErrorTypes = async () => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/error-analysis/common-types`)
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+    
+    return await response.json()
+  } catch (error) {
+    console.error('获取常见错误类型失败:', error)
+    throw new Error('获取常见错误类型失败')
+  }
+}
+
+// 获取策略专项错误分析
+export const getStrategyErrors = async (strategy?: string) => {
+  try {
+    const url = strategy 
+      ? `${API_BASE_URL}/api/error-analysis/strategy-errors?strategy=${strategy}`
+      : `${API_BASE_URL}/api/error-analysis/strategy-errors`
+    
+    const response = await fetch(url)
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+    
+    return await response.json()
+  } catch (error) {
+    console.error('获取策略错误分析失败:', error)
+    throw new Error('获取策略错误分析失败')
+  }
+}
+
+// 获取错误详细信息
+export const getErrorDetails = async (errorId: string) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/error-analysis/details/${errorId}`)
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+    
+    return await response.json()
+  } catch (error) {
+    console.error('获取错误详情失败:', error)
+    throw new Error('获取错误详情失败')
+  }
+}
+
+// 生成个性化改进建议
+export const generateImprovementSuggestions = async (request: {
+  error_types: string[]
+  user_level: string
+  problem_context: string
+}) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/error-analysis/improvement-suggestions`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(request)
+    })
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+    
+    return await response.json()
+  } catch (error) {
+    console.error('生成改进建议失败:', error)
+    throw new Error('生成改进建议失败')
+  }
+}
+
+// 在开发模式下自动测试连接
+if (process.env.NODE_ENV === 'development') {
+  testAPIConnection().then(connected => {
+    if (!connected) {
+      console.warn('⚠️ 后端API连接失败，请检查服务器状态')
+    }
+  })
 }

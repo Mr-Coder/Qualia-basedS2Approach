@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>物性推理算法 - 完整演示</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            font-size: 3em;
+            color: #2d3436;
+            margin-bottom: 20px;
+        }
+        
+        .header p {
+            font-size: 1.2em;
+            color: #636e72;
+        }
+        
+        .main-content {
+            display: grid;
+            gap: 30px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-title {
+            font-size: 1.8em;
+            color: #2d3436;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-title::before {
+            content: "🧩";
+            font-size: 1.2em;
+            margin-right: 10px;
+        }
+        
+        .algorithm-steps {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .algorithm-steps .card-title {
+            color: white;
+        }
+        
+        .algorithm-steps .card-title::before {
+            content: "⚙️";
+        }
+        
+        .step {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .step:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateX(10px);
+        }
+        
+        .step-number {
+            background: white;
+            color: #667eea;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-right: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .step-content {
+            flex: 1;
+        }
+        
+        .step-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .step-desc {
+            opacity: 0.9;
+        }
+        
+        .rules-section {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+        }
+        
+        .rules-section .card-title::before {
+            content: "📋";
+        }
+        
+        .rule {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+        
+        .rule-title {
+            font-weight: bold;
+            color: #155724;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .rule-detail {
+            margin: 8px 0;
+        }
+        
+        .rule-detail strong {
+            color: #721c24;
+        }
+        
+        .examples-section .card-title::before {
+            content: "💡";
+        }
+        
+        .example {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border-left: 5px solid #17a2b8;
+        }
+        
+        .example-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #2d3436;
+            margin-bottom: 15px;
+        }
+        
+        .problem-text {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-weight: 500;
+            border-left: 3px solid #007bff;
+        }
+        
+        .solution-steps {
+            margin: 15px 0;
+        }
+        
+        .solution-steps ol {
+            padding-left: 20px;
+        }
+        
+        .solution-steps li {
+            margin: 8px 0;
+            padding: 5px 0;
+        }
+        
+        .answer {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .insight-box {
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .insight-box .card-title {
+            color: white;
+        }
+        
+        .insight-box .card-title::before {
+            content: "💎";
+        }
+        
+        .formula-box {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            margin: 20px 0;
+            border: 2px dashed #6c757d;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .feature {
+            background: rgba(255,255,255,0.2);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .feature-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .step {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .step-number {
+                margin-bottom: 15px;
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧩 基于物性关系的推理算法</h1>
+            <p>通过物性关系连接已知和未知，实现高效可解释的数学推理</p>
+        </div>
+        
+        <div class="main-content">
+            <!-- 算法核心思想 -->
+            <div class="card insight-box">
+                <h2 class="card-title">算法核心思想</h2>
+                <p style="font-size: 1.2em; margin-bottom: 20px;">
+                    通过引入物性关系，在断开的已知和未知之间建立连接通路，
+                    然后沿着找到的路径进行推理，忽略无关的推理分支。
+                </p>
+                <div class="formula-box" style="color: #333;">
+                    <h3>算法公式</h3>
+                    <p>题目 → Phrase + Entity → 直陈关系 → +物性Entity → 物性Graph</p>
+                    <p>↓</p>
+                    <p>物性推理扩展 → 找通路(已知→未知) → 沿路径推理 → 答案</p>
+                </div>
+            </div>
+            
+            <!-- 算法五步骤 -->
+            <div class="card algorithm-steps">
+                <h2 class="card-title">算法五步骤</h2>
+                
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <div class="step-title">题目分解</div>
+                        <div class="step-desc">提取phrase和entity，获得直陈关系</div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <div class="step-title">构建物性Graph</div>
+                        <div class="step-desc">直陈关系 + 物性entity</div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <div class="step-title">物性关系推理</div>
+                        <div class="step-desc">通过物性规律扩展Graph</div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <div class="step-title">寻找通路</div>
+                        <div class="step-desc">找到已知到未知的路径</div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <div class="step-title">精简推理</div>
+                        <div class="step-desc">只保留路径，忽略无关推理</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 三条推理规则 -->
+            <div class="card rules-section">
+                <h2 class="card-title">三条核心推理规则</h2>
+                
+                <div class="rule">
+                    <div class="rule-title">规则1：守恒扩展</div>
+                    <div class="rule-detail"><strong>什么时候用：</strong>看到"一共"、"总共"、"全部"等关键词</div>
+                    <div class="rule-detail"><strong>怎么用：</strong>建立部分与整体的守恒关系</div>
+                    <div class="rule-detail"><strong>示例应用：</strong>5个苹果 + 3个苹果 = 总数（守恒定律）</div>
+                </div>
+                
+                <div class="rule">
+                    <div class="rule-title">规则2：因果链接</div>
+                    <div class="rule-detail"><strong>什么时候用：</strong>存在动作或变化时</div>
+                    <div class="rule-detail"><strong>怎么用：</strong>建立原因→结果的因果关系</div>
+                    <div class="rule-detail"><strong>示例应用：</strong>数量×单价 → 因果关系 → 总价</div>
+                </div>
+                
+                <div class="rule">
+                    <div class="rule-title">规则3：时空连续</div>
+                    <div class="rule-detail"><strong>什么时候用：</strong>涉及时间或空间变化时</div>
+                    <div class="rule-detail"><strong>怎么用：</strong>建立连续性关系</div>
+                    <div class="rule-detail"><strong>示例应用：</strong>100升 ÷ 20升/时 → 时间关系 → 5小时</div>
+                </div>
+            </div>
+            
+            <!-- 算法应用示例 -->
+            <div class="card examples-section">
+                <h2 class="card-title">算法应用示例</h2>
+                
+                <div class="example">
+                    <div class="example-title">示例1：苹果数量问题</div>
+                    <div class="problem-text">
+                        题目：小明有5个苹果，妈妈又给了他3个苹果，现在小明一共有几个苹果？
+                    </div>
+                    <p><strong>应用规则：</strong>规则1（守恒扩展）- 识别"一共"关键词</p>
+                    <div class="solution-steps">
+                        <strong>推理过程：</strong>
+                        <ol>
+                            <li>提取实体：小明、苹果、5个、3个</li>
+                            <li>识别"一共"→ 应用守恒扩展规则</li>
+                            <li>建立关系：5个 + 3个 → 守恒 → 总数</li>
+                            <li>沿路径推理：5 + 3 = 8</li>
+                            <li>忽略无关信息（小明、妈妈等）</li>
+                        </ol>
+                    </div>
+                    <div class="answer">答案：8个苹果</div>
+                </div>
+                
+                <div class="example">
+                    <div class="example-title">示例2：水池排水问题</div>
+                    <div class="problem-text">
+                        题目：水池有水100升，每小时流出20升，几小时后水池为空？
+                    </div>
+                    <p><strong>应用规则：</strong>规则3（时空连续）- 涉及时间变化</p>
+                    <div class="solution-steps">
+                        <strong>推理过程：</strong>
+                        <ol>
+                            <li>提取实体：水池、100升、20升/时</li>
+                            <li>识别时间变化 → 应用时空连续规则</li>
+                            <li>建立关系：总量 ÷ 速率 → 时间关系 → 时间</li>
+                            <li>沿路径推理：100 ÷ 20 = 5</li>
+                            <li>忽略无关信息（水池等）</li>
+                        </ol>
+                    </div>
+                    <div class="answer">答案：5小时</div>
+                </div>
+                
+                <div class="example">
+                    <div class="example-title">示例3：购物问题</div>
+                    <div class="problem-text">
+                        题目：小红买了3支笔，每支笔5元，她一共花了多少钱？
+                    </div>
+                    <p><strong>应用规则：</strong>规则2（因果链接）- 数量和单价决定总价</p>
+                    <div class="solution-steps">
+                        <strong>推理过程：</strong>
+                        <ol>
+                            <li>提取实体：小红、笔、3支、5元/支</li>
+                            <li>识别因果关系 → 应用因果链接规则</li>
+                            <li>建立关系：数量×单价 → 因果 → 总价</li>
+                            <li>沿路径推理：3 × 5 = 15</li>
+                            <li>忽略无关信息（小红、买等）</li>
+                        </ol>
+                    </div>
+                    <div class="answer">答案：15元</div>
+                </div>
+            </div>
+            
+            <!-- 核心洞察 */
+            <div class="card insight-box">
+                <h2 class="card-title">核心洞察</h2>
+                <p style="font-size: 1.3em; margin-bottom: 20px;">
+                    <strong>记住：</strong>我们要的不是所有可能的推理，而是找到<strong>一条</strong>从已知到未知的通路，
+                    然后沿着这条路径推理即可。其余的推理都可以"忘掉"。
+                </p>
+                
+                <div class="features">
+                    <div class="feature">
+                        <div class="feature-icon">✅</div>
+                        <h4>清晰的推理规则</h4>
+                        <p>知道什么时候用哪条规则</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🎯</div>
+                        <h4>明确的应用时机</h4>
+                        <p>通过关键词识别应用场景</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🔍</div>
+                        <h4>可解释的推理过程</h4>
+                        <p>每一步都有明确的依据</p>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">⚡</div>
+                        <h4>高效的求解路径</h4>
+                        <p>忽略无关信息，专注核心推理</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        console.log('🧩 基于物性关系的推理算法演示');
+        console.log('📚 核心思想：通过物性关系连接已知和未知');
+        console.log('🔧 三条规则：');
+        console.log('  1. 守恒扩展 - 识别总量概念时应用');
+        console.log('  2. 因果链接 - 存在变化时应用');
+        console.log('  3. 时空连续 - 涉及时空变化时应用');
+        console.log('💡 关键：找到一条通路，沿路径推理，忽略其他');
+        
+        // 添加交互效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const steps = document.querySelectorAll('.step');
+            const rules = document.querySelectorAll('.rule');
+            const examples = document.querySelectorAll('.example');
+            
+            // 为步骤添加点击效果
+            steps.forEach((step, index) => {
+                step.addEventListener('click', function() {
+                    this.style.background = 'rgba(255,255,255,0.3)';
+                    setTimeout(() => {
+                        this.style.background = 'rgba(255,255,255,0.15)';
+                    }, 300);
+                });
+            });
+            
+            // 为规则添加点击效果
+            rules.forEach(rule => {
+                rule.addEventListener('click', function() {
+                    this.style.transform = 'scale(1.02)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 200);
+                });
+            });
+            
+            console.log('✨ 页面交互已加载');
+        });
+    </script>
+</body>
+</html>

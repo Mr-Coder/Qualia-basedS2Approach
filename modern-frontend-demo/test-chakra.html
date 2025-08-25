@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chakra UI Test</title>
+</head>
+<body>
+    <h1>Testing Chakra UI Integration</h1>
+    <div id="test"></div>
+    <script>
+        // Test API connectivity
+        fetch('http://localhost:5001/api/health')
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById('test').innerHTML = `
+                    <p>✅ API Status: ${data.status}</p>
+                    <p>Service: ${data.service}</p>
+                    <p>Version: ${data.version}</p>
+                `;
+            })
+            .catch(err => {
+                document.getElementById('test').innerHTML = `<p>❌ API Error: ${err.message}</p>`;
+            });
+    </script>
+</body>
+</html>

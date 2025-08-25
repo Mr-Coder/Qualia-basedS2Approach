@@ -1,0 +1,137 @@
+INFO:__main__:正在初始化独立COT-DIR推理引擎...
+INFO:__main__:✅ 独立COT-DIR推理引擎初始化成功
+🚀 启动COT-DIR数学推理API服务器
+📡 服务器将运行在 http://localhost:5001
+🔗 API端点:
+   POST /api/solve - 解决数学问题
+   GET /api/health - 健康检查
+   GET /api/examples - 获取示例问题
+   GET /api/engine/status - 推理引擎状态
+   POST /api/engine/restart - 重启推理引擎
+
+ * Serving Flask app 'real_reasoning_api_server'
+ * Debug mode: on
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://10.131.90.6:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+INFO:__main__:正在初始化独立COT-DIR推理引擎...
+INFO:__main__:✅ 独立COT-DIR推理引擎初始化成功
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 606-229-418
+INFO:werkzeug:127.0.0.1 - - [25/Aug/2025 20:40:22] "GET /api/health HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in '/Users/menghao/Documents/GitHub/Qualia-basedS2Approach/modern-frontend-demo/real_reasoning_api_server.py', reloading
+🚀 启动COT-DIR数学推理API服务器
+📡 服务器将运行在 http://localhost:5001
+🔗 API端点:
+   POST /api/solve - 解决数学问题
+   GET /api/health - 健康检查
+   GET /api/examples - 获取示例问题
+   GET /api/engine/status - 推理引擎状态
+   POST /api/engine/restart - 重启推理引擎
+
+INFO:werkzeug: * Restarting with stat
+INFO:__main__:正在初始化独立COT-DIR推理引擎...
+INFO:__main__:✅ 独立COT-DIR推理引擎初始化成功
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 606-229-418
+INFO:werkzeug: * Detected change in '/Users/menghao/Documents/GitHub/Qualia-basedS2Approach/modern-frontend-demo/real_reasoning_api_server.py', reloading
+🚀 启动COT-DIR数学推理API服务器
+📡 服务器将运行在 http://localhost:5001
+🔗 API端点:
+   POST /api/solve - 解决数学问题
+   GET /api/health - 健康检查
+   GET /api/examples - 获取示例问题
+   GET /api/engine/status - 推理引擎状态
+   POST /api/engine/restart - 重启推理引擎
+
+INFO:werkzeug: * Restarting with stat
+INFO:__main__:找到数据集目录: /Users/menghao/Documents/GitHub/Qualia-basedS2Approach/Data
+INFO:__main__:正在初始化独立COT-DIR推理引擎...
+INFO:__main__:✅ 独立COT-DIR推理引擎初始化成功
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 606-229-418
+INFO:werkzeug: * Detected change in '/Users/menghao/Documents/GitHub/Qualia-basedS2Approach/modern-frontend-demo/real_reasoning_api_server.py', reloading
+🚀 启动COT-DIR数学推理API服务器
+📡 服务器将运行在 http://localhost:5001
+🔗 API端点:
+   POST /api/solve - 解决数学问题
+   GET /api/health - 健康检查
+   GET /api/examples - 获取示例问题
+   GET /api/engine/status - 推理引擎状态
+   POST /api/engine/restart - 重启推理引擎
+
+INFO:werkzeug: * Restarting with stat
+INFO:__main__:找到数据集目录: /Users/menghao/Documents/GitHub/Qualia-basedS2Approach/Data
+INFO:__main__:正在初始化独立COT-DIR推理引擎...
+INFO:__main__:✅ 独立COT-DIR推理引擎初始化成功
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 606-229-418
+INFO:werkzeug: * Detected change in '/Users/menghao/Documents/GitHub/Qualia-basedS2Approach/modern-frontend-demo/real_reasoning_api_server.py', reloading
+🚀 启动COT-DIR数学推理API服务器
+📡 服务器将运行在 http://localhost:5001
+🔗 API端点:
+   POST /api/solve - 解决数学问题
+   GET /api/health - 健康检查
+   GET /api/examples - 获取示例问题
+   GET /api/engine/status - 推理引擎状态
+   POST /api/engine/restart - 重启推理引擎
+
+INFO:werkzeug: * Restarting with stat
+INFO:__main__:找到数据集目录: /Users/menghao/Documents/GitHub/Qualia-basedS2Approach/Data
+INFO:__main__:正在初始化独立COT-DIR推理引擎...
+INFO:__main__:✅ 独立COT-DIR推理引擎初始化成功
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 606-229-418
+INFO:werkzeug:127.0.0.1 - - [25/Aug/2025 20:43:43] "GET /api/datasets HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [25/Aug/2025 20:43:57] "GET /api/datasets/Math23K/problems?count=3 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [25/Aug/2025 20:44:16] "[33mPOST /api/datasets/Math23K/solve HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in '/Users/menghao/Documents/GitHub/Qualia-basedS2Approach/modern-frontend-demo/real_reasoning_api_server.py', reloading
+🚀 启动COT-DIR数学推理API服务器
+📡 服务器将运行在 http://localhost:5001
+🔗 API端点:
+   POST /api/solve - 解决数学问题
+   GET /api/health - 健康检查
+   GET /api/examples - 获取示例问题
+   GET /api/engine/status - 推理引擎状态
+   POST /api/engine/restart - 重启推理引擎
+   GET /api/datasets - 获取可用数据集列表
+   GET /api/datasets/<name>/problems - 从数据集获取问题
+   POST /api/datasets/<name>/solve - 解决数据集中的问题
+
+INFO:werkzeug: * Restarting with stat
+INFO:__main__:找到数据集目录: /Users/menghao/Documents/GitHub/Qualia-basedS2Approach/Data
+INFO:__main__:正在初始化独立COT-DIR推理引擎...
+INFO:__main__:✅ 独立COT-DIR推理引擎初始化成功
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 606-229-418
+INFO:werkzeug: * Detected change in '/Users/menghao/Documents/GitHub/Qualia-basedS2Approach/modern-frontend-demo/real_reasoning_api_server.py', reloading
+🚀 启动COT-DIR数学推理API服务器
+📡 服务器将运行在 http://localhost:5001
+🔗 API端点:
+   POST /api/solve - 解决数学问题
+   GET /api/health - 健康检查
+   GET /api/examples - 获取示例问题
+   GET /api/engine/status - 推理引擎状态
+   POST /api/engine/restart - 重启推理引擎
+   GET /api/datasets - 获取可用数据集列表
+   GET /api/datasets/<name>/problems - 从数据集获取问题
+   POST /api/datasets/<name>/solve - 解决数据集中的问题
+
+INFO:werkzeug: * Restarting with stat
+INFO:__main__:找到数据集目录: /Users/menghao/Documents/GitHub/Qualia-basedS2Approach/Data
+INFO:__main__:正在初始化独立COT-DIR推理引擎...
+INFO:__main__:✅ 独立COT-DIR推理引擎初始化成功
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 606-229-418
+INFO:werkzeug:127.0.0.1 - - [25/Aug/2025 20:44:53] "GET /api/datasets/Math23K/problems?count=1 HTTP/1.1" 200 -
+INFO:__main__:📝 解决数据集问题: Math23K/math23k_003_var707
+INFO:werkzeug:127.0.0.1 - - [25/Aug/2025 20:45:25] "POST /api/datasets/Math23K/solve HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [25/Aug/2025 20:48:04] "GET /api/health HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [25/Aug/2025 20:48:13] "GET /api/datasets HTTP/1.1" 200 -
+INFO:__main__:📝 收到问题: 小明有10个苹果，吃了3个，还剩多少个？...
+INFO:__main__:🧠 使用独立COT-DIR推理引擎求解...
+INFO:__main__:✅ COT-DIR推理完成，用时 0.00秒，答案: 7
+INFO:werkzeug:127.0.0.1 - - [25/Aug/2025 20:48:21] "POST /api/solve HTTP/1.1" 200 -

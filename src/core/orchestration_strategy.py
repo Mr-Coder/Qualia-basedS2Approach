@@ -95,7 +95,7 @@ class UnifiedStrategy(BaseOrchestratorStrategy):
                 ReasoningProcessor = MockReasoningProcessor
             
             try:
-                from processors.private.processor import core_processor
+                from ..processors.private.processor import core_processor
             except ImportError:
                 # 创建模拟处理器
                 class MockCoreProcessor:
@@ -105,7 +105,7 @@ class UnifiedStrategy(BaseOrchestratorStrategy):
                 core_processor = MockCoreProcessor()
             
             try:
-                from models.private.model_factory import ModelFactory
+                from ..models.private.model_factory import ModelFactory
             except ImportError:
                 # 创建模拟模型工厂
                 class MockModelFactory:

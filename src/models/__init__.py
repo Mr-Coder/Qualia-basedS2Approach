@@ -61,6 +61,38 @@ try:
 except ImportError:
     modular_architecture_available = False
 
+# 导入数学增强模块
+try:
+    from .advanced_math_engine import (
+        AdvancedMathEngine, 
+        MathematicalExpression, 
+        MathResult,
+        MathOperationType
+    )
+    from .physics_problem_solver import (
+        PhysicsProblemSolver,
+        PhysicsType,
+        PhysicsQuantity,
+        PhysicsProblem,
+        PhysicsSolution
+    )
+    from .geometry_engine import (
+        GeometryEngine,
+        GeometryType,
+        GeometricShape,
+        GeometrySolution,
+        Point2D,
+        Point3D
+    )
+    from .mathematical_correctness_validator import (
+        MathematicalCorrectnessValidator,
+        ValidationResult,
+        ValidationType
+    )
+    math_engine_available = True
+except ImportError:
+    math_engine_available = False
+
 # 导出的类
 __all__ = [
     'ProcessedText',
@@ -80,6 +112,29 @@ __all__ = [
 # 如果模块化架构可用，添加到导出列表
 if modular_architecture_available:
     __all__.extend(['ModelsAPI', 'models_api', 'ModelsOrchestrator', 'models_orchestrator'])
+
+# 如果数学引擎可用，添加到导出列表
+if math_engine_available:
+    __all__.extend([
+        'AdvancedMathEngine',
+        'MathematicalExpression',
+        'MathResult',
+        'MathOperationType',
+        'PhysicsProblemSolver',
+        'PhysicsType',
+        'PhysicsQuantity',
+        'PhysicsProblem',
+        'PhysicsSolution',
+        'GeometryEngine',
+        'GeometryType',
+        'GeometricShape',
+        'GeometrySolution',
+        'Point2D',
+        'Point3D',
+        'MathematicalCorrectnessValidator',
+        'ValidationResult',
+        'ValidationType'
+    ])
 
 # 包元数据
 __version__ = '1.0.0'

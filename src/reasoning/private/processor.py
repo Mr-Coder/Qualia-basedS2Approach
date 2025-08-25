@@ -22,8 +22,9 @@ from core.interfaces import BaseProcessor
 class ReasoningProcessor(BaseProcessor):
     """推理处理器 - 核心推理逻辑"""
     
-    def __init__(self):
+    def __init__(self, config: Optional[Dict[str, Any]] = None):
         self._logger = logging.getLogger(__name__)
+        self.config = config or {}
         
     def process(self, input_data: Any) -> Any:
         """处理推理请求"""

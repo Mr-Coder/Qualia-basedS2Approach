@@ -13,9 +13,9 @@ import networkx as nx
 # Assuming paths are handled by the main solver script
 # from src.config.config_loader import get_config
 # from src.models.pattern_loader import get_pattern_loader
-from models.processed_text import ProcessedText
-from processors.MWP_process import MWPCoarseClassifier
-from processors.relation_matcher import RelationMatcher
+from ..models.processed_text import ProcessedText
+from .MWP_process import MWPCoarseClassifier
+from .relation_matcher import RelationMatcher
 
 logger = logging.getLogger(__name__)
 

@@ -21,9 +21,9 @@ from typing import Any, Dict, List, Optional, Set, Tuple, Union
 import numpy as np
 import spacy
 
-# 临时使用字典来替代 ProcessedText, FeatureSet, PatternMatch
-# from models.processed_text import ProcessedText
-# from models.structures import FeatureSet, PatternMatch
+# Import ProcessedText from proper location
+from ..models.processed_text import ProcessedText
+# from ..models.structures import FeatureSet, PatternMatch
 
 logger = logging.getLogger(__name__)
 
